@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès Gestion : fonctions de gestion prises en charge et tenues</title>
+<meta name="description" content="Périclès Gestion opère les fonctions financières, sociales et de conformité d'un groupe d'établissements et lui délivre les prestations dont il a besoin, en France comme à l'étranger, depuis un seul point de responsabilité.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&family=Overpass+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Palette ancrée sur les tokens Hermès Finance (registre Pictet), adaptée Périclès */
+    --ivoire: #F6F1EB;        /* fond dominant */
+    --ivoire-2: #FBF8F3;      /* surface très claire */
+    --ivoire-3: #EFE8DF;      /* filets, nuances */
+    --noir: #14110D;          /* texte principal */
+    --gris: #696969;          /* gris token */
+    --gris-2: #444444;        /* on-surface */
+    --gris-3: #8C8378;        /* libellés discrets */
+    --anthracite: #1A1813;    /* footer / ancrage sombre */
+    --anthracite-2: #221F19;
+    --terracotta: #A65A3A;    /* accent chaud rare */
+    --filet: #DED5C8;
+
+    --maxw: 1200px;
+    --gut: clamp(20px, 5vw, 64px);
+    --serif: "EB Garamond", Georgia, serif;
+    --sans: "Hanken Grotesk", system-ui, sans-serif;
+    --mono: "Overpass Mono", monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    background:var(--ivoire);
+    color:var(--noir);
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-0.01em;line-height:1.12}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+  /* Accessibilité : skip + focus */
+  .skip{
+    position:absolute;left:-9999px;top:0;z-index:200;
+    background:var(--noir);color:var(--ivoire);
+    padding:14px 22px;font-family:var(--mono);font-size:13px;
+  }
+  .skip:focus{left:0}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.dom-link:focus-visible{
+    outline:2px solid var(--terracotta);outline-offset:3px;
+  }
+
+  /* Eyebrow / label mono : signature data */
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gris-3);
+    font-weight:500;
+  }
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:100;
+    background:rgba(246,241,235,0.86);
+    backdrop-filter:saturate(120%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, background .4s ease;
+  }
+  header.site.scrolled{border-bottom-color:var(--filet)}
+  .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:24px;height:78px;
+  }
+  .logo{
+    font-family:var(--serif);font-size:23px;letter-spacing:.005em;
+    display:inline-flex;align-items:baseline;gap:.5ch;white-space:nowrap;
+  }
+  .logo .gest{color:var(--gris-2);font-style:italic;font-size:.74em;letter-spacing:.02em}
+  nav.primary{display:flex;align-items:center;gap:38px}
+  nav.primary ul{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+  nav.primary a{
+    font-size:14.5px;color:var(--gris-2);position:relative;padding:6px 0;
+  }
+  nav.primary a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--noir);transition:width .35s cubic-bezier(.2,.7,.2,1);
+  }
+  nav.primary a:hover{color:var(--noir)}
+  nav.primary a:hover::after{width:100%}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--sans);font-size:14.5px;font-weight:500;
+    padding:16px 30px;border:1px solid var(--noir);border-radius:0;
+    background:var(--ivoire);color:var(--noir);cursor:pointer;
+    transition:background .35s ease,color .35s ease;
+    min-height:48px;
+  }
+  .btn:hover{background:var(--noir);color:var(--ivoire)}
+  .btn.dark{background:var(--noir);color:var(--ivoire)}
+  .btn.dark:hover{background:transparent;color:var(--noir)}
+  .btn .arr{font-family:var(--mono);font-size:13px;transition:transform .35s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:10px;min-height:48px;min-width:48px}
+  .menu-toggle span{display:block;width:24px;height:1.5px;background:var(--noir);margin:5px 0;transition:.3s}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:clamp(70px,11vw,140px);padding-bottom:clamp(56px,8vw,104px)}
+  .hero .index{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px solid var(--filet);padding-bottom:18px;margin-bottom:clamp(40px,7vw,84px);
+  }
+  .hero .index .loc{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gris-3)}
+  .hero h1{
+    font-size:clamp(34px,5.6vw,72px);
+    line-height:1.08;letter-spacing:-0.018em;max-width:17ch;font-weight:500;
+  }
+  .hero h1 em{font-style:italic;color:var(--gris-2)}
+  .hero-grid{
+    display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(36px,6vw,88px);
+    align-items:end;margin-top:clamp(40px,6vw,72px);
+  }
+  .hero-sub{font-size:19px;line-height:1.6;color:var(--gris-2);max-width:46ch}
+  .hero-sub strong{color:var(--noir);font-weight:600}
+  .hero-cta{margin-top:30px;display:flex;gap:18px;flex-wrap:wrap}
+  .hero-figure{position:relative}
+  .hero-figure img{width:100%;height:clamp(340px,42vw,520px);object-fit:cover;filter:grayscale(1) contrast(1.02)}
+  .hero-figure figcaption{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--gris-3);
+    margin-top:12px;display:flex;justify-content:space-between;
+  }
+
+  /* ---------- Stats band (data mono) ---------- */
+  .stats{
+    border-top:1px solid var(--filet);border-bottom:1px solid var(--filet);
+    padding-block:clamp(44px,6vw,72px);
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,4vw,56px)}
+  .stat .n{font-family:var(--mono);font-size:clamp(38px,4.6vw,56px);font-weight:400;letter-spacing:-0.02em;line-height:1}
+  .stat .n .u{font-size:.42em;color:var(--gris-3);margin-left:.35ch;letter-spacing:.04em}
+  .stat .lab{margin-top:14px;font-size:14px;color:var(--gris-2);max-width:24ch;line-height:1.45}
+  .stat .accent{color:var(--terracotta)}
+
+  /* ---------- Section générique ---------- */
+  section{scroll-margin-top:96px}
+  .sec-head{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,80px);
+    align-items:start;padding-top:clamp(64px,9vw,128px);
+  }
+  .sec-head .num{font-family:var(--mono);font-size:13px;color:var(--gris-3);letter-spacing:.1em;padding-top:10px}
+  .sec-head h2{font-size:clamp(28px,3.6vw,44px);max-width:18ch;font-weight:500}
+  .sec-lead{
+    font-size:19px;line-height:1.6;color:var(--gris-2);max-width:60ch;
+    margin-top:28px;margin-left:auto;
+  }
+  .sec-lead.indent{padding-left:clamp(0px,calc(13ch + 5vw),320px)}
+  .sec-lead strong{color:var(--noir);font-weight:600}
+
+  /* ---------- Domaines (liste éditoriale) ---------- */
+  .domaines{padding-bottom:clamp(40px,6vw,80px)}
+  .dom-list{margin-top:clamp(44px,6vw,72px);border-top:1px solid var(--filet)}
+  .dom-row{
+    display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.4fr);
+    gap:clamp(20px,4vw,64px);align-items:start;
+    padding-block:clamp(30px,3.4vw,44px);
+    border-bottom:1px solid var(--filet);
+    position:relative;transition:padding-left .4s ease;
+  }
+  .dom-row:hover{padding-left:14px}
+  .dom-row .idx{font-family:var(--mono);font-size:14px;color:var(--gris-3);padding-top:7px}
+  .dom-row h3{font-size:clamp(21px,2vw,27px);max-width:20ch;line-height:1.18}
+  .dom-row .txt{font-size:16.5px;color:var(--gris-2);line-height:1.58;max-width:50ch}
+  .dom-row .rail{
+    position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--terracotta);
+    transform:scaleY(0);transform-origin:top;transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .dom-row:hover .rail{transform:scaleY(1)}
+
+  /* ---------- Pivot / citation pleine largeur ---------- */
+  .pivot{
+    background:var(--anthracite);color:var(--ivoire);margin-top:clamp(72px,10vw,140px);
+    padding-block:clamp(80px,12vw,170px);
+  }
+  .pivot .kicker{color:rgba(246,241,235,.55)}
+  .pivot blockquote{
+    margin:24px 0 0;font-family:var(--serif);font-weight:400;
+    font-size:clamp(30px,4.6vw,60px);line-height:1.16;letter-spacing:-0.015em;max-width:20ch;
+  }
+  .pivot blockquote em{font-style:italic;color:var(--terracotta)}
+  .pivot .sig{
+    margin-top:clamp(40px,5vw,64px);font-family:var(--mono);font-size:12.5px;
+    letter-spacing:.12em;color:rgba(246,241,235,.6);display:flex;gap:18px;align-items:center;
+  }
+  .pivot .sig::before{content:"";width:48px;height:1px;background:rgba(246,241,235,.4)}
+
+  /* ---------- Approche (modèle de responsabilité) ---------- */
+  .approche{padding-bottom:clamp(40px,6vw,80px)}
+  .resp-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--filet);border:1px solid var(--filet);
+    margin-top:clamp(44px,6vw,72px);
+  }
+  .resp-cell{background:var(--ivoire-2);padding:clamp(30px,3.2vw,44px)}
+  .resp-cell .st{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--terracotta);text-transform:uppercase}
+  .resp-cell h3{font-size:clamp(19px,1.7vw,24px);margin-top:18px;max-width:16ch}
+  .resp-cell p{font-size:15.5px;color:var(--gris-2);margin-top:14px;line-height:1.55}
+
+  /* ---------- Portée (document / vignette) ---------- */
+  .portee{padding-top:clamp(64px,9vw,128px)}
+  .portee-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center;margin-top:clamp(40px,5vw,64px)}
+  .portee-fig img{width:100%;height:clamp(320px,38vw,460px);object-fit:cover;filter:grayscale(1) contrast(1.03)}
+  .portee-fig figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--gris-3);margin-top:12px}
+  .portee-text h2{font-size:clamp(26px,3.2vw,40px);max-width:16ch;font-weight:500}
+  .portee-text p{font-size:17px;color:var(--gris-2);margin-top:22px;line-height:1.6;max-width:44ch}
+  .portee-list{list-style:none;margin:30px 0 0;padding:0}
+  .portee-list li{
+    display:flex;gap:16px;align-items:baseline;padding-block:14px;border-top:1px solid var(--filet);
+    font-size:15.5px;color:var(--gris-2);
+  }
+  .portee-list li:last-child{border-bottom:1px solid var(--filet)}
+  .portee-list .m{font-family:var(--mono);font-size:12px;color:var(--gris-3);min-width:42px;letter-spacing:.06em}
+
+  /* ---------- Contact ---------- */
+  .contact{padding-top:clamp(72px,10vw,140px)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,96px);margin-top:clamp(36px,5vw,60px)}
+  .contact-intro h2{font-size:clamp(30px,4vw,52px);max-width:14ch;font-weight:500}
+  .contact-intro p{font-size:18px;color:var(--gris-2);margin-top:24px;line-height:1.6;max-width:40ch}
+  .contact-coord{margin-top:clamp(36px,4vw,52px);display:grid;gap:20px}
+  .contact-coord .row{border-top:1px solid var(--filet);padding-top:16px}
+  .contact-coord .lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris-3)}
+  .contact-coord .val{font-size:16px;color:var(--noir);margin-top:6px}
+  .contact-coord a:hover{color:var(--terracotta)}
+
+  form{display:grid;gap:24px}
+  .field{display:grid;gap:9px}
+  label{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-2)}
+  input,textarea{
+    font-family:var(--sans);font-size:16px;color:var(--noir);
+    background:var(--ivoire-2);border:1px solid var(--filet);border-radius:0;
+    padding:15px 16px;width:100%;transition:border-color .3s ease;
+  }
+  input::placeholder,textarea::placeholder{color:var(--gris-3)}
+  input:focus,textarea:focus{border-color:var(--noir);outline:none}
+  textarea{resize:vertical;min-height:130px;line-height:1.55}
+  form .btn{justify-content:center;width:100%}
+  .form-note{font-size:13px;color:var(--gris-3);line-height:1.5}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--anthracite);color:var(--ivoire);margin-top:clamp(80px,11vw,150px);padding-block:clamp(60px,8vw,100px)}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(36px,6vw,80px);padding-bottom:clamp(48px,6vw,72px);border-bottom:1px solid rgba(246,241,235,.14)}
+  .foot-mark{font-family:var(--serif);font-size:26px}
+  .foot-mark .gest{font-style:italic;color:rgba(246,241,235,.6);font-size:.74em}
+  .foot-desc{font-size:15px;color:rgba(246,241,235,.65);margin-top:22px;line-height:1.62;max-width:54ch}
+  .foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,235,.45);font-weight:500}
+  .foot-col ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:13px}
+  .foot-col a{font-size:15px;color:rgba(246,241,235,.82)}
+  .foot-col a:hover{color:var(--terracotta)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:clamp(32px,4vw,44px);flex-wrap:wrap}
+  .foot-bottom span,.foot-bottom a{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:rgba(246,241,235,.5)}
+  .foot-bottom a:hover{color:rgba(246,241,235,.85)}
+
+  /* ---------- Responsive 1440 large ---------- */
+  @media (min-width:1441px){ :root{--maxw:1280px} }
+
+  /* ---------- Mobile 375 ---------- */
+  @media (max-width:880px){
+    .hero-grid,.portee-grid,.contact-grid,.foot-top{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:36px 28px}
+    .resp-grid{grid-template-columns:1fr}
+    .sec-head{grid-template-columns:1fr;gap:14px}
+    .sec-lead.indent{padding-left:0}
+    .dom-row{grid-template-columns:40px 1fr;gap:14px 20px}
+    .dom-row h3{grid-column:2}
+    .dom-row .txt{grid-column:2}
+    .dom-row:hover{padding-left:8px}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    nav.primary ul,nav.primary .btn{display:none}
+    .menu-toggle{display:block}
+    nav.primary.open{
+      position:fixed;inset:78px 0 auto 0;background:var(--ivoire);
+      border-bottom:1px solid var(--filet);flex-direction:column;align-items:stretch;
+      gap:0;padding:8px 0;
+    }
+    nav.primary.open ul{display:flex;flex-direction:column;gap:0;width:100%}
+    nav.primary.open ul li{border-top:1px solid var(--filet)}
+    nav.primary.open ul a{display:block;padding:18px var(--gut);font-size:16px}
+    nav.primary.open .btn{display:inline-flex;margin:14px var(--gut)}
+    .hero .index{flex-direction:column;gap:8px;align-items:flex-start}
+    .stats-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;align-items:flex-start;gap:14px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site" id="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Périclès Gestion, accueil">Périclès<span class="gest">Gestion</span></a>
+    <nav class="primary" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#domaines">Domaines</a></li>
+        <li><a href="#approche">Approche</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn" href="#contact">Adresser une demande <span class="arr">→</span></a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="index reveal">
+      <span class="kicker">Société de gestion · Paris</span>
+      <span class="loc">FR · INT</span>
+    </div>
+    <h1 id="hero-title" class="reveal">Vos fonctions de gestion, prises en charge et tenues depuis <em>un seul point de responsabilité.</em></h1>
+    <div class="hero-grid">
+      <div class="reveal">
+        <p class="hero-sub">Périclès Gestion opère les fonctions financières, sociales et de conformité d'un groupe d'établissements, et lui délivre les prestations techniques, digitales et de services dont il a besoin, <strong>en France comme à l'étranger.</strong></p>
+        <div class="hero-cta">
+          <a class="btn dark" href="#contact">Adresser une demande <span class="arr">→</span></a>
+          <a class="btn" href="#domaines">Voir les domaines <span class="arr">↓</span></a>
+        </div>
+      </div>
+      <figure class="hero-figure reveal">
+        <img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?auto=format&fit=crop&w=2000&q=80" alt="Façade institutionnelle en pierre, lumière feutrée, photographie noir et blanc.">
+        <figcaption><span>Point de responsabilité unique</span><span>178 Bd Haussmann</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="Repères">
+    <div class="wrap stats-grid">
+      <div class="stat reveal">
+        <div class="n" data-count="3">3<span class="u">campus</span></div>
+        <p class="lab">Un périmètre opéré d'un seul tenant, du budget à la conformité.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="n">01<span class="u">interlocuteur</span></div>
+        <p class="lab">Un seul point de contact qui répond de l'exécution de l'ensemble.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="n accent">FR<span class="u">+ international</span></div>
+        <p class="lab">Prestations délivrées en France comme à l'étranger, sous une même responsabilité.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="n" data-count="5">5<span class="u">domaines</span></div>
+        <p class="lab">Du pilotage financier à l'appui au développement, tenus en continu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOMAINES -->
+  <section class="domaines wrap" id="domaines" aria-labelledby="dom-title">
+    <div class="sec-head">
+      <span class="num reveal">[ 01 ]</span>
+      <h2 id="dom-title" class="reveal">Ce que Périclès prend en charge</h2>
+    </div>
+    <p class="sec-lead indent reveal">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir. Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré. <strong>Vous gardez vos décisions, nous répondons de leur exécution.</strong></p>
+
+    <div class="dom-list">
+      <article class="dom-row reveal">
+        <span class="rail" aria-hidden="true"></span>
+        <span class="idx">01</span>
+        <h3>Pilotage financier et administratif</h3>
+        <p class="txt">Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
+      </article>
+      <article class="dom-row reveal">
+        <span class="rail" aria-hidden="true"></span>
+        <span class="idx">02</span>
+        <h3>Paie, social et conformité</h3>
+        <p class="txt">Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
+      </article>
+      <article class="dom-row reveal">
+        <span class="rail" aria-hidden="true"></span>
+        <span class="idx">03</span>
+        <h3>Prestations et programmes</h3>
+        <p class="txt">Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
+      </article>
+      <article class="dom-row reveal">
+        <span class="rail" aria-hidden="true"></span>
+        <span class="idx">04</span>
+        <h3>Systèmes, outils et présence en ligne</h3>
+        <p class="txt">Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
+      </article>
+      <article class="dom-row reveal">
+        <span class="rail" aria-hidden="true"></span>
+        <span class="idx">05</span>
+        <h3>Appui au pilotage et au développement</h3>
+        <p class="txt">L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PIVOT -->
+  <section class="pivot" aria-label="Approche, principe">
+    <div class="wrap">
+      <span class="kicker reveal">Le principe</span>
+      <blockquote class="reveal">Vous gardez vos décisions, <em>nous répondons de leur exécution.</em></blockquote>
+      <div class="sig reveal">Périclès Gestion · point de responsabilité unique</div>
+    </div>
+  </section>
+
+  <!-- APPROCHE -->
+  <section class="approche wrap" id="approche" aria-labelledby="app-title">
+    <div class="sec-head">
+      <span class="num reveal">[ 02 ]</span>
+      <h2 id="app-title" class="reveal">Un seul point de responsabilité, trois engagements tenus</h2>
+    </div>
+    <p class="sec-lead indent reveal">Périclès opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires, et délivre l'ensemble comme un service intégré. La direction conserve la main sur ses décisions ; Périclès répond de leur mise en oeuvre.</p>
+
+    <div class="resp-grid">
+      <div class="resp-cell reveal">
+        <span class="st">Opérer</span>
+        <h3>Les fonctions tenues en interne</h3>
+        <p>Finance, paie, social et conformité sont pris en charge à chaque échéance, avec une obligation de résultat sur leur régularité.</p>
+      </div>
+      <div class="resp-cell reveal">
+        <span class="st">Mobiliser</span>
+        <h3>Les prestataires pilotés</h3>
+        <p>Là où une expertise externe s'impose, Périclès mobilise et pilote les prestataires nécessaires, en France comme à l'étranger, et en répond.</p>
+      </div>
+      <div class="resp-cell reveal">
+        <span class="st">Délivrer</span>
+        <h3>Un service intégré</h3>
+        <p>L'ensemble vous est délivré depuis un interlocuteur unique, cohérent sur tout le périmètre, sans que vous ayez à coordonner les intervenants.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTEE -->
+  <section class="portee wrap" aria-labelledby="por-title">
+    <div class="sec-head">
+      <span class="num reveal">[ 03 ]</span>
+      <h2 id="por-title" class="reveal">Une présence en France et à l'international</h2>
+    </div>
+    <div class="portee-grid">
+      <figure class="portee-fig reveal">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80" alt="Intérieur institutionnel feutré, lignes architecturales sobres, photographie noir et blanc.">
+        <figcaption>Périmètre opéré sous une responsabilité unique</figcaption>
+      </figure>
+      <div class="portee-text reveal">
+        <h2>Le même niveau de tenue, où que se trouvent vos établissements</h2>
+        <p>Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre depuis un interlocuteur unique, sur l'ensemble du périmètre.</p>
+        <ul class="portee-list">
+          <li><span class="m">FR</span><span>Fonctions financières, sociales et de conformité opérées en France.</span></li>
+          <li><span class="m">INT</span><span>Prestations et programmes délivrés à l'étranger, sous la même responsabilité.</span></li>
+          <li><span class="m">01</span><span>Un point de contact unique qui répond de l'exécution de l'ensemble.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact wrap" id="contact" aria-labelledby="con-title">
+    <div class="sec-head">
+      <span class="num reveal">[ 04 ]</span>
+      <h2 id="con-title" class="reveal">Adresser une demande</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <p style="font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);line-height:1.4;color:var(--gris-2);max-width:24ch">Décrivez le périmètre que vous souhaitez confier, en quelques lignes. Un interlocuteur vous répond et vous propose une première lecture.</p>
+        <div class="contact-coord">
+          <div class="row">
+            <div class="lab">Courriel</div>
+            <div class="val"><a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a></div>
+          </div>
+          <div class="row">
+            <div class="lab">Adresse</div>
+            <div class="val">178 boulevard Haussmann, 75008 Paris</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Groupe d'établissements, direction" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Courriel</label>
+          <input type="email" id="email" name="email" placeholder="prenom.nom@exemple.fr" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="En quelques lignes, les fonctions ou prestations concernées." required></textarea>
+        </div>
+        <button class="btn dark" type="submit">Envoyer la demande <span class="arr">→</span></button>
+        <p class="form-note" id="formNote" role="status">Réponse sous quelques jours ouvrés, par un interlocuteur dédié.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site" aria-label="Pied de page">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-mark">Périclès<span class="gest"> Gestion</span></div>
+        <p class="foot-desc">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#domaines">Domaines</a></li>
+          <li><a href="#approche">Approche</a></li>
+          <li><a href="#contact">Adresser une demande</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Périclès Gestion · contact@periclesgestion.com · 178 boulevard Haussmann, 75008 Paris</span>
+      <a href="#">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // Header scrolled state
+  var header = document.querySelector("header.site");
+  var onScroll = function(){
+    if(window.scrollY > 12){ header.classList.add("scrolled"); }
+    else { header.classList.remove("scrolled"); }
+  };
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  // Mobile menu
+  var toggle = document.getElementById("menuToggle");
+  var nav = document.getElementById("nav");
+  toggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded","false");
+    });
+  });
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  // Discreet counters (Overpass Mono numbers)
+  var counters = document.querySelectorAll(".n[data-count]");
+  var animate = function(el){
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    var unit = el.querySelector(".u");
+    var unitHTML = unit ? unit.outerHTML : "";
+    if(reduce){ el.firstChild.nodeValue = String(target); return; }
+    var start = null, dur = 900;
+    var step = function(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var val = Math.round((1 - Math.pow(1-p,3)) * target);
+      el.firstChild.nodeValue = String(val);
+      if(p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if("IntersectionObserver" in window && !reduce){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animate(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:0.6});
+    counters.forEach(function(el){ cio.observe(el); });
+  }
+
+  // Form (no backend, sobre confirmation)
+  var form = document.getElementById("contactForm");
+  var note = document.getElementById("formNote");
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var email = document.getElementById("email");
+    var msg = document.getElementById("msg");
+    if(!email.value || !msg.value){
+      note.textContent = "Merci d'indiquer un courriel et le périmètre concerné.";
+      note.style.color = "#A65A3A";
+      return;
+    }
+    note.textContent = "Demande reçue. Un interlocuteur vous répond sous quelques jours ouvrés.";
+    note.style.color = "var(--gris-2)";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

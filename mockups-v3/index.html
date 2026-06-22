@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Périclès Gestion : notation et hybridation des maquettes</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--navy:#1a2744;--gold:#c4a35a;--cream:#f5f0eb;--white:#fff;--text:#2d2d2d;--muted:#6b7280;--light:#f3f4f6;--border:#e5e7eb;--pw:440px}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'DM Sans',sans-serif;background:#111;color:var(--text);overflow:hidden}
+        .iframe-wrap{position:fixed;inset:0;z-index:1}
+        .iframe-wrap iframe{width:100%;height:100%;border:none;background:var(--white)}
+
+        .left-toggle{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:150;background:var(--navy);color:var(--white);border:none;padding:1rem 0.45rem;border-radius:0 8px 8px 0;cursor:pointer;font-family:inherit;font-size:0.68rem;writing-mode:vertical-rl;letter-spacing:0.08em;font-weight:600;box-shadow:2px 0 12px rgba(0,0,0,0.2);transition:all 0.3s}
+        .left-toggle:hover{background:var(--gold);color:var(--navy)}
+        .left-toggle.open{left:var(--pw)}
+        .left-panel{position:fixed;top:0;left:calc(-1 * var(--pw));bottom:0;width:var(--pw);z-index:140;background:var(--white);border-right:1px solid var(--border);box-shadow:4px 0 24px rgba(0,0,0,0.1);overflow-y:auto;transition:left 0.3s ease;padding:1.2rem}
+        .left-panel.open{left:0}
+        .lp-brand{font-family:'EB Garamond',serif;font-size:1.3rem;color:var(--navy);margin-bottom:0.3rem}
+        .lp-brand span{color:var(--gold)}
+        .lp-sub{font-size:0.75rem;color:var(--muted);margin-bottom:1rem}
+        .lp-section{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin:1rem 0 0.4rem;padding-bottom:0.2rem;border-bottom:1px solid var(--cream)}
+        .site-btn{display:flex;align-items:center;gap:0.6rem;width:100%;padding:0.6rem 0.7rem;border:none;border-radius:6px;background:transparent;cursor:pointer;font-family:inherit;font-size:0.84rem;color:var(--text);transition:all 0.15s;text-align:left}
+        .site-btn:hover{background:var(--cream)}
+        .site-btn.active{background:var(--navy);color:var(--white)}
+        .site-btn .sb-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0}
+        .site-btn.active .sb-dot{background:var(--gold)}
+        .site-btn .sb-name{flex:1}
+        .site-btn .sb-score{font-variant-numeric:tabular-nums;font-weight:700;font-size:0.8rem;color:var(--gold)}
+        .lp-export{display:block;width:100%;padding:0.6rem;border-radius:20px;background:var(--navy);color:var(--white);border:none;cursor:pointer;font-family:inherit;font-size:0.8rem;font-weight:600;margin-top:1rem}
+        .lp-export:hover{background:var(--gold);color:var(--navy)}
+        .lp-progress{height:5px;background:var(--cream);border-radius:3px;margin-top:0.8rem;overflow:hidden}
+        .lp-progress-fill{height:100%;background:var(--gold);transition:width 0.3s;width:0%}
+        .lp-progress-label{font-size:0.66rem;color:var(--muted);margin-top:0.3rem;text-align:center}
+        .lp-note{font-size:0.66rem;color:var(--muted);margin-top:0.9rem;font-style:italic;line-height:1.45;padding:0.55rem;background:var(--cream);border-radius:6px}
+
+        .right-toggle{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:150;background:var(--navy);color:var(--white);border:none;padding:1rem 0.45rem;border-radius:8px 0 0 8px;cursor:pointer;font-family:inherit;font-size:0.68rem;writing-mode:vertical-rl;letter-spacing:0.08em;font-weight:600;box-shadow:-2px 0 12px rgba(0,0,0,0.2);transition:all 0.3s}
+        .right-toggle:hover{background:var(--gold);color:var(--navy)}
+        .right-toggle.open{right:var(--pw)}
+        .right-panel{position:fixed;top:0;right:calc(-1 * var(--pw));bottom:0;width:var(--pw);z-index:140;background:var(--white);border-left:1px solid var(--border);box-shadow:-4px 0 24px rgba(0,0,0,0.1);overflow-y:auto;transition:right 0.3s ease;display:flex;flex-direction:column}
+        .right-panel.open{right:0}
+        .panel-tabs{display:flex;border-bottom:2px solid var(--cream);background:var(--white);position:sticky;top:0;z-index:2;flex-shrink:0}
+        .ptab{flex:1;padding:0.7rem 0.3rem;border:none;background:transparent;cursor:pointer;font-family:inherit;font-size:0.78rem;font-weight:600;color:var(--muted);transition:all 0.15s;border-bottom:2px solid transparent;margin-bottom:-2px}
+        .ptab:hover{color:var(--navy)}
+        .ptab.active{color:var(--navy);border-bottom-color:var(--gold)}
+        .panel-content{flex:1;overflow-y:auto;padding:1.3rem}
+
+        .ph h2{font-family:'EB Garamond',serif;font-size:1.45rem;color:var(--navy);margin-bottom:0.2rem}
+        .ph .hint{font-size:0.74rem;color:var(--muted);font-style:italic;margin-bottom:1.1rem}
+        .blk{margin-bottom:1.2rem}
+        .blk-t{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.5rem}
+        .blk-t span{color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0;font-style:italic;margin-left:0.3rem}
+        .scale10{display:flex;gap:4px;flex-wrap:wrap}
+        .s10{width:32px;height:34px;border-radius:6px;border:1.5px solid var(--border);background:var(--white);font-size:0.82rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.12s;font-family:inherit}
+        .s10:hover{border-color:var(--gold);color:var(--gold)}
+        .s10.sel{background:var(--navy);border-color:var(--navy);color:var(--white)}
+        .axis{margin-bottom:0.7rem}
+        .axis .al{font-size:0.8rem;color:var(--text);margin-bottom:0.3rem;line-height:1.3}
+        .scale5{display:flex;gap:4px}
+        .s5{width:34px;height:30px;border-radius:5px;border:1.5px solid var(--border);background:var(--white);font-size:0.78rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all 0.12s;font-family:inherit}
+        .s5:hover{border-color:var(--gold);color:var(--gold)}
+        .s5.sel{background:var(--gold);border-color:var(--gold);color:var(--white)}
+        .tags{display:flex;gap:6px;flex-wrap:wrap}
+        .tag{border:1px solid var(--border);background:var(--white);border-radius:999px;padding:6px 12px;font-size:0.74rem;color:var(--muted);cursor:pointer;font-family:inherit;transition:all 0.12s}
+        .tag.on{background:var(--gold);border-color:var(--gold);color:var(--white)}
+        textarea.mot{width:100%;padding:0.55rem;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.82rem;resize:vertical;min-height:46px}
+        textarea.mot:focus{outline:none;border-color:var(--gold)}
+        .navbtns{display:flex;gap:0.5rem;margin-top:0.6rem}
+        .navbtns button{flex:1;padding:0.55rem;border:1.5px solid var(--border);background:var(--white);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.78rem;font-weight:600;color:var(--navy);transition:all 0.15s}
+        .navbtns button:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+        /* Hybrider */
+        .hyb-sec{margin-bottom:1.2rem}
+        .hyb-sec h4{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gold);margin-bottom:0.5rem;padding-bottom:0.2rem;border-bottom:1.5px solid var(--cream)}
+        .hyb-row{margin-bottom:0.7rem;padding:0.55rem;border-radius:8px;background:var(--light)}
+        .hyb-row .hl{font-size:0.82rem;font-weight:600;color:var(--navy);margin-bottom:0.1rem}
+        .hyb-row .hd{font-size:0.68rem;color:var(--muted);font-style:italic;margin-bottom:0.4rem;line-height:1.35}
+        .hyb-row select{width:100%;padding:0.45rem;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.82rem;font-weight:600;color:var(--navy);background:var(--white);margin-bottom:0.35rem}
+        .hyb-row select:focus{outline:none;border-color:var(--gold)}
+        .hyb-row select.filled{border-color:var(--gold);background:#fffdf6}
+        .hyb-row input{width:100%;padding:0.4rem 0.55rem;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.78rem;color:var(--text)}
+        .hyb-row input:focus{outline:none;border-color:var(--gold)}
+
+        .t3-row{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem}
+        .t3-rank{font-family:'EB Garamond',serif;font-size:1.2rem;color:var(--gold);font-weight:700;min-width:26px}
+        .t3-row select{flex:1;padding:0.45rem;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.82rem}
+        .t3-row select:focus{outline:none;border-color:var(--gold)}
+        .qbox{margin-bottom:1rem}
+        .qbox label{display:block;font-size:0.82rem;font-weight:600;color:var(--navy);margin-bottom:0.3rem}
+        .qbox textarea{width:100%;padding:0.5rem;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.82rem;resize:vertical;min-height:56px}
+        .qbox textarea:focus{outline:none;border-color:var(--gold)}
+        .copybtn{display:block;width:100%;padding:0.65rem;border-radius:20px;background:var(--navy);color:var(--white);border:none;cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:600;margin-top:0.6rem}
+        .copybtn:hover{background:var(--gold);color:var(--navy)}
+        .recap{width:100%;height:150px;margin-top:0.8rem;border:1.5px solid var(--border);border-radius:6px;padding:0.6rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.7rem;color:var(--text);background:var(--light)}
+
+        .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--navy);color:var(--white);padding:0.8rem 1.5rem;border-radius:8px;font-size:0.85rem;z-index:300;display:none;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+        .toast.show{display:block;animation:pop 0.3s}
+        @keyframes pop{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+        .nav-hint{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:100;font-size:0.65rem;color:rgba(255,255,255,0.4);pointer-events:none;transition:opacity 0.3s}
+        .fs-link{position:fixed;top:1rem;right:1rem;z-index:120;background:rgba(26,39,68,0.85);color:#fff;text-decoration:none;font-size:0.7rem;padding:0.4rem 0.7rem;border-radius:6px}
+        .fs-link:hover{background:var(--gold);color:var(--navy)}
+    </style>
+</head>
+<body>
+
+<div class="iframe-wrap"><iframe id="mockupFrame" src=""></iframe></div>
+<a class="fs-link" id="fsLink" href="#" target="_blank" rel="noopener">Plein écran ↗</a>
+
+<button class="left-toggle" id="leftToggle" onclick="toggleLeft()">SITES &#9654;</button>
+<div class="left-panel" id="leftPanel">
+    <div class="lp-brand">Périclès <span>Gestion</span></div>
+    <div class="lp-sub">Noter &amp; hybrider &middot; 6 maquettes</div>
+    <div class="lp-section">6 Maquettes</div>
+    <div id="siteList"></div>
+    <button class="lp-export" onclick="copyRecap()">Copier mes notes</button>
+    <div class="lp-progress"><div class="lp-progress-fill" id="pFill"></div></div>
+    <div class="lp-progress-label" id="pLabel">0 / 6 notées</div>
+    <div class="lp-note">Onglet « Noter » : note rapide par maquette (~10 min). Onglet « Hybrider » : choisis section par section la meilleure version de chaque maquette pour composer le site final. Puis « Copier mes notes ».</div>
+</div>
+
+<button class="right-toggle" id="rightToggle" onclick="toggleRight()">&#9664; NOTER</button>
+<div class="right-panel" id="rightPanel">
+    <div class="panel-tabs">
+        <button class="ptab active" id="ptab0" onclick="switchTab(0)">Noter</button>
+        <button class="ptab" id="ptab1" onclick="switchTab(1)">Hybrider</button>
+        <button class="ptab" id="ptab2" onclick="switchTab(2)">Bilan</button>
+    </div>
+    <div class="panel-content" id="panelContent"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="nav-hint" id="navHint">&#8592; &#8594; pour passer d'une maquette à l'autre</div>
+
+<script>
+const M=[
+    {id:"wendel",name:"Wendel"},
+    {id:"pictet",name:"Pictet"},
+    {id:"brunello",name:"Brunello Cucinelli"},
+    {id:"kering",name:"Kering"},
+    {id:"hermes",name:"Hermès Finance"},
+    {id:"synthese",name:"Synthèse des 5 (6e)"},
+];
+const URLS={wendel:"wendel/index.html",pictet:"pictet/index.html",brunello:"brunello/index.html",kering:"kering/index.html",hermes:"hermes/index.html",synthese:"../_site/proto/index.html"};
+const AXES=[
+    {k:"registre",label:"Fidélité au registre (Wendel / Pictet : clair, serif, sobre)"},
+    {k:"hero",label:"Hero (immense, équilibré, du caractère)"},
+    {k:"couleurs",label:"Couleurs & accent (clair, lumineux, accent juste et rare)"},
+    {k:"typo",label:"Typographie (serif éditoriale, hiérarchie, lisibilité)"},
+    {k:"layout",label:"Mise en page (aération, rythme, pas « rapport annuel »)"},
+];
+const TAGS=["Coup de cœur","Le bon registre","Trop chargé","Hero faible","À retravailler"];
+// Hybrider : pour CHAQUE élément, quelle maquette a la meilleure version ?
+const HYB=[
+    {title:"Hero", items:[
+        {el:"Type de hero", desc:"Photo cinématique (Wendel/Kering/Brunello) ou titre serif pur (Pictet/Hermès) ?"},
+        {el:"Titre + sous-titre", desc:"Échelle, italique, mise en page"},
+        {el:"Image / photo du hero", desc:"N&B, façade, choix visuel"},
+    ]},
+    {title:"Chiffres-clés", items:[
+        {el:"Présentation des stats", desc:"Gros chiffres, monospace, filets, data-viz"},
+    ]},
+    {title:"Domaines", items:[
+        {el:"Les 5 domaines", desc:"Liste éditoriale numérotée, cartes, rythme"},
+    ]},
+    {title:"Approche", items:[
+        {el:"Section approche / citation", desc:"Ancrage foncé ? citation serif ? verbes (opérer/mobiliser/délivrer) ?"},
+    ]},
+    {title:"Contact & Footer", items:[
+        {el:"Contact", desc:"Accroche + formulaire"},
+        {el:"Footer", desc:"Colonnes, coordonnées, baseline"},
+    ]},
+    {title:"Identité visuelle", items:[
+        {el:"Palette", desc:"Clair dominant + accent (or / terracotta)"},
+        {el:"Typo titres", desc:"Serif éditoriale (laquelle ?)"},
+        {el:"Typo corps + chiffres", desc:"Grotesque + monospace"},
+        {el:"Ambiance / registre global", desc:"Le feeling d'ensemble"},
+    ]},
+];
+const KEY='pericles-notation-v3';
+
+let D={mockups:{},hyb:{},top3:["","",""],keep:"",avoid:""};
+let cur=0,leftOpen=false,rightOpen=false,tab=0;
+try{const s=localStorage.getItem(KEY);if(s)D=JSON.parse(s)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+function rec(id){if(!D.mockups[id])D.mockups[id]={note:null,axes:{},tags:[],mot:""};if(!D.mockups[id].axes)D.mockups[id].axes={};if(!D.mockups[id].tags)D.mockups[id].tags=[];return D.mockups[id]}
+function nameOf(id){const m=M.find(x=>x.id===id);return m?m.name:'—'}
+
+function init(){buildSiteList();goSite(0);updateProgress()}
+function buildSiteList(){
+    const el=document.getElementById('siteList');el.innerHTML='';
+    M.forEach((m,i)=>{
+        const b=document.createElement('button');b.className='site-btn';b.id='sb'+i;
+        b.innerHTML=`<span class="sb-dot"></span><span class="sb-name">${m.name}</span><span class="sb-score" id="sc${i}"></span>`;
+        b.onclick=()=>goSite(i);el.appendChild(b);
+    });
+    updateSiteScores();
+}
+function goSite(i){
+    cur=i;
+    document.getElementById('mockupFrame').src=URLS[M[i].id];
+    document.getElementById('fsLink').href=URLS[M[i].id];
+    document.querySelectorAll('.site-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+    if(tab===0)buildNoter();
+    if(leftOpen)toggleLeft();
+}
+function toggleLeft(){leftOpen=!leftOpen;document.getElementById('leftPanel').classList.toggle('open',leftOpen);document.getElementById('leftToggle').classList.toggle('open',leftOpen);document.getElementById('leftToggle').innerHTML=leftOpen?'◀ SITES':'SITES ▶'}
+function toggleRight(){rightOpen=!rightOpen;document.getElementById('rightPanel').classList.toggle('open',rightOpen);document.getElementById('rightToggle').classList.toggle('open',rightOpen);document.getElementById('rightToggle').innerHTML=rightOpen?'FERMER ▶':'◀ NOTER'}
+function switchTab(i){tab=i;document.querySelectorAll('.ptab').forEach((t,j)=>t.classList.toggle('active',j===i));i===0?buildNoter():i===1?buildHybrider():buildBilan()}
+
+/* ---- NOTER ---- */
+function buildNoter(){
+    const m=M[cur],d=rec(m.id),pc=document.getElementById('panelContent');
+    let h=`<div class="ph"><h2>${m.name}</h2><p class="hint">${cur+1} / ${M.length} &middot; note rapide</p></div>`;
+    h+=`<div class="blk"><div class="blk-t">Note globale <span>/10</span></div><div class="scale10">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="s10 ${d.note===n?'sel':''}" onclick="setNote('${m.id}',${n})">${n}</button>`).join('')}</div></div>`;
+    h+=`<div class="blk"><div class="blk-t">${AXES.length} axes <span>/5</span></div>`;
+    AXES.forEach(a=>{const v=d.axes[a.k]||0;h+=`<div class="axis"><div class="al">${a.label}</div><div class="scale5">${[1,2,3,4,5].map(n=>`<button class="s5 ${v===n?'sel':''}" onclick="setAxis('${m.id}','${a.k}',${n})">${n}</button>`).join('')}</div></div>`;});
+    h+=`</div>`;
+    h+=`<div class="blk"><div class="blk-t">Tags <span>optionnel</span></div><div class="tags">${TAGS.map(t=>`<button class="tag ${d.tags.includes(t)?'on':''}" onclick="toggleTag('${m.id}',\`${t}\`)">${t}</button>`).join('')}</div></div>`;
+    h+=`<div class="blk"><div class="blk-t">Un mot <span>optionnel</span></div><textarea class="mot" placeholder="ce qui va / ce qui cloche" onchange="rec('${m.id}').mot=this.value;save()">${d.mot||''}</textarea></div>`;
+    h+=`<div class="navbtns"><button onclick="goSite((cur-1+M.length)%M.length)">← Précédent</button><button onclick="goSite((cur+1)%M.length)">Suivant →</button></div>`;
+    pc.innerHTML=h;pc.scrollTop=0;
+}
+function rebuildKeepScroll(){const pc=document.getElementById('panelContent');const sc=pc.scrollTop;buildNoter();pc.scrollTop=sc}
+function setNote(id,n){rec(id).note=n;save();updateProgress();rebuildKeepScroll()}
+function setAxis(id,k,n){rec(id).axes[k]=n;save();rebuildKeepScroll()}
+function toggleTag(id,t){const r=rec(id),i=r.tags.indexOf(t);i>=0?r.tags.splice(i,1):r.tags.push(t);save();rebuildKeepScroll()}
+
+/* ---- HYBRIDER ---- */
+function buildHybrider(){
+    const pc=document.getElementById('panelContent');
+    let h=`<div class="ph"><h2>Hybrider</h2><p class="hint">Pour chaque élément, choisis la maquette qui a la meilleure version. C'est ce mix qui sera assemblé.</p></div>`;
+    HYB.forEach(sec=>{
+        h+=`<div class="hyb-sec"><h4>${sec.title}</h4>`;
+        sec.items.forEach(it=>{
+            const k=(sec.title+'__'+it.el).replace(/[^a-zA-Z0-9]/g,'_');
+            const sel=D.hyb[k]||'';
+            const note=D.hyb[k+'_n']||'';
+            const opts='<option value="">— choisir —</option>'+M.map(m=>`<option value="${m.id}" ${sel===m.id?'selected':''}>${m.name}</option>`).join('');
+            h+=`<div class="hyb-row"><div class="hl">${it.el}</div><div class="hd">${it.desc}</div>
+                <select class="${sel?'filled':''}" onchange="setHyb('${k}',this.value)">${opts}</select>
+                <input type="text" placeholder="précision (optionnel)" value="${note.replace(/"/g,'&quot;')}" onchange="D.hyb['${k}_n']=this.value;save()"></div>`;
+        });
+        h+=`</div>`;
+    });
+    h+=`<button class="copybtn" onclick="copyRecap()">Copier mes notes</button>`;
+    pc.innerHTML=h;pc.scrollTop=0;
+}
+function setHyb(k,v){D.hyb[k]=v;save();
+    // maj visuelle du select sans tout reconstruire
+    const sc=document.getElementById('panelContent').scrollTop;buildHybrider();document.getElementById('panelContent').scrollTop=sc}
+
+/* ---- BILAN ---- */
+function buildBilan(){
+    const pc=document.getElementById('panelContent');
+    let h=`<div class="ph"><h2>Bilan</h2><p class="hint">Ton classement et l'essentiel, puis « Copier ».</p></div>`;
+    h+=`<div class="blk"><div class="blk-t">Ton Top 3</div>`;
+    ['1er','2e','3e'].forEach((r,i)=>{
+        const o='<option value="">—</option>'+M.map(m=>`<option value="${m.id}" ${D.top3[i]===m.id?'selected':''}>${m.name}</option>`).join('');
+        h+=`<div class="t3-row"><span class="t3-rank">${r}</span><select onchange="D.top3[${i}]=this.value;save();updateProgress()">${o}</select></div>`;
+    });
+    h+=`</div>`;
+    h+=`<div class="qbox"><label>À garder absolument</label><textarea onchange="D.keep=this.value;save()" placeholder="le hero de X, les chiffres mono, l'accent or...">${D.keep||''}</textarea></div>`;
+    h+=`<div class="qbox"><label>À éviter / changer</label><textarea onchange="D.avoid=this.value;save()" placeholder="trop sombre, hero trop grand...">${D.avoid||''}</textarea></div>`;
+    h+=`<button class="copybtn" onclick="copyRecap()">Copier mes notes</button>`;
+    h+=`<textarea class="recap" id="recapOut" readonly></textarea>`;
+    pc.innerHTML=h;pc.scrollTop=0;
+    document.getElementById('recapOut').value=recapText();
+}
+
+function recapText(){
+    let L=['NOTATION + HYBRIDATION — MAQUETTES PÉRICLÈS',''];
+    L.push('== NOTES ==');
+    M.forEach(m=>{
+        const d=D.mockups[m.id];
+        if(!d||d.note==null){L.push(`• ${m.name} : — non notée`);return}
+        const ax=AXES.map(a=>a.k+' '+(d.axes[a.k]||'-')+'/5').join(', ');
+        L.push(`• ${m.name} : ${d.note}/10  [${ax}]`+(d.tags&&d.tags.length?`  {${d.tags.join(', ')}}`:'')+(d.mot?`  — ${d.mot}`:''));
+    });
+    L.push('');L.push('== HYBRIDATION (section -> maquette choisie) ==');
+    let any=false;
+    HYB.forEach(sec=>{
+        sec.items.forEach(it=>{
+            const k=(sec.title+'__'+it.el).replace(/[^a-zA-Z0-9]/g,'_');
+            if(D.hyb[k]){any=true;L.push(`• ${sec.title} / ${it.el} : ${nameOf(D.hyb[k])}`+(D.hyb[k+'_n']?`  (${D.hyb[k+'_n']})`:''));}
+        });
+    });
+    if(!any)L.push('(aucune section choisie pour l\'instant)');
+    L.push('');L.push('== BILAN ==');
+    L.push('Top 3 : '+[0,1,2].map(i=>D.top3[i]?(i+1)+'. '+nameOf(D.top3[i]):'').filter(Boolean).join('  '));
+    if(D.keep)L.push('À garder : '+D.keep);
+    if(D.avoid)L.push('À éviter : '+D.avoid);
+    return L.join('\n');
+}
+function copyRecap(){
+    const t=recapText();
+    navigator.clipboard.writeText(t).then(()=>toast('Notes copiées, colle-les dans le chat')).catch(()=>{
+        let o=document.getElementById('recapOut');if(!o){o=document.createElement('textarea');o.style.position='fixed';o.style.opacity=0;document.body.appendChild(o)}o.value=t;o.select();document.execCommand('copy');toast('Notes copiées');
+    });
+}
+function updateSiteScores(){M.forEach((m,i)=>{const d=D.mockups[m.id];const el=document.getElementById('sc'+i);if(el)el.textContent=(d&&d.note!=null)?d.note:''})}
+function updateProgress(){
+    const n=M.filter(m=>D.mockups[m.id]&&D.mockups[m.id].note!=null).length;
+    document.getElementById('pFill').style.width=Math.round(n/M.length*100)+'%';
+    document.getElementById('pLabel').textContent=n+' / '+M.length+' notées';
+    updateSiteScores();
+}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+
+document.addEventListener('keydown',e=>{
+    if(['TEXTAREA','SELECT','INPUT'].includes(e.target.tagName))return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goSite((cur+1)%M.length)}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goSite((cur-1+M.length)%M.length)}
+});
+setTimeout(()=>{const h=document.getElementById('navHint');if(h)h.style.opacity='0'},7000);
+init();
+</script>
+</body>
+</html>
