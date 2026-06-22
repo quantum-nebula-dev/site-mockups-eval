@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès Gestion : prise en charge et pilotage des fonctions de gestion</title>
+<meta name="description" content="Périclès Gestion prend en charge et pilote les fonctions support et financières des groupes d'établissements et de leurs partenaires internationaux, depuis un point de responsabilité unique, en France comme à l'étranger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&family=Overpass+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Design system = ADN commun des 5 references (cf. _site/BRIEF.md) */
+    --paper:#F6F1EB; --paper-2:#FBF8F2; --line:#E4DCCD;
+    --ink:#18212E; --ink-soft:#59626F; --night:#0F1A28;
+    --accent:#9A7B4F;            /* or / bronze, RARE */
+    --serif:"Newsreader", Georgia, serif;
+    --sans:"Hanken Grotesk", system-ui, sans-serif;
+    --mono:"Overpass Mono", ui-monospace, monospace;
+    --maxw:1300px;
+    --gut:clamp(22px,5vw,72px);
+    --radius:2px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.012em}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:12px 20px;z-index:200}
+  .skip:focus{left:0}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:14px}
+  .kicker::before{content:"";width:34px;height:1px;background:var(--accent)}
+  h2{font-size:clamp(1.9rem,3.4vw,3rem);line-height:1.12;letter-spacing:-.01em}
+  h3{font-size:clamp(1.3rem,1.8vw,1.6rem)}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:100;background:rgba(246,241,235,.82);backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid transparent;transition:border-color .4s}
+  header.solid{border-bottom-color:var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:80px}
+  .logo{font-family:var(--serif);font-size:24px;letter-spacing:.005em;white-space:nowrap}
+  .logo .g{font-style:italic;color:var(--ink-soft);font-size:.78em;margin-left:.18em}
+  nav.main{display:flex;align-items:center;gap:40px}
+  nav.main ul{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+  nav.main a{font-size:14.5px;color:var(--ink-soft);position:relative;padding:6px 0}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--ink);transition:width .35s}
+  nav.main a:hover{color:var(--ink)} nav.main a:hover::after{width:100%}
+  .cta{display:inline-flex;align-items:center;gap:11px;min-height:48px;padding:0 30px;border:1px solid var(--ink);border-radius:var(--radius);background:transparent;color:var(--ink);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:background .35s,color .35s,border-color .35s}
+  .cta:hover{background:var(--ink);color:var(--paper)}
+  .cta .arr{font-family:var(--mono);font-size:13px;transition:transform .35s}
+  .cta:hover .arr{transform:translateX(4px)}
+  .cta.solid{background:var(--ink);color:var(--paper)}
+  .cta.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:clamp(48px,7vw,92px);padding-bottom:clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(36px,5vw,80px);align-items:stretch}
+  .hero .eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:clamp(26px,4vw,40px)}
+  .hero .eyebrow::before{content:"";width:42px;height:1px;background:var(--accent)}
+  .hero h1{font-size:clamp(2.4rem,4.7vw,4.3rem);line-height:1.07;max-width:15ch}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-sub{margin-top:clamp(26px,3vw,34px);max-width:48ch;font-size:clamp(1rem,1.15vw,1.16rem);line-height:1.62;color:var(--ink-soft)}
+  .hero-actions{margin-top:clamp(30px,3.4vw,42px);display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .ghostlink{display:inline-flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:3px}
+  .ghostlink .arr{font-family:var(--mono);color:var(--accent)}
+  .hero-figure{position:relative;min-height:clamp(360px,42vw,560px);border-radius:var(--radius);overflow:hidden;background:var(--night)}
+  .hero-figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.04)}
+  .hero-figure figcaption{position:absolute;left:0;bottom:0;padding:16px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,235,.92);background:linear-gradient(0deg,rgba(15,26,40,.7),transparent)}
+
+  /* ---------- Stats band ---------- */
+  .stats{margin-top:clamp(44px,6vw,80px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}
+  .stat{padding:clamp(26px,3vw,38px) clamp(20px,2.4vw,40px) 4px 0}
+  .stat + .stat{border-left:1px solid var(--line);padding-left:clamp(26px,2.6vw,46px)}
+  .stat .n{font-family:var(--mono);font-size:clamp(30px,3.4vw,42px);font-weight:400;letter-spacing:-.01em;color:var(--accent);line-height:1}
+  .stat .l{margin-top:14px;font-size:14.5px;line-height:1.45;color:var(--ink-soft);max-width:24ch}
+
+  /* ---------- Intro / chapeau ---------- */
+  .intro{padding-block:clamp(70px,9vw,128px);border-top:1px solid var(--line)}
+  .intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,80px)}
+  .intro h2{margin-top:22px;max-width:14ch}
+  .intro-lede p{font-size:clamp(1.05rem,1.3vw,1.24rem);line-height:1.62;color:var(--ink-soft)}
+  .pivot{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,1.9vw,1.7rem);color:var(--ink)}
+
+  /* ---------- Domaines ---------- */
+  .domaines{padding-bottom:clamp(70px,9vw,120px)}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:start;margin-bottom:clamp(40px,5vw,64px)}
+  .sec-head h2{max-width:18ch}
+  .dlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .dlist li{display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,4vw,72px);padding:clamp(26px,3vw,40px) 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .dn{font-family:var(--mono);font-size:clamp(1.05rem,1.5vw,1.4rem);color:var(--accent)}
+  .dlist h3{margin-bottom:10px}
+  .dlist p{color:var(--ink-soft);max-width:62ch}
+
+  /* ---------- Approche (ancrage fonce) ---------- */
+  .approche{background:var(--night);color:var(--paper);padding-block:clamp(76px,10vw,138px)}
+  .approche .kicker{color:rgba(246,241,235,.66)}
+  .pivot-q{margin:30px 0 0;font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.2;max-width:20ch}
+  .pivot-q em{font-style:italic;color:var(--accent)}
+  .verbs{margin-top:clamp(48px,6vw,82px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,52px);border-top:1px solid rgba(246,241,235,.16);padding-top:clamp(34px,4vw,50px)}
+  .verbs h4{font-size:1.35rem;margin-bottom:12px}
+  .verbs p{color:rgba(246,241,235,.74);font-size:15px;line-height:1.55;max-width:34ch}
+
+  /* ---------- Contact ---------- */
+  .contact{padding-block:clamp(76px,10vw,128px)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px)}
+  .contact h2{margin-top:22px}
+  .contact-copy{margin-top:20px;color:var(--ink-soft);max-width:40ch;font-size:1.05rem}
+  .form{display:flex;flex-direction:column;gap:20px}
+  .form label{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .form input,.form textarea{font-family:var(--sans);font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;resize:vertical}
+  .form input:focus,.form textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  .form button{align-self:flex-start;margin-top:6px}
+
+  /* ---------- Footer ---------- */
+  .footer{background:var(--night);color:rgba(246,241,235,.8)}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:clamp(34px,4vw,64px);padding-block:clamp(56px,6vw,80px)}
+  .logo.light{color:var(--paper)}
+  .foot-base{margin-top:18px;max-width:46ch;font-size:14.5px;line-height:1.6;color:rgba(246,241,235,.62)}
+  .foot-h{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,235,.5);margin-bottom:14px}
+  .foot-col a{border-bottom:1px solid transparent}
+  .foot-col a:hover{border-bottom-color:var(--accent)}
+  .foot-bottom{border-top:1px solid rgba(246,241,235,.14);padding-block:24px;font-size:13px;color:rgba(246,241,235,.5)}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid,.intro-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+    .hero h1{max-width:18ch}
+    .hero-figure{min-height:clamp(300px,52vw,420px)}
+    .verbs{grid-template-columns:1fr;gap:26px}
+    .sec-head{grid-template-columns:1fr;gap:14px}
+    .footer-grid{gap:36px}
+  }
+  @media (max-width:560px){
+    nav.main ul{display:none}
+    .stats{grid-template-columns:1fr}
+    .stat + .stat{border-left:0;border-top:1px solid var(--line);padding-left:0}
+    .stat{padding-right:0}
+    .dlist li{gap:16px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="logo" href="#" aria-label="Périclès Gestion, accueil">Périclès<span class="g">Gestion</span></a>
+    <nav class="main" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#domaines">Domaines</a></li>
+        <li><a href="#approche">Approche</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="cta solid" href="#contact">Adresser une demande <span class="arr" aria-hidden="true">&rsaquo;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- HERO -->
+  <section class="hero wrap" aria-labelledby="h1">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="eyebrow">Société de gestion &middot; Paris</p>
+        <h1 id="h1">Vos fonctions de gestion, prises en charge et tenues depuis <em>un seul point de responsabilité.</em></h1>
+        <p class="hero-sub">Périclès Gestion opère les fonctions financières, sociales et de conformité d'un groupe d'établissements, et lui délivre les prestations techniques, digitales et de services dont il a besoin, en France comme à l'étranger.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#contact">Adresser une demande <span class="arr" aria-hidden="true">&rsaquo;</span></a>
+          <a class="ghostlink" href="#domaines">Découvrir les domaines <span class="arr" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="https://images.unsplash.com/photo-1471623432079-b009d30b6729?auto=format&fit=crop&w=1600&q=80" alt="Façade de pierre d'un immeuble institutionnel haussmannien, à Paris, en noir et blanc.">
+        <figcaption>Une maison de gestion, un seul point de responsabilité</figcaption>
+      </figure>
+    </div>
+    <div class="stats" aria-label="Repères">
+      <div class="stat"><div class="n">01</div><div class="l">Un interlocuteur unique, un seul point de responsabilité</div></div>
+      <div class="stat"><div class="n">05</div><div class="l">Domaines de gestion pris en charge et garantis</div></div>
+      <div class="stat"><div class="n">FR&thinsp;+&thinsp;INT</div><div class="l">En France comme à l'étranger, depuis un même interlocuteur</div></div>
+    </div>
+  </section>
+
+  <!-- INTRO / CHAPEAU -->
+  <section class="intro wrap">
+    <div class="intro-grid">
+      <div>
+        <p class="kicker">Le principe</p>
+        <h2>Un ensemble tenu d'un seul tenant.</h2>
+      </div>
+      <div class="intro-lede">
+        <p>Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir. Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
+        <p class="pivot">Vous gardez vos décisions, nous répondons de leur exécution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOMAINES -->
+  <section class="domaines wrap" id="domaines">
+    <div class="sec-head">
+      <p class="kicker">Domaines</p>
+      <h2>Cinq domaines, une seule responsabilité.</h2>
+    </div>
+    <ol class="dlist">
+      <li><span class="dn">01</span><div><h3>Pilotage financier et administratif</h3><p>Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p></div></li>
+      <li><span class="dn">02</span><div><h3>Paie, social et conformité</h3><p>Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p></div></li>
+      <li><span class="dn">03</span><div><h3>Prestations et programmes</h3><p>Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p></div></li>
+      <li><span class="dn">04</span><div><h3>Systèmes, outils et présence en ligne</h3><p>Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p></div></li>
+      <li><span class="dn">05</span><div><h3>Appui au pilotage et au développement</h3><p>L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- APPROCHE (ancrage fonce) -->
+  <section class="approche" id="approche">
+    <div class="wrap">
+      <p class="kicker">L'approche</p>
+      <blockquote class="pivot-q">Vous gardez vos décisions, <em>nous répondons de leur exécution.</em></blockquote>
+      <div class="verbs">
+        <div><h4>Opérer</h4><p>Les fonctions qui doivent rester tenues en propre, opérées et garanties à chaque échéance.</p></div>
+        <div><h4>Mobiliser</h4><p>Le réseau de prestataires nécessaire, mobilisé et piloté où qu'il soit, en France comme à l'étranger.</p></div>
+        <div><h4>Délivrer</h4><p>Le tout délivré comme un service intégré, depuis un interlocuteur unique qui répond de l'exécution.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact wrap" id="contact">
+    <div class="contact-grid">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2>Adresser une demande</h2>
+        <p class="contact-copy">Décrivez le périmètre que vous souhaitez confier, en quelques lignes. Un interlocuteur vous répond et vous propose une première lecture.</p>
+      </div>
+      <form class="form" onsubmit="return false" aria-label="Adresser une demande">
+        <label>Organisation <input type="text" name="org" autocomplete="organization"></label>
+        <label>Email <input type="email" name="email" autocomplete="email"></label>
+        <label>Votre demande <textarea name="msg" rows="5"></textarea></label>
+        <button class="cta solid" type="submit">Envoyer la demande <span class="arr" aria-hidden="true">&rsaquo;</span></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <span class="logo light">Périclès<span class="g">Gestion</span></span>
+      <p class="foot-base">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h">Contact</p>
+      <p>contact@periclesgestion.com<br>178 boulevard Haussmann, 75008 Paris</p>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h">Informations</p>
+      <p><a href="#">Mentions légales</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 Périclès Gestion. Tous droits réservés.</div>
+</footer>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('solid',window.scrollY>12);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+</body>
+</html>
