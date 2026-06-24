@@ -169,9 +169,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     linear-gradient(180deg, rgba(0,18,36,.55) 0%, rgba(0,18,36,.15) 32%, rgba(0,18,36,.9) 100%),
     linear-gradient(90deg, rgba(0,18,36,.78) 0%, rgba(0,18,36,.25) 52%, rgba(0,18,36,0) 78%);
 }
-.hero__inner{position:absolute;left:0;right:0;bottom:0;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 6vw 7vh}
-.hero h1{color:#fff;max-width:18ch;letter-spacing:-.01em;font-weight:300;font-size:clamp(2.3rem,4.6vw,4.4rem);line-height:1.08}
-.hero h1 i{font-style:italic;color:#e7dcc6;font-weight:300}
+.hero__inner{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 6vw 7vh;line-height:normal;color:#000;font-family:"Hanken Grotesk", sans-serif}
+.hero h1{color:#fff;max-width:18ch;letter-spacing:-.01em;font-weight:300;font-size:clamp(2.3rem,4.6vw,4.4rem);line-height:1.08;font-family:"Newsreader", serif}
+.hero h1 i{font-style:italic;color:#e7dcc6;font-weight:300;font-family:"Newsreader", serif}
+/* Hero : eyebrow calé au pixel sur le comparateur (scopé au hero, ne touche pas la règle .eyebrow globale utilisée par les autres sections) */
+.hero .eyebrow{display:flex;font-size:12px;letter-spacing:.22em;gap:14px;line-height:normal}
+.hero .eyebrow::before{width:42px}
 .hero__sub{
   margin-top:22px;max-width:50ch;color:rgba(245,240,235,.9);
   font-size:16px;line-height:1.6;
