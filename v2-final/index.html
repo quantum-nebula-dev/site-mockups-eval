@@ -197,6 +197,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 /* ============ INTRO / CHAPEAU ============ */
 .intro__grid{display:grid;grid-template-columns:0.8fr 1.4fr;gap:clamp(32px,5vw,80px);align-items:start}
 .intro__grid h2{max-width:14ch}
+.intro__sig{margin-top:clamp(44px,5.5vw,76px)}
+.intro__sig .intro__rule{display:block;width:54px;height:2px;background:var(--gold);margin-bottom:20px}
+.intro__sig p{font-family:var(--grot);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);font-weight:600}
 .intro__body p+p{margin-top:1.3em}
 .intro__pivot{
   font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,2vw,1.7rem);
@@ -438,6 +441,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <div class="reveal">
         <p class="eyebrow">Le périmètre</p>
         <h2 style="margin-top:22px">Ce que Périclès prend en charge.</h2>
+        <div class="intro__sig">
+          <span class="intro__rule"></span>
+          <p>Opérer · Mobiliser · Délivrer</p>
+        </div>
       </div>
       <div class="intro__body reveal d1">
         <p class="lead">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir.</p>
