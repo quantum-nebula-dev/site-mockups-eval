@@ -282,14 +282,45 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 .model__dot{display:none}
 
-/* ============ CHIFFRES (band sombre) ============ */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
-.stat{border-top:1px solid var(--line-2);padding-top:26px}
-.stat__n{font-family:var(--serif);font-size:clamp(2.8rem,5.4vw,4.6rem);color:#fff;line-height:1;font-weight:300}
-.stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
-.stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
-.stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
-.stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
+/* ============ REPÈRES (band sombre : chiffres clés, filet or qui se dessine) ============ */
+/* en-tête composé : intitulé tenu à gauche, note sobre alignée en pied à droite */
+.reperes__head{
+  display:grid;grid-template-columns:1.4fr 1fr;
+  gap:clamp(22px,4vw,72px);align-items:end;
+  margin-bottom:clamp(46px,6vw,82px);
+}
+.reperes__head h2{margin-top:22px}
+.reperes__note{color:rgba(255,255,255,.64);max-width:34ch;padding-bottom:.4em}
+
+/* série de repères, tenue sous un filet or continu */
+.stats{
+  position:relative;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(30px,3.4vw,64px);
+  padding-top:clamp(32px,3.6vw,48px);
+}
+/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée
+   (même « ligne active » que les domaines au survol et le schéma du modèle) */
+.stats::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.stats.is-visible::before{transform:scaleX(1)}
+
+.stat{display:flex;flex-direction:column;align-items:flex-start}
+.stat__n{
+  font-family:var(--serif);font-weight:300;color:#fff;line-height:.98;
+  font-size:clamp(2.6rem,4.4vw,3.9rem);letter-spacing:-.012em;
+  font-variant-numeric:tabular-nums;
+}
+.stat__n .u{color:var(--gold);font-size:.46em;vertical-align:top;margin-left:.14em;letter-spacing:0}
+.stat__n .ph{color:var(--gold)}          /* crochets de l'emplacement de copy */
+.stat__l{
+  margin-top:clamp(16px,1.6vw,22px);max-width:22ch;
+  font-size:.92rem;line-height:1.5;color:rgba(255,255,255,.66);
+}
 
 /* ============ CITATION FULL-BLEED (structure Brunello, tokens Wendel) ============ */
 .quote-block{
@@ -394,6 +425,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .dom,.approche__grid,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
   .dom__rail{position:static}
   .stats{grid-template-columns:1fr 1fr;gap:34px}
+  .reperes__head{grid-template-columns:1fr;gap:14px;align-items:start}
+  .reperes__note{padding-bottom:0;max-width:46ch}
   .approche__quote{max-width:100%}
   /* MODÈLE : schéma masqué, légende en timeline verticale */
   .model__diagram{display:none}
