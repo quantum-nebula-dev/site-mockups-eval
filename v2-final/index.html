@@ -195,19 +195,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
 
 /* ============ INTRO / CHAPEAU (ouverture éditoriale : titre sobre, chapeau ample, lettrine or, pivot décalé) ============ */
-.intro .eyebrow{margin-bottom:clamp(24px,2.6vw,34px)}
+.intro .eyebrow{margin-bottom:clamp(20px,2.2vw,28px)}
 .intro__title{
   font-weight:400;max-width:17ch;text-wrap:balance;
   font-size:clamp(2.1rem,3.8vw,3.3rem);line-height:1.08;letter-spacing:-.015em;
-  margin-bottom:clamp(40px,5vw,72px);
+  margin-bottom:clamp(26px,3.2vw,46px);
 }
 /* composition asymétrique en flux : blocs empilés et décalés, respirations en marge, jamais de colonne creuse */
 .intro__flow{
   display:grid;grid-template-columns:repeat(12,1fr);
-  column-gap:clamp(20px,3vw,40px);row-gap:clamp(30px,4vw,52px);
+  column-gap:clamp(20px,3vw,40px);row-gap:clamp(20px,2.6vw,34px);
 }
 .intro__lead{
-  grid-column:4 / 13;margin:0;
+  grid-column:3 / 13;margin:0;
   font-family:var(--serif);font-weight:300;color:var(--ink);
   font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.32;letter-spacing:-.01em;
 }
