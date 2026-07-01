@@ -424,7 +424,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 @media (prefers-reduced-motion:reduce){
-  .reveal,.tile{opacity:1!important;transform:none!important;transition:none!important}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .model__diagram [data-draw]{stroke-dashoffset:0!important}
+  .model__diagram [data-node]{opacity:1!important;transform:none!important}
   .scrollcue .line::after{animation:none;transform:translateY(0)}
   *{transition-duration:.001ms!important;animation-duration:.001ms!important}
 }
