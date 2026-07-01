@@ -5,6 +5,7 @@
 ## Projet
 - **Client** : Périclès Gestion — société de gestion (SAS FR). Opère les fonctions **financières, sociales et de conformité** d'un groupe d'établissements, et lui délivre les **prestations techniques, digitales et de services** dont il a besoin, en France comme à l'étranger, depuis « **un seul point de responsabilité** ».
 - **Registre** : magazine de luxe institutionnel sobre.
+- **Métier (VERROUILLÉ)** : société de gestion **OPÉRATIONNELLE** d'un groupe — elle opère les fonctions finance / paie / social / conformité / systèmes-IT et délivre les prestations. **PAS** gestion de portefeuille / d'actifs (AMF), **PAS** holding, **PAS** family office. Les réfs Wendel / Pictet / Kering / Hermès servent au **style visuel uniquement**, jamais à l'activité ni à l'architecture.
 - **CTA primaire (unique)** : « **Adresser une demande** ».
 - **Contraintes** : ninja (aucune école/client cité) · aucun nom de staff public · right speech (pas de faux comité/partenariat/rentrée) · accents FR.
 
