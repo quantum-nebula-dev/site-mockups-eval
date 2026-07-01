@@ -446,7 +446,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .dom,.approche__grid,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
+  .dom,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
   .dom__rail{position:static}
   .stats{grid-template-columns:1fr 1fr;gap:34px}
   .reperes__head{grid-template-columns:1fr;gap:14px;align-items:start}
@@ -694,18 +694,35 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- ============ APPROCHE ============ -->
+<!-- ============ APPROCHE (principes, registre éditorial « index tenu ») ============ -->
 <section id="approche" class="bg-taupe approche">
   <div class="wrap">
-    <div class="approche__grid">
-      <blockquote class="approche__quote reveal">
-        Vous gardez vos décisions,<br><span class="mk">nous répondons</span> de leur exécution.
-      </blockquote>
-      <div class="approche__aside reveal d1">
-        <p class="eyebrow">L'approche</p>
-        <p>Périclès opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires, et délivre le tout comme un service intégré. La direction conserve l'arbitrage et la stratégie. Périclès assume la tenue, l'exécution et la cohérence de l'ensemble, du premier interlocuteur au dernier livrable.</p>
-      </div>
+    <div class="approche__head">
+      <p class="eyebrow reveal">L'approche</p>
+      <h2 class="reveal d1">Quatre principes,<br>une même exigence.</h2>
+      <p class="approche__lead reveal d2">La direction garde l'arbitrage ; Périclès répond de la tenue. Ces principes gouvernent la façon dont le périmètre est opéré, du premier échange au dernier livrable.</p>
     </div>
+
+    <!-- Principes = concepts du positionnement (placeholders). Wording final à figer en passe copy.
+         Aucun fait / chiffre / nom : formulations de posture uniquement. -->
+    <ul class="approche__list">
+      <li class="principle reveal">
+        <h3>Responsabilité unique</h3>
+        <p>Un seul point de responsabilité pour l'ensemble du périmètre. Vous savez, à tout moment, qui en répond.</p>
+      </li>
+      <li class="principle reveal d1">
+        <h3>Interlocuteur intégré</h3>
+        <p>Un interlocuteur qui porte le dossier de bout en bout et mobilise ce qu'il faut, sans vous renvoyer d'un prestataire à l'autre.</p>
+      </li>
+      <li class="principle reveal d2">
+        <h3>Confidentialité</h3>
+        <p>La discrétion tenue comme une condition de la mission, à chaque échelon et sur toute la durée.</p>
+      </li>
+      <li class="principle reveal d3">
+        <h3>Proximité du dirigeant</h3>
+        <p>Un accès direct, à la mesure de décisions qui se prennent au niveau de la direction.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
