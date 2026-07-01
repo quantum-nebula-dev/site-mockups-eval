@@ -28,11 +28,12 @@
 - Restent à traiter : `#reperes` (stats), `#approche`, `#contact`, footer (dont **copyright / mentions légales**).
 
 ## Grounding : concurrents réels (IA commune)
-Recherche 2026-07-01 (subagent, Exa + captures dans `refs/`).
-- **Jumeaux métier** (services de gestion opérés pour des groupes, « point unique ») : TMF Group, Vistra, Ocorian.
-- **Jumeaux registre premium sobre** (style visuel) : Wendel, Pictet.
-- **Pattern « un seul point de responsabilité »** : NESS Family Office, Arx Family Office → utilisés UNIQUEMENT pour le pattern de communication « one hub », **pas** comme métier (Périclès n'est pas un family office).
-- **IA commune (7/7)** : Hero + CTA · grille de domaines/services · Contact · Footer légal. **Très courant** : bloc chiffré « in numbers », principes/pourquoi-nous. **Courant chez les services** : bloc « point unique » qui MONTRE le mécanisme. **Écartés** (ninja / monopage) : insights-news, clients nominatifs, FAQ (→ phase 2).
+Recherche 2026-07-01 (subagent recentré sur le BON métier = gestion opérationnelle / services support à des groupes ; Exa + captures dans `refs/`).
+- **Jumeau structurel** (pôle de gestion mutualisé d'UN groupe = modèle exact de Périclès) : **RT Office** (RT Global Solution, FR).
+- **Prestataires de gestion opérationnelle à des groupes/établissements** : **EXEIGUARD** (FR, fonctions support mutualisées), **Supporting Education Group** (UK, services aux écoles — proche BISP), **DSS** (US, back-office éducation), **MedxMSO / PHXmso** (MSO santé), **Peak Dental Services** (DSO).
+- **Réfs de STYLE uniquement** (registre luxe, jamais le métier) : Wendel, Pictet.
+- **IA commune du métier** : Hero « focus on your mission » + CTA · grille de fonctions/domaines · pourquoi-nous/principes · repères chiffrés · Contact · Footer. Courant aussi : le CONSTAT/problème après le hero · LE MODÈLE / « comment ça marche » (PHXmso « How We Operate », 4 étapes) · qui-l'on-sert.
+- **Interdit pour Périclès** (présent chez TOUS les analogues, incompatible ninja/registre) : témoignages nominatifs, logos/compteurs de clients, grilles de prix/offres, section clients nominative. → couper systématiquement.
 
 ## Sitemap home Périclès (monopage — ordonné · one-job · source · CTA)
 1. **Hero** — poser le positionnement (opérateur unique des fonctions d'un groupe, « un seul point de responsabilité ») + amorcer l'action. *Wendel/TMF/NESS.* **CTA : oui** (« Adresser une demande », primaire). — FIGÉ, ne pas retoucher.
