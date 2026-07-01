@@ -421,7 +421,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .stats{grid-template-columns:1fr}
   .form__row{grid-template-columns:1fr}
   .dom__item{grid-template-columns:1fr;gap:10px}
-  .treemap{grid-template-columns:1fr;grid-template-areas:"d1" "d2" "d3" "d4" "d5"}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -546,24 +545,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </blockquote>
 </section>
 
-<!-- ============ TREEMAP / DATA-VIZ ============ -->
-<section id="viz">
+<!-- ============ MODÈLE (mécanisme : un seul point de responsabilité) ============ -->
+<section id="viz" class="bg-cream">
   <div class="wrap">
-    <div class="viz__head reveal">
-      <p class="eyebrow">Un seul tenant</p>
-      <h2 style="margin-top:22px">Un périmètre tenu d'un seul tenant.</h2>
-      <p>Les fonctions de gestion ne sont pas confiées morceau par morceau. Elles forment un ensemble unique, opéré et garanti depuis un même point de responsabilité.</p>
+    <div class="model__head reveal">
+      <p class="eyebrow">Le modèle</p>
+      <h2>Un seul point de responsabilité.</h2>
+      <p class="model__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe.</p>
     </div>
 
-    <div class="treemap reveal" aria-label="Représentation du périmètre de gestion, composé de cinq domaines tenus comme un seul ensemble">
-      <div class="tile d1"><span class="t-num">01</span><span class="t-name">Pilotage financier et administratif</span></div>
-      <div class="tile d2"><span class="t-num">02</span><span class="t-name">Paie, social et conformité</span></div>
-      <div class="tile d3"><span class="t-num">03</span><span class="t-name">Prestations et programmes</span></div>
-      <div class="tile d4"><span class="t-num">04</span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
-      <div class="tile d5"><span class="t-num">05</span><span class="t-name">Appui au pilotage et au développement</span></div>
-    </div>
+    <!-- schéma : dispersé -> réuni (Périclès) -> rendu, France comme à l'étranger -->
+    <svg class="model__diagram reveal d1" viewBox="0 0 1000 300" role="img"
+         aria-label="Schéma du modèle : des fonctions de gestion dispersées, réunies par Périclès en un seul point de responsabilité, puis rendues au groupe en France comme à l'étranger.">
+      <g>
+        <line data-draw pathLength="1" x1="72" y1="58" x2="500" y2="150"/>
+        <line data-draw pathLength="1" x1="116" y1="128" x2="500" y2="150"/>
+        <line data-draw pathLength="1" x1="70" y1="196" x2="500" y2="150"/>
+        <line data-draw pathLength="1" x1="150" y1="250" x2="500" y2="150"/>
+        <line data-draw pathLength="1" x1="500" y1="150" x2="884" y2="78"/>
+        <line data-draw pathLength="1" x1="500" y1="150" x2="884" y2="222"/>
+      </g>
+      <g>
+        <circle class="m-ring" data-node="in" cx="72" cy="58" r="6"/>
+        <circle class="m-ring" data-node="in" cx="116" cy="128" r="6"/>
+        <circle class="m-ring" data-node="in" cx="70" cy="196" r="6"/>
+        <circle class="m-ring" data-node="in" cx="150" cy="250" r="6"/>
+        <circle class="m-ring" data-node="out" cx="884" cy="78" r="7"/>
+        <circle class="m-ring" data-node="out" cx="884" cy="222" r="7"/>
+        <circle class="m-hub-ring" data-node="hub" cx="500" cy="150" r="30"/>
+        <circle class="m-hub-core" data-node="hub" cx="500" cy="150" r="13"/>
+      </g>
+    </svg>
 
-    <p class="viz__cap reveal d1">Périclès opère ce qui relève de la gestion directe et délivre les prestations associées via le réseau de prestataires qu'elle mobilise et pilote, en France comme à l'étranger.</p>
+    <!-- Copy PLACEHOLDER (concept validé ; à figer en passe copy) -->
+    <div class="model__legend reveal d2">
+      <div class="model__cap">
+        <span class="model__dot" aria-hidden="true"></span>
+        <p class="eyebrow">Dispersées</p>
+        <h3>Des fonctions éparpillées</h3>
+        <p>Réparties entre des prestataires et des interlocuteurs multiples, sans tenue d'ensemble.</p>
+      </div>
+      <div class="model__cap model__cap--pivot">
+        <span class="model__dot" aria-hidden="true"></span>
+        <p class="eyebrow">Réunies</p>
+        <h3>Périclès</h3>
+        <p>Un seul point de responsabilité prend en charge, opère et pilote l'ensemble.</p>
+      </div>
+      <div class="model__cap">
+        <span class="model__dot" aria-hidden="true"></span>
+        <p class="eyebrow">Rendues</p>
+        <h3>Un service intégré</h3>
+        <p>Délivrées au groupe comme un tout, en France comme à l'étranger.</p>
+      </div>
+    </div>
   </div>
 </section>
 
