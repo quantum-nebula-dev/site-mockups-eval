@@ -35,20 +35,20 @@ Recherche 2026-07-01 (subagent recentré sur le BON métier = gestion opération
 - **IA commune du métier** : Hero « focus on your mission » + CTA · grille de fonctions/domaines · pourquoi-nous/principes · repères chiffrés · Contact · Footer. Courant aussi : le CONSTAT/problème après le hero · LE MODÈLE / « comment ça marche » (PHXmso « How We Operate », 4 étapes) · qui-l'on-sert.
 - **Interdit pour Périclès** (présent chez TOUS les analogues, incompatible ninja/registre) : témoignages nominatifs, logos/compteurs de clients, grilles de prix/offres, section clients nominative. → couper systématiquement.
 
-## Sitemap home Périclès (monopage — ordonné · one-job · source · CTA)
-1. **Hero** — poser le positionnement (opérateur unique des fonctions d'un groupe, « un seul point de responsabilité ») + amorcer l'action. *Wendel/TMF/NESS.* **CTA : oui** (« Adresser une demande », primaire). — FIGÉ, ne pas retoucher.
-2. **Intro / le périmètre** (`#perimetre`) — dire ce qu'est Périclès + le problème résolu (fonctions dispersées → consolidées) ; décrire le TYPE de groupe servi sans le nommer. *TMF/Ocorian.* CTA non. — validée.
-3. **Domaines (5)** (`#domaines`) — montrer l'étendue des fonctions opérées, une carte par domaine. *Universel.* CTA non. — validée.
-4. **Le modèle — « un seul point de responsabilité »** [EX-`#viz`, TRANSFORMÉ] — MONTRER le mécanisme par un schéma de consolidation (fonctions éparses d'un groupe → point unique → prestations rendues, FR + étranger), sans re-lister les 5 domaines. *Arx (one hub) / TMF (single point) / Redwood (one system).* CTA soft possible.
-5. **Citation / manifeste** (`.quote-block`) — temps éditorial, une phrase qui incarne la posture (responsabilité, durée, discrétion). *Wendel/Arx.* CTA non. — validée, gardée.
-6. **Repères / chiffres** (`#reperes`) — preuve NON-nominative (années, fonctions couvertes, juridictions FR+étranger, continuité). *Wendel/TMF/Ocorian « in numbers ».* CTA non.
-7. **Approche / principes** (`#approche`) — comment Périclès opère (3-4 principes : responsabilité unique, confidentialité, rigueur, proximité dirigeant). *NESS (4)/Arx (3)/Pictet.* CTA non.
-8. **Contact** (`#contact`) — convertir en cadre confidentiel. *Ocorian/NESS/Vistra/TMF.* **CTA : oui** (« Adresser une demande » répété).
+## Sitemap home Périclès (monopage — ordonné · one-job · source · CTA) — VALIDÉ 2026-07-01
+1. **Hero** — Périclès opère les fonctions de gestion d'un groupe pour qu'il se concentre sur sa mission (« un seul point de responsabilité ») + amorcer l'action. *MedxMSO/PHXmso/DSS/SEG (hero « focus on your mission »).* **CTA : oui** (« Adresser une demande », primaire). — FIGÉ, ne pas retoucher.
+2. **Intro / le périmètre** (`#perimetre`) — dire ce qu'est Périclès + le constat (fonctions dispersées → consolidées) ; décrire le TYPE de groupe servi sans le nommer. *EXEIGUARD (mission), DSS, PHXmso (le problème).* CTA non. — validée.
+3. **Domaines (5)** (`#domaines`) — l'étendue des fonctions opérées, une carte par domaine. *Universel (MedxMSO 6, EXEIGUARD 4, Peak 6, SEG 4, RT Office = pôles).* CTA non. — validée.
+4. **Le modèle — « un seul point de responsabilité »** [EX-`#viz`, TRANSFORMÉ] — MONTRER le mécanisme par un schéma/process de consolidation (fonctions éparses d'un groupe → point unique → prestations rendues, FR + étranger), sans re-lister les 5 domaines. *PHXmso « How We Operate » (process 4 étapes) + motif « we run everything else » chez tous.* CTA soft possible.
+5. **Citation / manifeste** (`.quote-block`) — temps éditorial, une phrase qui incarne la posture (responsabilité, durée, discrétion). *Apport registre luxe (réf STYLE Wendel/Pictet), pas métier.* CTA non. — validée, gardée.
+6. **Repères / chiffres** (`#reperes`) — preuve NON-nominative (années, fonctions couvertes, juridictions FR+étranger, continuité). *MedxMSO/DSS/Peak/SEG chiffrent tous, MAIS adapté ninja : attributs de Périclès, jamais des clients.* CTA non.
+7. **Approche / principes** (`#approche`) — comment Périclès opère (3-4 principes : responsabilité unique / interlocuteur intégré, confidentialité, rigueur, proximité dirigeant). *EXEIGUARD « Pourquoi choisir » (4, dont interlocuteur unique), SEG (3), MedxMSO.* CTA non.
+8. **Contact** (`#contact`) — convertir en cadre confidentiel. *SEG « Get in touch » / DSS « Let's connect » / MedxMSO.* **CTA : oui** (« Adresser une demande » répété).
 9. **Footer** — mentions légales, raison sociale PERICLES GESTION, copyright. *Universel.* CTA non. — À CRÉER.
 
-**Décision treemap `#viz`** : TRANSFORMER (pas couper) en section 4 « Le modèle ». Le treemap actuel re-liste les 5 domaines (doublon pur) ; on le remplace par la PREUVE visuelle du différenciateur (« un seul point de responsabilité »), affirmé partout mais montré nulle part.
+**Décision treemap `#viz`** : TRANSFORMER (pas couper) en section 4 « Le modèle ». Le treemap re-liste les 5 domaines (doublon) ; on le remplace par la PREUVE du différenciateur (schéma « comment ça marche » façon PHXmso « How We Operate »).
 
-**CTA répété** : hero + contact (min. 2), soft après le modèle. **Footer légal** : à combler (absent aujourd'hui, universel chez les 7).
+**CTA répété** : hero + contact (min. 2), soft après le modèle. **Footer légal** : à combler (absent, universel).
 
 ## Critères d'acceptation projet (Given/When/Then)
 1. **Registre** — hero + intro perçus « magazine de luxe institutionnel » (ample, serif, air, sobriété), sans dashboard ni gadget.
