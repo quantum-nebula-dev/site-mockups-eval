@@ -380,9 +380,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .intro__grid,.dom__head,.approche__grid,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
-  .intro__aside{gap:26px}
-  .intro__body{border-left:none;padding-left:0}
+  .dom__head,.approche__grid,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
+  .intro__lead,.intro__para,.intro__pivot{grid-column:1 / -1}
   .stats{grid-template-columns:1fr 1fr;gap:34px}
   .approche__quote{max-width:100%}
 }
@@ -456,18 +455,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <!-- ============ INTRO / CHAPEAU ============ -->
 <section id="perimetre" class="intro">
   <div class="wrap">
-    <div class="intro__masthead reveal">
-      <p class="eyebrow">Le périmètre</p>
-    </div>
-    <div class="intro__grid">
-      <div class="intro__aside reveal d1">
-        <h2>Ce que Périclès prend en charge.</h2>
-        <p class="intro__pivot">Vous gardez vos décisions, nous répondons de leur exécution.</p>
-      </div>
-      <div class="intro__body reveal d2">
-        <p class="lead">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir.</p>
-        <p>Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
-      </div>
+    <p class="eyebrow reveal">Le périmètre</p>
+    <h2 class="intro__title reveal">Ce que Périclès prend en charge.</h2>
+    <div class="intro__flow">
+      <p class="lead intro__lead reveal d1">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir.</p>
+      <p class="intro__para reveal d2">Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
+      <p class="intro__pivot reveal d3">Vous gardez vos décisions, nous répondons de leur exécution.</p>
     </div>
   </div>
 </section>
