@@ -1,0 +1,25 @@
+{
+  "section": "#viz",
+  "round": 2,
+  "checks": [
+    { "name": "convergence_visible", "status": "pass", "note": "6 filets neutres d'origines etalees a gauche convergent et se referment sur l'anneau or (x2=482 sur anneau cx=500 r=17). L'oeil lit 'plusieurs -> un' sans les legendes. Ancien rouge (filets paralleles mourant dans le vide) ferme." },
+    { "name": "schema_rend", "status": "pass", "note": "Etat final force via reducedMotion:reduce : anneau+point or, ligne or unique, fork, labels FRANCE/ETRANGER tous rendus." },
+    { "name": "overflow_390", "status": "pass", "note": "Aucun overflow horizontal a 390 ; schema SVG masque (display:none <=980), texte wrap propre." },
+    { "name": "h2_lt_hero", "status": "pass", "note": "h2 'Un seul point de responsabilite.' au token h2 (clamp 1.9-3rem), sous l'echelle hero H1 (2.3-4.4rem) ; aucune taille locale inventee, ne concurrence pas le hero." },
+    { "name": "zero_reliste_domaines", "status": "pass", "note": "Legende = 3 temps Dispersees/Reunies/Rendues (posture generique), aucune re-liste des 5 domaines, aucun chiffre/nom." },
+    { "name": "tokens_only", "status": "pass", "note": "Filets ink stroke-opacity .2, accent unique or (point+ligne rendue+labels), fond blanc/creme. Aucune valeur hors tokens." },
+    { "name": "aucun_tiret_long", "status": "pass", "note": "Aucun tiret long rendu. Lead utilise deux-points ; les em-dashes sont uniquement dans les commentaires HTML (non rendus). Le filet sous 'Pericles' = h3::after decoratif, pas un tiret." },
+    { "name": "rien_de_neuf_casse", "status": "pass", "note": "Mobile vertical propre : filet or vertical a 3 noeuds (anneau/point plein pivot/anneau), pivot 'Pericles' souligne d'un petit filet or. Accents FR corrects. Rien de neuf casse." }
+  ],
+  "judge": [
+    { "dim": "composition", "reason": "Tete asymetrique ancree a gauche (eyebrow filet -> grand serif h2 400 -> lead muted) + respiration, puis diagramme focal horizontal pleine largeur, puis rangee de 3 legendes dont l'alignement (gauche/centre/droite) epouse exactement les trois zones du flux (Dispersees a gauche, Reunies centre sous le point or, Rendues a droite). Pas une 3-card row : legendes liees a un graphisme partage. Rythme clair.", "score": 0.86 },
+    { "dim": "identite_proprietaire", "reason": "Le schema enacte litteralement la proposition de marque et l'idee de son nom : des filaments neutres disperses CONVERGENT sur un seul point or ('un seul point de responsabilite'), d'ou sort une ligne or qui bifurque vers FRANCE/ETRANGER. Lisible par la geometrie seule, legendes off. Discipline mono-accent or (seuls le point et la ligne rendue sont or ; origines en hairline ink) => possede, pas chart generique. Forme flow-converge un peu commune donc pas iconique (pas 0.9), mais ajustement semantique exact au positionnement + fork FR/etranger propre au client => nettement au-dessus du seuil. Ancien rouge identite .70 ferme.", "score": 0.82 },
+    { "dim": "polish", "reason": "Alignement propre partout (filets eyebrow, colonnes de legende, 'Pericles' centre sous le point avec filet or assorti). Discipline typo tenue (serif 400, labels grotesk uppercase tracking correct, lead muted). Degrade mobile gracieux (filet or vertical, pivot accentue), zero overflow 390, accents FR ok, end-state reduced-motion complet.", "score": 0.85 }
+  ],
+  "confidence": 0.86,
+  "disposition": "auto",
+  "captures": [
+    "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz2_desktop.png",
+    "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz2_mobile.png"
+  ]
+}
