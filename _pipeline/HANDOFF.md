@@ -18,7 +18,8 @@
 ## BACKLOG ACTIONNABLE (re-passe Fable — complet, dans l'ordre de la page)
 Pour CHAQUE section : designer **Fable** (spawn sans param model ; brief = baseline actuelle à DÉPASSER, carte blanche, contraintes DNA) → Vérificateur **Fable frais** séparé (shot.js desktop + 390 → déterministes + rubric → verdict auto/fix/flag) → fix cap 2-3 → push.
 1. **Intro (`#perimetre`)** — baseline sobre correcte mais « sage ». Slops déjà REJETÉS par l'user (ne pas re-proposer) : lettrine dorée, diagonale zigzag.
-2. **Domaines (`#domaines`)** — baseline : rail sticky + liste numérotée (l'user l'aimait ; à dépasser, pas à casser pour casser).
+2. **NAV / header (`.hdr`)** — AJOUT user 2026-07-02 : Fable PROPOSE une nouvelle nav. ⚠️ Baseline AIMÉE par l'user (logo serif + italique or, liens or-underline, CTA pill « Adresser une demande », verre dépoli au scroll) → mandat = élévation, PAS table rase ; le HERO reste intouchable (la nav doit dialoguer avec lui) ; **GATE USER OBLIGATOIRE avant adoption** (nouveau/goût, jamais auto). Préserver : CTA unique, états transparent→is-solid, burger mobile, a11y focus.
+3. **Domaines (`#domaines`)** — baseline : rail sticky + liste numérotée (l'user l'aimait ; à dépasser, pas à casser pour casser).
 3. **Citation (`.quote-block`)** — baseline : image N&B bibliothèque + citation centrée (l'user l'aimait beaucoup).
 4. **Modèle (`#viz`)** — baseline : schéma fan-in/fan-out. **Défaut connu (GPT-5.5)** : « pas assez propriétaire, pourrait appartenir à n'importe quelle maison premium » → viser une signature possédable.
 5. **Repères (`#reperes`)** — baseline : chiffres sous filet or continu.
