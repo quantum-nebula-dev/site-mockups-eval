@@ -3,7 +3,8 @@
 > Document auto-suffisant. Une session FRAÎCHE lit ceci + `_pipeline/BRIEF.md` + `_pipeline/tokens.md`, vérifie l'état git, et continue. Ne rien re-faire de déjà poussé (idempotence).
 
 ## BOTTOM LINE
-**DÉCISION user 2026-07-02 : re-passe INTÉGRALE sur Fable 5.** TOUTES les sections sauf hero + nav sont refaites par des designers + Vérificateurs **Fable** (spawn SANS param model → hérite de la session). Les versions Opus déjà poussées (modèle, repères, approche, contact = `add8b08`) servent de **baseline à dépasser**, pas d'acquis. Ordre de la file : **intro → domaines → citation → modèle → repères → approche → contact → footer (à créer)**, puis cohérence globale, passe copy (avec l'user), ship (panel GPT-5.5).
+**DÉCISION user 2026-07-02 (ferme) : mode PIPELINE PUR = conception FROM SCRATCH.** Chaque section est CONÇUE depuis le one-job du BRIEF + tokens ; la forme existante N'EST PAS un modèle (le mode « élévation de baseline » a été REJETÉ par l'user). Designers + Vérificateurs Fable (spawn sans param model). Ordre : **intro → domaines → citation → modèle → repères → approche → contact → footer**, puis cohérence globale, passe copy (user), ship.
+**Variantes archivées pour comparaison finale par l'USER** (il choisira lui-même à la fin) dans `variantes/` (servi en ligne, PAS d'underscore) : `A-avant-pipeline.html` · `B-pipeline-opus.html` (= add8b08) · `C-elevation-fable.html` (= 291d67d) · la version live `v2-final/` = **D-from-scratch** en construction. NE PAS supprimer ces fichiers.
 
 ## FAIT (vérifié — preuve = commit + verdict Vérificateur)
 - **Architecture** groundée (7 concurrents réels du bon métier) + **sitemap 9 sections VALIDÉ par l'user** (gate structure). `_pipeline/BRIEF.md` + `_pipeline/tokens.md` posés. Restore point : `_pipeline/backup-index-2026-07-01.html`.
