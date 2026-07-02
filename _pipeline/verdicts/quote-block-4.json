@@ -1,0 +1,42 @@
+{
+  "section": ".quote-block",
+  "checks": [
+    {
+      "name": "wrap_desktop_1440_balanced_no_orphan",
+      "status": "pass",
+      "detail": "3 lignes, chacune 2 mots (Repondre de / l'execution, c'est / tenir l'ensemble.), equilibrees via text-wrap:balance + max-width:16ch. Aucun mot seul sur sa ligne."
+    },
+    {
+      "name": "mobile_390_clean_no_regression",
+      "status": "pass",
+      "detail": "Memes 3 lignes equilibrees, centrees, marges saines. Aucune regression vs desktop."
+    },
+    {
+      "name": "citation_lt_hero_2_viewports",
+      "status": "pass",
+      "detail": "Deterministe : hero h1 clamp(2.3rem,4.6vw,4.4rem) > quote clamp(1.9rem,4vw,3.4rem) aux deux bornes ET en scaling vw (4.6vw > 4vw). Citation < hero a tous les viewports."
+    },
+    {
+      "name": "overflow_390",
+      "status": "pass",
+      "detail": "Aucun debordement horizontal ; texte dans les bornes, image full-width sans scroll."
+    },
+    {
+      "name": "image_loaded",
+      "status": "pass",
+      "detail": "Image bibliotheque visible (grayscale + voile ink navy), .qimg chargee."
+    },
+    {
+      "name": "citation_visible",
+      "status": "pass",
+      "detail": "Serif creme/blanc parfaitement lisible sur le voile ; filet or vertical rendu sous la phrase."
+    }
+  ],
+  "confidence": 0.93,
+  "disposition": "auto",
+  "captures": {
+    "desktop": "C:/Users/Neon/.pw/qc4_desktop.png",
+    "mobile": "C:/Users/Neon/.pw/qc4_mobile.png"
+  },
+  "notes": "Fix confirme dans le CSS : max-width:16ch sur .quote-block__quote (l.457) + text-wrap:balance (l.460), .quote-block__inner sans max-width (100%, l.446-447). Rouge precedent (mot orphelin / wrap desequilibre) ferme, rien de neuf casse."
+}
