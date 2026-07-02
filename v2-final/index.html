@@ -448,10 +448,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   display:flex;flex-direction:column;align-items:center;
   max-width:100%;
 }
-/* Mesure portée sur la CITATION (là où 1ch ≈ 54px desktop) : ~3 lignes équilibrées,
-   nombre de lignes stable entre desktop et mobile (le ch suit la font). */
+/* Mesure portée sur la CITATION (1ch de Newsreader environ 0.56em, soit environ 30px à
+   54px de police). 16ch force 3 lignes équilibrées (« Répondre de » / « l'exécution,
+   c'est » / « tenir l'ensemble. », plus longue ligne environ 12ch), aucun mot seul sur sa
+   ligne, en balance comme en fallback greedy ; nombre de lignes stable desktop/mobile (le
+   ch suit la police). À 18ch et plus la phrase repasserait à 2 lignes. */
 .quote-block__quote{
-  margin:0;max-width:20ch;font-family:var(--serif);font-weight:400;font-style:normal;
+  margin:0;max-width:16ch;font-family:var(--serif);font-weight:400;font-style:normal;
   color:var(--cream);
   font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.2;letter-spacing:-.018em;
   text-wrap:balance;
