@@ -1,0 +1,20 @@
+{
+  "section": ".quote-block",
+  "checks": [
+    {"name": "css_contains_32ch", "result": "pass", "note": ".quote-block__inner max-width:32ch present (index.html l.449)"},
+    {"name": "css_contains_delay_0_7s", "result": "pass", "note": ".quote-block__sign transition delay .7s present (index.html l.469)"},
+    {"name": "wrap_desktop_3to4_lines_no_orphan", "result": "fail", "note": "1440 wrappe en 5 lignes: 'Répondre' / 'de' / 'l'exécution,' / 'c'est tenir' / 'l'ensemble.' — 'de' (et 'Répondre') seuls sur leur ligne = orphelins. Objectif 3-4 lignes équilibrées non atteint. Reproduit sur 2 captures (normal + reduced-motion). CAUSE: max-width:32ch posé sur .quote-block__inner (figure, font héritée ~16px) = ~256px, alors que la citation rend à 54px -> ~4-5 lignes. 26ch->32ch (208->256px) n'a quasi rien changé."},
+    {"name": "citation_smaller_than_hero_two_viewports", "result": "pass", "note": "quote-block h=880 < hero h=1000 aux 2 viewports; font citation 54px < hero h1 66px (1440) et 30px < 37px (390)"},
+    {"name": "no_horizontal_overflow_390", "result": "pass", "note": "mobile 390: 3 lignes équilibrées centrées, aucun débordement horizontal"},
+    {"name": "citation_and_signature_visible", "result": "pass", "note": "citation visible; signature 'PÉRICLÈS GESTION.' confirmée rendue (computed opacity=1 sous reduced-motion). Fix #2 OK. NB: non visible sur le shot normal car l'anim (delay .7s + .9s) dépasse les 500ms d'attente post-scroll de shot.js -> artefact de capture, pas un défaut."},
+    {"name": "no_new_regression_image_loaded", "result": "pass", "note": "image bibliothèque N&B chargée (naturalWidth=2400), filet or vertical présent, rien de nouveau cassé"}
+  ],
+  "confidence": 0.9,
+  "disposition": "flag",
+  "fix_recommendation": "Détacher la largeur de wrap de la font héritée du figure: poser la contrainte sur .quote-block__quote (ex max-width en em, ~14-15em, ou en px ~min(90vw,640px)), OU déplacer max-width:32ch sur .quote-block__quote (où 1ch = font 54px). Vérifier ensuite 3-4 lignes équilibrées sans 'de'/'Répondre' orphelin @1440, sans casser le mobile 390 (déjà bon).",
+  "captures": {
+    "qc3_desktop": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/qc3_desktop.png",
+    "qc3_mobile": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/qc3_mobile.png",
+    "qc3_rm_desktop_signature_confirm": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/qc3_rm_desktop.png"
+  }
+}
