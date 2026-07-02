@@ -1,0 +1,36 @@
+{
+  "section": "#viz",
+  "deterministic": [
+    { "name": "schema_rend", "pass": true, "note": "Capture end-state forcee : 6 filets neutres a gauche, point or plein + halo au centre, ligne or continue + fourche + labels FRANCE/ETRANGER a droite. Pas de SVG vide." },
+    { "name": "overflow_390", "pass": true, "note": "docScrollW==innerW a 390 ET 1440 ; zero offender ; vizMaxRight 390<=390. Aucun debordement horizontal." },
+    { "name": "contraste_AA", "pass": true, "note": "gold-d #7f6740 (eyebrow + geo) sur blanc = 5.36:1 ; body #4F5E6B = 6.68:1 ; titres navy #001931 tres eleve. Tous >= 4.5." },
+    { "name": "h2_ne_rivalise_pas_hero", "pass": true, "note": "H2 48px vs H1 66.24px (1440) ; 30.4px vs 36.8px (390) ; meme poids 400 Newsreader. Hero reste le plus grand ET le plus fort aux 2 viewports." },
+    { "name": "mecanisme_montre", "pass": true, "note": "Les 3 etats presents gauche->centre->droite ; FRANCE/ETRANGER lisibles (labels desktop ; texte 'Rendues' mobile). Reserve de QUALITE sur la transition 'reuni' traitee cote juge, pas un fail deterministe." },
+    { "name": "zero_reliste_domaines", "pass": true, "note": "Aucun des 5 domaines re-liste : filets abstraits + 3 temps (Dispersees/Reunies/Rendues). Anti-doublon #domaines respecte (critere #4)." },
+    { "name": "tokens_only", "pass": true, "note": "ink / gold / gold-d / body / white uniquement. Spine mobile = rgba de la RGB du token --gold (158,131,90), meme motif que .stats::before. Aucune couleur hors token." },
+    { "name": "anti_slop_tiret_long", "pass": true, "note": "Tiret long (—) present seulement dans commentaires CSS (l.510, 564), hors #viz et non rendu. Texte rendu de #viz : 0 tiret long." },
+    { "name": "zero_lettrine_zigzag", "pass": true, "note": "Aucune lettrine/drop-cap ni diagonale zigzag. Unique geste = filet or qui se dessine + le point." },
+    { "name": "aucun_fait_invente", "pass": true, "note": "Placeholders, zero chiffre, zero nom d'ecole/client (ninja OK), pas de faux comite/partenariat. Right speech tenu." },
+    { "name": "reduced_motion", "pass": true, "note": "@media prefers-reduced-motion force stroke-dashoffset:0 + opacity:1 (point/ring/geo) + transition-duration .001ms. Etat final garanti sans animation." }
+  ],
+  "judge": [
+    { "critere": "composition_rythme", "score": 0.72, "raison": "Rythme 3 temps clair (disperse | point | rendu), 3 legendes calees sous leurs zones, plate blanche qui respire avant le manifeste sombre, macrostructure distincte de l'intro et des domaines. MAIS un vide central : les filets gris s'arretent (x~438) loin du point (x=500) et a des y disperses (46-174) ; le tiers gauche parait deconnecte du pivot au lieu d'y converger. La moitie droite (point->ligne->fourche) est resolue et elegante ; la relation gauche->point est faible." },
+    { "critere": "typographie", "score": 0.86, "raison": "Newsreader 400 pour titres, echelle correcte (h2 48 < hero 66), eyebrows .74rem gold-d .14em avec filet or, corps Hanken muted. Coherent avec le DNA, deck qui recule derriere le titre." },
+    { "critere": "couleur_un_seul_point_or", "score": 0.88, "raison": "Discipline reelle : le SEUL accent plein du schema est le point or unique (+ halo faible), plus la ligne/fourche or et les labels gold-d ; les filets sont ink@16% neutres. 'Un seul point or' litteralement tenu." },
+    { "critere": "identite_proprietaire", "score": 0.70, "raison": "Liens concept->forme reels : point or = 'un seul point de responsabilite', filet or signature = armature du mecanisme, fourche = 'France comme a l'etranger'. Plus possedable que l'ancien treemap. MAIS un schema 'lignes eparses -> noeud -> embranchement' reste un trope de consolidation reconnaissable ; l'appartenance repose surtout sur les legendes + le conceit du point or. La reunion NON enactee (vide, filets paralleles qui ne convergent pas) fait que la geometrie ne FAIT pas encore la promesse (plusieurs->un) : lu comme un diagramme de process generique rehausse par de bons tokens, pas encore une marque indubitablement Pericles. Sous le seuil severe demande pour CETTE section." },
+    { "critere": "polish_mobile", "score": 0.85, "raison": "Fallback mobile solide : SVG masque, spine or verticale + point or plein au pivot 'Reunies' + anneaux creux aux extremites, wrapping propre, zero overflow, AA. Alignements desktop nets." }
+  ],
+  "confidence": 0.8,
+  "disposition": "fix",
+  "fixes": [
+    "ENACTER LA REUNION (levier #1) : faire converger les filets gris disperses vers le point or unique — orienter l'extremite droite de chaque md-stub vers (500,110) (un eventail qui se referme sur le noeud) et/ou rapprocher leurs fins pour que l'oeil lise plusieurs->un. Aujourd'hui ils sont paralleles et s'arretent dans le vide, donc le 'reuni' (le differenciateur) n'est qu'assertion de legende, pas montre. C'est le make-or-break pour 'mecanisme montre' ET 'possedable'.",
+    "FERMER LA ZONE MORTE : reduire/relier le vide entre l'amas gauche (x~438) et le point (x=500) a des y disperses ; le noeud parait isole au lieu d'etre le lieu ou la dispersion se rassemble. La convergence du fix #1 le resout en grande partie ; sinon resserrer l'espacement pour que la collecte se lise comme un seul geste.",
+    "OPTION lift proprietaire : faire terminer les lignes de convergence exactement sur l'anneau (md-ring) pour que le noeud soit sans ambiguite le point de rassemblement, en gardant la discipline du seul point or (ne pas ajouter de couleur ni de 2e accent)."
+  ],
+  "captures": {
+    "desktop_1440_endstate": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz1_desktop_final.png",
+    "mobile_390_endstate": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz1_mobile_final.png",
+    "desktop_1440_asloaded": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz1_desktop.png",
+    "mobile_390_asloaded": "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/viz1_mobile.png"
+  }
+}
