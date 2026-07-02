@@ -393,44 +393,88 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 .model__dot{display:none}
 
-/* ============ REPÈRES (band sombre : chiffres clés, filet or qui se dessine) ============ */
-/* en-tête composé : intitulé tenu à gauche, note sobre alignée en pied à droite */
-.reperes__head{
-  display:grid;grid-template-columns:1.4fr 1fr;
-  gap:clamp(22px,4vw,72px);align-items:end;
-  margin-bottom:clamp(46px,6vw,82px);
-}
+/* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
+   Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
+   institutionnelle (réfs Rothschild & Co Revue Annuelle, Amundi « L'essentiel », Barrière « en
+   un regard ») : quelques repères posés en display serif, chacun en tête d'une ligne. Ce qu'on
+   compte = des ATTRIBUTS de Périclès (étendue, portée, durée, unité), jamais des clients
+   (critère « preuve non-nominative »).
+   Fond TAUPE (token du DNA, jusqu'ici inutilisé) : après le seul temps sombre de la page (le
+   manifeste plein cadre), la preuve retombe dans une lumière chaude et TENUE — une « pierre »
+   de relevé. Rupture de valeur franche avec le noir qui précède, ton distinct de la crème de
+   l'approche qui suit (jamais deux sombres d'affilée, jamais deux clairs qui se confondent).
+   Macrostructure unique sur la page : une bande de repères à l'horizontale, tenue sous une
+   seule ligne et divisée de filets verticaux (les règles de colonne d'un relevé imprimé).
+   UN geste signature : le filet or qui se dessine (la « ligne active » du site), ici à
+   l'horizontale en tête du relevé.
+   AA : sur taupe l'or vire faible ; il reste réservé à la ligne signature (décor) et aux
+   accents display (crochets, grande taille). Tout texte est en ink / body (≥ 4.5:1). */
+.reperes__head{max-width:60ch;margin-bottom:clamp(44px,6vw,84px)}
+/* eyebrow : sur taupe le libellé passe en ink pour l'AA ; le filet reste or (décoratif) */
+.reperes .eyebrow{color:var(--ink)}
 .reperes__head h2{margin-top:22px}
-.reperes__note{color:rgba(255,255,255,.64);max-width:34ch;padding-bottom:.4em}
+.reperes__note{margin-top:1.05em;max-width:52ch;color:var(--body)}
 
-/* série de repères, tenue sous un filet or continu */
-.stats{
+/* LE RELEVÉ : bande de repères à l'horizontale, tenue sous la ligne signature. Grille
+   VOLONTAIREMENT asymétrique (la portée « France + International » prend la colonne large) :
+   un relevé, pas une grille régulière. --rg = la gouttière courante, réutilisée pour caler
+   les filets verticaux au milieu de l'entre-colonne. */
+.releve{
+  --rg:clamp(24px,3vw,52px);
   position:relative;
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:clamp(30px,3.4vw,64px);
-  padding-top:clamp(32px,3.6vw,48px);
+  display:grid;grid-template-columns:.9fr 1.35fr .9fr .95fr;
+  gap:var(--rg);
+  padding-top:clamp(30px,3.4vw,46px);
 }
-/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée
-   (même « ligne active » que les domaines au survol et le schéma du modèle) */
-.stats::before{
+/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée (même « ligne
+   active » que le sommaire des domaines, le schéma du modèle, l'approche et le contact).
+   Décoratif : aucune exigence de contraste. */
+.releve::before{
   content:"";position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
   transform:scaleX(0);transform-origin:left center;
   transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
 }
-.stats.is-visible::before{transform:scaleX(1)}
+.releve.is-visible::before{transform:scaleX(1)}
 
-.stat{display:flex;flex-direction:column;align-items:flex-start}
-.stat__n{
-  font-family:var(--serif);font-weight:300;color:#fff;line-height:.98;
-  font-size:clamp(2.2rem,4.4vw,3.9rem);letter-spacing:-.012em;
-  font-variant-numeric:tabular-nums;
+/* filets verticaux entre les repères : règles de colonne, calées au milieu de la gouttière
+   (statiques, pas des cartes) ; la grille étirée leur donne la même hauteur sur une rangée. */
+.repere{position:relative}
+.repere::before{
+  content:"";position:absolute;top:0;bottom:0;left:calc(var(--rg) / -2);
+  width:1px;background:var(--line);
 }
-.stat__n .u{color:var(--gold);font-size:.46em;vertical-align:top;margin-left:.14em;letter-spacing:0}
-.stat__n .ph{color:var(--gold)}          /* crochets de l'emplacement de copy */
-.stat__l{
-  margin-top:clamp(16px,1.6vw,22px);max-width:22ch;
-  font-size:.92rem;line-height:1.5;color:rgba(255,255,255,.66);
+.repere:first-child::before{display:none}
+
+/* le repère chiffré : display serif, poids 300 « carved ». Plafonné SOUS le H1 du hero
+   (taille comme poids ; vérifié à 390px comme au-delà : le hero reste le plus grand). */
+.repere__n{
+  display:block;
+  font-family:var(--serif);font-weight:300;color:var(--ink);line-height:1;
+  font-size:clamp(2rem,3.6vw,3.4rem);letter-spacing:-.012em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+/* crochets de l'emplacement de copy : or assombri, toujours ≥ 32px => AA graphique tenu */
+.repere__n .ph{color:var(--gold-d);font-weight:400}
+/* la portée n'est pas un nombre : un binôme serif, plus discret que les chiffres */
+.repere__n--reach{font-size:clamp(1.35rem,2.1vw,2rem);letter-spacing:-.008em}
+.repere__l{
+  margin-top:clamp(14px,1.5vw,20px);max-width:24ch;
+  font-size:.92rem;line-height:1.5;color:var(--body);
+}
+
+@media (max-width:900px){
+  /* le relevé repasse en deux temps ; le filet ne tient qu'entre les colonnes d'une rangée */
+  .releve{--rg:clamp(24px,4vw,40px);grid-template-columns:1fr 1fr}
+  .repere:nth-child(odd)::before{display:none}
+}
+@media (max-width:500px){
+  /* en pile : chaque repère tenu par un filet horizontal (le relevé garde ses lignes) */
+  .releve{--rg:0;grid-template-columns:1fr}
+  .repere::before{display:none}
+  .repere{padding-top:clamp(22px,6vw,30px);border-top:1px solid var(--line)}
+  .repere:first-child{padding-top:0;border-top:0}
+  .repere__l{max-width:46ch}
 }
 
 /* ============ MANIFESTE PLEIN CADRE (le grand silence : salle de lecture noble) ============
@@ -628,10 +672,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .contact__grid,.foot__top,.stats{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr;gap:34px}
-  .reperes__head{grid-template-columns:1fr;gap:14px;align-items:start}
-  .reperes__note{padding-bottom:0;max-width:46ch}
+  .contact__grid,.foot__top{grid-template-columns:1fr}
   /* MODÈLE : schéma masqué ; les trois temps repris en séquence verticale, tenus par
      la même ligne de responsabilité (ici verticale, en filet or qui descend) */
   .model__diagram{display:none}
