@@ -158,18 +158,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .btn-gold:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
 .btn-lg{min-height:56px;padding:0 36px;font-size:1rem}
 
-/* header solid state : effet verre dépoli renforcé */
+/* header solid state : verre dépoli (assise neutre douce ; le filet or signature vient par-dessus) */
 .hdr.is-solid{
   background:rgba(247,243,235,.72);
-  -webkit-backdrop-filter:saturate(180%) blur(22px);
-  backdrop-filter:saturate(180%) blur(22px);
-  border-bottom:1px solid rgba(0,25,49,.10);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  backdrop-filter:saturate(180%) blur(24px);
+  border-bottom:1px solid rgba(0,25,49,.08);
   box-shadow:0 8px 22px -18px rgba(0,25,49,.4);
 }
 .hdr.is-solid .logo{color:var(--ink)}
 .hdr.is-solid .nav a{color:var(--ink)}
+.hdr.is-solid .nav__sep{background:var(--line)}
 .hdr.is-solid .btn-ghost{
-  border-color:rgba(0,25,49,.35);color:var(--ink);
+  border-color:rgba(0,25,49,.32);color:var(--ink);
   background:rgba(255,255,255,.35);
 }
 .hdr.is-solid .btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
