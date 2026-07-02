@@ -15,13 +15,19 @@
 ## EN COURS (à la coupure)
 - **`designer-contact`** (subagent Opus, background, team `session-df848a9f`) : refond `#contact`. À la reprise : récupérer son livrable (SendMessage) ou vérifier si `#contact` a changé dans le fichier ; s'il n'a rien rendu, relancer un designer contact.
 
-## BACKLOG ACTIONNABLE (complet, dans l'ordre)
-1. **Contact** — récupérer le designer-contact → **Vérificateur Opus frais** (screenshot `shot.js` + déterministes + rubric) → auto/fix (cap 2-3) → push.
-2. **Footer** — À CRÉER (absent) : mentions légales, raison sociale **PERICLES GESTION**, copyright, aucun matricule/ID. Designer → Vérificateur → push.
-3. **Intro (`#perimetre`)**, **Domaines (`#domaines`)**, **Citation (`.quote-block`)** — à REFAIRE via le pipeline (décision user : on refait TOUT sauf hero/nav ; ces 3 avaient été validées AVANT le pipeline, ne comptent pas). Designer → Vérificateur → push, chacune, dans l'ordre.
-4. **Passe de cohérence globale** (étape 5) — rescreenshot toute la page : échelle des titres (hero reste le plus grand), `scroll-margin-top` = hauteur du header sur les sections ancrées (le header dépoli recouvre les eyebrows aux ancres nav — relevé sur #approche), cohérence fonds/boutons/tokens. + trancher le point GPT-5.5 sur `#viz` (« schéma pas assez propriétaire » — Opus l'avait passé en auto, GPT-5.5 le BLOCK au ship).
-5. **Passe COPY (étape 3, AVEC l'user)** — figer les vrais textes source-locked (l'user fournit) : repères (chiffres réels non-nominatifs), approche (les 4 principes), contact (canal réel), footer (mentions légales : SIREN, siège…), modèle. **Hero copy en DERNIER**. Nuancer le principe-1 de l'approche (répète « un seul point de responsabilité »).
-6. **Ship** — panel **GPT-5.5 effort=high** (OpenRouter) sur toute la page, en consensus avec Opus frais ; gate user ; deploy (GitHub Pages, `git push`, déjà en place).
+## BACKLOG ACTIONNABLE (re-passe Fable — complet, dans l'ordre de la page)
+Pour CHAQUE section : designer **Fable** (spawn sans param model ; brief = baseline actuelle à DÉPASSER, carte blanche, contraintes DNA) → Vérificateur **Fable frais** séparé (shot.js desktop + 390 → déterministes + rubric → verdict auto/fix/flag) → fix cap 2-3 → push.
+1. **Intro (`#perimetre`)** — baseline sobre correcte mais « sage ». Slops déjà REJETÉS par l'user (ne pas re-proposer) : lettrine dorée, diagonale zigzag.
+2. **Domaines (`#domaines`)** — baseline : rail sticky + liste numérotée (l'user l'aimait ; à dépasser, pas à casser pour casser).
+3. **Citation (`.quote-block`)** — baseline : image N&B bibliothèque + citation centrée (l'user l'aimait beaucoup).
+4. **Modèle (`#viz`)** — baseline : schéma fan-in/fan-out. **Défaut connu (GPT-5.5)** : « pas assez propriétaire, pourrait appartenir à n'importe quelle maison premium » → viser une signature possédable.
+5. **Repères (`#reperes`)** — baseline : chiffres sous filet or continu.
+6. **Approche (`#approche`)** — baseline : index éditorial 4 principes.
+7. **Contact (`#contact`)** — baseline : ink + champs-filets (verdict auto 0.87).
+8. **Footer** — À CRÉER : raison sociale **PERICLES GESTION**, mentions légales, copyright, aucun matricule/ID ; **virer l'email + adresse Haussmann INVENTÉS** encore présents (~l.811).
+9. **Cohérence globale** — rescreenshot page entière : échelle titres (hero le plus grand), `scroll-margin-top` header sur les ancres, fonds/boutons/tokens.
+10. **Passe COPY (AVEC l'user, gate)** — textes réels source-locked : repères (chiffres non-nominatifs), approche (4 principes), contact (canal), footer (SIREN, siège…), modèle ; hero copy en DERNIER ; nuancer le principe-1 (répète « un seul point de responsabilité »).
+11. **Ship (gate user)** — panel **GPT-5.5 effort=high** (OpenRouter, clé `~/.claude/skills/council/.env`) en consensus avec le juge primaire ; deploy GitHub Pages.
 
 ## ÉTAT / DÉCISIONS (non-dérivables du code)
 - **Métier VERROUILLÉ** : société de gestion **OPÉRATIONNELLE** d'un groupe (opère finance/paie/social/conformité/IT + prestations). PAS asset management, PAS holding, PAS family office. Réfs Wendel/Pictet = style visuel seulement.
