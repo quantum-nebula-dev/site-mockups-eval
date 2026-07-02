@@ -27,7 +27,7 @@ Pour CHAQUE section : designer **Fable** (spawn sans param model ; brief = basel
 7. **Contact (`#contact`)** — baseline : ink + champs-filets (verdict auto 0.87).
 8. **Footer** — À CRÉER : raison sociale **PERICLES GESTION**, mentions légales, copyright, aucun matricule/ID ; **virer l'email + adresse Haussmann INVENTÉS** encore présents (~l.811).
 9. **Cohérence globale** — rescreenshot page entière : échelle titres (hero le plus grand), `scroll-margin-top` header sur les ancres, fonds/boutons/tokens.
-10. **Passe COPY (AVEC l'user, gate)** — textes réels source-locked : repères (chiffres non-nominatifs), approche (4 principes), contact (canal), footer (SIREN, siège…), modèle ; hero copy en DERNIER ; nuancer le principe-1 (répète « un seul point de responsabilité »).
+10. **Passe COPY (AVEC l'user, gate)** — textes réels source-locked : repères (chiffres non-nominatifs), approche (4 principes), contact (canal), footer (SIREN, siège…), modèle ; hero copy en DERNIER ; nuancer le principe-1 (répète « un seul point de responsabilité ») ; « obligation de résultat » répété 3× dans #domaines (right speech, varier) ; le h2 du modèle répète la formule du hero (fil rouge à arbitrer).
 11. **Ship (gate user)** — panel **GPT-5.5 effort=high** (OpenRouter, clé `~/.claude/skills/council/.env`) en consensus avec le juge primaire ; deploy GitHub Pages.
 
 ## ÉTAT / DÉCISIONS (non-dérivables du code)
