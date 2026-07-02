@@ -123,16 +123,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 .logo b{font-weight:500}
 .logo i{font-style:italic;color:var(--gold)}
-.nav{display:flex;align-items:center;gap:38px}
+.nav{display:flex;align-items:center;gap:32px}
+/* liens en registre « label » du DNA : uppercase, tracking .14em, taille label */
 .nav a:not(.btn){
-  font-size:.92rem;font-weight:500;color:rgba(255,255,255,.86);
-  position:relative;padding:6px 0;transition:color .3s;
+  font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.86);
+  position:relative;padding:8px 0;transition:color .3s;
 }
+.nav a:not(.btn):hover,.nav a:not(.btn):focus-visible{color:#fff}
+/* l'âme conservée : le filet or (ligne active) qui se dessine au survol / focus */
 .nav a:not(.btn)::after{
   content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
   background:var(--gold);transition:width .35s ease;
 }
 .nav a:not(.btn):hover::after,.nav a:not(.btn):focus-visible::after{width:100%}
+/* séparateur hairline : détache le CTA (action) des liens (navigation), façon colophon */
+.nav__sep{width:1px;height:20px;background:var(--line-2);flex:none;transition:background .4s}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   min-height:48px;padding:0 36px;border-radius:1000px;
