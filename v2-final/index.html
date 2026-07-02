@@ -354,8 +354,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   transition:stroke-dashoffset 1s cubic-bezier(.35,.02,.2,1);
 }
 .model__figure.is-visible .model__diagram [data-draw]{stroke-dashoffset:0}
-/* les fonctions dispersées : filets neutres, désalignés, sans tenue d'ensemble */
-.model__diagram .md-stub{stroke:var(--ink);stroke-opacity:.16;stroke-width:1;transition-duration:.7s}
+/* les fonctions dispersées : filets neutres, d'origines éparses, qui CONVERGENT et se
+   referment sur le point (la réunion est montrée par la géométrie, pas seulement écrite) */
+.model__diagram .md-stub{stroke:var(--ink);stroke-opacity:.2;stroke-width:1;transition-duration:.8s}
 /* la ligne rendue : un seul filet or continu + l'embranchement final vers deux lieux */
 .md-line,.md-fork{stroke:var(--gold);stroke-width:1.5}
 /* le seul point coloré : la prise en charge (léger halo, seule emphase du schéma) */
