@@ -330,43 +330,63 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .som__gloss{max-width:60ch}
 }
 
-/* ============ MODÈLE (mécanisme : un seul point de responsabilité) ============ */
-.model__head{max-width:60ch;margin-bottom:clamp(40px,5vw,74px)}
+/* ============ MODÈLE (le mécanisme : un seul point de responsabilité) ============
+   Parti-pris : le mécanisme n'est pas un réseau de noeuds fléchés, c'est UNE seule
+   ligne. La « ligne de responsabilité » du site (le filet or qui se dessine) devient
+   ici l'armature du schéma. À gauche, les fonctions dispersées : plusieurs filets
+   neutres, parallèles et désalignés, sans continuité. Au centre, LE seul point plein
+   or de toute la page : la prise en charge. À droite, une seule ligne or continue qui
+   sort et se partage entre deux lieux, France et étranger. Un unique point coloré sur
+   tout le schéma = « un seul point de responsabilité », rendu au sens propre. Plate
+   blanche : la page respire avant le manifeste sombre. Macrostructure distincte du
+   spread vertical de l'intro comme du sommaire des domaines. */
+.model__head{max-width:60ch;margin-bottom:clamp(46px,6vw,84px)}
 .model__head h2{margin-top:22px}
-.model__lead{margin-top:1.1em;max-width:56ch}
+.model__lead{margin-top:1.1em;max-width:58ch;color:var(--body)}
 
-/* schéma : dispersé -> réuni en un point (Périclès) -> rendu, France comme à l'étranger */
-.model__diagram{display:block;width:100%;height:auto;max-width:1000px;margin:0 auto;overflow:visible}
-/* geste signature : le filet or qui se dessine */
+.model__figure{position:relative}
+.model__diagram{display:block;width:100%;height:auto;overflow:visible}
+
+/* GESTE SIGNATURE : le filet or qui se dessine, ici promu en armature du mécanisme */
 .model__diagram [data-draw]{
-  fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;
+  fill:none;stroke-linecap:round;
   stroke-dasharray:1;stroke-dashoffset:1;
-  transition:stroke-dashoffset 1.25s cubic-bezier(.35,.02,.2,1) .1s;
+  transition:stroke-dashoffset 1s cubic-bezier(.35,.02,.2,1);
 }
-.model__diagram.is-visible [data-draw]{stroke-dashoffset:0}
-.model__diagram [data-node]{
-  opacity:0;transform:scale(.55);transform-box:fill-box;transform-origin:center;
-  transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1);
+.model__figure.is-visible .model__diagram [data-draw]{stroke-dashoffset:0}
+/* les fonctions dispersées : filets neutres, désalignés, sans tenue d'ensemble */
+.model__diagram .md-stub{stroke:var(--ink);stroke-opacity:.16;stroke-width:1;transition-duration:.7s}
+/* la ligne rendue : un seul filet or continu + l'embranchement final vers deux lieux */
+.md-line,.md-fork{stroke:var(--gold);stroke-width:1.5}
+/* le seul point coloré : la prise en charge (léger halo, seule emphase du schéma) */
+.md-point{fill:var(--gold)}
+.md-ring{fill:none;stroke:var(--gold);stroke-opacity:.38;stroke-width:1}
+.md-point,.md-ring,.md-geo{opacity:0;transition:opacity .7s ease}
+.model__figure.is-visible .md-point,
+.model__figure.is-visible .md-ring,
+.model__figure.is-visible .md-geo{opacity:1}
+/* les deux lieux où le service est rendu */
+.md-geo{
+  font-family:var(--grot);font-size:12.5px;font-weight:600;letter-spacing:1.4px;
+  fill:var(--gold-d);
 }
-.model__diagram.is-visible [data-node]{opacity:1;transform:none}
-.model__diagram.is-visible [data-node="in"]{transition-delay:.15s}
-.model__diagram.is-visible [data-node="hub"]{transition-delay:.85s}
-.model__diagram.is-visible [data-node="out"]{transition-delay:1.05s}
-.m-ring{fill:var(--cream);stroke:var(--gold);stroke-width:1.5}
-.m-hub-ring{fill:var(--cream);stroke:var(--gold);stroke-width:1.5}
-.m-hub-core{fill:var(--gold)}
 
-/* trois moments, calés sous les zones du schéma */
+/* trois temps, calés sous leurs zones et alignés sur la géométrie du schéma :
+   le dispersé à gauche, le point pivot centré, le rendu à droite */
 .model__legend{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:clamp(24px,4vw,56px);margin-top:clamp(30px,4vw,50px);
+  gap:clamp(24px,4vw,56px);margin-top:clamp(32px,4.2vw,56px);
   position:relative;
 }
-.model__cap{max-width:32ch;justify-self:center;text-align:center}
 .model__cap .eyebrow{margin-bottom:14px}
 .model__cap h3{font-size:clamp(1.15rem,1.7vw,1.45rem);margin-bottom:.45em}
-.model__cap p{font-size:.98rem;color:var(--body)}
-/* seule emphase : le moment pivot (Périclès) */
+.model__cap p{font-size:.98rem;color:var(--body);max-width:32ch}
+.model__cap--start{text-align:left}
+.model__cap--pivot{text-align:center}
+.model__cap--pivot p{margin-inline:auto}
+.model__cap--end{text-align:right}
+.model__cap--end p{margin-left:auto}
+/* seule emphase : le moment pivot (le point unique) */
 .model__cap--pivot h3::after{
   content:"";display:block;width:34px;height:2px;background:var(--gold);margin:.7em auto 0;
 }
@@ -611,14 +631,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .stats{grid-template-columns:1fr 1fr;gap:34px}
   .reperes__head{grid-template-columns:1fr;gap:14px;align-items:start}
   .reperes__note{padding-bottom:0;max-width:46ch}
-  /* MODÈLE : schéma masqué, légende en timeline verticale */
+  /* MODÈLE : schéma masqué ; les trois temps repris en séquence verticale, tenus par
+     la même ligne de responsabilité (ici verticale, en filet or qui descend) */
   .model__diagram{display:none}
-  .model__legend{grid-template-columns:1fr;gap:0;margin-top:clamp(24px,6vw,32px)}
-  .model__legend::before{content:"";position:absolute;left:6px;top:30px;bottom:30px;width:1px;background:var(--line)}
+  .model__legend{grid-template-columns:1fr;gap:0;margin-top:clamp(24px,6vw,34px)}
+  .model__legend::before{content:"";position:absolute;left:6px;top:30px;bottom:30px;width:1px;
+    background:linear-gradient(180deg,var(--gold) 0%,rgba(158,131,90,.42) 62%,rgba(158,131,90,.22) 100%)}
   .model__cap{max-width:none;justify-self:stretch;text-align:left;position:relative;padding-left:34px;padding-block:clamp(18px,4.5vw,26px)}
   .model__cap .eyebrow{margin-bottom:10px}
+  .model__cap p{max-width:60ch}
+  .model__cap--pivot p,.model__cap--end p{margin-inline:0;margin-left:0}
   .model__cap--pivot h3::after{margin:.7em 0 0}
-  .model__dot{display:block;position:absolute;left:0;top:calc(clamp(18px,4.5vw,26px) + 4px);width:13px;height:13px;border-radius:50%;border:1.5px solid var(--gold);background:var(--cream)}
+  .model__dot{display:block;position:absolute;left:0;top:calc(clamp(18px,4.5vw,26px) + 4px);width:13px;height:13px;border-radius:50%;border:1.5px solid var(--gold);background:var(--white)}
   .model__cap--pivot .model__dot{background:var(--gold);width:15px;height:15px;left:-1px}
 }
 @media (max-width:760px){
