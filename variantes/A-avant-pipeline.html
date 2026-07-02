@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès Gestion : vos fonctions de gestion, tenues depuis un seul point de responsabilité</title>
+<meta name="description" content="Périclès Gestion opère les fonctions financières, sociales et de conformité d'un groupe d'établissements, et lui délivre les prestations techniques, digitales et de services dont il a besoin, en France comme à l'étranger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (ancrés sur Wendel) ============ */
+:root{
+  --ink:#001931;          /* bleu nuit profond  */
+  --ink-2:#15324d;        /* bleu nuit clair    */
+  --gold:#9E835A;         /* or / bronze sourd  */
+  --gold-d:#7f6740;       /* or assombri (texte petit sur clair) */
+  --body:#4F5E6B;         /* gris-bleu corps    */
+  --white:#FFFFFF;
+  --cream:#F7F3EB;        /* crème chaude       */
+  --taupe:#E7DFD2;        /* taupe              */
+  --taupe-2:#D6CAB4;
+  --line:rgba(0,25,49,.12);
+  --line-2:rgba(255,255,255,.16);
+  --maxw:1180px;
+  --gut:clamp(20px,5vw,72px);
+  --shadow:0 24px 60px -34px rgba(0,25,49,.45);
+  --shadow-soft:0 18px 44px -30px rgba(0,25,49,.30);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+}
+
+/* ============ RESET ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--grot);
+  color:var(--body);
+  background:var(--white);
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ============ TYPO ============ */
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem)}
+h2{font-size:clamp(1.9rem,3.6vw,3rem)}
+h3{font-size:clamp(1.25rem,2vw,1.6rem)}
+p{font-size:clamp(1rem,1.05vw,1.1rem)}
+
+.eyebrow{
+  font-family:var(--grot);
+  font-size:.74rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold-d);
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.eyebrow.on-dark{color:var(--gold)}
+.eyebrow.on-dark::before{background:var(--gold)}
+
+.lead{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.42;color:var(--ink);font-weight:300}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+section{padding-block:clamp(70px,9vw,140px)}
+.bg-cream{background:var(--cream)}
+.bg-taupe{background:var(--taupe)}
+.bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}
+.bg-ink h1,.bg-ink h2,.bg-ink h3{color:var(--white)}
+
+/* ============ SKIP LINK ============ */
+.skip{
+  position:absolute;left:16px;top:-60px;z-index:200;
+  background:var(--ink);color:#fff;padding:12px 20px;border-radius:6px;
+  font-weight:600;transition:top .2s;
+}
+.skip:focus{top:16px}
+
+/* focus visible */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+/* ============ HEADER ============ */
+.hdr{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  transition:background .4s ease, box-shadow .4s ease, border-color .4s, backdrop-filter .4s;
+  border-bottom:1px solid transparent;
+}
+.hdr-inner{
+  max-width:var(--maxw);margin:0 auto;padding:11px var(--gut);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo{
+  font-family:var(--serif);font-size:1.4rem;letter-spacing:.005em;
+  color:#fff;transition:color .4s;white-space:nowrap;
+}
+.logo b{font-weight:500}
+.logo i{font-style:italic;color:var(--gold)}
+.nav{display:flex;align-items:center;gap:38px}
+.nav a:not(.btn){
+  font-size:.92rem;font-weight:500;color:rgba(255,255,255,.86);
+  position:relative;padding:6px 0;transition:color .3s;
+}
+.nav a:not(.btn)::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+  background:var(--gold);transition:width .35s ease;
+}
+.nav a:not(.btn):hover::after,.nav a:not(.btn):focus-visible::after{width:100%}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 36px;border-radius:1000px;
+  font-weight:600;font-size:.92rem;letter-spacing:.01em;
+  transition:background .3s,color .3s,border-color .3s,transform .3s,box-shadow .3s;
+}
+/* CTA header retravaillé : padding plus généreux, bordure nette, meilleur contraste */
+.btn-ghost{
+  padding:0 18px;min-height:48px;
+  border:1.5px solid rgba(255,255,255,.7);
+  color:#fff;letter-spacing:.02em;
+  background:rgba(255,255,255,.04);
+}
+.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 10px 24px -16px rgba(0,0,0,.5)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
+.btn-lg{min-height:56px;padding:0 36px;font-size:1rem}
+
+/* header solid state : effet verre dépoli renforcé */
+.hdr.is-solid{
+  background:rgba(247,243,235,.72);
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  backdrop-filter:saturate(180%) blur(22px);
+  border-bottom:1px solid rgba(0,25,49,.10);
+  box-shadow:0 8px 22px -18px rgba(0,25,49,.4);
+}
+.hdr.is-solid .logo{color:var(--ink)}
+.hdr.is-solid .nav a{color:var(--ink)}
+.hdr.is-solid .btn-ghost{
+  border-color:rgba(0,25,49,.35);color:var(--ink);
+  background:rgba(255,255,255,.35);
+}
+.hdr.is-solid .btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* burger */
+.burger{display:none;width:48px;height:48px;flex-direction:column;gap:6px;align-items:center;justify-content:center}
+.burger span{width:24px;height:2px;background:#fff;transition:background .4s,transform .3s,opacity .3s}
+.hdr.is-solid .burger span{background:var(--ink)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate;padding:0}
+.hero__media{position:absolute;inset:0;z-index:0}
+.hero__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02)}
+.hero__media::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,18,36,.55) 0%, rgba(0,18,36,.15) 32%, rgba(0,18,36,.9) 100%),
+    linear-gradient(90deg, rgba(0,18,36,.78) 0%, rgba(0,18,36,.25) 52%, rgba(0,18,36,0) 78%);
+}
+.hero__inner{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 6vw 7vh;line-height:normal;color:#000;font-family:"Hanken Grotesk", sans-serif}
+.hero h1{color:#fff;max-width:18ch;letter-spacing:-.022em;font-weight:400;font-size:clamp(2.3rem,4.6vw,4.4rem);line-height:1.06;font-family:"Newsreader", serif}
+.hero h1 i{font-style:italic;color:#e7dcc6;font-weight:400;font-family:"Newsreader", serif}
+/* Hero : eyebrow calé au pixel sur le comparateur (scopé au hero, ne touche pas la règle .eyebrow globale utilisée par les autres sections) */
+.hero .eyebrow{display:flex;font-size:12px;letter-spacing:.14em;gap:14px;line-height:normal}
+.hero .eyebrow::before{width:42px}
+.hero__sub{
+  margin-top:24px;max-width:52ch;color:rgba(245,240,235,.72);
+  font-size:18px;line-height:1.55;
+}
+.hero__meta{
+  margin-top:40px;display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:500;
+}
+.hero__meta span{display:inline-flex;align-items:center;gap:14px}
+.hero__meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.scrollcue{
+  position:absolute;right:6vw;bottom:0;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);
+}
+.scrollcue .line{width:1px;height:54px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.scrollcue .line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(-100%);animation:cue 2.6s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+/* ============ INTRO / CHAPEAU (ouverture éditoriale sobre : bloc aligné, hiérarchie typo nette) ============ */
+.intro .eyebrow{margin-bottom:clamp(16px,2vw,22px)}
+.intro__title{
+  font-weight:400;max-width:40ch;
+  font-size:clamp(1.7rem,3vw,2.8rem);line-height:1.12;letter-spacing:-.015em;
+}
+.intro__lead{
+  margin-top:clamp(22px,2.8vw,34px);max-width:52ch;
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.34;letter-spacing:-.005em;
+}
+.intro__para{margin-top:clamp(18px,2vw,26px);max-width:64ch}
+.intro__pivot{
+  margin-top:clamp(26px,3vw,40px);max-width:52ch;
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2vw,1.7rem);
+  color:var(--ink);line-height:1.4;padding-left:26px;border-left:2px solid var(--gold);
+}
+
+/* ============ DOMAINES (index éditorial : rail tenu + liste numérotée) ============ */
+.dom{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(40px,7vw,104px);align-items:start}
+/* le titre et le chapeau restent tenus pendant que la liste défile (geste signature) */
+.dom__rail{position:sticky;top:clamp(96px,13vh,140px);align-self:start}
+.dom__rail h2{margin-top:22px}
+.dom__intro{margin-top:clamp(20px,2.4vw,30px);max-width:34ch}
+
+.dom__list{display:grid}
+.dom__item{
+  position:relative;
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,2.4vw,40px);
+  align-items:baseline;padding:clamp(26px,3.4vw,42px) 0;
+  border-top:1px solid var(--line);
+}
+.dom__item:last-child{border-bottom:1px solid var(--line)}
+/* filet or qui se dessine sur la règle au survol (ligne active, identité conservée) */
+.dom__item::before{
+  content:"";position:absolute;top:-1px;left:0;width:0;height:2px;background:var(--gold);
+  transition:width .55s cubic-bezier(.2,.7,.2,1);
+}
+.dom__item:hover::before,.dom__item:focus-within::before{width:60px}
+.dom__num{
+  font-family:var(--serif);font-weight:300;font-size:clamp(1.65rem,2.1vw,2.3rem);
+  line-height:1;color:var(--gold);letter-spacing:.01em;font-variant-numeric:tabular-nums;
+}
+.dom__item h3{margin-bottom:.5em}
+.dom__item p{max-width:52ch}
+
+/* ============ TREEMAP (data-viz signature) ============ */
+.viz__head{max-width:62ch;margin-bottom:clamp(36px,4vw,60px)}
+.viz__head p{margin-top:1.1em}
+.treemap{
+  display:grid;
+  grid-template-columns:1.7fr 1fr 1fr;
+  grid-template-rows:repeat(2, minmax(150px, 22vw));
+  grid-template-areas:"d1 d2 d3" "d1 d4 d5";
+  gap:12px;
+}
+.tile{
+  position:relative;overflow:hidden;border-radius:8px;
+  padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;justify-content:space-between;
+  transform-origin:top center;
+  opacity:0;transform:translateY(20px) scale(.98);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.is-visible .tile{opacity:1;transform:none}
+.is-visible .tile:nth-child(2){transition-delay:.08s}
+.is-visible .tile:nth-child(3){transition-delay:.16s}
+.is-visible .tile:nth-child(4){transition-delay:.24s}
+.is-visible .tile:nth-child(5){transition-delay:.32s}
+.tile .t-num{font-family:var(--serif);font-size:1.1rem;letter-spacing:.04em;opacity:.7}
+.tile .t-name{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.5rem);line-height:1.15;max-width:18ch}
+.tile.d1{grid-area:d1;background:var(--ink);color:#fff}
+.tile.d1 .t-name{font-size:clamp(1.4rem,2.4vw,2.1rem)}
+.tile.d1 .t-num{color:var(--gold);opacity:1}
+.tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
+.tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
+.tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
+.tile.d4 .t-num{color:var(--gold)}
+.tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+.viz__cap{margin-top:clamp(26px,3vw,40px);max-width:70ch;font-size:.98rem}
+
+/* ============ CHIFFRES (band sombre) ============ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
+.stat{border-top:1px solid var(--line-2);padding-top:26px}
+.stat__n{font-family:var(--serif);font-size:clamp(2.8rem,5.4vw,4.6rem);color:#fff;line-height:1;font-weight:300}
+.stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
+.stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
+.stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
+.stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
+
+/* ============ CITATION FULL-BLEED (structure Brunello, tokens Wendel) ============ */
+.quote-block{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
+  padding:clamp(80px,10vw,120px) var(--gut);
+}
+.quote-block .qimg{position:absolute;inset:0;z-index:0}
+.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02) brightness(.7)}
+.quote-block::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,25,49,.55),rgba(0,25,49,.62));
+}
+.quote-block blockquote{
+  margin:0;max-width:22ch;position:relative;z-index:2;
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:#fff;
+  letter-spacing:-.012em;
+}
+.quote-block cite{
+  display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
+  font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+
+/* ============ APPROCHE (citation taupe) ============ */
+.approche{position:relative}
+.approche__quote{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.9rem,4.4vw,3.5rem);line-height:1.18;color:var(--ink);
+  max-width:18ch;letter-spacing:-.015em;
+}
+.approche__quote .mk{color:var(--gold);font-style:italic}
+.approche__grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(36px,6vw,90px);align-items:end}
+.approche__aside p{font-size:1.05rem;color:var(--body)}
+.approche__aside .eyebrow{margin-bottom:22px}
+
+/* ============ CONTACT (structure Brunello, tokens Wendel) ============ */
+.contact__grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(36px,5vw,80px);align-items:start;
+}
+.contact__panel h2{margin-bottom:.45em}
+.contact__panel .micro{max-width:42ch;margin-bottom:28px}
+.contact__coords{
+  margin-top:30px;font-size:1rem;line-height:1.9;color:var(--body);
+}
+.contact__coords a{
+  color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:1px;
+  transition:border-color .3s,color .3s;
+}
+.contact__coords a:hover{color:var(--gold-d);border-color:var(--gold)}
+.form{display:grid;gap:22px}
+.field{display:grid;gap:8px}
+.field label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.field input,.field textarea{
+  font-family:var(--grot);font-size:1rem;color:var(--ink);
+  background:var(--white);border:1px solid var(--line);border-radius:0;
+  padding:15px 16px;transition:border-color .3s,box-shadow .3s;width:100%;
+}
+.field textarea{min-height:140px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#9aa6b0}
+.field input:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(158,131,90,.14);outline:none}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.form__submit{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:6px}
+.form__note{font-size:.86rem;color:var(--body)}
+.form__ok{
+  display:none;align-items:flex-start;gap:14px;padding:18px 20px;margin-top:8px;
+  background:var(--cream);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;
+  font-size:.95rem;color:var(--ink);
+}
+.form__ok.show{display:flex}
+.form__ok b{font-weight:600}
+
+/* ============ FOOTER (structure Kering, tokens Wendel) ============ */
+.foot{padding-block:clamp(56px,7vw,90px)}
+.foot__top{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,5vw,80px);padding-bottom:48px;border-bottom:1px solid var(--line-2)}
+.foot__logo{font-family:var(--serif);font-size:1.7rem;color:#fff;margin-bottom:22px}
+.foot__logo i{font-style:italic;color:var(--gold)}
+.foot__desc{max-width:54ch;color:rgba(255,255,255,.74);font-size:1rem;line-height:1.65}
+.foot__contact{display:grid;gap:14px;align-content:start}
+.foot__contact .lab{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.foot__contact a,.foot__contact address{color:rgba(255,255,255,.86);font-style:normal;font-size:1rem;line-height:1.5}
+.foot__contact a{border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:1px;transition:color .3s,border-color .3s}
+.foot__contact a:hover{color:var(--gold);border-color:var(--gold)}
+.foot__bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px}
+.foot__bottom p{font-size:.85rem;color:rgba(255,255,255,.56)}
+.foot__bottom .foot__links{display:flex;gap:26px;flex-wrap:wrap}
+.foot__bottom a{font-size:.85rem;color:rgba(255,255,255,.74);position:relative}
+.foot__bottom a:hover{color:var(--gold)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .dom,.approche__grid,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
+  .dom__rail{position:static}
+  .stats{grid-template-columns:1fr 1fr;gap:34px}
+  .approche__quote{max-width:100%}
+}
+@media (max-width:760px){
+  .nav,.hdr .btn-ghost{display:none}
+  .burger{display:flex}
+  .nav.open{
+    display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+    position:fixed;inset:72px 0 auto 0;background:#fff;padding:22px var(--gut) 30px;
+    border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+  }
+  .nav.open a{color:var(--ink);font-size:1.1rem;padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav.open a::after{display:none}
+  .nav.open .btn{display:inline-flex;margin-top:14px}
+  .treemap{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"d1 d1" "d2 d3" "d4 d5"}
+  .treemap .tile{min-height:140px}
+}
+@media (max-width:480px){
+  .stats{grid-template-columns:1fr}
+  .form__row{grid-template-columns:1fr}
+  .dom__item{grid-template-columns:1fr;gap:10px}
+  .treemap{grid-template-columns:1fr;grid-template-areas:"d1" "d2" "d3" "d4" "d5"}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal,.tile{opacity:1!important;transform:none!important;transition:none!important}
+  .scrollcue .line::after{animation:none;transform:translateY(0)}
+  *{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-inner">
+    <a class="logo" href="#top" aria-label="Périclès Gestion, accueil"><b>Périclès</b> <i>Gestion</i></a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#domaines">Domaines</a>
+      <a href="#approche">Approche</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-ghost">Adresser une demande</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Présentation">
+  <div class="hero__media">
+    <img src="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?auto=format&fit=crop&w=3840&q=85" alt="Architecture de pierre aux lignes graphiques, en noir et blanc.">
+  </div>
+  <div class="hero__inner">
+    <p class="eyebrow on-dark" style="margin-bottom:26px">Société de gestion · Paris</p>
+    <h1>Vos fonctions de gestion, prises en charge et tenues depuis <i>un seul point de responsabilité.</i></h1>
+    <p class="hero__sub">Périclès Gestion opère les fonctions financières, sociales et de conformité d'un groupe d'établissements.</p>
+  </div>
+  <div class="scrollcue" aria-hidden="true">
+    <span>Découvrir</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ============ INTRO / CHAPEAU ============ -->
+<section id="perimetre" class="intro">
+  <div class="wrap">
+    <p class="eyebrow reveal">Le périmètre</p>
+    <h2 class="intro__title reveal d1">Ce que Périclès prend en charge.</h2>
+    <p class="intro__lead reveal d1">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir.</p>
+    <p class="intro__para reveal d2">Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
+    <p class="intro__pivot reveal d2">Vous gardez vos décisions, nous répondons de leur exécution.</p>
+  </div>
+</section>
+
+<!-- ============ DOMAINES ============ -->
+<section id="domaines" class="bg-cream">
+  <div class="wrap">
+    <div class="dom">
+      <div class="dom__rail">
+        <p class="eyebrow reveal">Domaines</p>
+        <h2 class="reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
+        <p class="dom__intro reveal d2">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
+      </div>
+
+      <div class="dom__list">
+        <article class="dom__item reveal">
+          <div class="dom__num">01</div>
+          <div class="dom__body">
+            <h3>Pilotage financier et administratif</h3>
+            <p>Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">02</div>
+          <div class="dom__body">
+            <h3>Paie, social et conformité</h3>
+            <p>Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">03</div>
+          <div class="dom__body">
+            <h3>Prestations et programmes</h3>
+            <p>Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">04</div>
+          <div class="dom__body">
+            <h3>Systèmes, outils et présence en ligne</h3>
+            <p>Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">05</div>
+          <div class="dom__body">
+            <h3>Appui au pilotage et au développement</h3>
+            <p>L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITATION FULL-BLEED (structure Brunello, tokens Wendel) ============ -->
+<section class="quote-block" aria-label="Citation">
+  <div class="qimg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=3840&q=85" alt="">
+  </div>
+  <blockquote>
+    Répondre de l'exécution, c'est tenir l'ensemble.
+    <cite>Périclès Gestion.</cite>
+  </blockquote>
+</section>
+
+<!-- ============ TREEMAP / DATA-VIZ ============ -->
+<section id="viz">
+  <div class="wrap">
+    <div class="viz__head reveal">
+      <p class="eyebrow">Un seul tenant</p>
+      <h2 style="margin-top:22px">Un périmètre tenu d'un seul tenant.</h2>
+      <p>Les fonctions de gestion ne sont pas confiées morceau par morceau. Elles forment un ensemble unique, opéré et garanti depuis un même point de responsabilité.</p>
+    </div>
+
+    <div class="treemap reveal" aria-label="Représentation du périmètre de gestion, composé de cinq domaines tenus comme un seul ensemble">
+      <div class="tile d1"><span class="t-num">01</span><span class="t-name">Pilotage financier et administratif</span></div>
+      <div class="tile d2"><span class="t-num">02</span><span class="t-name">Paie, social et conformité</span></div>
+      <div class="tile d3"><span class="t-num">03</span><span class="t-name">Prestations et programmes</span></div>
+      <div class="tile d4"><span class="t-num">04</span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
+      <div class="tile d5"><span class="t-num">05</span><span class="t-name">Appui au pilotage et au développement</span></div>
+    </div>
+
+    <p class="viz__cap reveal d1">Périclès opère ce qui relève de la gestion directe et délivre les prestations associées via le réseau de prestataires qu'elle mobilise et pilote, en France comme à l'étranger.</p>
+  </div>
+</section>
+
+<!-- ============ CHIFFRES (band sombre) ============ -->
+<section class="bg-ink" id="reperes">
+  <div class="wrap">
+    <div class="stats__intro reveal">
+      <p class="eyebrow on-dark">Repères</p>
+      <h2 style="margin-top:22px">Une responsabilité,<br>nettement délimitée.</h2>
+      <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat__n" data-count="1">0</div>
+        <div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n" data-count="5">0</div>
+        <div class="stat__l">Domaines de gestion pris en charge et tenus.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n">FR<span class="u"> · INT</span></div>
+        <div class="stat__l">En France comme à l'étranger, sous un même pilotage.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__n">100<span class="u">%</span></div>
+        <div class="stat__l">Des fonctions confiées, opérées ou pilotées par Périclès.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROCHE ============ -->
+<section id="approche" class="bg-taupe approche">
+  <div class="wrap">
+    <div class="approche__grid">
+      <blockquote class="approche__quote reveal">
+        Vous gardez vos décisions,<br><span class="mk">nous répondons</span> de leur exécution.
+      </blockquote>
+      <div class="approche__aside reveal d1">
+        <p class="eyebrow">L'approche</p>
+        <p>Périclès opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires, et délivre le tout comme un service intégré. La direction conserve l'arbitrage et la stratégie. Périclès assume la tenue, l'exécution et la cohérence de l'ensemble, du premier interlocuteur au dernier livrable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (mise en page Brunello, tokens Wendel) ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 style="margin-top:18px">Adresser une demande</h2>
+        <p class="micro">Décrivez le périmètre que vous souhaitez confier, en quelques lignes. Un interlocuteur vous répond et vous propose une première lecture.</p>
+        <div class="contact__coords">
+          <a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a><br>
+          178 boulevard Haussmann, 75008 Paris
+        </div>
+      </div>
+      <div class="contact__panel reveal d1">
+        <form class="form" id="form" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="org">Organisation</label>
+              <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="msg">Périmètre à confier</label>
+            <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+          </div>
+          <div class="form__submit">
+            <button type="submit" class="btn btn-gold btn-lg">Adresser une demande</button>
+            <span class="form__note">Réponse sous quelques jours ouvrés, par écrit.</span>
+          </div>
+          <div class="form__ok" id="ok" role="status" aria-live="polite">
+            <span aria-hidden="true">✓</span>
+            <span><b>Demande reçue.</b> Un interlocuteur revient vers vous avec une première lecture du périmètre décrit.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER (structure Kering, tokens Wendel) ============ -->
+<footer class="bg-ink foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <div class="foot__logo"><b>Périclès</b> <i>Gestion</i></div>
+        <p class="foot__desc">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
+      </div>
+      <div class="foot__contact">
+        <span class="lab">Contact</span>
+        <a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a>
+        <address>178 boulevard Haussmann<br>75008 Paris</address>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© 2026 Périclès Gestion. Tous droits réservés.</p>
+      <div class="foot__links">
+        <a href="#">Mentions légales</a>
+        <a href="#top">Haut de page</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Header solid on scroll ----- */
+  var hdr = document.getElementById("hdr");
+  function onScroll(){
+    if(window.scrollY > 60){ hdr.classList.add("is-solid"); }
+    else { hdr.classList.remove("is-solid"); }
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* ----- Mobile menu ----- */
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("nav");
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+  });
+  nav.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){
+      nav.classList.remove("open");
+      burger.setAttribute("aria-expanded","false");
+    }
+  });
+
+  /* ----- Reveal on scroll ----- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    revealEls.forEach(function(el){ el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("is-visible");
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ----- Counters ----- */
+  var counters = document.querySelectorAll("[data-count]");
+  function animate(el){
+    var target = parseInt(el.getAttribute("data-count"),10);
+    if(reduce){ el.textContent = target; return; }
+    var start = null, dur = 1400;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(eased * target);
+      if(p < 1){ requestAnimationFrame(step); }
+      else { el.textContent = target; }
+    }
+    requestAnimationFrame(step);
+  }
+  if(!("IntersectionObserver" in window) || reduce){
+    counters.forEach(animate);
+  } else {
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ animate(en.target); io2.unobserve(en.target); }
+      });
+    }, {threshold:0.6});
+    counters.forEach(function(el){ io2.observe(el); });
+  }
+
+  /* ----- Form (pas de backend : confirmation locale) ----- */
+  var form = document.getElementById("form");
+  var ok = document.getElementById("ok");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email");
+    var msg = document.getElementById("msg");
+    if(!email.value.trim() || !msg.value.trim()){
+      (email.value.trim() ? msg : email).focus();
+      return;
+    }
+    ok.classList.add("show");
+    form.querySelector("button[type=submit]").textContent = "Demande adressée";
+    ok.focus && ok.focus();
+  });
+})();
+</script>
+</body>
+</html>
