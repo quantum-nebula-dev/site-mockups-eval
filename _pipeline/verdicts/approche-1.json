@@ -1,0 +1,26 @@
+{
+  "section": "#approche",
+  "deterministic": [
+    { "check": "overflow_390", "pass": true, "note": "Mobile 390 : empilement 1 colonne, wrap propre, aucun débordement horizontal, bord droit net." },
+    { "check": "contraste_AA_creme", "pass": true, "note": "L_cream≈0.899. eyebrow gold-d #7f6740=4.85:1 (≥4.5 normal) ; lead-in + gov ink #001931≈16:1 ; corps clause body #4F5E6B≈6.0:1. Tous AA." },
+    { "check": "titre_h2_sous_hero", "pass": true, "note": "approche__title = <h2> sans override taille (clamp max 3rem, poids 400) vs H1 hero clamp max 4.4rem ; gov serif 300 ; clause__name 1.1em inline. Vérifié desktop 1440 + mobile 390 : rien ne rivalise avec le hero, taille ET poids." },
+    { "check": "tokens_only", "pass": true, "note": "Toutes couleurs via var(--…). bg-cream=var(--cream). Seuls littéraux : rgba(158,131,90,α) = RGB de --gold alpha-fadé, idiome DNA du filet signature repris verbatim dans 7 autres sections (hero/sommaire/modèle/repères/contact) ; décoratif, aucune contrainte contraste ; zéro couleur brute nouvelle introduite." },
+    { "check": "anti_slop_no_emdash", "pass": true, "note": "Aucun tiret long (—) au rendu ; prose ponctuée points/virgules sur les 2 captures." },
+    { "check": "no_lettrine_zigzag_3card", "pass": true, "note": "Aucune lettrine/drop-cap, aucune diagonale zigzag, aucune 3-card-row. Prose sous filet unique." },
+    { "check": "no_fait_invente_ninja", "pass": true, "note": "Placeholders de posture (responsabilité/interlocuteur/confidentialité/proximité) ; aucun nom d'école/client/partenaire ; aucun chiffre inventé. Ninja respecté." },
+    { "check": "semantique_liste_ul_li", "pass": true, "note": "<ul class=\"charte\"> + 4 <li class=\"clause\">, chaque clause ouverte par <strong class=\"clause__name\"> serif lead-in." }
+  ],
+  "judge": [
+    { "axis": "composition_rythme", "reason": "Rail 35/65 : pilier titre serif étroit (masthead) + ligne gouvernante à gauche, 4 clauses prose sous un unique filet or à droite. Asymétrie = tension délibérée, pas déséquilibre ; le vide bas-gauche est un repos éditorial cohérent avec le registre. Les 4 proses respirent (gros interlignes verticaux). Léger risque d'aération un peu ample, mais dans le registre magazine-luxe (l'air est un parti pris DNA).", "score": 0.85 },
+    { "axis": "typographie", "reason": "Lead-in serif encre (Newsreader 400, 1.1em) ouvrant chaque clause, nettement différenciés du corps Hanken gris-bleu ; titre serif carved tracking serré en pavé ; gov serif 300 qui recule. Hiérarchie franche.", "score": 0.88 },
+    { "axis": "couleur_contraste", "reason": "Champ crème, mono-accent or (filet signature), ink + gold-d + body. Tous AA+, palette retenue, 100% on-DNA.", "score": 0.9 },
+    { "axis": "identite_portfolio", "reason": "'La charte' est nommable (code de conduite : 4 principes en prose sous filet unique) et distincte des voisines : ≠ relevé chiffré des repères avant, ≠ sommaire numéroté des domaines, ≠ contact ink après. Pas un manifeste bis ni une re-liste de domaines : décrit le COMMENT Périclès opère.", "score": 0.86 },
+    { "axis": "polish", "reason": "Mobile empilé propre sans overflow, filet signature rendu, accents FR corrects partout (façon, périmètre, intégré, discrétion, échelon). Reveal dé-masqué OK.", "score": 0.88 }
+  ],
+  "confidence": 0.88,
+  "disposition": "auto",
+  "captures": [
+    "C:/Users/Neon/.pw/approche_desktop.png",
+    "C:/Users/Neon/.pw/approche_mobile.png"
+  ]
+}
