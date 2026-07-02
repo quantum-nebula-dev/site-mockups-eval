@@ -800,30 +800,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="model__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- schéma : filets dispersés (gauche) -> un seul point (centre) -> une seule ligne
-         rendue qui se partage entre France et étranger (droite). Une seule couleur : l'or. -->
+    <!-- schéma : filets dispersés qui CONVERGENT (gauche) -> se referment sur un seul point
+         (centre) -> une seule ligne rendue qui se partage entre France et étranger (droite).
+         Une seule couleur : l'or, réservée au point unique et à la ligne rendue. -->
     <div class="model__figure reveal d1">
       <svg class="model__diagram" viewBox="0 0 1000 220" role="img"
-           aria-label="Schéma du modèle. À gauche, des fonctions de gestion dispersées : plusieurs filets séparés et désalignés, sans continuité. Au centre, un seul point de responsabilité les réunit. À droite, une seule ligne continue en sort et se partage entre la France et l'étranger.">
-        <!-- Dispersées : filets neutres, parallèles, désalignés, sans continuité -->
+           aria-label="Schéma du modèle. À gauche, des fonctions de gestion dispersées : plusieurs filets d'origines éparses qui convergent tous vers un même point. Au centre, un seul point de responsabilité où ils se réunissent. À droite, une seule ligne continue en sort et se partage entre la France et l'étranger.">
+        <!-- Dispersées : filets neutres, d'origines éparses, qui CONVERGENT et se referment
+             sur l'anneau du point (leurs extrémités droites se terminent toutes sur le noeud) -->
         <g>
-          <line class="md-stub" data-draw pathLength="1" x1="44" y1="46"  x2="408" y2="46"  style="transition-delay:.05s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="86" y1="68"  x2="438" y2="68"  style="transition-delay:.12s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="54" y1="90"  x2="420" y2="90"  style="transition-delay:.19s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="72" y1="130" x2="392" y2="130" style="transition-delay:.26s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="48" y1="152" x2="430" y2="152" style="transition-delay:.33s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="90" y1="174" x2="400" y2="174" style="transition-delay:.40s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="56"  y1="40"  x2="482" y2="107" style="transition-delay:.05s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="40"  y1="68"  x2="482" y2="108" style="transition-delay:.12s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="76"  y1="96"  x2="482" y2="109" style="transition-delay:.19s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="44"  y1="124" x2="482" y2="111" style="transition-delay:.26s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="96"  y1="152" x2="482" y2="112" style="transition-delay:.33s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="120" y1="180" x2="482" y2="113" style="transition-delay:.40s"/>
         </g>
         <!-- Rendues : une seule ligne or continue, qui sort et se partage en deux lieux -->
-        <line class="md-line" data-draw pathLength="1" x1="500" y1="110" x2="840" y2="110" style="transition-delay:.60s"/>
-        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="78"  style="transition-delay:1.2s"/>
-        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="142" style="transition-delay:1.2s"/>
-        <!-- Le seul point coloré du schéma : la prise en charge -->
-        <circle class="md-ring"  cx="500" cy="110" r="17" style="transition-delay:.95s"/>
-        <circle class="md-point" cx="500" cy="110" r="7"  style="transition-delay:1s"/>
+        <line class="md-line" data-draw pathLength="1" x1="500" y1="110" x2="840" y2="110" style="transition-delay:1s"/>
+        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="78"  style="transition-delay:1.5s"/>
+        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="142" style="transition-delay:1.5s"/>
+        <!-- Le seul point coloré du schéma : le lieu du rassemblement -->
+        <circle class="md-ring"  cx="500" cy="110" r="17" style="transition-delay:.9s"/>
+        <circle class="md-point" cx="500" cy="110" r="7"  style="transition-delay:.98s"/>
         <!-- Les deux lieux où le service est rendu -->
-        <text class="md-geo" x="914" y="78"  dominant-baseline="middle" style="transition-delay:1.5s">FRANCE</text>
-        <text class="md-geo" x="914" y="142" dominant-baseline="middle" style="transition-delay:1.5s">ÉTRANGER</text>
+        <text class="md-geo" x="914" y="78"  dominant-baseline="middle" style="transition-delay:1.75s">FRANCE</text>
+        <text class="md-geo" x="914" y="142" dominant-baseline="middle" style="transition-delay:1.75s">ÉTRANGER</text>
       </svg>
     </div>
 
