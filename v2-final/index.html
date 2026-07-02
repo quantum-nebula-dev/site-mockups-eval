@@ -1040,41 +1040,49 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- ============ CONTACT (clôture sur bleu nuit : cadre confidentiel + CTA primaire) ============ -->
+<!-- ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============ -->
 <section id="contact" class="bg-ink">
   <div class="wrap">
-    <div class="contact__grid reveal">
-      <div class="contact__intro">
-        <p class="eyebrow on-dark">Contact</p>
-        <h2>Nous adresser une demande.</h2>
-        <p class="contact__lead">Un seul interlocuteur vous répond, par écrit ; vos échanges restent confidentiels.</p>
-        <p class="contact__assur">Décrivez en quelques lignes le périmètre que vous souhaitez confier, et nous vous en proposons une première lecture.</p>
+    <!-- L'INVITATION : en-tête pleine largeur (la voix de la clôture, subordonnée au hero) -->
+    <div class="contact__head reveal">
+      <p class="eyebrow on-dark">Contact</p>
+      <h2 class="contact__invite">Adressez-nous votre demande.</h2>
+      <p class="contact__lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
+    </div>
+
+    <!-- LE PLI : filet or qui se dessine, sur toute la largeur (geste signature du site) -->
+    <div class="contact__fold reveal d1" aria-hidden="true"></div>
+
+    <div class="contact__body">
+      <!-- LE COLOPHON : la confiance dite, puis le canal écrit (placeholder, aucune adresse inventée) -->
+      <aside class="contact__colophon reveal d1">
+        <p class="contact__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
         <div class="contact__direct">
           <span class="lab">Par écrit</span>
           <span class="val">[email]</span>
         </div>
-      </div>
-      <div class="contact__panel">
-        <form class="form" id="form" novalidate>
-          <div class="form__row">
-            <div class="field">
-              <label for="org">Organisation</label>
-              <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
-            </div>
+      </aside>
+
+      <!-- LA FEUILLE RÉGLÉE : le formulaire en lignes d'écriture. IDs JS conservés (form / email / msg / ok). -->
+      <div class="contact__sheet reveal d2">
+        <form class="ledger" id="form" novalidate>
+          <div class="wline">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
           </div>
-          <div class="field">
+          <div class="wline">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+          </div>
+          <div class="wline wline--msg">
             <label for="msg">Périmètre à confier</label>
             <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
           </div>
-          <div class="form__submit">
+          <div class="ledger__submit">
             <button type="submit" class="btn btn-gold btn-lg">Adresser une demande</button>
-            <span class="form__note">Réponse sous quelques jours ouvrés.</span>
+            <span class="ledger__note">Réponse sous quelques jours ouvrés.</span>
           </div>
-          <div class="form__ok" id="ok" role="status" aria-live="polite">
+          <div class="form__ok" id="ok" role="status" aria-live="polite" tabindex="-1">
             <span aria-hidden="true">✓</span>
             <span><b>Demande reçue.</b> Un interlocuteur revient vers vous avec une première lecture du périmètre décrit.</span>
           </div>
