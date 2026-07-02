@@ -215,52 +215,66 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .scrollcue .line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(-100%);animation:cue 2.6s ease-in-out infinite}
 @keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
 
-/* ============ INTRO / PÉRIMÈTRE (énoncé d'ouverture : colonne de lecture unique et aérée.
-   Le constat ouvre en serif tenu ; la « ligne active » du site devient ici la CHARNIÈRE de
-   l'argument (constat -> réponse), non un souligné de titre ; la réponse referme sur le
-   pivot. Macrostructure volontairement distincte du hero (plein cadre) et des domaines
-   (rail + liste) : une page de garde qui pose le propos d'un seul mouvement vertical. ============ */
+/* ============ INTRO / PÉRIMÈTRE (spread éditorial tenu par la « ligne de responsabilité »).
+   Deux temps composés sur toute la largeur : à gauche le propos (titre + constat), à droite la
+   réponse (ce qu'est Périclès + le pivot) ; entre les deux, la « ligne active » du site passée
+   à la VERTICALE, un filet or qui se dessine du haut vers le bas et joint le problème dispersé
+   au point de responsabilité tenu. L'écran est occupé d'un bord à l'autre, sans moitié vide.
+   Macrostructure distincte du hero (plein cadre) et des domaines (rail + liste). ============ */
+.intro__spread{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) 1px minmax(0,0.92fr);
+  column-gap:clamp(34px,5vw,84px);
+  align-items:start;
+}
 .intro .eyebrow{margin-bottom:clamp(20px,2.4vw,28px)}
 /* titre = niveau h2 du site (aucune taille locale inventée ; reste le plus grand titre de la
    section, jamais plus fort que le hero, taille comme poids) */
-.intro__title{max-width:16ch;letter-spacing:-.015em}
+.intro__title{max-width:15ch;letter-spacing:-.015em}
 
-/* LE CONSTAT : propos d'ouverture en serif tenu (poids 300 « carved »), sous le titre. C'est
-   la masse éditoriale de la section, pas un titre. Un seul appui : la fin en italique, même
-   poids, sans couleur ajoutée. */
+/* LE CONSTAT : propos d'ouverture en serif tenu (poids 300 « carved »), sous le titre. Il
+   occupe sa colonne ; un seul appui, la fin en italique (même poids, sans couleur ajoutée). */
 .intro__statement{
-  margin-top:clamp(30px,4vw,50px);max-width:25ch;
+  margin-top:clamp(28px,3.4vw,46px);
   font-family:var(--serif);font-weight:300;color:var(--ink);
-  font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.28;letter-spacing:-.01em;
+  font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.3;letter-spacing:-.01em;
 }
 .intro__statement em{font-style:italic;font-weight:300}
 
-/* LA LIGNE ACTIVE, geste signature du site : ici CHARNIÈRE constat -> réponse, un filet or
-   COURT (pas une règle pleine largeur) qui se dessine à l'entrée. Même langage que domaines /
-   modèle / repères / approche / contact ; ici il articule l'argument au lieu de le souligner. */
-.intro__hinge{position:relative;height:1px;width:clamp(120px,20vw,210px);margin-block:clamp(34px,4.6vw,56px)}
-.intro__hinge::after{
+/* LA LIGNE DE RESPONSABILITÉ : geste signature du site (le filet or qui se dessine), ici à la
+   VERTICALE dans la gouttière, tendue sur toute la hauteur du spread ; elle joint les deux
+   temps au lieu de flotter. Se dessine du haut vers le bas à l'entrée. */
+.intro__spine{position:relative;width:1px;justify-self:center;align-self:stretch;overflow:hidden}
+.intro__spine::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.28) 78%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+  background:linear-gradient(180deg,var(--gold) 0%,rgba(158,131,90,.34) 68%,rgba(158,131,90,.12) 100%);
+  transform:scaleY(0);transform-origin:top center;
+  transition:transform 1.4s cubic-bezier(.35,.02,.2,1) .12s;
 }
-.intro__hinge.is-visible::after{transform:scaleX(1)}
+.intro__spine.is-visible::after{transform:scaleY(1)}
 
-/* LA RÉPONSE : deuxième temps, ce qu'est Périclès (registre corps), puis le pivot en serif
-   italique qui referme. Mesures inégales : l'asymétrie naît des largeurs, pas d'un décrochage. */
-.intro__answer{max-width:52ch}
+/* LA RÉPONSE : deuxième temps, tenu à droite par la ligne. Elle « descend » (padding haut)
+   pour venir dialoguer avec le constat, puis le pivot en serif italique referme. */
+.intro__answer{padding-top:clamp(46px,8vw,120px)}
 .intro__para{color:var(--body)}
 .intro__pivot{
-  margin-top:clamp(22px,2.8vw,32px);max-width:34ch;
+  margin-top:clamp(22px,2.8vw,34px);max-width:32ch;
   font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink);
   font-size:clamp(1.2rem,1.9vw,1.55rem);line-height:1.34;letter-spacing:-.006em;
 }
 
 @media (max-width:980px){
-  .intro__statement{max-width:30ch}
-  .intro__answer{max-width:60ch}
+  .intro__spread{grid-template-columns:1fr;column-gap:0}
+  .intro__spine{display:none}
+  .intro__statement{max-width:34ch}
+  .intro__answer{padding-top:clamp(28px,6vw,38px)}
   .intro__pivot{max-width:44ch}
+  /* sur mobile, la ligne active reprend à l'horizontale, courte, en tête de la réponse */
+  .intro__answer::before{
+    content:"";display:block;width:clamp(120px,34vw,190px);height:1px;
+    margin-bottom:clamp(22px,5vw,30px);
+    background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.28) 78%,rgba(158,131,90,0) 100%);
+  }
 }
 
 /* ============ DOMAINES (index éditorial : rail tenu + liste numérotée bondée) ============ */
