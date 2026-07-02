@@ -145,11 +145,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   font-weight:600;font-size:.92rem;letter-spacing:.01em;
   transition:background .3s,color .3s,border-color .3s,transform .3s,box-shadow .3s;
 }
-/* CTA header retravaillé : padding plus généreux, bordure nette, meilleur contraste */
+/* CTA header : pill ghost (forme conservée), passé en registre label pour s'accorder aux liens */
 .btn-ghost{
-  padding:0 18px;min-height:48px;
-  border:1.5px solid rgba(255,255,255,.7);
-  color:#fff;letter-spacing:.02em;
+  padding:0 26px;min-height:46px;
+  border:1.5px solid rgba(255,255,255,.62);
+  color:#fff;
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
   background:rgba(255,255,255,.04);
 }
 .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 10px 24px -16px rgba(0,0,0,.5)}
