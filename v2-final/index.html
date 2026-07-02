@@ -584,8 +584,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .dom,.contact__grid,.foot__top,.stats{grid-template-columns:1fr}
-  .dom__rail{position:static}
+  .contact__grid,.foot__top,.stats{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr;gap:34px}
   .reperes__head{grid-template-columns:1fr;gap:14px;align-items:start}
   .reperes__note{padding-bottom:0;max-width:46ch}
@@ -690,59 +689,58 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- ============ DOMAINES ============ -->
+<!-- ============ DOMAINES (sommaire éditorial : registre énuméré, cotes en regard) ============ -->
 <section id="domaines" class="bg-cream">
   <div class="wrap">
-    <div class="dom">
-      <div class="dom__rail">
-        <p class="eyebrow reveal">Domaines</p>
-        <h2 class="reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
-        <div class="dom__rline reveal d2" aria-hidden="true"></div>
-        <p class="dom__intro reveal d3">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
-      </div>
-
-      <div class="dom__list">
-        <article class="dom__item reveal">
-          <div class="dom__num">01</div>
-          <div class="dom__body">
-            <h3>Pilotage financier et administratif</h3>
-            <p>Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">02</div>
-          <div class="dom__body">
-            <h3>Paie, social et conformité</h3>
-            <p>Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">03</div>
-          <div class="dom__body">
-            <h3>Prestations et programmes</h3>
-            <p>Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">04</div>
-          <div class="dom__body">
-            <h3>Systèmes, outils et présence en ligne</h3>
-            <p>Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">05</div>
-          <div class="dom__body">
-            <h3>Appui au pilotage et au développement</h3>
-            <p>L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
-          </div>
-        </article>
-      </div>
+    <div class="som__head">
+      <p class="eyebrow reveal">Domaines</p>
+      <h2 class="reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
+      <p class="som__lead reveal d2">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
     </div>
+
+    <div class="som__rule reveal" aria-hidden="true"></div>
+
+    <ol class="som__list">
+      <li class="som__row reveal">
+        <div class="som__entry">
+          <h3 class="som__title">Pilotage financier et administratif</h3>
+          <p class="som__gloss">Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
+        </div>
+        <span class="som__num" aria-hidden="true">I</span>
+      </li>
+
+      <li class="som__row reveal">
+        <div class="som__entry">
+          <h3 class="som__title">Paie, social et conformité</h3>
+          <p class="som__gloss">Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
+        </div>
+        <span class="som__num" aria-hidden="true">II</span>
+      </li>
+
+      <li class="som__row reveal">
+        <div class="som__entry">
+          <h3 class="som__title">Prestations et programmes</h3>
+          <p class="som__gloss">Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
+        </div>
+        <span class="som__num" aria-hidden="true">III</span>
+      </li>
+
+      <li class="som__row reveal">
+        <div class="som__entry">
+          <h3 class="som__title">Systèmes, outils et présence en ligne</h3>
+          <p class="som__gloss">Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
+        </div>
+        <span class="som__num" aria-hidden="true">IV</span>
+      </li>
+
+      <li class="som__row reveal">
+        <div class="som__entry">
+          <h3 class="som__title">Appui au pilotage et au développement</h3>
+          <p class="som__gloss">L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
+        </div>
+        <span class="som__num" aria-hidden="true">V</span>
+      </li>
+    </ol>
   </div>
 </section>
 
