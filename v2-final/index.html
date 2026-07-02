@@ -790,41 +790,45 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- ============ MODÈLE (mécanisme : un seul point de responsabilité) ============ -->
-<section id="viz" class="bg-cream">
+<!-- ============ MODÈLE (le mécanisme : un seul point de responsabilité) ============ -->
+<section id="viz">
   <div class="wrap">
     <div class="model__head reveal">
       <p class="eyebrow">Le modèle</p>
       <h2>Un seul point de responsabilité.</h2>
-      <p class="model__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe.</p>
+      <p class="model__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- schéma : dispersé -> réuni (Périclès) -> rendu, France comme à l'étranger -->
-    <svg class="model__diagram reveal d1" viewBox="0 0 1000 300" role="img"
-         aria-label="Schéma du modèle : des fonctions de gestion dispersées, réunies par Périclès en un seul point de responsabilité, puis rendues au groupe en France comme à l'étranger.">
-      <g>
-        <line data-draw pathLength="1" x1="72" y1="58" x2="500" y2="150"/>
-        <line data-draw pathLength="1" x1="116" y1="128" x2="500" y2="150"/>
-        <line data-draw pathLength="1" x1="70" y1="196" x2="500" y2="150"/>
-        <line data-draw pathLength="1" x1="150" y1="250" x2="500" y2="150"/>
-        <line data-draw pathLength="1" x1="500" y1="150" x2="884" y2="78"/>
-        <line data-draw pathLength="1" x1="500" y1="150" x2="884" y2="222"/>
-      </g>
-      <g>
-        <circle class="m-ring" data-node="in" cx="72" cy="58" r="6"/>
-        <circle class="m-ring" data-node="in" cx="116" cy="128" r="6"/>
-        <circle class="m-ring" data-node="in" cx="70" cy="196" r="6"/>
-        <circle class="m-ring" data-node="in" cx="150" cy="250" r="6"/>
-        <circle class="m-ring" data-node="out" cx="884" cy="78" r="7"/>
-        <circle class="m-ring" data-node="out" cx="884" cy="222" r="7"/>
-        <circle class="m-hub-ring" data-node="hub" cx="500" cy="150" r="30"/>
-        <circle class="m-hub-core" data-node="hub" cx="500" cy="150" r="13"/>
-      </g>
-    </svg>
+    <!-- schéma : filets dispersés (gauche) -> un seul point (centre) -> une seule ligne
+         rendue qui se partage entre France et étranger (droite). Une seule couleur : l'or. -->
+    <div class="model__figure reveal d1">
+      <svg class="model__diagram" viewBox="0 0 1000 220" role="img"
+           aria-label="Schéma du modèle. À gauche, des fonctions de gestion dispersées : plusieurs filets séparés et désalignés, sans continuité. Au centre, un seul point de responsabilité les réunit. À droite, une seule ligne continue en sort et se partage entre la France et l'étranger.">
+        <!-- Dispersées : filets neutres, parallèles, désalignés, sans continuité -->
+        <g>
+          <line class="md-stub" data-draw pathLength="1" x1="44" y1="46"  x2="408" y2="46"  style="transition-delay:.05s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="86" y1="68"  x2="438" y2="68"  style="transition-delay:.12s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="54" y1="90"  x2="420" y2="90"  style="transition-delay:.19s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="72" y1="130" x2="392" y2="130" style="transition-delay:.26s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="48" y1="152" x2="430" y2="152" style="transition-delay:.33s"/>
+          <line class="md-stub" data-draw pathLength="1" x1="90" y1="174" x2="400" y2="174" style="transition-delay:.40s"/>
+        </g>
+        <!-- Rendues : une seule ligne or continue, qui sort et se partage en deux lieux -->
+        <line class="md-line" data-draw pathLength="1" x1="500" y1="110" x2="840" y2="110" style="transition-delay:.60s"/>
+        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="78"  style="transition-delay:1.2s"/>
+        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="142" style="transition-delay:1.2s"/>
+        <!-- Le seul point coloré du schéma : la prise en charge -->
+        <circle class="md-ring"  cx="500" cy="110" r="17" style="transition-delay:.95s"/>
+        <circle class="md-point" cx="500" cy="110" r="7"  style="transition-delay:1s"/>
+        <!-- Les deux lieux où le service est rendu -->
+        <text class="md-geo" x="914" y="78"  dominant-baseline="middle" style="transition-delay:1.5s">FRANCE</text>
+        <text class="md-geo" x="914" y="142" dominant-baseline="middle" style="transition-delay:1.5s">ÉTRANGER</text>
+      </svg>
+    </div>
 
-    <!-- Copy PLACEHOLDER (concept validé ; à figer en passe copy) -->
+    <!-- Trois temps (placeholders ; à figer en passe copy). Aucun fait ni chiffre. -->
     <div class="model__legend reveal d2">
-      <div class="model__cap">
+      <div class="model__cap model__cap--start">
         <span class="model__dot" aria-hidden="true"></span>
         <p class="eyebrow">Dispersées</p>
         <h3>Des fonctions éparpillées</h3>
@@ -836,11 +840,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <h3>Périclès</h3>
         <p>Un seul point de responsabilité prend en charge, opère et pilote l'ensemble.</p>
       </div>
-      <div class="model__cap">
+      <div class="model__cap model__cap--end">
         <span class="model__dot" aria-hidden="true"></span>
         <p class="eyebrow">Rendues</p>
         <h3>Un service intégré</h3>
-        <p>Délivrées au groupe comme un tout, en France comme à l'étranger.</p>
+        <p>Délivré au groupe comme un tout, en France comme à l'étranger.</p>
       </div>
     </div>
   </div>
