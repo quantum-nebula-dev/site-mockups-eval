@@ -3,7 +3,7 @@
 > Document auto-suffisant. Une session FRAÎCHE lit ceci + `_pipeline/BRIEF.md` + `_pipeline/tokens.md`, vérifie l'état git, et continue. Ne rien re-faire de déjà poussé (idempotence).
 
 ## BOTTOM LINE
-Refonte du design de TOUTE la home Périclès (sauf hero + nav, figés) via le pipeline `/design-site` en **mode assisté**. **3 sections sur 8 refaites et poussées** (modèle, repères, approche) ; **contact en cours** (designer background) ; restent footer + intro + domaines + citation ; puis cohérence globale, passe copy (avec l'user), ship.
+**DÉCISION user 2026-07-02 : re-passe INTÉGRALE sur Fable 5.** TOUTES les sections sauf hero + nav sont refaites par des designers + Vérificateurs **Fable** (spawn SANS param model → hérite de la session). Les versions Opus déjà poussées (modèle, repères, approche, contact = `add8b08`) servent de **baseline à dépasser**, pas d'acquis. Ordre de la file : **intro → domaines → citation → modèle → repères → approche → contact → footer (à créer)**, puis cohérence globale, passe copy (avec l'user), ship (panel GPT-5.5).
 
 ## FAIT (vérifié — preuve = commit + verdict Vérificateur)
 - **Architecture** groundée (7 concurrents réels du bon métier) + **sitemap 9 sections VALIDÉ par l'user** (gate structure). `_pipeline/BRIEF.md` + `_pipeline/tokens.md` posés. Restore point : `_pipeline/backup-index-2026-07-01.html`.
