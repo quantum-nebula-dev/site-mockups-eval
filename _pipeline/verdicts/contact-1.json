@@ -1,0 +1,30 @@
+{
+  "section": "#contact",
+  "deterministic": [
+    {"check": "overflow@390", "result": "pass", "detail": "scrollWidth=innerWidth=390, sectionMaxRight=390, pageOverflow=0"},
+    {"check": "contraste_AA_sur_ink", "result": "fail", "detail": "ECHEC MARGINAL: placeholders des champs email+msg = 4.42:1 (rgba(255,255,255,.45), 16.3px normal) < 4.5. Tout le reste PASS: eyebrow 'Contact' gold=4.94, lab 'Par ecrit' gold=4.94, bouton (ink sur gold)=4.94, h2=17.75, lead=16.03, assur=16.03, val [email]=17.75, labels=9.51, texte saisi=17.75, note=6.92, coche form__ok gold=4.94. --gold-d correctement JAMAIS utilise sur ink."},
+    {"check": "titre_h2_et_tout_<_hero_2vp", "result": "pass", "detail": "desktop h2=48px < hero 66.24px; mobile h2=30.4px < hero 36.8px; lead 27.2/20.8px < hero aux 2 viewports"},
+    {"check": "CTA_unique", "result": "pass", "detail": "exactement 1 bouton/CTA dans #contact: 'Adresser une demande' (btn-gold). [email] = texte placeholder, pas un CTA. Le bouton du header est hors section."},
+    {"check": "aucune_coordonnee_inventee_dans_#contact", "result": "pass", "detail": "colophon val='[email]' (placeholder attendu); placeholders de champ = exemples generiques (vous@organisation.com, Nom du groupe...). Aucune coordonnee reelle de Pericles. HORS-SCOPE mais A SIGNALER: le FOOTER (non juge ici) contient contact@periclesgestion.com + '178 boulevard Haussmann 75008 Paris' inventes -> a neutraliser en placeholders a l'etape footer."},
+    {"check": "IDs_JS_form_email_msg_ok", "result": "pass", "detail": "form/email/msg/ok tous presents (+org). Le JS submit reference email+msg+ok correctement (preventDefault, validation, focus sur ok)."},
+    {"check": "tokens_only", "result": "pass", "detail": "tokens var(--...) + #fff / rgba(255,255,255,a) selon la convention etablie du fichier (hero/header/footer identiques; --line-2 lui-meme = rgba blanc). Aucun hex hors-token, aucune couleur criarde."},
+    {"check": "anti_slop_no_emdash_rendu", "result": "pass", "detail": "0 tiret long (—) rendu dans #contact (verifie sur innerText)."},
+    {"check": "zero_lettrine_zigzag", "result": "pass", "detail": "aucune lettrine/drop-cap, aucune diagonale."},
+    {"check": "ninja", "result": "pass", "detail": "aucune ecole/etablissement/client nomme ('groupe d'etablissements' generique)."},
+    {"check": "formulaire_fonctionne_feuille_reglee", "result": "pass", "detail": "3 labels visibles (display:block, for/id apparies org/email/msg), inputs transparents + hairline underline = feuille reglee, PAS des boites blanches. Focus = ligne d'ecriture or (.wline:focus-within, gold vs ink 4.94:1 >=3:1) -> indicateur de focus suffisant meme si outline:none sur les inputs."}
+  ],
+  "judge": [
+    {"criterion": "composition", "reason": "Cloture forte et nommable: invitation pleine largeur -> pli or -> split colophon/feuille reglee. 2e temps ink qui ferme le cadre (bookend) depuis le hero. L'arete basse partagee ([email] a gauche <-> bouton or a droite) tient les deux colonnes. Seul bemol: leger creux au milieu de la colonne gauche (air voulu du registre magazine), non redhibitoire.", "score": 0.82},
+    {"criterion": "typographie", "reason": "h2 serif 400 'carved' subordonne au hero, eyebrow label discipline, lead serif creme qui amplifie sans repeter. Defaut DESKTOP: la lead casse avec le ';' en tete de 2e ligne (point-virgule orphelin, pas d'espace insecable) -> inelegant dans un registre luxe. Correction = 1 espace fine insecable.", "score": 0.78},
+    {"criterion": "couleur_contraste", "reason": "Dorure or sur ink elegante et retenue (pli, bouton, eyebrow, lab); --gold-d correctement banni. Mais tous les usages or sont cales a 4.94 (juste au-dessus du seuil, marge fine) et les placeholders de champ tombent a 4.42 (sous AA): la couleur 'vit au ras' du seuil, une marge de securite manque.", "score": 0.80},
+    {"criterion": "identite", "reason": "La 'feuille reglee' (lignes d'ecriture hairline, saisie posee sur la ligne, pas de boite) est un geste nommable qui passe le portfolio test et distingue nettement le formulaire d'un contact generique. Accent or unique = retenue. 'Papier a en-tete' bien lisible.", "score": 0.86},
+    {"criterion": "polish", "reason": "Focus = ligne or qui s'allume (signature coherente avec le site, >=3:1), mobile empile propre, zero overflow a 390, aretes alignees, confirmation form__ok accessible (role=status, aria-live, focus porte). Deux nits: placeholders pales (4.42) + wrap ';' desktop.", "score": 0.76}
+  ],
+  "confidence": 0.88,
+  "disposition": "fix",
+  "fixes": [
+    "CONTRASTE (corrige l'unique rouge): .wline input::placeholder, .wline textarea::placeholder -> passer rgba(255,255,255,.45) a rgba(255,255,255,.55) (~5.6:1, franchement AA) au lieu de .45 (4.42, echoue).",
+    "TYPO desktop: empecher le ';' de la .contact__lead de debuter une ligne -> inserer une espace fine insecable avant le ';' dans le texte ('confier&#8239;;') ou appliquer text-wrap:pretty/balance sur .contact__lead.",
+    "(optionnel) marge or: les usages or sur ink sont a 4.94 (limite juste). Si on veut de l'air AA, envisager un or leger plus clair reserve au texte or sur ink; sinon laisser, c'est >=4.5."
+  ]
+}
