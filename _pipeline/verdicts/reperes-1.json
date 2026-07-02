@@ -1,0 +1,28 @@
+{
+  "section": "#reperes",
+  "deterministic": [
+    {"check": "overflow_390", "status": "pass", "detail": "scrollWidth=innerWidth=390, overflow=0 (aussi 0 a 1440)"},
+    {"check": "contraste_AA_taupe", "status": "pass", "detail": "bg taupe rgb(231,223,210) confirme. ink(0,25,49)=13.4:1 (eyebrow 11.8px/600, h2, chiffres) ; body(79,94,107)=5.05:1 (note 16px, labels 14.7px) >=4.5 ; gold-d(127,103,64) UNIQUEMENT sur crochets .ph a 51.84px desktop / 32px mobile = grand texte => 4.06:1 >= 3:1 OK. Le 'N' est en ink, pas en gold-d. Piege #approche evite : eyebrow bascule en ink sur taupe (mesure = rgb(0,25,49))."},
+    {"check": "titre_et_chiffres_sous_hero", "status": "pass", "detail": "1440: heroH1 66.24px/400 ; chiffres 51.84px/300, h2 48px/400 ; France+Intl 30.24px/300. 390: heroH1 36.8px/400 ; chiffres 32px/300, h2 30.4px/400. Aucun ne depasse le hero ni en taille ni en poids aux 2 viewports (marge mobile serree 32 vs 36.8 mais tenue, + poids 300<400)."},
+    {"check": "ninja_zero_compteur_client_zero_nom", "status": "pass", "detail": "Repères = attributs de Périclès : 5 (domaines), France + International (portee), [N] (annees, placeholder), 1 (point unique). Note explicite 'Aucun n'est un compte de clients.' Zero ecole/client/nom."},
+    {"check": "aucun_chiffre_invente", "status": "pass", "detail": "5 = les 5 domaines reellement listes (#domaines I-V) ; 1 = un seul point de responsabilite (positionnement) ; annees inconnues => placeholder [N] visible (crochets or). Aucune stat fabriquee."},
+    {"check": "tokens_only", "status": "pass", "detail": "taupe/ink/body/gold-d/gold(gradient 158,131,90)/line. Aucun hex hors :root. Filet or = meme gradient token que sommaire/approche/contact."},
+    {"check": "anti_slop_zero_tiret_long_rendu", "status": "pass", "detail": "Texte rendu (desktop+mobile) : virgules et deux-points, aucun tiret long (—) visible."},
+    {"check": "zero_lettrine_zigzag", "status": "pass", "detail": "Aucune lettrine/drop-cap, aucune diagonale zigzag."}
+  ],
+  "judge": [
+    {"axis": "composition_rythme", "score": 0.86, "reason": "Le releve est asymetrique (grille .9/1.35/.9/.95, colonne large pour France+International) avec filets verticaux = regles de colonne d'un relev imprime, pas une grille plate 4-egales ; tailles de chiffres variees donnent une texture de registre. Le taupe (1re utilisation) casse le double-sombre elegamment : sequence creme->blanc->sombre(manifeste)->taupe->creme, valeur neuve et distincte. Reserve mineure : bande de releve basse sous une large plage taupe vide (air voulu, mais section un peu bottom-heavy en desktop)."},
+    {"axis": "typographie", "score": 0.88, "reason": "Display serif Newsreader poids 300 'carved', tracking serre, tenue elegante ; [N] avec crochets gold-d clairement un emplacement de copy provisoire, lisible."},
+    {"axis": "couleur_contraste", "score": 0.9, "reason": "Tout texte AA mesure (pas a l'oeil) : ink 13.4:1, body 5.05:1, crochets gold-d 4.06:1 en grand texte (>=3:1). Or reserve a la ligne signature (decor) + accents display. Piege gold-d sur petit texte evite."},
+    {"axis": "identite_portfolio_test", "score": 0.83, "reason": "'Releve de revue' nommable et macrostructure distincte du sommaire #domaines (liste numerotee verticale I-V vs bande horizontale de 4 chiffres display + labels dessous). ADN partage (chiffres serif + or + filets) mais layout franchement different."},
+    {"axis": "polish_raccord_mobile", "score": 0.85, "reason": "Raccord citation(sombre)->reperes(taupe) : coupe nette assumee sur arete horizontale droite pleine largeur ; l'atterrissage taupe chaud (pas blanc cru) + l'air avant l'eyebrow adoucit => elegant, pas brutal. Mobile : pile propre, chaque repere tenu par un filet horizontal, zero overflow."}
+  ],
+  "judge_overall": 0.86,
+  "confidence": 0.88,
+  "disposition": "auto",
+  "captures": [
+    "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/rep1_desktop.png",
+    "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/rep1_mobile.png",
+    "C:/Users/Neon/.claude/jobs/18a9cdae/tmp/rep1_junction.png"
+  ]
+}
