@@ -542,9 +542,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     position:fixed;inset:72px 0 auto 0;background:#fff;padding:22px var(--gut) 30px;
     border-bottom:1px solid var(--line);box-shadow:var(--shadow);
   }
-  .nav.open a{color:var(--ink);font-size:1.1rem;padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav.open a{color:var(--ink);font-size:1.05rem;padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
   .nav.open a::after{display:none}
-  .nav.open .btn{display:inline-flex;margin-top:14px}
+  .nav.open .nav__sep{display:none}
+  /* CTA rendu comme un pill net et lisible dans la feuille blanche du menu mobile */
+  .nav.open a.btn-ghost{
+    display:inline-flex;width:auto;margin-top:16px;padding:0 26px;min-height:46px;
+    font-size:.78rem;border:1.5px solid rgba(0,25,49,.32);border-radius:1000px;
+    color:var(--ink);background:rgba(255,255,255,.4);
+  }
+  .nav.open a.btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 }
 @media (max-width:480px){
   .stats{grid-template-columns:1fr}
