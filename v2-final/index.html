@@ -378,12 +378,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   font-variant-numeric:lining-nums;
   transition:transform .55s cubic-bezier(.2,.7,.2,1);
 }
-#domaines .dom__num::before{
-  content:"";position:absolute;z-index:-1;inset:-.12em -.34em;
-  background:var(--cream);
-}
 #domaines .dom__title{letter-spacing:-.008em}
 #domaines .dom__gloss{margin-top:.55em;max-width:47ch;color:var(--body)}
+
+/* GESTE SIGNATURE (unique) : chiffre-fantôme « 5 » — cinq domaines — en filigrane serif,
+   ancré dans le quadrant inférieur gauche resté mort. En retrait (ne concurrence pas le hero),
+   aligné sur la marge gauche, hors du flux du texte, purement décoratif (aria-hidden). */
+#domaines .dom__ghost{
+  position:absolute;left:0;bottom:-.02em;z-index:0;
+  margin:0;pointer-events:none;user-select:none;
+  font-family:var(--serif);font-weight:400;line-height:.8;
+  font-size:clamp(8rem,20vw,19rem);letter-spacing:-.02em;
+  color:var(--ink);opacity:.06;
+}
 
 /* rapprochement retenu : au survol, la cote monte d'un cran sur sa station */
 #domaines .dom__item:hover .dom__num,
@@ -393,6 +400,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   #domaines .dom__wrap{grid-template-columns:1fr;row-gap:clamp(34px,6vw,52px)}
   #domaines .dom__aside{position:static;top:auto}
   #domaines .dom__lead{max-width:54ch}
+  #domaines .dom__ghost{display:none}
 }
 @media (max-width:560px){
   #domaines .dom__register{--rail:clamp(2.1rem,9vw,2.6rem)}
@@ -400,9 +408,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   #domaines .dom__num{font-size:clamp(1.3rem,6vw,1.6rem)}
   #domaines .dom__gloss{max-width:60ch}
 }
-@media (prefers-reduced-motion:reduce){
-  #domaines .dom__register::before{transform:scaleY(1);transition:none}
-}
+/* (plus d'effet piloté par le scroll dans #domaines : rien à neutraliser en reduced-motion) */
 
 /* ============ MODÈLE (le mécanisme : un seul point de responsabilité) ============
    Parti-pris : le mécanisme n'est pas un réseau de noeuds fléchés, c'est UNE seule
@@ -984,6 +990,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           </div>
         </li>
       </ol>
+
+      <span class="dom__ghost" aria-hidden="true">5</span>
     </div>
   </div>
 </section>
