@@ -1,0 +1,78 @@
+{
+  "verdict": "BLOCK",
+  "confidence": 0.86,
+  "reasons": [
+    {
+      "criterion": "eleve_la_baseline",
+      "pass": false,
+      "evidence": "La mosaïque pondérée des 5 domaines est bien conservée, mais l’élévation vs baseline n’est pas nette. Le cadre continu et les séparateurs dorés assez lourds donnent une lecture de tableau, les aplats restent plats, et la disparition des gouttières/respirations de l’ancienne version affaiblit l’effet de “cubes” aimé."
+    },
+    {
+      "criterion": "aucun_motif_du_rejet",
+      "pass": true,
+      "evidence": "La candidate ne reprend pas le fan-in/fan-out, les flèches, les étapes explicatives ni la surcharge informative de l’image rejetée. Elle reste sur une treemap simple, sans schéma causal façon PowerPoint."
+    },
+    {
+      "criterion": "contenu_contenu",
+      "pass": true,
+      "evidence": "La section tient dans environ un écran desktop, avec un titre, un court paragraphe et seulement 5 libellés de tuiles. Pas de légende bavarde ni de détails secondaires."
+    },
+    {
+      "criterion": "signature_possedable",
+      "pass": false,
+      "evidence": "Le geste reste un treemap premium générique en bleu/or/crème. En remplaçant le logo et quelques textes, l’asset pourrait être posé tel quel sur une autre maison de conseil ou de gestion : il n’est pas suffisamment propriétaire à Périclès."
+    },
+    {
+      "criterion": "retenue",
+      "pass": true,
+      "evidence": "Il n’y a qu’un geste principal, sans accumulation d’effets. Les numéros restent secondaires et la composition générale est calme ; aucun élément clairement cassé ou orphelin n’apparaît."
+    },
+    {
+      "criterion": "hierarchie_interne",
+      "pass": true,
+      "evidence": "La hiérarchie titre > paragraphe > intitulés de tuiles est lisible. Les contrastes principaux sont globalement suffisants sur bleu nuit, or et crème, et les libellés restent identifiables."
+    },
+    {
+      "criterion": "holistique_hors_grille",
+      "pass": false,
+      "evidence": "L’ensemble est propre mais pas encore beau au niveau portfolio. L’asset paraît davantage comme une grille raffinée que comme une pièce signée de direction artistique ; il manque une évidence visuelle mémorable."
+    }
+  ],
+  "top_fixes": [
+    "Réduire l’effet tableau : séparateurs et bordure à calibrer à 1 px optique maximum, sans bordure extérieure plus lourde que les divisions internes.",
+    "Rétablir la sensation de tuiles pondérées aimée : gouttières/angles/marges internes cohérents sur les 5 blocs, avec numéros et libellés alignés sur une même grille.",
+    "Problème créatif à résoudre avant ship : treemap premium interchangeable, sans signe propriétaire Périclès ; le test de substitution logo/palette échoue en l’état."
+  ],
+  "_meta": {
+    "model": "openai/gpt-5.5",
+    "effort": "high",
+    "usage": {
+      "prompt_tokens": 4011,
+      "completion_tokens": 3193,
+      "total_tokens": 7204,
+      "cost": 0.11468655,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.115845,
+        "upstream_inference_prompt_cost": 0.020055,
+        "upstream_inference_completions_cost": 0.09579
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2586,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "images": [
+      "C:\\Users\\Neon\\pericles-mockups\\_pipeline\\shots\\viz-tree-fix2-final.png",
+      "C:\\Users\\Neon\\.claude\\design-taste\\gold\\pericles-viz-treemap-cubes.png",
+      "C:\\Users\\Neon\\.claude\\design-taste\\rejets\\pericles-viz-pas-proprietaire.png"
+    ]
+  }
+}
