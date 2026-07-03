@@ -387,7 +387,89 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* [FROM SCRATCH] CSS de la section #viz À ÉCRIRE ici (scopé). Ancien CSS retiré volontairement (anti-fixation). */
+/* [FROM SCRATCH] — « le point de rassemblement » (axe TYPOGRAPHIQUE PUR, aucun asset, aucun schéma).
+   Parti-pris éditorial : une BANDE de rassemblement, lue de gauche (le multiple) vers un point (le tenu).
+   En haut, les axes de dispersion posés en labels tenus et ESPACÉS d'un bord à l'autre (l'opérationnel
+   dispersé) ; au milieu, la « ligne active » or du site tendue sur toute la largeur, qui se dessine et
+   les enfile (le rassemblement) ; sous elle, à UN seul point marqué d'un tick or descendant, l'énoncé
+   serif « carved » (le point de responsabilité), puis sa coda plus basse (l'ensemble rendu au groupe).
+   Le regard lit large -> un point -> restitution. Voix grot pour le dispersé, serif pour le tenu.
+   Distinct du spread vertical de l'intro et de la citation centrée qui suit (pacing : ni liste, ni
+   phrase centrée). UN geste : la ligne or et son point unique. Or en ponctuation-filet (jamais en
+   aplat), angles nets, type = seule matière — réf. Franco Maria Ricci, « type only » 8vo.
+   AA : tout texte en ink/body sur blanc (>= 7:1) ; l'or reste au filet (décoratif, aria-hidden) et à
+   l'accent display >= 24px (grand => 3:1 tenu). Aucune couleur hors token. */
+.viz__model{
+  --viz-anchor:52%;                          /* le point unique où tout se rassemble (asymétrie voulue,
+                                                à contre-pied du head calé à gauche) */
+  margin-top:clamp(48px,6vw,86px);           /* grand blanc : la bande respire (whitespace = registre) */
+}
+
+/* LE MULTIPLE : les axes de dispersion, en labels tenus espacés d'un bord à l'autre. Voix grot
+   (l'opérationnel dispersé), en registre label mais en body (jamais l'or institutionnel de l'eyebrow). */
+.viz__axes{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:clamp(14px,3vw,40px);flex-wrap:wrap;
+}
+.viz__axes span{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--body);white-space:nowrap;
+}
+
+/* LE RASSEMBLEMENT : la « ligne active » or du site, tendue sur toute la largeur, qui se dessine de
+   gauche à droite au reveal (même signature que le sommaire, les repères, la charte, le contact). */
+.viz__gather{position:relative;height:1px;margin-top:clamp(26px,3.2vw,44px)}
+.viz__gather::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.viz__gather.is-visible::after{transform:scaleX(1)}
+
+/* LE POINT UNIQUE : un tick or descend de la ligne vers l'énoncé, à l'anchor. Se dessine APRÈS la
+   ligne (le rassemblement d'abord, puis la descente vers le point). Décoratif. */
+.viz__node{
+  position:absolute;top:0;left:var(--viz-anchor);
+  width:1px;height:clamp(30px,4vw,46px);background:var(--gold);
+  transform:scaleY(0);transform-origin:top center;
+  transition:transform .9s cubic-bezier(.2,.7,.2,1) .9s;
+}
+.viz__gather.is-visible .viz__node{transform:scaleY(1)}
+@media (prefers-reduced-motion:reduce){.viz__gather::after{transform:scaleX(1)}.viz__node{transform:scaleY(1)}}
+
+/* L'ÉNONCÉ TENU : à l'anchor, serif « carved » 300 ink ; l'accent en italique-or (la voix du hero),
+   display >= 24px => AA-large tenu. Subordonné au h2 (jamais plus grand ni plus lourd que lui, ni que
+   le H1 du hero — taille comme poids). */
+.viz__point{
+  margin-left:var(--viz-anchor);max-width:24ch;margin-top:clamp(24px,3vw,40px);
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.55rem,2.5vw,2.05rem);line-height:1.24;letter-spacing:-.012em;
+}
+.viz__point i{font-style:italic;font-weight:300;color:var(--gold)}
+
+/* LA RESTITUTION : la coda plus basse et discrète (« puis rendu au groupe »), même anchor, serif
+   italique en body — le tenu qui vous revient, dit à voix plus basse. */
+.viz__coda{
+  margin-left:var(--viz-anchor);max-width:30ch;margin-top:clamp(13px,1.6vw,20px);
+  font-family:var(--serif);font-weight:300;font-style:italic;color:var(--body);
+  font-size:clamp(1.05rem,1.4vw,1.28rem);line-height:1.4;letter-spacing:-.004em;
+}
+
+/* Responsive : l'anchor se réduit puis s'annule ; la bande passe flush-left, pleine mesure. */
+@media (max-width:980px){
+  .viz__model{--viz-anchor:32%}
+  .viz__point{max-width:26ch}
+}
+@media (max-width:680px){
+  .viz__model{--viz-anchor:0%;margin-top:clamp(36px,8vw,56px)}
+  .viz__axes{gap:10px 18px}
+  .viz__point{max-width:30ch}
+  .viz__coda{max-width:44ch}
+}
+@media (max-width:420px){
+  .viz__axes span{font-size:.68rem;letter-spacing:.1em}
+}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
@@ -915,7 +997,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- [FROM SCRATCH] Corps de la section À CONCEVOIR ici. L'ancien bloc a été retiré VOLONTAIREMENT (anti-fixation) : ne pas le rechercher. -->
+    <!-- [FROM SCRATCH] « le point de rassemblement » : bande éditoriale, lue de gauche (le multiple)
+         vers un point (le tenu). Axes dispersés -> ligne active or qui les enfile -> énoncé à un seul
+         point + coda de restitution. Typographie seule, aucun asset. -->
+    <div class="viz__model">
+      <div class="viz__axes reveal">
+        <span>Par métier</span>
+        <span>Par prestataire</span>
+        <span>Par échéance</span>
+        <span>Par pays</span>
+      </div>
+      <div class="viz__gather reveal d1" aria-hidden="true">
+        <span class="viz__node"></span>
+      </div>
+      <p class="viz__point reveal d2">Un seul interlocuteur <i>en répond.</i></p>
+      <p class="viz__coda reveal d3">Puis l'ensemble vous revient comme un service tenu.</p>
+    </div>
   </div>
 </section>
 
