@@ -379,12 +379,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    engravée sous le point : le repère devient possédable. Plate blanche : la page respire avant le
    manifeste sombre. Geste signature unique : le « filet or qui se dessine » du site, promu en
    armature du mécanisme (les filets se dessinent, le point éclôt, la ligne se rend). */
-.model__head{max-width:58ch;margin-bottom:clamp(30px,3.8vw,54px)}
+.model__head{max-width:58ch;margin-bottom:clamp(24px,3vw,44px)}
 .model__head h2{margin-top:22px}
 .model__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* la figure : bande contenue, centrée dans un large champ d'air (jamais un cadre/boîte) */
-.model__figure{position:relative;margin:0 auto;max-width:920px}
+/* la figure : ancrée à gauche sur la colonne éditoriale (les filets émergent sous le texte),
+   posée dans un large champ d'air ; jamais un cadre ni une boîte. */
+.model__figure{position:relative}
 .model__diagram{display:block;width:100%;height:auto;overflow:visible}
 
 /* GESTE SIGNATURE : le filet or qui se dessine, ici promu en armature du mécanisme */
@@ -398,7 +399,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    non-scaling-stroke => la finesse tient à toute échelle, mobile compris. */
 .model__diagram .md-ray{stroke:url(#mdFade);stroke-width:1;vector-effect:non-scaling-stroke;transition-duration:.9s}
 /* la ligne rendue : un seul filet or continu, la livraison intégrée */
-.model__diagram .md-line{stroke:var(--gold);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.model__diagram .md-line{stroke:var(--gold);stroke-width:1.5;vector-effect:non-scaling-stroke}
 /* le seul point coloré de la page : la prise en charge (un seul anneau, seule emphase) */
 .md-point{fill:var(--gold)}
 .md-ring{fill:none;stroke:var(--gold);stroke-opacity:.34;stroke-width:1;vector-effect:non-scaling-stroke}
