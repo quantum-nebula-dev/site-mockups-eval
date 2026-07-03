@@ -346,19 +346,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 #domaines .dom__head{margin-top:22px}
 #domaines .dom__lead{margin-top:1.1em;max-width:33ch;color:var(--body)}
 
-/* le rail : cotes serif or | filet or continu | intitulés. --rail = colonne des cotes ;
-   --chan = gouttière où court la ligne. La ligne se pose au milieu de la gouttière. */
+/* le rail : la ligne court au CENTRE de la colonne des cotes ; chaque cote s'y pose en
+   station (clairière crème), la ligne « perce » le chiffre. --rail = colonne des cotes. */
 #domaines .dom__register{
-  --rail:clamp(2.3rem,3vw,2.9rem);
-  --chan:clamp(30px,4.4vw,58px);
+  --rail:clamp(2.6rem,3.4vw,3.4rem);
   position:relative;list-style:none;
 }
-/* la ligne de responsabilité : filet or qui se dessine (scaleY, origine haut) */
+/* la ligne de responsabilité : filet or qui se dessine (scaleY, origine haut), présent sur
+   toute la hauteur pour tenir les CINQ cotes (fade minime, jamais rompu avant la 05) */
 #domaines .dom__register::before{
-  content:"";position:absolute;top:.24em;bottom:.24em;
-  left:calc(var(--rail) + var(--chan) / 2);
+  content:"";position:absolute;top:.15em;bottom:.15em;
+  left:calc(var(--rail) / 2);
   width:1px;
-  background:linear-gradient(180deg,var(--gold) 0%,rgba(158,131,90,.55) 70%,rgba(158,131,90,.14) 100%);
+  background:linear-gradient(180deg,rgba(158,131,90,.85) 0%,rgba(158,131,90,.5) 100%);
   transform:scaleY(0);transform-origin:top center;
   transition:transform 1.5s cubic-bezier(.35,.02,.2,1) .12s;
 }
@@ -367,27 +367,33 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 #domaines .dom__item{
   display:grid;
   grid-template-columns:var(--rail) 1fr;
-  column-gap:var(--chan);
+  column-gap:clamp(22px,2.8vw,40px);
   align-items:baseline;
-  padding-block:clamp(26px,3.6vw,46px);
+  padding-block:clamp(24px,3vw,40px);
 }
 #domaines .dom__item:first-child{padding-top:0}
 #domaines .dom__item:last-child{padding-bottom:0}
 
-/* la cote : chiffre serif or en station sur la ligne — subordonnée au hero (aria-hidden) */
+/* la cote en station SUR la ligne : chiffre serif or, clairière crème derrière (la ligne perce
+   le chiffre) — subordonnée au hero (aria-hidden). Centrée sur la ligne. */
 #domaines .dom__num{
-  justify-self:end;
+  justify-self:center;
+  position:relative;z-index:1;
   font-family:var(--serif);font-weight:400;color:var(--gold);
-  font-size:clamp(1.35rem,1.9vw,1.9rem);line-height:1;letter-spacing:.02em;
+  font-size:clamp(1.4rem,1.9vw,1.9rem);line-height:1;letter-spacing:.01em;
   font-variant-numeric:lining-nums;
   transition:transform .55s cubic-bezier(.2,.7,.2,1);
 }
+#domaines .dom__num::before{
+  content:"";position:absolute;z-index:-1;inset:-.34em -.4em;
+  background:var(--cream);
+}
 #domaines .dom__title{letter-spacing:-.008em}
-#domaines .dom__gloss{margin-top:.55em;max-width:46ch;color:var(--body)}
+#domaines .dom__gloss{margin-top:.55em;max-width:47ch;color:var(--body)}
 
-/* rapprochement retenu : au survol, la cote glisse d'un cran vers son domaine */
+/* rapprochement retenu : au survol, la cote monte d'un cran sur sa station */
 #domaines .dom__item:hover .dom__num,
-#domaines .dom__item:focus-within .dom__num{transform:translateX(-5px)}
+#domaines .dom__item:focus-within .dom__num{transform:translateY(-3px)}
 
 @media (max-width:900px){
   #domaines .dom__wrap{grid-template-columns:1fr;row-gap:clamp(34px,6vw,52px)}
@@ -395,8 +401,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   #domaines .dom__lead{max-width:54ch}
 }
 @media (max-width:560px){
-  #domaines .dom__register{--rail:clamp(1.9rem,8vw,2.4rem);--chan:clamp(18px,5vw,26px)}
-  #domaines .dom__item{padding-block:clamp(22px,6vw,32px)}
+  #domaines .dom__register{--rail:clamp(2.1rem,9vw,2.6rem)}
+  #domaines .dom__item{column-gap:16px;padding-block:clamp(22px,6vw,32px)}
+  #domaines .dom__num{font-size:clamp(1.3rem,6vw,1.6rem)}
   #domaines .dom__gloss{max-width:60ch}
 }
 @media (prefers-reduced-motion:reduce){
