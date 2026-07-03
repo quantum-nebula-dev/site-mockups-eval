@@ -387,7 +387,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* [FROM SCRATCH] CSS de la section #viz À ÉCRIRE ici (scopé). Ancien CSS retiré volontairement (anti-fixation). */
+/* [FROM SCRATCH] #viz — « LA CONVERGENCE GRAVÉE ».
+   Parti : la page entière est signée par « la ligne active » — un filet or qui SE DESSINE dans
+   chaque section (header, épine de l'intro, filet du sommaire, pli du contact). Ici, cette même
+   ligne est portée à sa THÈSE : plusieurs filets or, dispersés et faibles à la périphérie, sont
+   ENROULÉS et réunis en UN SEUL point lumineux — une gravure de convergence (registre guilloché /
+   rose-engine, réf. cadrans de maison, décor « Convergence » gravé). Ce qui est dispersé est réuni
+   en un point : rendu tangible, pas énoncé. Objet DÉCORATIF (aria-hidden) ; le sens reste au lead.
+   Macrostructure : un spread texte | objet (langue du site) dont la colonne droite est une PIÈCE
+   dessinée en code (SVG hairline), non un schéma. Un seul geste, un seul point lit, hiérarchie
+   franche (h2 subordonné au hero ; l'or reste un décor à faible contraste). Section resserrée. */
+#viz .wrap{
+  display:grid;
+  grid-template-columns:minmax(0,0.86fr) minmax(0,1.14fr);
+  column-gap:clamp(40px,6vw,100px);
+  align-items:center;
+}
+/* dans la colonne de gauche, la mesure du texte se resserre (le lead garde sa voix) */
+#viz .viz__head{margin-bottom:0;max-width:33ch}
+#viz .viz__lead{max-width:32ch}
+
+/* LA PIÈCE : la gravure occupe la colonne droite, cadrée net (détail d'une gravure plus large). */
+.viz-fig{margin:0;position:relative;width:100%}
+.viz-rose{display:block;width:100%;height:auto;overflow:hidden}
+/* les filets : hairline précis ; teinte = --gold (via le dégradé radial qui les fait passer de
+   lumineux au point à presque effacés en périphérie = la profondeur d'une gravure). */
+.viz-thread{
+  stroke-width:.85;stroke-linecap:round;
+  stroke-dasharray:1;stroke-dashoffset:1;
+  animation:vizDraw .95s cubic-bezier(.35,.02,.2,1) both;
+}
+/* apparition sobre (autoplay au chargement, terminée avant toute capture) : les rings se posent,
+   puis LE POINT s'allume en dernier (le geste « se dessine » du site, résolu en un point). */
+.viz-rings circle{opacity:0;animation:vizFade .9s ease .05s forwards}
+.viz-halo,.viz-node-ring,.viz-node{opacity:0;animation:vizFade .7s ease 1s forwards}
+@keyframes vizDraw{to{stroke-dashoffset:0}}
+@keyframes vizFade{to{opacity:1}}
+
+@media (max-width:980px){
+  /* en pile : le texte tenu, la pièce centrée dessous, plus contenue */
+  #viz .wrap{grid-template-columns:1fr;row-gap:clamp(30px,6vw,44px)}
+  #viz .viz__head{max-width:56ch}
+  #viz .viz__lead{max-width:52ch}
+  .viz-fig{max-width:440px;margin-inline:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .viz-thread{stroke-dashoffset:0;animation:none}
+  .viz-rings circle,.viz-halo,.viz-node-ring,.viz-node{opacity:1;animation:none}
+}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
@@ -915,7 +962,65 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- [FROM SCRATCH] Corps de la section À CONCEVOIR ici. L'ancien bloc a été retiré VOLONTAIREMENT (anti-fixation) : ne pas le rechercher. -->
+    <!-- [FROM SCRATCH] LA CONVERGENCE GRAVÉE : les filets or du site réunis en UN point.
+         Objet décoratif dessiné en code (SVG hairline), non un schéma. -->
+    <figure class="viz-fig reveal d1" aria-hidden="true">
+      <svg class="viz-rose" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" focusable="false">
+        <defs>
+          <!-- profondeur de gravure : or lumineux au point (r=0) -> presque effacé en périphérie -->
+          <radialGradient id="vizFade" gradientUnits="userSpaceOnUse" cx="300" cy="280" r="298">
+            <stop offset="0" stop-color="#9E835A" stop-opacity=".55"/>
+            <stop offset=".42" stop-color="#9E835A" stop-opacity=".26"/>
+            <stop offset="1" stop-color="#9E835A" stop-opacity=".045"/>
+          </radialGradient>
+          <!-- halo tenu du point (le seul endroit « lit ») -->
+          <radialGradient id="vizCore" gradientUnits="userSpaceOnUse" cx="300" cy="280" r="46">
+            <stop offset="0" stop-color="#9E835A" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#9E835A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g class="viz-rings" fill="none" stroke="url(#vizFade)"></g>
+        <g class="viz-spiral" fill="none" stroke="url(#vizFade)"></g>
+        <circle class="viz-halo" cx="300" cy="280" r="44" fill="url(#vizCore)"/>
+        <circle class="viz-node-ring" cx="300" cy="280" r="12.5" fill="none" stroke="#9E835A" stroke-width="1"/>
+        <circle class="viz-node" cx="300" cy="280" r="2.6" fill="#001931"/>
+      </svg>
+    </figure>
+    <script>
+    /* Génère la gravure de #viz : anneaux concentriques (engine-turned) + filets or en spirale
+       logarithmique qui s'enroulent de la périphérie dispersée jusqu'au point. Rien hors #viz. */
+    (function(){
+      var NS="http://www.w3.org/2000/svg";
+      var rings=document.querySelector("#viz .viz-rings"),
+          spiral=document.querySelector("#viz .viz-spiral");
+      if(!rings||!spiral) return;
+      var cx=300, cy=280;
+      [16,27,98,164,232,296].forEach(function(r,i){
+        var c=document.createElementNS(NS,"circle");
+        c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
+        c.setAttribute("stroke-width", i<2 ? "1" : "0.7");
+        rings.appendChild(c);
+      });
+      var N=13, Rout=300, Rin=19, sweep=2.2, steps=54;
+      for(var i=0;i<N;i++){
+        var a0=i*(2*Math.PI/N), d="";
+        for(var s=0;s<=steps;s++){
+          var t=s/steps,
+              r=Rout*Math.pow(Rin/Rout,t),
+              a=a0+t*sweep,
+              x=(cx+r*Math.cos(a)).toFixed(1),
+              y=(cy+r*Math.sin(a)).toFixed(1);
+          d+=(s?"L":"M")+x+" "+y+" ";
+        }
+        var p=document.createElementNS(NS,"path");
+        p.setAttribute("d",d.trim());
+        p.setAttribute("class","viz-thread");
+        p.setAttribute("pathLength","1");
+        p.style.animationDelay=(0.12+i*0.028).toFixed(3)+"s";
+        spiral.appendChild(p);
+      }
+    })();
+    </script>
   </div>
 </section>
 
