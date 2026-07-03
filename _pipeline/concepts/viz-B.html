@@ -399,8 +399,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    franche (h2 subordonné au hero ; l'or reste un décor à faible contraste). Section resserrée. */
 #viz .wrap{
   display:grid;
-  grid-template-columns:minmax(0,0.86fr) minmax(0,1.14fr);
-  column-gap:clamp(40px,6vw,100px);
+  grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);
+  column-gap:clamp(36px,5vw,80px);
   align-items:center;
 }
 /* dans la colonne de gauche, la mesure du texte se resserre (le lead garde sa voix) */
@@ -415,8 +415,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz-thread{
   stroke-width:.85;stroke-linecap:round;
   stroke-dasharray:1;stroke-dashoffset:1;
-  animation:vizDraw .95s cubic-bezier(.35,.02,.2,1) both;
+  animation:vizDraw .9s cubic-bezier(.35,.02,.2,1) both;
 }
+/* le jeu contra-rotatif : trait plus fin, il tisse l'entrelacs sans alourdir */
+.viz-spiral2 .viz-thread{stroke-width:.6}
 /* apparition sobre (autoplay au chargement, terminée avant toute capture) : les rings se posent,
    puis LE POINT s'allume en dernier (le geste « se dessine » du site, résolu en un point). */
 .viz-rings circle{opacity:0;animation:vizFade .9s ease .05s forwards}
