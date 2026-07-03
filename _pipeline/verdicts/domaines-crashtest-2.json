@@ -1,0 +1,67 @@
+{
+  "section": "#domaines",
+  "round": 2,
+  "fixes_tour1": [
+    {
+      "fix": 1,
+      "resolu": true,
+      "preuve": "Le demi-spine vertical casse (qui mourait en stub sous 03) a DISPARU. La candidate a pris l'option 'filets horizontaux restaures' : quatre filets or fins et propres separent les cinq items (01-02, 02-03, 03-04, 04-05), aucun connecteur vertical, aucun stub orphelin nulle part. Sur pixels statiques plus rien ne se lit comme un bug de scroll-progress. Interdit du tour 1 (demi-spine) elimine."
+    },
+    {
+      "fix": 2,
+      "resolu": true,
+      "preuve": "Rythme regularise : les gaps de blanc entre blocs sont constants (filet -> numero suivant ~55-65px, mesures uniformes sur les 4 intervalles). Les vides qui GROSSISSAIENT vers le bas (03->04->05 au tour 1) sont tues : le dernier intervalle 04->05 egale les precedents, pas de void expansif. Le bas ne s'affaisse plus : le quadrant inferieur est tenu a droite par l'item 05 et a gauche par le 5 fantome."
+    },
+    {
+      "fix": 3,
+      "resolu": true,
+      "preuve": "UN seul geste signature ajoute : un chiffre-fantome '5' surdimensionne, serif Newsreader, ton greige tres pale, aligne sur le bord gauche du contenu (meme marge que eyebrow/titre/intro), pose dans le blanc mort du bas-gauche. Il ancre le quadrant, fait echo semantique a 'Cinq domaines'. Un seul geste, pas trois : aucune lettrine, aucun zigzag, aucun effet cumule. C'est exactement le 'chiffre-fantome surdimensionne' propose au tour 1, execute proprement (aucun chevauchement de texte, ton qui recule derriere le titre)."
+    }
+  ],
+  "deterministic": [
+    { "check": "overflow_390", "pass": true, "note": "Sonde shoot.ps1 : innerWidth=390 scrollWidth=390 -> FITS, aucun overflow horizontal." },
+    { "check": "h2_sous_hero", "pass": true, "note": "h2 'Cinq domaines, une seule responsabilite.' = serif encre sur creme, poids regular, nettement plus petit et plus calme que le hero (serif blanc geant sur immeuble sombre). Taille ET poids : ne concurrence pas le hero, qui reste le plus grand et le plus fort de la page." },
+    { "check": "textes_verbatim", "pass": true, "note": "'Cinq domaines, une seule responsabilite.' present. Les 5 intitules presents et exacts : Pilotage financier et administratif / Paie, social et conformite / Prestations et programmes / Systemes, outils et presence en ligne / Appui au pilotage et au developpement." }
+  ],
+  "rubric": {
+    "composition_rythme": {
+      "score": 4.0,
+      "raison": "AVANT le chiffre : l'asymetrie 2 colonnes (titre+intro a gauche facon sticky, liste 01-05 a droite) est preservee, et les deux defauts du tour 1 sont corriges : rythme droit regulier (gaps constants) et quadrant inferieur gauche mort desormais ancre par le 5 fantome. Les quatre coins sont tenus (titre haut-gauche, liste droite, 5 fantome bas-gauche, item 05 bas-droite), l'oeil est guide. Depasse le 'equilibree sans intention forte' du tour 1. Pas un 5 : la trame reste une liste 2 colonnes assez classique, l'interet vient d'un seul element ajoute, pas d'une composition profondement travaillee.",
+      "ratchet_ok": true
+    },
+    "typographie": {
+      "score": 4.0,
+      "raison": "AVANT le chiffre : herite du hero/plancher, contraste de tailles franc (titre serif >> intitules serif >> descriptions muted), numeros or, eyebrow uppercase tracke, titre poids regular sous le hero. Le 5 fantome est un glyphe serif elegant coherent avec la fonte display. Rien a reprocher. Pas un 5 : systeme typo herite, pas pousse plus loin ici.",
+      "ratchet_ok": true
+    },
+    "couleur_contraste": {
+      "score": 4.0,
+      "raison": "AVANT le chiffre : palette strictement tokens (encre/or/creme), descriptions muted, numeros et filets or sobres, 5 fantome = teinte tonale pale dans la famille creme. Contraste AA sur le texte lisible, zero couleur brute. Dans les tokens et intentionnel.",
+      "ratchet_ok": true
+    },
+    "identite_portfolio_test": {
+      "score": 4.0,
+      "raison": "AVANT le chiffre : le plancher etait 'propre et on-brand sans geste possedable = 3'. La candidate pose UNE idee signature nommable ('le 5 fantome') liee au contenu ('Cinq domaines'), executee proprement (aligne, tonal, sans chevauchement, recule derriere le titre). Deux tests durs passes : (a) grayscale -> la hierarchie tient sans la couleur ; (b) atmosphere/2 -> si j'enleve le 5, la structure 2 colonnes a filets tient seule, donc le geste ne COMPENSE pas un vide, il ajoute un focal. Cela souleve la section au-dessus du plancher nu. Pas un 5 : un chiffre-fantome surdimensionne reste un procede editorial connu, tasteful mais pas un parti-pris saisissant ; possedable surtout parce qu'il est amarre au '5' du titre.",
+      "ratchet_ok": true
+    },
+    "polish": {
+      "score": 4.0,
+      "raison": "AVANT le chiffre : le tueur de polish du tour 1 (demi-spine casse mourant sous 03, stub orphelin) a DISPARU. Remplace par des filets or horizontaux nets et regulierement espaces, rythme d'items constant, 5 fantome aligne et sans chevauchement, overflow 390 FITS. Aucun orphelin ni effet casse visible. Grand bond depuis 2.0. Pas un 5 : le detail fin mobile de la section n'a pas ete capture separement (thumbnail 390px trop reduite), mais la sonde overflow passe et le desktop est propre.",
+      "ratchet_ok": true
+    }
+  },
+  "anchor_comparison": {
+    "beats_floor_rail_sticky": true,
+    "evidence": "Le plancher (rail-sticky) etait la meme grille 2 colonnes a filets horizontaux, note 'aime SANS PLUS', dont la propre note gold disait qu'il lui manquait 'un geste signature, une tension'. La candidate = ce plancher + le 5 fantome qui comble exactement ce manque + rythme regularise + polish repare. Elle ne clone pas le plancher : elle lui ajoute le focal amarrant qu'il n'avait pas. Depassement net mais mesure (un 4 solide, pas un sommet), coherent avec le mandat 'depasser nettement un plancher deja aime sans plus'.",
+    "shares_reject_motif": false,
+    "reject_note": "Ne partage PAS le motif du rejet (sommaire statique) : pas de pile plate pleine largeur, pas de chiffres romains I-V a l'extreme droite. Ce sont des numeros arabes 01-05 or a GAUCHE de chaque item, dans la grille 2 colonnes a tension gauche/droite. Motif rejete absent."
+  },
+  "holistic": {
+    "beau_et_signe": true,
+    "geste_signature_identifie": "Le 5 fantome : chiffre serif surdimensionne, pale, ancrant le bas-gauche et faisant echo a 'Cinq domaines'. Un seul geste, execute proprement, qui donne a la section un focal memorable que le plancher n'avait pas.",
+    "why": "Oubli de la rubric : c'est calme, elegant, bien proportionne, on-brand, et surtout ca ne se lit plus comme 'le plancher legerement degrade' (le diagnostic du tour 1) mais comme une section finie avec une raison d'etre. Un DA la mettrait en portfolio sans gene. Reserve honnete : la signature est tasteful mais familiere (procede editorial connu), un 4 franc et non un 5 transcendant. Elle passe les deux tests durs et ne cache aucun vide, donc elle est signee et non generique."
+  },
+  "verdict": "SHIP",
+  "fixes": [],
+  "confidence": 0.75
+}
