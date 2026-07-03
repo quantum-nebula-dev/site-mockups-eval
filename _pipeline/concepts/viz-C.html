@@ -402,15 +402,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz__body{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);
-  column-gap:clamp(32px,5vw,80px);
-  align-items:stretch;
+  grid-template-columns:minmax(240px,31ch) auto;
+  justify-content:space-between;
+  column-gap:clamp(30px,5vw,72px);
+  align-items:center;
   padding-bottom:clamp(22px,2.4vw,34px);
 }
 
-/* LA COLONNE-LÉGENDE : label en tête, énoncé serif en pied ; l'air entre les deux tient le
-   rythme (registre légende d'une planche gravée). */
-.viz__note{display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(2px,.8vw,8px)}
+/* LA COLONNE-LÉGENDE : label puis énoncé serif, tenus en un bloc calé à hauteur de la planche
+   (registre légende d'une planche gravée). */
+.viz__note{display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.6vw,30px)}
 .viz__caplabel{
   font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold-d);
@@ -420,16 +421,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 /* l'énoncé : serif « carved » 300, même registre que le constat de l'intro ; l'appui final en
    italique (même poids, sans couleur ajoutée). Repose près du seuil, aligné au pied de la planche. */
 .viz__gloss{
-  margin-top:clamp(28px,5vw,52px);max-width:22ch;
+  margin-top:0;max-width:20ch;
   font-family:var(--serif);font-weight:300;color:var(--ink);
   font-size:clamp(1.35rem,2.15vw,1.9rem);line-height:1.3;letter-spacing:-.01em;
 }
 .viz__gloss em{font-style:italic;font-weight:300}
 
-/* LA PLANCHE : fenêtre N&B montée, angles nets, légère ombre du token (profondeur = axe matière). */
+/* LA PLANCHE : fenêtre N&B montée en PORTRAIT (embrasure — distincte du bandeau plein cadre de
+   la citation juste dessous), angles nets, légère ombre du token (profondeur = axe matière). */
 .viz__plate{
-  position:relative;overflow:hidden;
-  height:clamp(340px,36vw,418px);
+  position:relative;overflow:hidden;justify-self:end;
+  aspect-ratio:5/6;height:clamp(380px,42vw,420px);
   box-shadow:var(--shadow-soft);
 }
 .viz__plate img{
@@ -452,10 +454,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz__sill.is-visible::after{transform:scaleX(1)}
 
 @media (max-width:900px){
-  .viz__body{grid-template-columns:1fr;row-gap:clamp(24px,5vw,36px);padding-bottom:clamp(20px,4vw,28px)}
-  .viz__note{order:1;justify-content:flex-start}
-  .viz__plate{order:2;height:clamp(288px,60vw,404px)}
-  .viz__gloss{margin-top:clamp(16px,4vw,24px);max-width:40ch}
+  .viz__body{grid-template-columns:1fr;justify-content:stretch;row-gap:clamp(24px,5vw,36px);align-items:start;padding-bottom:clamp(20px,4vw,28px)}
+  .viz__note{order:1;justify-content:flex-start;gap:clamp(14px,3vw,20px)}
+  .viz__plate{order:2;justify-self:stretch;aspect-ratio:auto;height:clamp(300px,64vw,392px)}
+  .viz__gloss{max-width:44ch}
 }
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
