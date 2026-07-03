@@ -418,7 +418,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .model__figure{position:relative;min-height:clamp(300px,34vw,440px)}
 .model__figure svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .cline{
-  fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.4;
+  fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.48;
   stroke-dasharray:1;stroke-dashoffset:1;
   transition:stroke-dashoffset 1.25s cubic-bezier(.35,.02,.2,1);
 }
@@ -439,7 +439,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   transition:opacity .6s ease .85s, transform .7s cubic-bezier(.2,.7,.2,1) .85s;
 }
 .model__node::before{
-  content:"";position:absolute;left:50%;top:50%;width:30px;height:30px;border-radius:50%;
+  content:"";position:absolute;left:50%;top:50%;width:26px;height:26px;border-radius:50%;
   border:1px solid var(--gold);opacity:0;transform:translate(-50%,-50%) scale(.55);
   transition:opacity .8s ease 1.05s, transform .9s cubic-bezier(.2,.7,.2,1) 1.05s;
 }
@@ -998,11 +998,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       </ol>
       <div class="model__figure" aria-hidden="true">
         <svg viewBox="0 0 400 400" preserveAspectRatio="none" focusable="false">
-          <path class="cline" pathLength="1" d="M0 40 C 150 40, 250 200, 300 200"/>
-          <path class="cline" pathLength="1" d="M0 120 C 150 120, 250 200, 300 200"/>
-          <path class="cline" pathLength="1" d="M0 200 C 150 200, 250 200, 300 200"/>
-          <path class="cline" pathLength="1" d="M0 280 C 150 280, 250 200, 300 200"/>
-          <path class="cline" pathLength="1" d="M0 360 C 150 360, 250 200, 300 200"/>
+          <path class="cline" pathLength="1" d="M0 40 C 150 40, 240 144, 300 200"/>
+          <path class="cline" pathLength="1" d="M0 120 C 150 120, 240 172, 300 200"/>
+          <path class="cline" pathLength="1" d="M0 200 C 150 200, 240 200, 300 200"/>
+          <path class="cline" pathLength="1" d="M0 280 C 150 280, 240 228, 300 200"/>
+          <path class="cline" pathLength="1" d="M0 360 C 150 360, 240 256, 300 200"/>
           <path class="cline cline--out" pathLength="1" d="M300 200 L 400 200"/>
         </svg>
         <span class="model__node"></span>
