@@ -801,8 +801,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
   .contact__grid,.foot__top{grid-template-columns:1fr}
-  /* MODÈLE (#viz) : la figure de convergence reste affichée et se met à l'échelle ; les filets
-     tiennent grâce à non-scaling-stroke. Plus de légende à trois temps, plus de repli vertical. */
+  /* MODÈLE (#viz) : la mosaïque repasse en 2 colonnes, d1 en bandeau plein ; angles et matière
+     conservés. Rangées libres (auto) pour laisser les noms respirer. */
+  .treemap{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"d1 d1" "d2 d3" "d4 d5"}
+  .treemap .tile{min-height:150px}
+  .tile.d1{min-height:190px}
 }
 @media (max-width:760px){
   .nav,.hdr .btn-ghost{display:none}
@@ -825,12 +828,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 @media (max-width:480px){
   .form__row{grid-template-columns:1fr}
+  /* MODÈLE : la mosaïque en pile ; chaque champ garde sa matière et son angle net */
+  .treemap{grid-template-columns:1fr;grid-template-areas:"d1" "d2" "d3" "d4" "d5"}
+  .tile.d1{min-height:170px}
 }
 
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
-  .model__diagram [data-draw]{stroke-dashoffset:0!important}
-  .md-point,.md-ring,.md-label{opacity:1!important}
+  .tile{opacity:1!important;transform:none!important}
+  .treemap::before{transform:scaleX(1)!important}
   .scrollcue .line::after{animation:none;transform:translateY(0)}
   *{transition-duration:.001ms!important;animation-duration:.001ms!important}
 }
