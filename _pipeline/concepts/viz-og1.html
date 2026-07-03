@@ -369,56 +369,96 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .dom__item{grid-template-columns:1fr;gap:10px}
 }
 
-/* ============ MODÈLE (#viz) — « Un seul tenant » : la treemap de domaines (baseline aimée, tier A),
-   élevée en MARQUETERIE À JOINTS D'OR. Fix du BLOCK juge GPT-5.5 (élévation pas assez visible +
-   signature pas possédable) :
-   (1) MATIÈRE — les cinq champs ne sont plus des aplats plats : chacun est une plaque TEINTÉE,
-       modelée d'un très léger dégradé lumière(haut-gauche)→ombre(bas-droite), mat, sans couleur
-       nouvelle (voiles blanc/noir alpha) ; le panneau est monté (ombre douce du token).
-   (2) POSSÉDABLE — les plaques ne sont plus séparées par du vide blanc mais SERTIES et LIÉES par de
-       fines coutures d'OR (fond du panneau = --gold, gouttières fines + liseré) : la « ligne de
-       responsabilité » du site rendue en joaillerie, qui tient les cinq domaines EN UN SEUL TENANT.
-       Un tile-grid générique a des gaps blancs ; ce panneau serti d'or ne signe que Périclès.
-   Numéros en serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »), noms serif
-   carved, angles nets (0). Section resserrée (~1 écran), AUCUNE info ajoutée. UN geste : la
-   jointure d'or. */
+/* ============ MODÈLE (#viz) — « Un seul point de responsabilité » rendu en REGISTRE TENU.
+   Diagnostic : l'asset d'origine (mosaïque de tuiles) lisait « bento SaaS » — aplats de tokens,
+   coins arrondis, ombres — et rompait la seule discipline qui tient tout le site : l'or n'y est
+   JAMAIS un aplat, il est un FILET qui se dessine et un chiffre serif. La treemap était le seul
+   temps « graphique » d'un site fait de registres typographiques fins (le sommaire, le relevé,
+   la charte) ; c'est ce décalage de registre, pas un manque d'effets, qui la faisait décrocher.
+   Reprise : la section rejoint ce registre au lieu d'un graphe. Les cinq domaines sont posés en
+   index serif sur blanc, l'air entre eux tient le rythme ; une seule « ligne de responsabilité »
+   or, née d'un POINT unique en tête, les tient et file vers le bas jusqu'à s'éteindre — le « un
+   seul point » rendu structurel, pas illustré. UN geste : le filet or qui se dessine (la signature
+   du site, jusqu'ici la seule section à en être privée). Aucun aplat, angles nets, aucune info
+   ajoutée, ~un écran. */
 #viz{padding-block:clamp(60px,7vw,100px)}
-.viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
+.viz__head{max-width:58ch;margin-bottom:clamp(40px,5vw,72px)}
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* PARKING (2026-07-03) : treemap d'ORIGINE (variante A) remise telle quelle en attendant la
-   conception FROM SCRATCH (3 concepts parallèles). Les 2 candidates pipeline (schéma, marqueterie)
-   ont été REJETÉES par l'user. Ne pas retoucher : la section sera remplacée par le concept choisi. */
-.treemap{
-  display:grid;
-  grid-template-columns:1.7fr 1fr 1fr;
-  grid-template-rows:repeat(2, minmax(150px, 22vw));
-  grid-template-areas:"d1 d2 d3" "d1 d4 d5";
-  gap:12px;
+/* LE MODÈLE : le point tenu (axe or) + l'index des cinq domaines. Bloc offset, tenu à gauche,
+   l'air laissé à droite (asymétrie éditoriale) — macrostructure distincte du spread de l'intro,
+   des rails côte à côte des domaines et de l'approche, de la bande du relevé et de la phrase
+   centrée du manifeste. Grille : [axe][gouttière][index], colonnes étirées à la même hauteur. */
+.viz__model{
+  display:grid;grid-template-columns:auto minmax(0,1fr);
+  column-gap:clamp(26px,3.6vw,52px);align-items:stretch;
+  max-width:760px;
 }
-.tile{
-  position:relative;overflow:hidden;border-radius:8px;
-  padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;justify-content:space-between;
-  transform-origin:top center;
-  opacity:0;transform:translateY(20px) scale(.98);
+/* le hook .reveal ne sert ici que de déclencheur : on retire la montée du bloc pour laisser la
+   ligne se dessiner seule, sans redondance de mouvement (le fondu d'opacité, lui, est conservé). */
+.viz__model.reveal{transform:none}
+
+/* L'AXE : la « ligne de responsabilité » du site passée à la verticale, tenue dans sa propre
+   colonne pour rester alignée sur toute la hauteur de l'index. */
+.viz__axis{position:relative;width:clamp(12px,2vw,18px);justify-self:center}
+/* LE POINT unique : un point or plein, posé en tête de l'axe — l'unique point d'où la
+   responsabilité descend sur les cinq domaines. Décoratif (aria-hidden) : aucune exigence AA. */
+.viz__point{
+  position:absolute;top:0;left:50%;
+  width:9px;height:9px;border-radius:50%;background:var(--gold);
+  transform:translate(-50%,-50%) scale(.6);opacity:0;
   transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
 }
-.is-visible .tile{opacity:1;transform:none}
-.is-visible .tile:nth-child(2){transition-delay:.08s}
-.is-visible .tile:nth-child(3){transition-delay:.16s}
-.is-visible .tile:nth-child(4){transition-delay:.24s}
-.is-visible .tile:nth-child(5){transition-delay:.32s}
-.tile .t-num{font-family:var(--serif);font-size:1.1rem;letter-spacing:.04em;opacity:.7}
-.tile .t-name{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.5rem);line-height:1.15;max-width:18ch}
-.tile.d1{grid-area:d1;background:var(--ink);color:#fff}
-.tile.d1 .t-name{font-size:clamp(1.4rem,2.4vw,2.1rem)}
-.tile.d1 .t-num{color:var(--gold);opacity:1}
-.tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
-.tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
-.tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
-.tile.d4 .t-num{color:var(--gold)}
-.tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+/* LA LIGNE : hairline or qui se dessine du haut (sous le point) vers le bas et s'éteint (le
+   gradient tend vers 0) — le faisceau « réuni en un point ». Même signature d'interaction que
+   la ligne verticale de l'intro. Décoratif : aucune exigence de contraste. */
+.viz__line{position:absolute;top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%);overflow:hidden}
+.viz__line::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--gold) 0%,rgba(158,131,90,.5) 55%,rgba(158,131,90,0) 100%);
+  transform:scaleY(0);transform-origin:top center;
+  transition:transform 1.4s cubic-bezier(.35,.02,.2,1) .2s;
+}
+.viz__model.is-visible .viz__point{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.viz__model.is-visible .viz__line::after{transform:scaleY(1)}
+
+/* L'INDEX : les cinq domaines en serif tenu sur blanc — pas de cartes, pas de filet par ligne,
+   le type et l'air portent (registre « masthead » de revue). Cote serif or en regard (or-d :
+   token « petit sur clair », AA tenu), nom serif d'encre. Le nom prend un niveau clairement sous
+   le H2 de la section (donc sous le H1 du hero), en taille comme en poids. */
+.viz__index{list-style:none;display:flex;flex-direction:column;gap:clamp(18px,2.4vw,30px)}
+.viz__row{
+  display:grid;grid-template-columns:clamp(1.6rem,3vw,2.2rem) 1fr;
+  column-gap:clamp(14px,1.8vw,24px);align-items:baseline;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.viz__num{
+  font-family:var(--serif);font-weight:300;color:var(--gold-d);
+  font-size:clamp(1rem,1.3vw,1.25rem);line-height:1;letter-spacing:.02em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.viz__name{
+  font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:-.008em;
+  font-size:clamp(1.12rem,1.7vw,1.5rem);line-height:1.2;max-width:26ch;
+}
+.viz__model.is-visible .viz__row{opacity:1;transform:none}
+.viz__model.is-visible .viz__row:nth-child(2){transition-delay:.1s}
+.viz__model.is-visible .viz__row:nth-child(3){transition-delay:.18s}
+.viz__model.is-visible .viz__row:nth-child(4){transition-delay:.26s}
+.viz__model.is-visible .viz__row:nth-child(5){transition-delay:.34s}
+
+@media (max-width:560px){
+  .viz__model{column-gap:18px}
+  .viz__row{grid-template-columns:clamp(1.5rem,7vw,2rem) 1fr;column-gap:14px}
+}
+/* reduced-motion : la composition finale posée d'emblée (point, ligne pleine, noms en place) */
+@media (prefers-reduced-motion:reduce){
+  .viz__point{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .viz__line::after{transform:scaleY(1)}
+  .viz__row{opacity:1;transform:none}
+}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
@@ -780,11 +820,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
   .contact__grid,.foot__top{grid-template-columns:1fr}
-  /* MODÈLE (#viz) : la mosaïque repasse en 2 colonnes, d1 en bandeau plein ; angles et matière
-     conservés. Rangées libres (auto) pour laisser les noms respirer. */
-  .treemap{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"d1 d1" "d2 d3" "d4 d5"}
-  .treemap .tile{min-height:150px}
-  .tile.d1{min-height:190px}
 }
 @media (max-width:760px){
   .nav,.hdr .btn-ghost{display:none}
