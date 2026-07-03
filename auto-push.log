@@ -25,3 +25,6 @@ To https://github.com/quantum-nebula-dev/site-mockups-eval.git
 To https://github.com/quantum-nebula-dev/site-mockups-eval.git
    d11c49d..e5182b9  main -> main
 2026-07-03 16:09:03 — Pushed (5 commits): docs(pipeline): post-mortem et transition vers régime sectionalisé
+To https://github.com/quantum-nebula-dev/site-mockups-eval.git
+   e5182b9..376eeeb  main -> main
+2026-07-03 16:26:18 — Pushed (5 commits): refactor(viz): replace network diagram with convergence-based model

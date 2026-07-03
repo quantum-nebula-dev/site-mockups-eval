@@ -369,49 +369,77 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .dom__item{grid-template-columns:1fr;gap:10px}
 }
 
-/* ============ MODÈLE (#viz) — « La convergence » : un seul point de responsabilité, rendu
-   comme UN repère, pas comme un organigramme. Recherche (EQT « How we operate », Laquila private
-   office, registre Pictet/Wendel) : les maisons premium ne DESSINENT pas un réseau de nœuds fléchés
-   à légendes — le modèle est porté par la proportion et un repère raffiné, le luxe naît de la
-   rareté. Ici : des filets qui émergent du vide (dégradé) et se rassemblent, par des courbes
-   tenues, sur LE seul point coloré de la page (l'or), d'où part une seule ligne rendue. Aucune
-   boîte, aucune légende à trois temps (l'ancienne version « slide » est retirée). La marque est
-   engravée sous le point : le repère devient possédable. Plate blanche : la page respire avant le
-   manifeste sombre. Geste signature unique : le « filet or qui se dessine » du site, promu en
-   armature du mécanisme (les filets se dessinent, le point éclôt, la ligne se rend). */
-.model__head{max-width:58ch;margin-bottom:clamp(24px,3vw,44px)}
-.model__head h2{margin-top:22px}
-.model__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
+/* ============ MODÈLE (#viz) — « Un seul tenant » : la TREEMAP de domaines (baseline aimée de
+   l'user — les tuiles/carrés pondérés, tier A du gold), portée au niveau LUXE en exécution.
+   Recherche : Everlane (editorial-luxury) = angles VIFS + aplats MATS sans gradient + labels
+   tenus ; Carta/Mococo = « building blocks », le système de marque en blocs pondérés ; ADIA =
+   filets fins, moins de copy. Élévation : on passe de « 5 cartes arrondies espacées » à UN SEUL
+   panneau-matière subdivisé en 5 champs — angles nets, gouttières resserrées, aplats mats des
+   tokens = « un seul tenant » rendu au sens propre (de la structure, pas de la décoration).
+   Numéros et noms précisés, section resserrée (~1 écran). Un seul geste signature : le filet or
+   qui se dessine, en tête de la mosaïque (même « ligne active » que le sommaire, les repères,
+   la charte, le contact). */
+.viz__head{max-width:58ch;margin-bottom:clamp(30px,3.6vw,52px)}
+.viz__head h2{margin-top:22px}
+.viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* la figure : ancrée à gauche sur la colonne éditoriale (les filets émergent sous le texte),
-   posée dans un large champ d'air ; jamais un cadre ni une boîte. */
-.model__figure{position:relative}
-.model__diagram{display:block;width:100%;height:auto;overflow:visible}
+/* LA MOSAÏQUE : un seul panneau subdivisé. Le filet or signature se dessine en tête (::before).
+   Rangées plafonnées => la section tient dans un écran (l'ancienne treemap montait à 1306px). */
+.treemap{
+  position:relative;
+  padding-top:clamp(18px,2vw,26px);
+  display:grid;
+  grid-template-columns:1.7fr 1fr 1fr;
+  grid-template-rows:repeat(2, clamp(148px,15.4vw,222px));
+  grid-template-areas:"d1 d2 d3" "d1 d4 d5";
+  gap:10px;
+}
+/* GESTE SIGNATURE : le filet or qui se dessine, en tête du panneau. Décoratif. */
+.treemap::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.treemap.is-visible::before{transform:scaleX(1)}
 
-/* GESTE SIGNATURE : le filet or qui se dessine, ici promu en armature du mécanisme */
-.model__diagram [data-draw]{
-  fill:none;stroke-linecap:round;
-  stroke-dasharray:1;stroke-dashoffset:1;
-  transition:stroke-dashoffset 1.15s cubic-bezier(.35,.02,.2,1);
+/* un champ de la matière : angle net (2px), aplat mat, numéro en tête + nom en pied */
+.tile{
+  position:relative;overflow:hidden;border-radius:2px;
+  padding:clamp(22px,2vw,32px);
+  display:flex;flex-direction:column;justify-content:space-between;gap:16px;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
 }
-.model__figure.is-visible .model__diagram [data-draw]{stroke-dashoffset:0}
-/* les fonctions dispersées : filets hairline qui émergent du vide (dégradé --ink) et convergent.
-   non-scaling-stroke => la finesse tient à toute échelle, mobile compris. */
-.model__diagram .md-ray{stroke:url(#mdFade);stroke-width:1;vector-effect:non-scaling-stroke;transition-duration:.9s}
-/* la ligne rendue : un seul filet or continu, la livraison intégrée */
-.model__diagram .md-line{stroke:var(--gold);stroke-width:1.5;vector-effect:non-scaling-stroke}
-/* le seul point coloré de la page : la prise en charge (un seul anneau, seule emphase) */
-.md-point{fill:var(--gold)}
-.md-ring{fill:none;stroke:var(--gold);stroke-opacity:.34;stroke-width:1;vector-effect:non-scaling-stroke}
-.md-point,.md-ring,.md-label{opacity:0;transition:opacity .8s ease}
-.model__figure.is-visible .md-point,
-.model__figure.is-visible .md-ring,
-.model__figure.is-visible .md-label{opacity:1}
-/* le repère nommé sous le point : la marque engravée au lieu du rassemblement (possédable) */
-.md-label{
-  font-family:var(--grot);font-size:11px;font-weight:600;letter-spacing:2.4px;
-  fill:var(--gold-d);
+.treemap.is-visible .tile{opacity:1;transform:none}
+.treemap.is-visible .tile:nth-child(2){transition-delay:.08s}
+.treemap.is-visible .tile:nth-child(3){transition-delay:.16s}
+.treemap.is-visible .tile:nth-child(4){transition-delay:.24s}
+.treemap.is-visible .tile:nth-child(5){transition-delay:.32s}
+/* le numéro : chiffre serif « carved », accent or (registre des cotes du sommaire des domaines) */
+.t-num{
+  font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.5vw,1.5rem);
+  line-height:1;letter-spacing:.02em;color:var(--gold);
+  font-variant-numeric:lining-nums tabular-nums;
 }
+/* le nom : serif « carved », tenu en pied de tuile */
+.t-name{
+  font-family:var(--serif);font-weight:400;letter-spacing:-.008em;
+  font-size:clamp(1.05rem,1.4vw,1.35rem);line-height:1.16;max-width:18ch;
+}
+/* les cinq champs (aplats mats de tokens, un seul accent : l'or ; d1 dominante = le poids) */
+.tile.d1{grid-area:d1;background:var(--ink);color:#fff}
+.tile.d1 .t-name{font-size:clamp(1.5rem,2.3vw,2.1rem)}
+.tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
+.tile.d2 .t-num{color:var(--ink)}
+.tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
+.tile.d3 .t-num{color:var(--gold-d)}
+.tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
+.tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.tile.d5 .t-num{color:var(--gold-d)}
+/* micro-interaction sobre et UNIVERSELLE (tient sur tout aplat, jamais gold-sur-gold) :
+   au survol / focus, la tuile s'avance d'un cran (lift net, sans ombre — registre mat). */
+.treemap.is-visible .tile:hover,.treemap.is-visible .tile:focus-within{transform:translateY(-4px)}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
