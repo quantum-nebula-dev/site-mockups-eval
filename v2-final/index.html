@@ -369,79 +369,70 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .dom__item{grid-template-columns:1fr;gap:10px}
 }
 
-/* ============ MODÈLE (#viz) — « Un seul tenant » : la TREEMAP de domaines (baseline aimée de
-   l'user — les tuiles/carrés pondérés, tier A du gold), portée au niveau LUXE en exécution.
-   Recherche : Everlane (editorial-luxury) = angles VIFS + aplats MATS sans gradient + labels
-   tenus ; Carta/Mococo = « building blocks », le système de marque en blocs pondérés ; ADIA =
-   filets fins, moins de copy. Élévation : on passe de « 5 cartes arrondies espacées » à UN SEUL
-   panneau-matière subdivisé en 5 champs — angles nets, gouttières resserrées, aplats mats des
-   tokens = « un seul tenant » rendu au sens propre (de la structure, pas de la décoration).
-   Numéros et noms précisés, section resserrée (~1 écran). Un seul geste signature : le filet or
-   qui se dessine, en tête de la mosaïque (même « ligne active » que le sommaire, les repères,
-   la charte, le contact). */
-/* section resserrée (scopé #viz > global) : la mosaïque doit tenir dans un écran */
+/* ============ MODÈLE (#viz) — « Un seul tenant » : la treemap de domaines (baseline aimée, tier A),
+   élevée en MARQUETERIE À JOINTS D'OR. Fix du BLOCK juge GPT-5.5 (élévation pas assez visible +
+   signature pas possédable) :
+   (1) MATIÈRE — les cinq champs ne sont plus des aplats plats : chacun est une plaque TEINTÉE,
+       modelée d'un très léger dégradé lumière(haut-gauche)→ombre(bas-droite), mat, sans couleur
+       nouvelle (voiles blanc/noir alpha) ; le panneau est monté (ombre douce du token).
+   (2) POSSÉDABLE — les plaques ne sont plus séparées par du vide blanc mais SERTIES et LIÉES par de
+       fines coutures d'OR (fond du panneau = --gold, gouttières fines + liseré) : la « ligne de
+       responsabilité » du site rendue en joaillerie, qui tient les cinq domaines EN UN SEUL TENANT.
+       Un tile-grid générique a des gaps blancs ; ce panneau serti d'or ne signe que Périclès.
+   Numéros en serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »), noms serif
+   carved, angles nets (0). Section resserrée (~1 écran), AUCUNE info ajoutée. UN geste : la
+   jointure d'or. */
 #viz{padding-block:clamp(60px,7vw,100px)}
 .viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* LA MOSAÏQUE : un seul panneau subdivisé. Le filet or signature se dessine en tête (::before).
-   Rangées plafonnées => la section tient dans un écran (l'ancienne treemap montait à 1306px). */
+/* LE PANNEAU SERTI : fond or = les coutures entre plaques + le liseré qui borde l'ensemble.
+   Rangées plafonnées => la section tient dans un écran. Le panneau se révèle d'un seul tenant. */
 .treemap{
   position:relative;
-  padding-top:clamp(16px,1.8vw,22px);
   display:grid;
   grid-template-columns:1.7fr 1fr 1fr;
   grid-template-rows:repeat(2, clamp(140px,13.5vw,196px));
   grid-template-areas:"d1 d2 d3" "d1 d4 d5";
-  gap:10px;
+  gap:4px;
+  background:var(--gold);
+  padding:4px;
+  border-radius:3px;
+  box-shadow:var(--shadow-soft);
 }
-/* GESTE SIGNATURE : le filet or qui se dessine, en tête du panneau. Décoratif. */
-.treemap::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
-}
-.treemap.is-visible::before{transform:scaleX(1)}
 
-/* un champ de la matière : angle net (2px), aplat mat, numéro en tête + nom en pied */
+/* une plaque teintée : angle net, aplat de token MODELÉ d'un très léger dégradé (matière mate) */
 .tile{
-  position:relative;overflow:hidden;border-radius:2px;
-  padding:clamp(22px,2vw,32px);
+  position:relative;overflow:hidden;border-radius:0;
+  padding:clamp(24px,2.1vw,34px);
   display:flex;flex-direction:column;justify-content:space-between;gap:16px;
-  opacity:0;transform:translateY(18px);
-  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  background-image:linear-gradient(155deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 32%, rgba(0,0,0,.06) 100%);
 }
-.treemap.is-visible .tile{opacity:1;transform:none}
-.treemap.is-visible .tile:nth-child(2){transition-delay:.08s}
-.treemap.is-visible .tile:nth-child(3){transition-delay:.16s}
-.treemap.is-visible .tile:nth-child(4){transition-delay:.24s}
-.treemap.is-visible .tile:nth-child(5){transition-delay:.32s}
-/* le numéro : chiffre serif « carved », accent or (registre des cotes du sommaire des domaines) */
+/* le numéro : chiffre serif ITALIQUE or — la signature italique-or du site (hero, logo « Gestion ») */
 .t-num{
-  font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.5vw,1.5rem);
-  line-height:1;letter-spacing:.02em;color:var(--gold);
-  font-variant-numeric:lining-nums tabular-nums;
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:clamp(1.3rem,1.7vw,1.7rem);line-height:1;letter-spacing:.01em;color:var(--gold);
+  font-variant-numeric:lining-nums;
 }
-/* le nom : serif « carved », tenu en pied de tuile */
+/* le nom : serif « carved », tenu en pied de plaque */
 .t-name{
-  font-family:var(--serif);font-weight:400;letter-spacing:-.008em;
+  font-family:var(--serif);font-weight:400;letter-spacing:-.01em;
   font-size:clamp(1.05rem,1.4vw,1.35rem);line-height:1.16;max-width:18ch;
 }
-/* les cinq champs (aplats mats de tokens, un seul accent : l'or ; d1 dominante = le poids) */
-.tile.d1{grid-area:d1;background:var(--ink);color:#fff}
+/* les cinq plaques (aplats de tokens sous le modelé ; d1 dominante = le poids) */
+.tile.d1{grid-area:d1;background-color:var(--ink);color:#fff}
 .tile.d1 .t-name{font-size:clamp(1.5rem,2.3vw,2.1rem)}
-.tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
+.tile.d2{grid-area:d2;background-color:var(--gold);color:var(--ink)}
 .tile.d2 .t-num{color:var(--ink)}
-.tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
+.tile.d3{grid-area:d3;background-color:var(--taupe-2);color:var(--ink)}
 .tile.d3 .t-num{color:var(--gold-d)}
-.tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
-.tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.tile.d4{grid-area:d4;background-color:var(--ink-2);color:#fff}
+.tile.d5{grid-area:d5;background-color:var(--cream);color:var(--ink)}
 .tile.d5 .t-num{color:var(--gold-d)}
-/* micro-interaction sobre et UNIVERSELLE (tient sur tout aplat, jamais gold-sur-gold) :
-   au survol / focus, la tuile s'avance d'un cran (lift net, sans ombre — registre mat). */
-.treemap.is-visible .tile:hover,.treemap.is-visible .tile:focus-within{transform:translateY(-4px)}
+/* micro-interaction sobre : la plaque s'éclaire d'un cran au survol (le modelé s'allège) */
+.tile::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.05);opacity:0;transition:opacity .4s ease;pointer-events:none}
+.tile:hover::after,.tile:focus-within::after{opacity:1}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
