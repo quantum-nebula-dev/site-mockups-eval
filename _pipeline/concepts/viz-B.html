@@ -970,22 +970,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <svg class="viz-rose" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" focusable="false">
         <defs>
           <!-- profondeur de gravure : or lumineux au point (r=0) -> presque effacé en périphérie -->
-          <radialGradient id="vizFade" gradientUnits="userSpaceOnUse" cx="440" cy="272" r="272">
-            <stop offset="0" stop-color="#9E835A" stop-opacity=".62"/>
-            <stop offset=".38" stop-color="#9E835A" stop-opacity=".3"/>
-            <stop offset="1" stop-color="#9E835A" stop-opacity=".055"/>
+          <radialGradient id="vizFade" gradientUnits="userSpaceOnUse" cx="440" cy="272" r="214">
+            <stop offset="0" stop-color="#9E835A" stop-opacity=".72"/>
+            <stop offset=".34" stop-color="#9E835A" stop-opacity=".34"/>
+            <stop offset="1" stop-color="#9E835A" stop-opacity=".04"/>
           </radialGradient>
           <!-- halo tenu du point (le seul endroit « lit ») -->
-          <radialGradient id="vizCore" gradientUnits="userSpaceOnUse" cx="440" cy="272" r="44">
-            <stop offset="0" stop-color="#9E835A" stop-opacity=".52"/>
+          <radialGradient id="vizCore" gradientUnits="userSpaceOnUse" cx="440" cy="272" r="42">
+            <stop offset="0" stop-color="#9E835A" stop-opacity=".55"/>
             <stop offset="1" stop-color="#9E835A" stop-opacity="0"/>
           </radialGradient>
         </defs>
         <g class="viz-rings" fill="none" stroke="url(#vizFade)"></g>
         <g class="viz-spiral" fill="none" stroke="url(#vizFade)"></g>
         <g class="viz-spiral2" fill="none" stroke="url(#vizFade)" stroke-opacity=".6"></g>
-        <circle class="viz-halo" cx="440" cy="272" r="42" fill="url(#vizCore)"/>
-        <circle class="viz-node-ring" cx="440" cy="272" r="12" fill="none" stroke="#9E835A" stroke-width="1"/>
+        <circle class="viz-halo" cx="440" cy="272" r="40" fill="url(#vizCore)"/>
+        <circle class="viz-node-ring" cx="440" cy="272" r="11" fill="none" stroke="#9E835A" stroke-width="1"/>
         <circle class="viz-node" cx="440" cy="272" r="2.6" fill="#001931"/>
       </svg>
     </figure>
@@ -999,8 +999,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           s1=document.querySelector("#viz .viz-spiral"),
           s2=document.querySelector("#viz .viz-spiral2");
       if(!rings||!s1||!s2) return;
-      var cx=440, cy=272, Rout=250, Rin=15, sweep=2.02, steps=56;
-      [13,23,84,140,196,248].forEach(function(r,i){
+      var cx=440, cy=272, Rout=232, Rin=13, sweep=2.5, steps=60;
+      [11,19,58,102,150,198].forEach(function(r,i){
         var c=document.createElementNS(NS,"circle");
         c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
         c.setAttribute("stroke-width", i<2 ? "1" : "0.7");
@@ -1025,8 +1025,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           g.appendChild(p);
         }
       }
-      drawSet(s1,12, 1,0.10);
-      drawSet(s2,12,-1,0.17);
+      drawSet(s1,16, 1,0.10);
+      drawSet(s2,16,-1,0.17);
     })();
     </script>
   </div>
