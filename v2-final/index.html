@@ -330,6 +330,79 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .som__gloss{max-width:60ch}
 }
 
+/* ============ DOMAINES — registre threadé « la ligne de responsabilité » ============
+   Un SEUL geste : un filet or continu (le « filet qui se dessine » du site, ici vertical
+   comme un rail d'index) enfile les cinq cotes 01–05. Colonne éditoriale STICKY à gauche
+   (la promesse « une seule responsabilité »), rail indexé à droite (les cinq domaines).
+   Distinct du spread de l'intro (le rail est une marge d'index, pas un séparateur central)
+   et de la convergence horizontale du modèle. Aucun séparateur horizontal : une ligne suffit. */
+#domaines .dom__wrap{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  column-gap:clamp(40px,7vw,120px);
+  align-items:start;
+}
+#domaines .dom__aside{position:sticky;top:clamp(104px,15vh,168px)}
+#domaines .dom__head{margin-top:22px}
+#domaines .dom__lead{margin-top:1.1em;max-width:33ch;color:var(--body)}
+
+/* le rail : cotes serif or | filet or continu | intitulés. --rail = colonne des cotes ;
+   --chan = gouttière où court la ligne. La ligne se pose au milieu de la gouttière. */
+#domaines .dom__register{
+  --rail:clamp(2.3rem,3vw,2.9rem);
+  --chan:clamp(30px,4.4vw,58px);
+  position:relative;list-style:none;
+}
+/* la ligne de responsabilité : filet or qui se dessine (scaleY, origine haut) */
+#domaines .dom__register::before{
+  content:"";position:absolute;top:.24em;bottom:.24em;
+  left:calc(var(--rail) + var(--chan) / 2);
+  width:1px;
+  background:linear-gradient(180deg,var(--gold) 0%,rgba(158,131,90,.55) 70%,rgba(158,131,90,.14) 100%);
+  transform:scaleY(0);transform-origin:top center;
+  transition:transform 1.5s cubic-bezier(.35,.02,.2,1) .12s;
+}
+#domaines .dom__register.is-visible::before{transform:scaleY(1)}
+
+#domaines .dom__item{
+  display:grid;
+  grid-template-columns:var(--rail) 1fr;
+  column-gap:var(--chan);
+  align-items:baseline;
+  padding-block:clamp(26px,3.6vw,46px);
+}
+#domaines .dom__item:first-child{padding-top:0}
+#domaines .dom__item:last-child{padding-bottom:0}
+
+/* la cote : chiffre serif or en station sur la ligne — subordonnée au hero (aria-hidden) */
+#domaines .dom__num{
+  justify-self:end;
+  font-family:var(--serif);font-weight:400;color:var(--gold);
+  font-size:clamp(1.35rem,1.9vw,1.9rem);line-height:1;letter-spacing:.02em;
+  font-variant-numeric:lining-nums;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1);
+}
+#domaines .dom__title{letter-spacing:-.008em}
+#domaines .dom__gloss{margin-top:.55em;max-width:46ch;color:var(--body)}
+
+/* rapprochement retenu : au survol, la cote glisse d'un cran vers son domaine */
+#domaines .dom__item:hover .dom__num,
+#domaines .dom__item:focus-within .dom__num{transform:translateX(-5px)}
+
+@media (max-width:900px){
+  #domaines .dom__wrap{grid-template-columns:1fr;row-gap:clamp(34px,6vw,52px)}
+  #domaines .dom__aside{position:static;top:auto}
+  #domaines .dom__lead{max-width:54ch}
+}
+@media (max-width:560px){
+  #domaines .dom__register{--rail:clamp(1.9rem,8vw,2.4rem);--chan:clamp(18px,5vw,26px)}
+  #domaines .dom__item{padding-block:clamp(22px,6vw,32px)}
+  #domaines .dom__gloss{max-width:60ch}
+}
+@media (prefers-reduced-motion:reduce){
+  #domaines .dom__register::before{transform:scaleY(1);transition:none}
+}
+
 /* ============ MODÈLE (le mécanisme : un seul point de responsabilité) ============
    Parti-pris : le mécanisme n'est pas un réseau de noeuds fléchés, c'est UNE seule
    ligne. La « ligne de responsabilité » du site (le filet or qui se dessine) devient
@@ -856,58 +929,61 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- ============ DOMAINES (sommaire éditorial : registre énuméré, cotes en regard) ============ -->
+<!-- ============ DOMAINES (registre threadé : une seule ligne or enfile les cinq domaines) ============
+     Geste signature unique : « la ligne de responsabilité » — un filet or continu qui se dessine du
+     haut vers le bas et tient les cinq cotes 01–05 en station. « Cinq domaines, une seule responsabilité »
+     rendu structurel. Colonne éditoriale sticky à gauche (la promesse), rail indexé à droite (l'étendue). -->
 <section id="domaines" class="bg-cream">
   <div class="wrap">
-    <div class="som__head">
-      <p class="eyebrow reveal">Domaines</p>
-      <h2 class="reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
-      <p class="som__lead reveal d2">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
+    <div class="dom__wrap">
+      <div class="dom__aside">
+        <p class="eyebrow reveal">Domaines</p>
+        <h2 class="dom__head reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
+        <p class="dom__lead reveal d2">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
+      </div>
+
+      <ol class="dom__register reveal">
+        <li class="dom__item">
+          <span class="dom__num" aria-hidden="true">01</span>
+          <div class="dom__entry">
+            <h3 class="dom__title">Pilotage financier et administratif</h3>
+            <p class="dom__gloss">Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
+          </div>
+        </li>
+
+        <li class="dom__item">
+          <span class="dom__num" aria-hidden="true">02</span>
+          <div class="dom__entry">
+            <h3 class="dom__title">Paie, social et conformité</h3>
+            <p class="dom__gloss">Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
+          </div>
+        </li>
+
+        <li class="dom__item">
+          <span class="dom__num" aria-hidden="true">03</span>
+          <div class="dom__entry">
+            <h3 class="dom__title">Prestations et programmes</h3>
+            <p class="dom__gloss">Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
+          </div>
+        </li>
+
+        <li class="dom__item">
+          <span class="dom__num" aria-hidden="true">04</span>
+          <div class="dom__entry">
+            <h3 class="dom__title">Systèmes, outils et présence en ligne</h3>
+            <p class="dom__gloss">Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
+          </div>
+        </li>
+
+        <li class="dom__item">
+          <span class="dom__num" aria-hidden="true">05</span>
+          <div class="dom__entry">
+            <h3 class="dom__title">Appui au pilotage et au développement</h3>
+            <p class="dom__gloss">L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
+          </div>
+        </li>
+      </ol>
     </div>
-
-    <div class="som__rule reveal" aria-hidden="true"></div>
-
-    <ol class="som__list">
-      <li class="som__row reveal">
-        <div class="som__entry">
-          <h3 class="som__title">Pilotage financier et administratif</h3>
-          <p class="som__gloss">Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
-        </div>
-        <span class="som__num" aria-hidden="true">I</span>
-      </li>
-
-      <li class="som__row reveal">
-        <div class="som__entry">
-          <h3 class="som__title">Paie, social et conformité</h3>
-          <p class="som__gloss">Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
-        </div>
-        <span class="som__num" aria-hidden="true">II</span>
-      </li>
-
-      <li class="som__row reveal">
-        <div class="som__entry">
-          <h3 class="som__title">Prestations et programmes</h3>
-          <p class="som__gloss">Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
-        </div>
-        <span class="som__num" aria-hidden="true">III</span>
-      </li>
-
-      <li class="som__row reveal">
-        <div class="som__entry">
-          <h3 class="som__title">Systèmes, outils et présence en ligne</h3>
-          <p class="som__gloss">Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
-        </div>
-        <span class="som__num" aria-hidden="true">IV</span>
-      </li>
-
-      <li class="som__row reveal">
-        <div class="som__entry">
-          <h3 class="som__title">Appui au pilotage et au développement</h3>
-          <p class="som__gloss">L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
-        </div>
-        <span class="som__num" aria-hidden="true">V</span>
-      </li>
-    </ol>
   </div>
 </section>
 
