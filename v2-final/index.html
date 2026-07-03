@@ -379,7 +379,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    Numéros et noms précisés, section resserrée (~1 écran). Un seul geste signature : le filet or
    qui se dessine, en tête de la mosaïque (même « ligne active » que le sommaire, les repères,
    la charte, le contact). */
-.viz__head{max-width:58ch;margin-bottom:clamp(30px,3.6vw,52px)}
+/* section resserrée (scopé #viz > global) : la mosaïque doit tenir dans un écran */
+#viz{padding-block:clamp(60px,7vw,100px)}
+.viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
@@ -387,10 +389,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    Rangées plafonnées => la section tient dans un écran (l'ancienne treemap montait à 1306px). */
 .treemap{
   position:relative;
-  padding-top:clamp(18px,2vw,26px);
+  padding-top:clamp(16px,1.8vw,22px);
   display:grid;
   grid-template-columns:1.7fr 1fr 1fr;
-  grid-template-rows:repeat(2, clamp(148px,15.4vw,222px));
+  grid-template-rows:repeat(2, clamp(140px,13.5vw,196px));
   grid-template-areas:"d1 d2 d3" "d1 d4 d5";
   gap:10px;
 }
