@@ -369,56 +369,67 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .dom__item{grid-template-columns:1fr;gap:10px}
 }
 
-/* ============ MODÈLE (#viz) — « Un seul tenant » : la treemap de domaines (baseline aimée, tier A),
-   élevée en MARQUETERIE À JOINTS D'OR. Fix du BLOCK juge GPT-5.5 (élévation pas assez visible +
-   signature pas possédable) :
-   (1) MATIÈRE — les cinq champs ne sont plus des aplats plats : chacun est une plaque TEINTÉE,
-       modelée d'un très léger dégradé lumière(haut-gauche)→ombre(bas-droite), mat, sans couleur
-       nouvelle (voiles blanc/noir alpha) ; le panneau est monté (ombre douce du token).
-   (2) POSSÉDABLE — les plaques ne sont plus séparées par du vide blanc mais SERTIES et LIÉES par de
-       fines coutures d'OR (fond du panneau = --gold, gouttières fines + liseré) : la « ligne de
-       responsabilité » du site rendue en joaillerie, qui tient les cinq domaines EN UN SEUL TENANT.
-       Un tile-grid générique a des gaps blancs ; ce panneau serti d'or ne signe que Périclès.
-   Numéros en serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »), noms serif
-   carved, angles nets (0). Section resserrée (~1 écran), AUCUNE info ajoutée. UN geste : la
-   jointure d'or. */
+/* ============ MODÈLE (#viz) — « Un seul tenant » : LE PORTIQUE. La treemap colorée (bento :
+   aplats de tokens + angles arrondis, un registre « tableau de bord » étranger au reste du site)
+   est remplacée par une COLONNADE — les cinq domaines dressés en cinq fûts sous un SEUL linteau
+   d'or : la « ligne de responsabilité » du site tendue en linteau. Cinq fûts, un linteau = cinq
+   domaines, un seul point de responsabilité (thème classique, en écho à la pierre du hero).
+   Langage du site restauré : serif + filet or qui se dessine + air, angles nets, AUCUN aplat de
+   couleur, AUCUNE boîte, AUCUN joint (distinct des pistes rejetées : treemap brute, marqueterie
+   à joints d'or, schéma de convergence). Numéros serif ITALIQUE or (la voix italique-or du hero
+   et du logo « Gestion »), noms serif carved d'encre. Section resserrée (~1 écran), AUCUNE info
+   ajoutée (mêmes cinq domaines, mêmes noms). UN geste signature : le linteau or. */
 #viz{padding-block:clamp(60px,7vw,100px)}
 .viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* PARKING (2026-07-03) : treemap d'ORIGINE (variante A) remise telle quelle en attendant la
-   conception FROM SCRATCH (3 concepts parallèles). Les 2 candidates pipeline (schéma, marqueterie)
-   ont été REJETÉES par l'user. Ne pas retoucher : la section sera remplacée par le concept choisi. */
-.treemap{
-  display:grid;
-  grid-template-columns:1.7fr 1fr 1fr;
-  grid-template-rows:repeat(2, minmax(150px, 22vw));
-  grid-template-areas:"d1 d2 d3" "d1 d4 d5";
-  gap:12px;
+.portique{position:relative;padding-top:clamp(30px,3.4vw,48px)}
+/* LE LINTEAU : geste signature du site (le filet or qui se dessine), tendu au-dessus des cinq
+   fûts (même « ligne active » que le sommaire, les repères, l'approche et le contact).
+   Décoratif : aucune exigence de contraste. */
+.portique::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
 }
-.tile{
-  position:relative;overflow:hidden;border-radius:8px;
-  padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;justify-content:space-between;
-  transform-origin:top center;
-  opacity:0;transform:translateY(20px) scale(.98);
-  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+.portique.is-visible::before{transform:scaleX(1)}
+
+/* LES CINQ FÛTS : colonnade régulière, séparés par l'air seul (aucun filet vertical, aucune
+   boîte, aucun aplat). Chacun : le numéro en chapiteau, le nom au fût. */
+.portique__row{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  column-gap:clamp(22px,3vw,52px);align-items:start;
 }
-.is-visible .tile{opacity:1;transform:none}
-.is-visible .tile:nth-child(2){transition-delay:.08s}
-.is-visible .tile:nth-child(3){transition-delay:.16s}
-.is-visible .tile:nth-child(4){transition-delay:.24s}
-.is-visible .tile:nth-child(5){transition-delay:.32s}
-.tile .t-num{font-family:var(--serif);font-size:1.1rem;letter-spacing:.04em;opacity:.7}
-.tile .t-name{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.5rem);line-height:1.15;max-width:18ch}
-.tile.d1{grid-area:d1;background:var(--ink);color:#fff}
-.tile.d1 .t-name{font-size:clamp(1.4rem,2.4vw,2.1rem)}
-.tile.d1 .t-num{color:var(--gold);opacity:1}
-.tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
-.tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
-.tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
-.tile.d4 .t-num{color:var(--gold)}
-.tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+.fut{display:flex;flex-direction:column;gap:clamp(12px,1.4vw,20px)}
+/* le numéro : chiffre serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »),
+   au registre numéral du site (som__num / dom__num), plafonné sous le H1 du hero (taille comme
+   poids), vérifié à 390px comme au-delà. */
+.fut__n{
+  font-family:var(--serif);font-style:italic;font-weight:300;color:var(--gold);
+  font-size:clamp(1.55rem,2.1vw,2.15rem);line-height:1;letter-spacing:.02em;
+  font-variant-numeric:lining-nums;
+}
+/* le nom : serif d'encre « carved », subordonné au numéro par la couleur, pas par la taille. */
+.fut__name{
+  font-family:var(--serif);font-weight:400;color:var(--ink);
+  font-size:clamp(1.02rem,1.35vw,1.32rem);line-height:1.24;letter-spacing:-.006em;
+  max-width:18ch;
+}
+
+@media (max-width:980px){
+  /* le portique repasse en registre vertical : cinq entrées tenues sous le même linteau or,
+     séparées par un filet hairline (la colonnade vue de profil). */
+  .portique__row{grid-template-columns:1fr;column-gap:0}
+  .fut{
+    flex-direction:row;align-items:baseline;gap:clamp(16px,3vw,26px);
+    padding-block:clamp(18px,3.2vw,26px);border-top:1px solid var(--line);
+  }
+  .fut:first-child{border-top:0;padding-top:clamp(20px,4vw,28px)}
+  .fut__n{flex:none;min-width:2.4ch}
+  .fut__name{max-width:46ch}
+}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
