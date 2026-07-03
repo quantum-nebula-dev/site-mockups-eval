@@ -387,7 +387,76 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
 
-/* [FROM SCRATCH] CSS de la section #viz À ÉCRIRE ici (scopé). Ancien CSS retiré volontairement (anti-fixation). */
+/* [FROM SCRATCH] — MODÈLE (#viz) — axe MATIÈRE / IMAGE.
+   Parti-pris « la planche de pierre ». Sur le blanc de la page, une seule PLANCHE
+   photographique N&B — une enfilade d'arches de cloître qui converge vers UN SEUL point de
+   lumière — est montée en fragment tenu. Fenêtre, PAS bandeau : la citation plein cadre
+   (photo N&B pleine largeur) est juste en dessous et ne doit pas être doublée ; ici la matière
+   est CONTENUE, à droite, tenue par une colonne-légende à gauche. La matière porte la promesse :
+   ce qui est dispersé (la file d'arches) se rejoint en un point. Contraste de matière voulu avec
+   le hero (verre/acier) et la citation (bois/bibliothèque) : ici la PIERRE, la permanence.
+   Colonne-légende : label en tête, énoncé serif en pied — la légende BRACKETTE la hauteur de la
+   planche. Sous l'ensemble, la « ligne active » du site posée en SEUIL horizontal qui se dessine :
+   la planche et la légende reposent sur la même ligne de responsabilité. UN seul geste : le seuil
+   d'or. Angles nets, aucune couleur hors token. Section contenue (~1 écran). */
+.viz__body{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);
+  column-gap:clamp(32px,5vw,80px);
+  align-items:stretch;
+  padding-bottom:clamp(22px,2.4vw,34px);
+}
+
+/* LA COLONNE-LÉGENDE : label en tête, énoncé serif en pied ; l'air entre les deux tient le
+   rythme (registre légende d'une planche gravée). */
+.viz__note{display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(2px,.8vw,8px)}
+.viz__caplabel{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-d);
+  display:inline-flex;align-items:center;gap:.7rem;
+}
+.viz__caplabel::before{content:"";width:26px;height:1px;background:var(--gold)}
+/* l'énoncé : serif « carved » 300, même registre que le constat de l'intro ; l'appui final en
+   italique (même poids, sans couleur ajoutée). Repose près du seuil, aligné au pied de la planche. */
+.viz__gloss{
+  margin-top:clamp(28px,5vw,52px);max-width:22ch;
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.35rem,2.15vw,1.9rem);line-height:1.3;letter-spacing:-.01em;
+}
+.viz__gloss em{font-style:italic;font-weight:300}
+
+/* LA PLANCHE : fenêtre N&B montée, angles nets, légère ombre du token (profondeur = axe matière). */
+.viz__plate{
+  position:relative;overflow:hidden;
+  height:clamp(360px,39vw,466px);
+  box-shadow:var(--shadow-soft);
+}
+.viz__plate img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:grayscale(100%) contrast(1.05);
+}
+/* liseré d'encre fin : détache la planche du blanc sans « carte » webby */
+.viz__plate::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(0,25,49,.10);pointer-events:none}
+
+/* LE SEUIL : « ligne active » or du site, ici en base horizontale qui se dessine à l'entrée
+   (même signature que le sommaire, le relevé, l'approche, le contact). Décoratif : aucune
+   exigence de contraste. */
+.viz__sill{position:absolute;left:0;right:0;bottom:0;height:1px}
+.viz__sill::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.viz__sill.is-visible::after{transform:scaleX(1)}
+
+@media (max-width:900px){
+  .viz__body{grid-template-columns:1fr;row-gap:clamp(24px,5vw,36px);padding-bottom:clamp(20px,4vw,28px)}
+  .viz__note{order:1;justify-content:flex-start}
+  .viz__plate{order:2;height:clamp(288px,60vw,404px)}
+  .viz__gloss{margin-top:clamp(16px,4vw,24px);max-width:40ch}
+}
 
 /* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
    Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
@@ -915,7 +984,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- [FROM SCRATCH] Corps de la section À CONCEVOIR ici. L'ancien bloc a été retiré VOLONTAIREMENT (anti-fixation) : ne pas le rechercher. -->
+    <!-- Corps (axe MATIÈRE / IMAGE) : une planche photographique N&B tenue en fragment
+         (fenêtre, pas bandeau — la citation plein cadre est juste en dessous) + sa colonne-
+         légende. La file d'arches converge vers UN point : la promesse rendue tangible par la
+         matière. Textes = placeholders sobres (aucun fait, aucun client, ne re-liste pas les 5 domaines). -->
+    <div class="viz__body">
+      <div class="viz__note reveal d1">
+        <span class="viz__caplabel">Un seul tenant</span>
+        <p class="viz__gloss">Tout converge en un point&#8239;: <em>c'est là que nous en répondons.</em></p>
+      </div>
+      <figure class="viz__plate reveal d2">
+        <img src="https://images.unsplash.com/photo-1768573263983-348b0e6b4e6f?auto=format&fit=crop&w=1600&q=85" alt="Cloître de pierre : une enfilade d'arches convergeant vers un seul point de lumière, en noir et blanc.">
+      </figure>
+      <span class="viz__sill reveal" aria-hidden="true"></span>
+    </div>
   </div>
 </section>
 
