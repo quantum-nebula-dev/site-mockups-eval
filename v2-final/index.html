@@ -931,55 +931,33 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="model__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
 
-    <!-- schéma : filets dispersés qui CONVERGENT (gauche) -> se referment sur un seul point
-         (centre) -> une seule ligne rendue qui se partage entre France et étranger (droite).
-         Une seule couleur : l'or, réservée au point unique et à la ligne rendue. -->
+    <!-- La convergence : des filets qui émergent du vide (dégradé) et se rassemblent, par des
+         courbes tenues, sur LE seul point coloré (l'or) ; de ce point part une seule ligne
+         rendue. La marque est engravée sous le point. Un seul accent : l'or. -->
     <div class="model__figure reveal d1">
-      <svg class="model__diagram" viewBox="0 0 1000 220" role="img"
-           aria-label="Schéma du modèle. À gauche, des fonctions de gestion dispersées : plusieurs filets d'origines éparses qui convergent tous vers un même point. Au centre, un seul point de responsabilité où ils se réunissent. À droite, une seule ligne continue en sort et se partage entre la France et l'étranger.">
-        <!-- Dispersées : filets neutres, d'origines éparses, qui CONVERGENT et se referment
-             sur l'anneau du point (leurs extrémités droites se terminent toutes sur le noeud) -->
-        <g>
-          <line class="md-stub" data-draw pathLength="1" x1="56"  y1="40"  x2="482" y2="107" style="transition-delay:.05s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="40"  y1="68"  x2="482" y2="108" style="transition-delay:.12s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="76"  y1="96"  x2="482" y2="109" style="transition-delay:.19s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="44"  y1="124" x2="482" y2="111" style="transition-delay:.26s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="96"  y1="152" x2="482" y2="112" style="transition-delay:.33s"/>
-          <line class="md-stub" data-draw pathLength="1" x1="120" y1="180" x2="482" y2="113" style="transition-delay:.40s"/>
-        </g>
-        <!-- Rendues : une seule ligne or continue, qui sort et se partage en deux lieux -->
-        <line class="md-line" data-draw pathLength="1" x1="500" y1="110" x2="840" y2="110" style="transition-delay:1s"/>
-        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="78"  style="transition-delay:1.5s"/>
-        <line class="md-fork" data-draw pathLength="1" x1="840" y1="110" x2="902" y2="142" style="transition-delay:1.5s"/>
-        <!-- Le seul point coloré du schéma : le lieu du rassemblement -->
-        <circle class="md-ring"  cx="500" cy="110" r="17" style="transition-delay:.9s"/>
-        <circle class="md-point" cx="500" cy="110" r="7"  style="transition-delay:.98s"/>
-        <!-- Les deux lieux où le service est rendu -->
-        <text class="md-geo" x="914" y="78"  dominant-baseline="middle" style="transition-delay:1.75s">FRANCE</text>
-        <text class="md-geo" x="914" y="142" dominant-baseline="middle" style="transition-delay:1.75s">ÉTRANGER</text>
+      <svg class="model__diagram" viewBox="0 0 1000 280" role="img"
+           aria-label="Des fonctions de gestion dispersées convergent, par un faisceau de fines lignes, vers un seul point de responsabilité, Périclès ; de ce point part une seule ligne continue, le service rendu au groupe, en France comme à l'étranger.">
+        <defs>
+          <linearGradient id="mdFade" gradientUnits="userSpaceOnUse" x1="55" y1="140" x2="500" y2="140">
+            <stop offset="0" stop-color="#001931" stop-opacity="0"/>
+            <stop offset="0.55" stop-color="#001931" stop-opacity="0.10"/>
+            <stop offset="1" stop-color="#001931" stop-opacity="0.34"/>
+          </linearGradient>
+        </defs>
+        <!-- les fonctions dispersées : cinq filets qui émergent du vide et convergent sur le point -->
+        <path class="md-ray" data-draw pathLength="1" d="M64,58 C250,58 360,140 500,140"   style="transition-delay:.05s"/>
+        <path class="md-ray" data-draw pathLength="1" d="M50,96 C240,96 360,140 500,140"   style="transition-delay:.14s"/>
+        <path class="md-ray" data-draw pathLength="1" d="M62,140 C250,140 360,140 500,140" style="transition-delay:.23s"/>
+        <path class="md-ray" data-draw pathLength="1" d="M50,184 C240,184 360,140 500,140" style="transition-delay:.32s"/>
+        <path class="md-ray" data-draw pathLength="1" d="M78,222 C262,222 360,140 500,140" style="transition-delay:.41s"/>
+        <!-- la ligne rendue : un seul filet or continu -->
+        <path class="md-line" data-draw pathLength="1" d="M500,140 L940,140" style="transition-delay:1.05s"/>
+        <!-- le seul point coloré : le lieu du rassemblement -->
+        <circle class="md-ring"  cx="500" cy="140" r="14"  style="transition-delay:.95s"/>
+        <circle class="md-point" cx="500" cy="140" r="5.5" style="transition-delay:1s"/>
+        <!-- le repère nommé sous le point -->
+        <text class="md-label" x="500" y="180" text-anchor="middle" style="transition-delay:1.5s">PÉRICLÈS</text>
       </svg>
-    </div>
-
-    <!-- Trois temps (placeholders ; à figer en passe copy). Aucun fait ni chiffre. -->
-    <div class="model__legend reveal d2">
-      <div class="model__cap model__cap--start">
-        <span class="model__dot" aria-hidden="true"></span>
-        <p class="eyebrow">Dispersées</p>
-        <h3>Des fonctions éparpillées</h3>
-        <p>Réparties entre des prestataires et des interlocuteurs multiples, sans tenue d'ensemble.</p>
-      </div>
-      <div class="model__cap model__cap--pivot">
-        <span class="model__dot" aria-hidden="true"></span>
-        <p class="eyebrow">Réunies</p>
-        <h3>Périclès</h3>
-        <p>Un seul point de responsabilité prend en charge, opère et pilote l'ensemble.</p>
-      </div>
-      <div class="model__cap model__cap--end">
-        <span class="model__dot" aria-hidden="true"></span>
-        <p class="eyebrow">Rendues</p>
-        <h3>Un service intégré</h3>
-        <p>Délivré au groupe comme un tout, en France comme à l'étranger.</p>
-      </div>
     </div>
   </div>
 </section>
