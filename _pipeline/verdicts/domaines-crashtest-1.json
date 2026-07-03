@@ -1,0 +1,34 @@
+{
+  "section": "#domaines",
+  "round": 1,
+  "deterministic": [
+    { "check": "overflow_390", "pass": true, "note": "sonde shoot.ps1 : innerWidth=390 scrollWidth=390 -> FITS, aucun overflow horizontal." },
+    { "check": "h2_sous_hero", "pass": true, "note": "Hero 'Vos fonctions de gestion... un seul point de responsabilite.' reste le plus grand ET le plus fort de la page (serif blanc geant sur image sombre). Le h2 #domaines 'Cinq domaines, une seule responsabilite.' est nettement plus petit, meme poids regular, encre sur creme. Ne concurrence pas le hero." },
+    { "check": "textes_verbatim", "pass": true, "note": "'Cinq domaines, une seule responsabilite.' present. Les 5 intitules presents et exacts : Pilotage financier et administratif / Paie, social et conformite / Prestations et programmes / Systemes, outils et presence en ligne / Appui au pilotage et au developpement." }
+  ],
+  "rubric": {
+    "composition_rythme": { "score": 3.0, "raison": "Base asymetrique 2 colonnes correcte (titre+intro a gauche, liste a droite), mais le rythme de la colonne droite se degrade : les ecarts verticaux entre items GROSSISSENT vers le bas (03->04 et 04->05 = gros vides), et tout le quadrant inferieur gauche est un vide mort. Le bas de section s'affaisse. Equilibre sans intention forte." },
+    "typographie": { "score": 4.0, "raison": "Point fort, herite du plancher/hero : Newsreader, contraste de tailles franc (titre serif > intitules serif > descriptions muted), numeros or, eyebrow uppercase tracke. Titre regular, sous le hero. Rien a reprocher ici." },
+    "couleur_contraste": { "score": 4.0, "raison": "Palette tokens uniquement (encre/or/creme), descriptions en muted, accents or sobres, filet or. Dans les tokens et intentionnel. 0 couleur brute confirme par l'outil." },
+    "identite_portfolio_test": { "score": 3.0, "raison": "AVANT le chiffre : c'est le plancher (rail sticky) avec, pour seule nouveaute, un connecteur vertical or entre les numeros. Ce spine est (a) un motif 'timeline/stepper' generique, et (b) CASSE (voir polish). Aucune idee signature nette et bien executee qui souleve la section au-dessus du plancher 'aime sans plus'. Propre et on-brand mais sans geste possedable = plancher = 3." },
+    "polish": { "score": 2.0, "raison": "AVANT le chiffre : le connecteur vertical or n'existe que pour 01->02->03 puis MEURT en un stub sous 03 ; absent pour 04 et 05. Element orphelin / effet mal integre qui, sur pixels statiques, se lit comme un bug (ou un etat de scroll-progress non resolu). Cumule avec les ecarts d'items incoherents. Textbook 'spacing incoherent, elements orphelins, effet mal integre'." }
+  },
+  "anchor_comparison": {
+    "beats_floor_rail_sticky": false,
+    "evidence": "La candidate EST le plancher (meme grille 2 colonnes, memes numeros 01-05, meme copy, meme colonne gauche) ou les filets horizontaux propres du plancher ont ete remplaces par un spine vertical CASSE. Le mandat etait d'etre NETTEMENT au-dessus d'un plancher deja 'aime sans plus' : non seulement elle ne le depasse pas, mais le connecteur brise la rend legerement MOINS propre que le plancher a filets. Aucune tension ni geste signature ajoute.",
+    "shares_reject_motif": false,
+    "reject_note": "Bon point a acter : la candidate ne partage PAS le motif du rejet (sommaire statique). Pas de pile plate pleine largeur, pas de chiffres romains I-V a l'extreme droite. Le fichier a ete ramene du rejet vers le layout du plancher. Le probleme n'est pas le rejet, c'est l'absence d'elevation au-dessus du plancher + l'execution cassee."
+  },
+  "holistic": {
+    "beau_et_signe": false,
+    "geste_signature_identifie": "Tentative : un rail/spine vertical or reliant les numeros. Mais generique (motif timeline) ET casse (01-03 seulement, stub mort). Pas un geste possedable proprement execute.",
+    "why": "Oubli de la rubric : ce n'est ni beau ni signe. Ca se lit comme 'le plancher, legerement degrade' : competent, sobre, on-brand, mais aucun geste qu'on ne pourrait coller sur le site d'un concurrent, et le seul essai (spine) rate. Un DA ne le mettrait pas en portfolio en l'etat."
+  },
+  "verdict": "BLOCK",
+  "fixes": [
+    "Resoudre le connecteur vertical : soit un filet or CONTINU (1px, meme token or) du numero 01 jusqu'au 05 sans aucun stub mort, soit le supprimer et restaurer des filets horizontaux pleine largeur entre les 5 items. Interdit : le demi-spine actuel qui meurt sous 03.",
+    "Regulariser le rythme de la colonne droite : espacement vertical EGAL entre les 5 items (tuer les gaps qui grossissent 03->04->05), interligne d'items constant pour que le bas ne s'affaisse pas en vide.",
+    "Poser UN seul geste signature qui depasse nettement le plancher et ancre le quadrant inferieur gauche mort : un unique element focal (chiffre-fantome surdimensionne, ou filet or vertical unique separant les 2 colonnes) execute proprement. Un seul geste, pas trois."
+  ],
+  "confidence": 0.85
+}
