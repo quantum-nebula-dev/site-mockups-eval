@@ -968,57 +968,63 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <svg class="viz-rose" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" focusable="false">
         <defs>
           <!-- profondeur de gravure : or lumineux au point (r=0) -> presque effacé en périphérie -->
-          <radialGradient id="vizFade" gradientUnits="userSpaceOnUse" cx="300" cy="280" r="298">
-            <stop offset="0" stop-color="#9E835A" stop-opacity=".55"/>
-            <stop offset=".42" stop-color="#9E835A" stop-opacity=".26"/>
-            <stop offset="1" stop-color="#9E835A" stop-opacity=".045"/>
+          <radialGradient id="vizFade" gradientUnits="userSpaceOnUse" cx="428" cy="286" r="336">
+            <stop offset="0" stop-color="#9E835A" stop-opacity=".58"/>
+            <stop offset=".4" stop-color="#9E835A" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#9E835A" stop-opacity=".05"/>
           </radialGradient>
           <!-- halo tenu du point (le seul endroit « lit ») -->
-          <radialGradient id="vizCore" gradientUnits="userSpaceOnUse" cx="300" cy="280" r="46">
+          <radialGradient id="vizCore" gradientUnits="userSpaceOnUse" cx="428" cy="286" r="46">
             <stop offset="0" stop-color="#9E835A" stop-opacity=".5"/>
             <stop offset="1" stop-color="#9E835A" stop-opacity="0"/>
           </radialGradient>
         </defs>
         <g class="viz-rings" fill="none" stroke="url(#vizFade)"></g>
         <g class="viz-spiral" fill="none" stroke="url(#vizFade)"></g>
-        <circle class="viz-halo" cx="300" cy="280" r="44" fill="url(#vizCore)"/>
-        <circle class="viz-node-ring" cx="300" cy="280" r="12.5" fill="none" stroke="#9E835A" stroke-width="1"/>
-        <circle class="viz-node" cx="300" cy="280" r="2.6" fill="#001931"/>
+        <g class="viz-spiral2" fill="none" stroke="url(#vizFade)" stroke-opacity=".6"></g>
+        <circle class="viz-halo" cx="428" cy="286" r="44" fill="url(#vizCore)"/>
+        <circle class="viz-node-ring" cx="428" cy="286" r="12.5" fill="none" stroke="#9E835A" stroke-width="1"/>
+        <circle class="viz-node" cx="428" cy="286" r="2.6" fill="#001931"/>
       </svg>
     </figure>
     <script>
-    /* Génère la gravure de #viz : anneaux concentriques (engine-turned) + filets or en spirale
-       logarithmique qui s'enroulent de la périphérie dispersée jusqu'au point. Rien hors #viz. */
+    /* Gravure de #viz : anneaux concentriques (engine-turned) + DEUX jeux de filets or en spirale
+       logarithmique, contra-rotatifs (entrelacs guilloché), enroulés de la périphérie dispersée
+       jusqu'au point. Node décalé à droite : les arcs s'ouvrent vers le texte. Rien hors #viz. */
     (function(){
       var NS="http://www.w3.org/2000/svg";
       var rings=document.querySelector("#viz .viz-rings"),
-          spiral=document.querySelector("#viz .viz-spiral");
-      if(!rings||!spiral) return;
-      var cx=300, cy=280;
-      [16,27,98,164,232,296].forEach(function(r,i){
+          s1=document.querySelector("#viz .viz-spiral"),
+          s2=document.querySelector("#viz .viz-spiral2");
+      if(!rings||!s1||!s2) return;
+      var cx=428, cy=286, Rout=306, Rin=18, sweep=2.28, steps=56;
+      [15,26,100,168,238,304].forEach(function(r,i){
         var c=document.createElementNS(NS,"circle");
         c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
         c.setAttribute("stroke-width", i<2 ? "1" : "0.7");
         rings.appendChild(c);
       });
-      var N=13, Rout=300, Rin=19, sweep=2.2, steps=54;
-      for(var i=0;i<N;i++){
-        var a0=i*(2*Math.PI/N), d="";
-        for(var s=0;s<=steps;s++){
-          var t=s/steps,
-              r=Rout*Math.pow(Rin/Rout,t),
-              a=a0+t*sweep,
-              x=(cx+r*Math.cos(a)).toFixed(1),
-              y=(cy+r*Math.sin(a)).toFixed(1);
-          d+=(s?"L":"M")+x+" "+y+" ";
+      function drawSet(g,N,dir,base){
+        for(var i=0;i<N;i++){
+          var a0=i*(2*Math.PI/N)+(dir<0?Math.PI/N:0), d="";
+          for(var s=0;s<=steps;s++){
+            var t=s/steps,
+                r=Rout*Math.pow(Rin/Rout,t),
+                a=a0+dir*t*sweep,
+                x=(cx+r*Math.cos(a)).toFixed(1),
+                y=(cy+r*Math.sin(a)).toFixed(1);
+            d+=(s?"L":"M")+x+" "+y+" ";
+          }
+          var p=document.createElementNS(NS,"path");
+          p.setAttribute("d",d.trim());
+          p.setAttribute("class","viz-thread");
+          p.setAttribute("pathLength","1");
+          p.style.animationDelay=(base+i*0.02).toFixed(3)+"s";
+          g.appendChild(p);
         }
-        var p=document.createElementNS(NS,"path");
-        p.setAttribute("d",d.trim());
-        p.setAttribute("class","viz-thread");
-        p.setAttribute("pathLength","1");
-        p.style.animationDelay=(0.12+i*0.028).toFixed(3)+"s";
-        spiral.appendChild(p);
       }
+      drawSet(s1,12, 1,0.10);
+      drawSet(s2,12,-1,0.17);
     })();
     </script>
   </div>
