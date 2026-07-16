@@ -20,6 +20,7 @@
 - **Phase 2 — rentrée (plus tard)** : éclater en **pages séparées** (ex. Approche, Contact, une page par domaine) quand le temps le permet. L'architecture de la home doit rester compatible avec cette évolution.
 
 ## Décisions figées
+- **2026-07-16 — reprise post-pivot blueprint** : hero **VERROUILLÉ** (validé user) ; nav gardée (aimée). **Mode ÉLAN** (la session principale construit, l'œil du user = seul juge, aucun juge IA). Chantier courant : la home section par section à partir de `#perimetre`, en s'appuyant sur les acquis des variantes (B/C/D dans `variantes/`) ; puis passe copy avec le user ; puis finition/QA. Monopage phase 1 (multipages à la rentrée).
 - **Hero + nav** : VALIDÉS, **on n'y touche pas** (gate direction faite). Réglés au pixel — voir `tokens.md` (serif 400 « carved » -.022em, deck muted 72%, labels .14em). Ils sont la référence DNA.
 - **Intro (`#perimetre`)** : refondue sobre (bloc aligné, hiérarchie typo), validée.
 - **Domaines (`#domaines`)** : refondue (rail éditorial sticky à gauche + liste numérotée à droite, index or compacts), validée.
