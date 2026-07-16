@@ -219,15 +219,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .intro{padding-block:clamp(84px,11vw,150px)}
 .intro .eyebrow{margin-bottom:clamp(18px,2.2vw,26px)}
 .intro__title{max-width:none}
+.intro__spread{
+  margin-top:clamp(30px,4.2vw,58px);
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+  column-gap:clamp(44px,6.5vw,104px);align-items:start;
+}
 .intro__standfirst{
-  margin-top:clamp(26px,3.4vw,44px);
   font-family:var(--serif);font-weight:300;color:var(--ink);
   font-size:clamp(1.55rem,2.9vw,2.45rem);line-height:1.3;letter-spacing:-.012em;
-  max-width:30ch;
+  max-width:24ch;
 }
 .intro__standfirst i{font-style:italic;color:var(--gold-d)}
-.intro__low{margin-top:clamp(30px,4vw,54px);display:grid;grid-template-columns:1fr minmax(0,56ch);column-gap:clamp(28px,4vw,64px)}
-.intro__answer{grid-column:2}
+.intro__answer{padding-top:clamp(46px,6.5vw,104px);max-width:46ch}
 .intro__para{color:var(--body)}
 .intro__pivot{
   margin-top:clamp(22px,2.6vw,34px);
@@ -237,9 +240,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   max-width:40ch;
 }
 @media (max-width:980px){
+  .intro__spread{grid-template-columns:1fr;row-gap:clamp(26px,5vw,36px)}
   .intro__standfirst{max-width:26ch}
-  .intro__low{grid-template-columns:1fr}
-  .intro__answer{grid-column:1}
+  .intro__answer{padding-top:0;max-width:58ch}
 }
 
 /* ============ DOMAINES (sommaire éditorial : registre énuméré, cotes en regard) ============
@@ -829,9 +832,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   <div class="wrap">
     <p class="eyebrow reveal">Le périmètre</p>
     <h2 class="intro__title reveal d1">Ce que Périclès<br>prend en charge.</h2>
-    <p class="intro__standfirst reveal d1">Un groupe qui grandit accumule des fonctions de gestion et des prestations <i>plus vite qu'il ne peut les tenir.</i></p>
-    <div class="intro__low reveal d2">
-      <div class="intro__answer">
+    <div class="intro__spread">
+      <p class="intro__standfirst reveal d1">Un groupe qui grandit accumule des fonctions de gestion et des prestations <i>plus vite qu'il ne peut les tenir.</i></p>
+      <div class="intro__answer reveal d2">
         <p class="intro__para">Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
         <p class="intro__pivot">Vous gardez vos décisions, nous répondons de leur exécution.</p>
       </div>
