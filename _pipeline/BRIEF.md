@@ -20,7 +20,10 @@
 - **Phase 2 — rentrée (plus tard)** : éclater en **pages séparées** (ex. Approche, Contact, une page par domaine) quand le temps le permet. L'architecture de la home doit rester compatible avec cette évolution.
 
 ## Décisions figées
-- **2026-07-16 — reprise post-pivot blueprint** : hero **VERROUILLÉ** (validé user) ; nav gardée (aimée). **Mode ÉLAN** (la session principale construit, l'œil du user = seul juge, aucun juge IA). Chantier courant : la home section par section à partir de `#perimetre`, en s'appuyant sur les acquis des variantes (B/C/D dans `variantes/`) ; puis passe copy avec le user ; puis finition/QA. Monopage phase 1 (multipages à la rentrée).
+- **2026-07-16 — reprise post-pivot blueprint** : hero **VERROUILLÉ** (validé user) ; nav gardée (aimée). **Mode ÉLAN** (la session principale construit, l'œil du user = seul juge, aucun juge IA). Chantier courant : la home section par section à partir de `#perimetre` ; puis passe copy avec le user ; puis finition/QA. Monopage phase 1 (multipages à la rentrée).
+- **2026-07-16 — protocole « 3 voix » par section** (décision user) : pour chaque section, comparateur = ① version existante du fichier · ② version élan du lead (optionnelle, biaisée-informée assumée) · ③ **designer AVEUGLE** (sous-agent frais : one-job + tokens épurés + capture du hero SEULEMENT, interdiction de lire le repo). L'œil du user tranche. Préflight OBLIGATOIRE par section : lire l'existant + ses commentaires de lock avant d'écrire.
+- **2026-07-16 — intro (`#perimetre`) VALIDÉE** : proposition C (standfirst ample + italique or, filet or médian, réponse | pivot en vis-à-vis).
+- **2026-07-16 — domaines (`#domaines`) VALIDÉS** : version existante du 03/07 re-choisie face à 2 alternatives from scratch (élan + aveugle) — rail sticky + liste numérotée grands index or, inchangée.
 - **Hero + nav** : VALIDÉS, **on n'y touche pas** (gate direction faite). Réglés au pixel — voir `tokens.md` (serif 400 « carved » -.022em, deck muted 72%, labels .14em). Ils sont la référence DNA.
 - **Intro (`#perimetre`)** : refondue sobre (bloc aligné, hiérarchie typo), validée.
 - **Domaines (`#domaines`)** : refondue (rail éditorial sticky à gauche + liste numérotée à droite, index or compacts), validée.
