@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Le mod&egrave;le : 2 versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--taupe-2:#D6CAB4;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif;--shadow-soft:0 18px 44px -30px rgba(0,25,49,.30)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+p{font-size:clamp(1rem,1.05vw,1.1rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.tag{background:var(--ink);color:#fff;font-family:var(--grot);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px var(--gut)}
+.tag b{color:#e7dcc6;font-weight:600}
+section{padding-block:clamp(70px,9vw,140px)}
+.reveal{opacity:1;transform:none}
+.vNOW .tile{opacity:1 !important;transform:none !important}
+/* ============ MODÈLE (#viz) — « Un seul tenant » : la treemap de domaines (baseline aimée, tier A),
+   élevée en MARQUETERIE À JOINTS D'OR. Fix du BLOCK juge GPT-5.5 (élévation pas assez visible +
+   signature pas possédable) :
+   (1) MATIÈRE — les cinq champs ne sont plus des aplats plats : chacun est une plaque TEINTÉE,
+       modelée d'un très léger dégradé lumière(haut-gauche)→ombre(bas-droite), mat, sans couleur
+       nouvelle (voiles blanc/noir alpha) ; le panneau est monté (ombre douce du token).
+   (2) POSSÉDABLE — les plaques ne sont plus séparées par du vide blanc mais SERTIES et LIÉES par de
+       fines coutures d'OR (fond du panneau = --gold, gouttières fines + liseré) : la « ligne de
+       responsabilité » du site rendue en joaillerie, qui tient les cinq domaines EN UN SEUL TENANT.
+       Un tile-grid générique a des gaps blancs ; ce panneau serti d'or ne signe que Périclès.
+   Numéros en serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »), noms serif
+   carved, angles nets (0). Section resserrée (~1 écran), AUCUNE info ajoutée. UN geste : la
+   jointure d'or. */
+.vNOW #viz{padding-block:clamp(60px,7vw,100px)}
+.vNOW .viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
+.vNOW .viz__head h2{margin-top:22px}
+.vNOW .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
+
+/* PARKING (2026-07-03) : treemap d'ORIGINE (variante A) remise telle quelle en attendant la
+   conception FROM SCRATCH (3 concepts parallèles). Les 2 candidates pipeline (schéma, marqueterie)
+   ont été REJETÉES par l'user. Ne pas retoucher : la section sera remplacée par le concept choisi. */
+.vNOW .treemap{
+  display:grid;
+  grid-template-columns:1.7fr 1fr 1fr;
+  grid-template-rows:repeat(2, minmax(150px, 22vw));
+  grid-template-areas:"d1 d2 d3" "d1 d4 d5";
+  gap:12px;
+}
+.vNOW .tile{
+  position:relative;overflow:hidden;border-radius:8px;
+  padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;justify-content:space-between;
+  transform-origin:top center;
+  opacity:0;transform:translateY(20px) scale(.98);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.vNOW .is-visible .tile{opacity:1;transform:none}
+.vNOW .is-visible .tile:nth-child(2){transition-delay:.08s}
+.vNOW .is-visible .tile:nth-child(3){transition-delay:.16s}
+.vNOW .is-visible .tile:nth-child(4){transition-delay:.24s}
+.vNOW .is-visible .tile:nth-child(5){transition-delay:.32s}
+.vNOW .tile .t-num{font-family:var(--serif);font-size:1.1rem;letter-spacing:.04em;opacity:.7}
+.vNOW .tile .t-name{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.5rem);line-height:1.15;max-width:18ch}
+.vNOW .tile.d1{grid-area:d1;background:var(--ink);color:#fff}
+.vNOW .tile.d1 .t-name{font-size:clamp(1.4rem,2.4vw,2.1rem)}
+.vNOW .tile.d1 .t-num{color:var(--gold);opacity:1}
+.vNOW .tile.d2{grid-area:d2;background:var(--gold);color:var(--ink)}
+.vNOW .tile.d3{grid-area:d3;background:var(--taupe-2);color:var(--ink)}
+.vNOW .tile.d4{grid-area:d4;background:var(--ink-2);color:#fff}
+.vNOW .tile.d4 .t-num{color:var(--gold)}
+.vNOW .tile.d5{grid-area:d5;background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+
+
+
+/* ===== MA VERSION : la ligne de responsabilite (affluents -> un point -> rendu) ===== */
+.vLINE .lr__head{max-width:58ch;margin-bottom:clamp(30px,3.6vw,52px)}
+.vLINE .lr__head h2{margin-top:22px}
+.vLINE .lr__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
+.vLINE .lr__fig{display:block;width:100%;height:auto}
+.vLINE .lr__zone{font-family:var(--grot);font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;fill:rgba(0,25,49,.42)}
+.vLINE .lr__who{font-family:var(--serif);font-style:italic;font-size:17px;fill:var(--gold-d)}
+.vLINE .lr__dest{font-family:var(--grot);font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;fill:var(--body)}
+.vLINE .lr__aff{stroke:rgba(0,25,49,.22);stroke-width:1.5;fill:none}
+.vLINE .lr__main{stroke:var(--gold);stroke-width:2;fill:none}
+.vLINE .lr__pt{fill:var(--gold)}
+.vLINE .lr__ring{fill:none;stroke:rgba(158,131,90,.4);stroke-width:1}
+.vLINE .lr__mobile{display:none;position:relative;padding-left:26px;margin-top:8px}
+.vLINE .lr__mobile::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,rgba(0,25,49,.2) 0%,var(--gold) 45%,var(--gold) 100%)}
+.vLINE .lr__step{margin-bottom:22px;position:relative}
+.vLINE .lr__step::before{content:"";position:absolute;left:-22px;top:8px;width:7px;height:7px;border-radius:50%;background:rgba(0,25,49,.25)}
+.vLINE .lr__step.gold::before{background:var(--gold)}
+.vLINE .lr__step b{display:block;font-family:var(--grot);font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold-d);margin-bottom:4px}
+@media (max-width:700px){
+  .vLINE .lr__fig{display:none}
+  .vLINE .lr__mobile{display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="tag">Version <b>1</b> &middot; L'EXISTANTE : la mosa&iuml;que de domaines (en place aujourd'hui)</div>
+<section class="vNOW">
+  <div class="wrap">
+    <div class="viz__head reveal">
+      <p class="eyebrow">Le modèle</p>
+      <h2>Un seul point de responsabilité.</h2>
+      <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
+    </div>
+
+    <!-- La mosaïque : les cinq domaines rendus en surfaces pondérées (aplats de tokens), tenus
+         comme un seul ensemble. Le filet or signature se dessine en tête du panneau (::before). -->
+    <div class="treemap reveal" aria-label="Le périmètre de gestion rendu en une seule mosaïque de cinq domaines, tenus d'un seul tenant.">
+      <div class="tile d1"><span class="t-num">01</span><span class="t-name">Pilotage financier et administratif</span></div>
+      <div class="tile d2"><span class="t-num">02</span><span class="t-name">Paie, social et conformité</span></div>
+      <div class="tile d3"><span class="t-num">03</span><span class="t-name">Prestations et programmes</span></div>
+      <div class="tile d4"><span class="t-num">04</span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
+      <div class="tile d5"><span class="t-num">05</span><span class="t-name">Appui au pilotage et au développement</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="tag">Version <b>2</b> &middot; FROM SCRATCH (&eacute;lan) : &laquo; la ligne de responsabilit&eacute; &raquo; &mdash; des fils &eacute;pars rejoignent une seule ligne d'or</div>
+<section class="vLINE">
+  <div class="wrap">
+    <div class="lr__head">
+      <p class="eyebrow">Le mod&egrave;le</p>
+      <h2>Un seul point de responsabilit&eacute;.</h2>
+      <p class="lr__lead">Quel que soit le p&eacute;rim&egrave;tre, le m&ecirc;me m&eacute;canisme : ce qui est dispers&eacute; est r&eacute;uni en un point, puis rendu au groupe, en France comme &agrave; l'&eacute;tranger.</p>
+    </div>
+    <svg class="lr__fig" viewBox="0 0 1200 300" role="img" aria-label="Des fonctions dispersees rejoignent une seule ligne de responsabilite, tenue par Pericles, rendue au groupe en France comme a l'etranger.">
+      <text class="lr__zone" x="40" y="52">Dispers&eacute;es</text>
+      <text class="lr__zone" x="565" y="52" text-anchor="middle">R&eacute;unies</text>
+      <text class="lr__zone" x="1160" y="52" text-anchor="end">Rendues</text>
+      <path class="lr__aff" d="M40,96  C 220,96  360,146 520,164"/>
+      <path class="lr__aff" d="M40,136 C 230,136 380,156 520,166"/>
+      <path class="lr__aff" d="M40,182 C 240,182 390,172 520,168"/>
+      <path class="lr__aff" d="M40,224 C 220,224 370,182 520,170"/>
+      <path class="lr__aff" d="M40,262 C 250,262 400,190 520,172"/>
+      <path class="lr__main" d="M520,168 L 1074,168"/>
+      <path class="lr__main" d="M1074,168 C 1104,168 1124,156 1148,148" stroke-width="1.5"/>
+      <path class="lr__main" d="M1074,168 C 1104,168 1124,180 1148,188" stroke-width="1.5"/>
+      <circle class="lr__ring" cx="520" cy="168" r="14"/>
+      <circle class="lr__pt" cx="520" cy="168" r="5.5"/>
+      <text class="lr__who" x="520" y="212" text-anchor="middle">P&eacute;ricl&egrave;s</text>
+      <text class="lr__dest" x="1160" y="144" text-anchor="end">France</text>
+      <text class="lr__dest" x="1160" y="204" text-anchor="end">International</text>
+    </svg>
+    <div class="lr__mobile">
+      <div class="lr__step"><b>Dispers&eacute;es</b>Des fonctions r&eacute;parties entre des prestataires et des interlocuteurs multiples.</div>
+      <div class="lr__step gold"><b>R&eacute;unies &middot; P&eacute;ricl&egrave;s</b>Un seul point de responsabilit&eacute; prend en charge, op&egrave;re et pilote l'ensemble.</div>
+      <div class="lr__step gold"><b>Rendues &middot; France / International</b>D&eacute;livr&eacute;es au groupe comme un service int&eacute;gr&eacute;.</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
