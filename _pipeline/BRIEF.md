@@ -36,6 +36,17 @@ Recherche 2026-07-01 (subagent recentré sur le BON métier = gestion opération
 - **IA commune du métier** : Hero « focus on your mission » + CTA · grille de fonctions/domaines · pourquoi-nous/principes · repères chiffrés · Contact · Footer. Courant aussi : le CONSTAT/problème après le hero · LE MODÈLE / « comment ça marche » (PHXmso « How We Operate », 4 étapes) · qui-l'on-sert.
 - **Interdit pour Périclès** (présent chez TOUS les analogues, incompatible ninja/registre) : témoignages nominatifs, logos/compteurs de clients, grilles de prix/offres, section clients nominative. → couper systématiquement.
 
+## Séquençage + plan d'assets de la home (étape 1 /design-page — à valider user avant code)
+Reconstruction FROM SCRATCH en mode élan, section par section. Rythme des fonds : sombre (hero) → blanc → crème → blanc → sombre (image) → taupe → crème → ink → ink. UN climax visuel : le schéma du modèle.
+1. **Intro / périmètre** — forme : TYPOGRAPHIQUE assumée (le texte est l'asset ; ouverture éditoriale, zéro décor). Fond blanc, densité faible (respiration post-hero).
+2. **Domaines (5)** — forme : LISTE ÉDITORIALE indexée (typographique structurée). Fond crème, densité moyenne.
+3. **Le modèle** — forme : SCHÉMA DESSINÉ = **le climax de la page** (la relation dispersé → un point → rendu ; micro-labels 2-4 mots, 1 annotation max — l'ancre dessine, elle ne parle pas). Fond blanc. **Asset risqué → boucle isolée** : fabriqué/réglé seul, montré au user, PUIS intégré.
+4. **Citation / manifeste** — forme : IMAGE PLEIN CADRE (photo N&B noble + voile ink + une phrase). 2e temps fort (photo ≠ schéma). **Choix d'image montré au user.**
+5. **Repères** — forme : BANDE DE GROS CHIFFRES SERIF (4 attributs non-nominatifs, [N] pour l'inconnu). Fond taupe, densité faible.
+6. **Approche** — forme : TYPOGRAPHIQUE (4 principes en liste éditoriale sobre — pas de cases-texte). Fond crème.
+7. **Contact** — forme : FORMULAIRE ÉDITORIAL (champs-filets, pas de boîtes) + CTA « Adresser une demande ». Fond ink (clôture, bookend du hero).
+8. **Footer** — forme : typographique minimal (PERICLES GESTION, mentions légales placeholders, copyright — virer les coordonnées inventées). Ink, continuité du contact.
+
 ## Sitemap home Périclès (monopage — ordonné · one-job · source · CTA) — VALIDÉ 2026-07-01
 1. **Hero** — Périclès opère les fonctions de gestion d'un groupe pour qu'il se concentre sur sa mission (« un seul point de responsabilité ») + amorcer l'action. *MedxMSO/PHXmso/DSS/SEG (hero « focus on your mission »).* **CTA : oui** (« Adresser une demande », primaire). — FIGÉ, ne pas retoucher.
 2. **Intro / le périmètre** (`#perimetre`) — dire ce qu'est Périclès + le constat (fonctions dispersées → consolidées) ; décrire le TYPE de groupe servi sans le nommer. *EXEIGUARD (mission), DSS, PHXmso (le problème).* CTA non. — validée.
