@@ -1,0 +1,232 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Périclès Gestion — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#001931;
+    --ink-2:#15324d;
+    --gold:#9E835A;
+    --gold-d:#7f6740;
+    --body:#4F5E6B;
+    --cream:#F7F3EB;
+    --taupe:#E7DFD2;
+    --line:rgba(0,25,49,.12);
+
+    /* dérivés pour le fond ink (la section est la clôture nuit) */
+    --on-ink:var(--cream);
+    --on-ink-mut:rgba(247,243,235,.66);
+    --on-ink-faint:rgba(247,243,235,.42);
+    --hair:rgba(247,243,235,.16);
+    --gold-line:rgba(158,131,90,.55);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    color:var(--on-ink);
+    background:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .contact{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 12% 0%, var(--ink-2) 0%, rgba(21,50,77,0) 52%),
+      var(--ink);
+    padding:clamp(5rem,12vh,9.5rem) 0 clamp(4.5rem,10vh,8rem);
+    overflow:hidden;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-inline:clamp(1.5rem,5vw,4rem);
+  }
+
+  /* — geste signature unique : un filet or qui se dessine, rideau de la clôture nuit — */
+  .opener{margin-bottom:clamp(2.6rem,6vw,4.2rem)}
+  .filet{
+    display:block;
+    height:1px;
+    width:100%;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left center;
+    animation:draw 1.7s cubic-bezier(.19,1,.22,1) .15s both;
+  }
+  @keyframes draw{to{transform:scaleX(1)}}
+
+  .eyebrow{
+    margin:0;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  h2{
+    margin:.9rem 0 0;
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:300;
+    font-size:clamp(1.9rem,3.6vw,3rem);
+    line-height:1.08;
+    letter-spacing:-.012em;
+    color:var(--on-ink);
+  }
+
+  .lead{
+    margin:1.35rem 0 0;
+    max-width:52ch;
+    font-size:clamp(1rem,1.15vw,1.1rem);
+    line-height:1.72;
+    color:var(--on-ink-mut);
+  }
+
+  .grid{
+    margin-top:clamp(3rem,7vw,5rem);
+    display:grid;
+    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:clamp(2.6rem,6vw,6rem);
+    align-items:start;
+  }
+
+  /* colonne réassurance : l'email en grand serif, la garantie dessous */
+  .assure{padding-top:.2rem}
+  .email{
+    display:inline-block;
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:300;
+    font-size:clamp(1.45rem,3.2vw,2.05rem);
+    letter-spacing:-.01em;
+    line-height:1.15;
+    color:var(--on-ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold-line);
+    padding-bottom:.22em;
+    transition:color .35s ease,border-color .35s ease;
+  }
+  .email:hover,.email:focus-visible{color:var(--gold);border-color:var(--gold)}
+
+  .pledge{
+    margin:1.9rem 0 0;
+    max-width:33ch;
+    font-size:.95rem;
+    line-height:1.75;
+    color:var(--on-ink-mut);
+  }
+
+  /* formulaire : aucun cadre, des filets or qui soulignent chaque champ */
+  .form{margin:0}
+  .field{margin-bottom:clamp(1.7rem,3vw,2.3rem)}
+  .field label{
+    display:block;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--on-ink-faint);
+    margin-bottom:.7rem;
+  }
+  .field input,
+  .field textarea{
+    width:100%;
+    background:transparent;
+    border:0;
+    border-bottom:1px solid var(--hair);
+    color:var(--on-ink);
+    font-family:inherit;
+    font-size:1.02rem;
+    line-height:1.6;
+    padding:.55rem 0;
+    transition:border-color .35s ease;
+  }
+  .field textarea{resize:vertical;min-height:5.5rem}
+  .field input::placeholder,
+  .field textarea::placeholder{color:var(--on-ink-faint)}
+  .field input:focus,
+  .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+
+  .submit{
+    margin-top:.6rem;
+    display:inline-flex;
+    align-items:center;
+    border:0;
+    border-radius:1000px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:.78rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:.98rem 2.3rem;
+    cursor:pointer;
+    transition:background .3s ease,transform .3s ease;
+  }
+  .submit:hover,.submit:focus-visible{background:var(--gold-d);transform:translateY(-1px)}
+  .submit:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  .note{
+    margin:1.15rem 0 0;
+    font-size:.82rem;
+    letter-spacing:.01em;
+    color:var(--on-ink-faint);
+  }
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;gap:clamp(2.4rem,9vw,3.4rem)}
+    .assure{order:2}
+    .form{order:1}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .filet{animation:none;transform:scaleX(1)}
+  }
+</style>
+
+<section class="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="opener"><span class="filet" aria-hidden="true"></span></div>
+
+    <header>
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Adressez-nous votre demande.</h2>
+      <p class="lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
+    </header>
+
+    <div class="grid">
+      <aside class="assure">
+        <a class="email" href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a>
+        <p class="pledge">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+      </aside>
+
+      <form class="form" action="#" novalidate>
+        <div class="field">
+          <label for="org">Organisation</label>
+          <input id="org" name="org" type="text" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="vous@organisation.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label for="scope">Périmètre à confier</label>
+          <textarea id="scope" name="scope" rows="4" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes."></textarea>
+        </div>
+
+        <button class="submit" type="submit">Adresser une demande</button>
+        <p class="note">Réponse sous quelques jours ouvrés.</p>
+      </form>
+    </div>
+  </div>
+</section>

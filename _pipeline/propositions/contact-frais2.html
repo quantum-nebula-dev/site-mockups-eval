@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès Gestion — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --ink:#001931;
+    --ink-2:#15324d;
+    --gold:#9E835A;
+    --gold-d:#7f6740;
+    --body:#4F5E6B;
+    --cream:#F7F3EB;
+    --taupe:#E7DFD2;
+    /* dérivés clairs pour lecture sur fond nuit (base cream/taupe) */
+    --light:rgba(247,243,235,.76);
+    --light-soft:rgba(247,243,235,.56);
+    --hair:rgba(158,131,90,.30);
+  }
+
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  body{
+    background:var(--ink);
+    color:var(--light);
+    font-family:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+    font-weight:400;
+    line-height:1.5;
+  }
+
+  .contact{
+    position:relative;
+    overflow:hidden;
+    padding:clamp(5rem,12vh,9.5rem) clamp(1.5rem,6vw,7rem);
+    /* profondeur d'architecture, très retenue */
+    background:
+      radial-gradient(120% 90% at 82% -10%, rgba(21,50,77,.55) 0%, rgba(0,25,49,0) 55%),
+      var(--ink);
+  }
+
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    position:relative;
+  }
+
+  /* ---- Masthead ---- */
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:1.35rem;
+  }
+  .eyebrow .rule{           /* GESTE SIGNATURE : le filet or qui se dessine */
+    display:block;
+    height:1px;
+    width:clamp(52px,9vw,128px);
+    background:var(--gold);
+    transform-origin:left center;
+    animation:draw 1.35s cubic-bezier(.19,.72,.16,1) both;
+  }
+  .eyebrow .label{
+    text-transform:uppercase;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    color:var(--gold);
+  }
+
+  .headline{
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:300;
+    font-size:clamp(1.9rem,3.6vw,3rem);
+    line-height:1.08;
+    letter-spacing:-.012em;      /* tracking serré, carved */
+    color:var(--cream);
+    max-width:14ch;
+    margin-top:1.7rem;
+  }
+
+  .lead{
+    font-size:1.06rem;
+    line-height:1.66;
+    color:var(--light);
+    max-width:47ch;
+    margin-top:1.5rem;
+  }
+
+  /* ---- Spread : la double page ---- */
+  .spread{
+    display:grid;
+    grid-template-columns:0.82fr 1fr;
+    gap:clamp(2.5rem,6vw,6.5rem);
+    margin-top:clamp(3.25rem,7vw,6.25rem);
+    align-items:start;
+  }
+
+  /* colonne gauche : l'engagement + l'email monumental */
+  .assurance{
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:300;
+    font-size:clamp(1.15rem,1.7vw,1.4rem);
+    line-height:1.55;
+    letter-spacing:-.006em;
+    color:var(--taupe);
+    max-width:26ch;
+  }
+
+  .direct{
+    margin-top:clamp(2.5rem,5vw,3.5rem);
+  }
+  .direct .tag{
+    display:block;
+    text-transform:uppercase;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    color:var(--gold);
+    margin-bottom:1rem;
+  }
+  .email{
+    display:inline-block;
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(1.35rem,2.5vw,1.95rem);
+    letter-spacing:-.012em;
+    color:var(--cream);
+    text-decoration:none;
+    padding-bottom:.16em;
+    border-bottom:1px solid var(--hair);
+    transition:border-color .45s ease,color .45s ease;
+  }
+  .email:hover{ border-color:var(--gold); }
+
+  /* colonne droite : le formulaire, réduit à des lignes typographiques */
+  form{ max-width:32rem; }
+  .field{ margin-bottom:2.15rem; }
+  .field:last-of-type{ margin-bottom:1.9rem; }
+
+  .field label{
+    display:block;
+    text-transform:uppercase;
+    font-size:.74rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    color:var(--gold);
+    margin-bottom:.9rem;
+  }
+  .field input,
+  .field textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--hair);
+    color:var(--cream);
+    font-family:"Hanken Grotesk",sans-serif;
+    font-size:1.02rem;
+    line-height:1.5;
+    padding:.6rem 0;
+    transition:border-color .45s ease;
+  }
+  .field textarea{
+    resize:vertical;
+    min-height:118px;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder{ color:rgba(247,243,235,.30); }
+  .field input:focus,
+  .field textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+
+  .submit{
+    display:inline-flex;
+    align-items:center;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:"Hanken Grotesk",sans-serif;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    border:none;
+    border-radius:999px;
+    padding:1.05rem 2.35rem;
+    cursor:pointer;
+    transition:background .45s ease,transform .4s ease;
+  }
+  .submit:hover{ background:var(--gold-d); transform:translateY(-1px); }
+  .submit:focus-visible{ outline:2px solid var(--cream); outline-offset:3px; }
+
+  .note{
+    margin-top:1.5rem;
+    font-size:.9rem;
+    color:var(--light-soft);
+  }
+
+  /* clôture nuit : filet de fin, statique et discret */
+  .close-rule{
+    margin-top:clamp(3.5rem,8vw,6rem);
+    height:1px;
+    background:linear-gradient(90deg,rgba(158,131,90,.28) 0%,rgba(158,131,90,0) 70%);
+  }
+
+  @keyframes draw{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+
+  @media (prefers-reduced-motion:reduce){
+    .eyebrow .rule{ animation:none; transform:none; }
+  }
+
+  @media (max-width:860px){
+    .spread{
+      grid-template-columns:1fr;
+      gap:clamp(2.75rem,9vw,3.75rem);
+    }
+    .assurance{ max-width:34ch; }
+    form{ max-width:none; }
+    .headline{ max-width:18ch; }
+  }
+</style>
+</head>
+<body>
+  <section class="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+
+      <!-- Masthead -->
+      <div class="eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Contact</span>
+      </div>
+
+      <h2 class="headline" id="contact-title">Adressez-nous votre demande.</h2>
+
+      <p class="lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
+
+      <!-- La double page -->
+      <div class="spread">
+
+        <div class="col-left">
+          <p class="assurance">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+
+          <div class="direct">
+            <span class="tag">Écrire directement</span>
+            <a class="email" href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a>
+          </div>
+        </div>
+
+        <div class="col-right">
+          <form action="mailto:contact@periclesgestion.com" method="post" enctype="text/plain">
+            <div class="field">
+              <label for="org">Organisation</label>
+              <input type="text" id="org" name="organisation" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="mail">Email</label>
+              <input type="email" id="mail" name="email" placeholder="vous@organisation.com" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="scope">Périmètre à confier</label>
+              <textarea id="scope" name="perimetre" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes."></textarea>
+            </div>
+            <button type="submit" class="submit">Adresser une demande</button>
+            <p class="note">Réponse sous quelques jours ouvrés.</p>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="close-rule" aria-hidden="true"></div>
+    </div>
+  </section>
+</body>
+</html>
