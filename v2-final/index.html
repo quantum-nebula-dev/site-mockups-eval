@@ -546,9 +546,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   position:relative;
 }
 .foot__rule::before{
-  content:"";display:block;width:64px;height:1px;background:var(--gold);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform .9s cubic-bezier(.35,.02,.2,1) .45s;
+  content:"";display:block;width:min(460px,55%);height:1px;margin:0 auto;
+  background:linear-gradient(90deg,rgba(158,131,90,0) 0%,var(--gold) 50%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:center;
+  transition:transform 1s cubic-bezier(.35,.02,.2,1) .45s;
 }
 .foot.is-visible .foot__rule::before{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){.foot__rule::before{transform:scaleX(1)}}
