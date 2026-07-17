@@ -544,7 +544,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 /* separateurs footer : ligne or PLEINE centree, deployee depuis le centre — deux echelles */
 .foot__rule{pointer-events:none;display:flex;justify-content:center}
 .foot__rule::before{
-  content:"";height:1px;width:min(380px,40vw);background:var(--gold);
+  content:"";height:1px;width:min(380px,40vw);
+  background:linear-gradient(90deg,rgba(158,131,90,0) 0%,var(--gold) 32%,var(--gold) 68%,rgba(158,131,90,0) 100%);
   transform:scaleX(0);transform-origin:center;
   transition:transform 1s cubic-bezier(.35,.02,.2,1) .5s;
 }
