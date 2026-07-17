@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Contact — Wendel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;
+  --body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--line:rgba(0,25,49,.12);
+  --line-d:rgba(255,255,255,.16);
+  --maxw:1180px;--gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --grot:"Hanken Grotesk",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+h2{font-family:var(--serif);color:var(--ink);font-weight:300;line-height:1.12;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+
+/* focus visible — institutionnel, discret */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ============ BANDE BLANCHE (la section qui précède) ============ */
+.lead-in{background:#fff;padding-block:clamp(60px,10vw,120px)}
+.lead-in .rule{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.lead-in .rule::after{content:"";display:block;height:1px;background:var(--line)}
+
+/* ============ CONTACT — la clôture nuit (geste signature : bookend du hero bleu nuit) ============ */
+.contact{
+  background:var(--ink);
+  color:rgba(255,255,255,.72);
+  padding-block:clamp(80px,10vw,150px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.contact h2{color:#fff}
+
+.contact__grid{
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:clamp(40px,6vw,96px);
+  align-items:start;
+}
+
+/* --- colonne éditoriale --- */
+.contact__lede h2{margin-top:22px;max-width:12ch}
+.contact__lede .lead{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.45;
+  color:rgba(255,255,255,.9);margin-top:26px;max-width:34ch;
+}
+.assurance{margin-top:clamp(34px,4.4vw,56px);padding-top:clamp(26px,3vw,36px);border-top:1px solid var(--line-d);max-width:38ch}
+.assurance p{font-family:var(--serif);font-weight:300;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.78)}
+.assurance .byline{
+  font-family:var(--grot);font-size:.82rem;font-weight:500;letter-spacing:.02em;
+  color:rgba(255,255,255,.6);margin-top:20px;
+}
+.assurance .byline .email{color:var(--gold);font-weight:600;letter-spacing:.01em}
+
+/* --- colonne formulaire : champs en filet souligné (formulaire officiel) --- */
+.form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:6px}
+.field{display:grid;gap:10px}
+.field label{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.field input,.field textarea{
+  font-family:var(--grot);font-size:1.02rem;color:#fff;
+  background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);
+  border-radius:0;padding:10px 2px;width:100%;
+  transition:border-color .35s ease;
+}
+.field textarea{min-height:118px;resize:vertical;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.36)}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+
+.form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 40px;border-radius:1000px;
+  font-family:var(--grot);font-weight:600;font-size:.95rem;letter-spacing:.01em;
+  background:var(--gold);color:var(--ink);
+  transition:background .3s,color .3s,transform .3s;
+}
+.btn:hover{background:var(--cream);transform:translateY(-1px)}
+.form__note{font-size:.85rem;color:rgba(255,255,255,.55)}
+
+.form__ok{
+  display:none;align-items:flex-start;gap:14px;
+  margin-top:6px;padding:18px 22px;
+  border-left:2px solid var(--gold);background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.86);font-size:.95rem;line-height:1.5;
+}
+.form__ok.show{display:flex}
+.form__ok .mk{color:var(--gold);font-family:var(--serif);font-size:1.15rem;line-height:1}
+.form__ok b{color:#fff;font-weight:600}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .contact__grid{grid-template-columns:1fr;gap:clamp(44px,7vw,64px)}
+  .contact__lede h2{max-width:18ch}
+  .contact__lede .lead{max-width:46ch}
+  .assurance{max-width:52ch}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== La section blanche qui précède (contexte : le contact clôt la page) ===== -->
+<section class="lead-in" aria-hidden="true">
+  <div class="rule"></div>
+</section>
+
+<!-- ===== CONTACT — clôture nuit, en écho au hero bleu nuit ===== -->
+<section class="contact" id="contact" aria-labelledby="contact-titre">
+  <div class="wrap">
+    <div class="contact__grid">
+
+      <div class="contact__lede">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-titre">Adressez-nous votre demande.</h2>
+        <p class="lead">Décrivez le périmètre que vous envisagez de confier&nbsp;; nous vous en proposons une première lecture.</p>
+        <div class="assurance">
+          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+          <p class="byline">Par écrit&nbsp;: <span class="email">[email]</span></p>
+        </div>
+      </div>
+
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="form__foot">
+          <button type="submit" class="btn">Adresser une demande</button>
+          <span class="form__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+        <div class="form__ok" id="ok" role="status" aria-live="polite">
+          <span class="mk" aria-hidden="true">✓</span>
+          <span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form = document.getElementById("form");
+  var ok = document.getElementById("ok");
+  if(!form) return;
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email");
+    var msg = document.getElementById("msg");
+    if(!email.value.trim() || !msg.value.trim()){
+      (email.value.trim() ? msg : email).focus();
+      return;
+    }
+    ok.classList.add("show");
+    form.querySelector("button[type=submit]").textContent = "Demande adressée";
+  });
+})();
+</script>
+</body>
+</html>

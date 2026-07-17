@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Contact — Kering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS DU SITE CIBLE (obligatoires) — bleu nuit + or sourd
+   ============================================================ */
+:root{
+  --ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;
+  --gold-l:#b89a6d;              /* or éclairci, lisible sur le bleu nuit */
+  --body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;
+  --line:rgba(0,25,49,.12);
+  --line-cream:rgba(247,243,235,.16);
+  --maxw:1180px;--gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader",Georgia,serif;
+  --grot:"Hanken Grotesk",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+section{padding-block:clamp(74px,9.5vw,138px)}
+
+h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+
+/* ---- petit rappel de la section blanche que je viens clore ---- */
+.prev{background:#fff;padding-block:clamp(40px,6vw,72px)}
+.prev__inner{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);border-top:1px solid var(--line);padding-top:22px}
+.prev__inner span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#b9bec4}
+
+/* ============================================================
+   CONTACT — panneau bleu nuit qui referme la page (façon Kering :
+   contraste franc blanc→ink, structure magazine, carte claire posée)
+   ============================================================ */
+.contact{background:var(--ink);color:rgba(247,243,235,.74)}
+.contact .eyebrow{color:var(--gold-l)}
+.contact .eyebrow::before{background:var(--gold-l)}
+
+/* filet plein qui coiffe la section, comme une manchette de magazine */
+.c-top{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-bottom:22px;border-bottom:1px solid var(--line-cream);margin-bottom:clamp(46px,6vw,78px)}
+.c-top .idx{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,235,.44)}
+
+.c-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(40px,6vw,96px);align-items:start}
+
+/* ---- colonne éditoriale ---- */
+.c-lede h2{color:var(--cream);max-width:13ch}
+.c-lede .lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.85rem);
+  line-height:1.42;color:rgba(247,243,235,.9);max-width:30ch;margin-top:26px}
+.c-assure{margin-top:clamp(40px,5vw,64px);padding-top:30px;border-top:1px solid var(--line-cream);max-width:38ch}
+.c-assure p{font-size:.98rem;line-height:1.62;color:rgba(247,243,235,.72)}
+.c-assure .write{margin-top:20px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,235,.62)}
+.c-assure .write .mail{color:var(--gold-l);letter-spacing:.04em;text-transform:none;font-size:.98rem;font-weight:500;margin-left:.4em}
+
+/* ---- carte formulaire, claire, coiffée d'un filet or : LE geste signature ---- */
+.c-card{background:var(--cream);color:var(--body);padding:clamp(28px,3.4vw,44px);position:relative}
+.c-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--gold)}
+.form{display:grid;gap:22px}
+.field{display:grid;gap:9px}
+.field label{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.field input,.field textarea{
+  font-family:var(--grot);font-size:1rem;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:0;
+  padding:15px 16px;width:100%;transition:border-color .3s,box-shadow .3s;
+}
+.field textarea{min-height:132px;resize:vertical;line-height:1.55}
+.field input::placeholder,.field textarea::placeholder{color:#9aa2a9}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(158,131,90,.18)}
+
+.c-submit{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 32px;
+  background:var(--ink);color:var(--cream);border-radius:0;
+  font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  transition:background .35s,color .35s,transform .35s}
+.btn:hover{background:var(--gold-d);color:#fff;transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.c-note{font-size:.85rem;color:var(--body)}
+.c-ok{display:none;margin-top:2px;padding:14px 18px;background:#fff;border-left:2px solid var(--gold);font-size:.92rem;color:var(--ink)}
+.c-ok.show{display:block}
+
+@media (max-width:900px){
+  .c-grid{grid-template-columns:1fr;gap:44px}
+  .c-lede h2,.c-lede .lead{max-width:26ch}
+}
+</style>
+</head>
+<body>
+
+<!-- section blanche précédente (rappel de contexte : je referme la page juste après) -->
+<div class="prev">
+  <div class="prev__inner"><span>Fin de la section précédente &middot; fond blanc</span></div>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="c-top">
+      <span class="eyebrow">Contact</span>
+      <span class="idx">Périclès Gestion</span>
+    </div>
+
+    <div class="c-grid">
+      <div class="c-lede">
+        <h2 id="contact-title">Adressez-nous votre demande.</h2>
+        <p class="lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
+        <div class="c-assure">
+          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+          <p class="write">Par écrit <span class="mail">[email]</span></p>
+        </div>
+      </div>
+
+      <div class="c-card">
+        <form class="form" id="form" novalidate>
+          <div class="field">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="org" autocomplete="organization" placeholder="Nom du groupe ou de l'établissement" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="vous@organisation.com" required>
+          </div>
+          <div class="field">
+            <label for="msg">Périmètre à confier</label>
+            <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+          </div>
+          <div class="c-submit">
+            <button type="submit" class="btn">Adresser une demande</button>
+            <p class="c-note">Réponse sous quelques jours ouvrés.</p>
+          </div>
+          <p class="c-ok" id="formOk" role="status">Demande prête. Écrivez à [email] pour la transmettre.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form = document.getElementById('form');
+  var ok = document.getElementById('formOk');
+  if(!form) return;
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    ok.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
