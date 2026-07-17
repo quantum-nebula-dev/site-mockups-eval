@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès Gestion — Contact (direction Hermès)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (site cible — obligatoires) ============ */
+:root{
+  --ink:#001931;
+  --ink-2:#15324d;
+  --gold:#9E835A;
+  --gold-d:#7f6740;
+  --body:#4F5E6B;
+  --white:#FFFFFF;
+  --cream:#F7F3EB;
+  --taupe:#E7DFD2;
+  --line:rgba(0,25,49,.12);
+  --maxw:1180px;
+  --gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--grot);color:var(--body);background:var(--white);
+  line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+/* fabrique la couture blanc -> crème (la section clôt la page) */
+.prev{background:var(--white);min-height:34vh;display:flex;align-items:center;justify-content:center}
+.prev span{font-family:var(--grot);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,25,49,.22)}
+
+.eyebrow{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem;
+}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;
+}
+
+/* ============ CONTACT — direction HERMÈS ==================================
+   Parti pris : « le vide comme luxe ». Là où le reste du site referme sur le
+   bleu nuit, la maison Hermès ferme en pleine lumière — la clarté, l'air, la
+   matière crème. Rien n'est encadré : la demande se pose à même la page comme
+   un objet sur une grande feuille claire. À gauche, la voix, immense de calme,
+   tenue en serif ; en bas de cette colonne, l'écrit. À droite, le formulaire
+   composé en feuille réglée — des lignes d'écriture, jamais des boîtes ; chaque
+   détail exact. UN geste signature : le fil d'or qui se tire entre l'invitation
+   et le corps (la « ligne active » du site), et se rallume sous la ligne saisie.
+   ========================================================================= */
+.contact{
+  background:var(--cream);
+  padding-block:clamp(96px,13vw,180px);
+}
+
+.contact__head{max-width:60ch}
+.contact__head h2{margin-top:20px;max-width:18ch}
+.contact__head h2 i{font-style:italic;color:var(--gold-d)}
+.contact__lead{
+  margin-top:1.1em;max-width:46ch;
+  font-family:var(--serif);font-weight:300;color:var(--ink-2);
+  font-size:clamp(1.28rem,2vw,1.65rem);line-height:1.42;letter-spacing:-.005em;
+}
+
+/* LE FIL D'OR : le geste signature du site (le filet qui se dessine), ici tiré
+   d'un bord à l'autre entre l'invitation et le corps. Se trace au chargement,
+   sans JS ; respecté par prefers-reduced-motion. Décoratif. */
+.contact__fold{position:relative;height:1px;margin-block:clamp(46px,6vw,78px);background:var(--line)}
+.contact__fold::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.30) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  animation:fil 1.4s cubic-bezier(.35,.02,.2,1) .25s forwards;
+}
+@keyframes fil{to{transform:scaleX(1)}}
+
+/* SOUS LE FIL : la voix (étroite) et la feuille réglée (large), étirées à la
+   même hauteur pour que l'écrit, en bas à gauche, tienne l'arête basse avec le
+   formulaire. Le grand vide se loge au milieu de la colonne de gauche. */
+.contact__body{
+  display:grid;grid-template-columns:minmax(0,4.1fr) minmax(0,6.4fr);
+  column-gap:clamp(48px,7vw,116px);align-items:stretch;
+}
+
+/* LA VOIX : l'assurance dite en serif tenu, haut de colonne ; l'écrit posé tout
+   en bas (margin-top:auto) — entre les deux, l'air. */
+.voice{display:flex;flex-direction:column}
+.voice__assur{
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.16rem,1.6vw,1.42rem);line-height:1.46;letter-spacing:-.006em;
+  max-width:28ch;
+}
+.voice__direct{margin-top:auto;padding-top:clamp(34px,5vw,60px);display:grid;gap:11px}
+.voice__direct .lab{
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.voice__direct .val{
+  width:max-content;max-width:100%;font-family:var(--serif);font-size:1.18rem;color:var(--ink);
+  padding-bottom:3px;border-bottom:1px solid var(--line);transition:border-color .35s,color .35s;
+}
+.voice__direct .val:hover{color:var(--gold-d);border-color:var(--gold)}
+
+/* LA FEUILLE RÉGLÉE : chaque champ est une ligne d'écriture pleine largeur, tenue
+   par un filet hairline ; l'intitulé en registre label au-dessus, la saisie posée
+   sur la ligne. À la saisie, la ligne se rallume en or (le fil, encore). */
+.ledger{display:grid;gap:0}
+.wline{
+  display:block;padding-block:clamp(17px,2vw,24px);
+  border-bottom:1px solid var(--line);transition:border-color .35s,box-shadow .35s;
+}
+.wline:first-child{padding-top:0}
+.wline > label{
+  display:block;margin-bottom:11px;
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.wline input,.wline textarea{
+  width:100%;font-family:var(--grot);font-size:1.04rem;line-height:1.55;color:var(--ink);
+  background:transparent;border:none;border-radius:0;padding:2px 0;
+}
+.wline textarea{display:block;min-height:118px;resize:vertical}
+.wline input::placeholder,.wline textarea::placeholder{color:rgba(0,25,49,.42)}
+.wline input:focus,.wline textarea:focus{outline:none}
+.wline:focus-within{border-color:var(--gold);box-shadow:0 1px 0 0 var(--gold)}
+
+.ledger__submit{
+  display:flex;align-items:center;gap:clamp(20px,2.6vw,30px);flex-wrap:wrap;
+  margin-top:clamp(30px,3.6vw,44px);
+}
+.btn-gold{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 38px;border-radius:1000px;
+  font-weight:600;font-size:1rem;letter-spacing:.01em;
+  background:var(--gold);color:var(--ink);
+  transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+}
+.btn-gold:hover{background:var(--ink);color:#fff;transform:translateY(-1px);box-shadow:0 14px 30px -20px rgba(0,25,49,.55)}
+.ledger__note{font-size:.88rem;color:var(--body)}
+
+/* clôture : mince assise ink sous la crème, pour signer la fermeture de page */
+.close{background:var(--ink);padding-block:26px}
+.close .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.close p{font-size:.82rem;color:rgba(255,255,255,.56)}
+.close .mark{font-family:var(--serif);font-size:1.15rem;color:#fff}
+.close .mark i{font-style:italic;color:var(--gold)}
+
+@media (max-width:900px){
+  .contact__body{grid-template-columns:1fr;row-gap:clamp(32px,7vw,48px)}
+  .contact__head h2{max-width:24ch}
+  .voice__direct{margin-top:clamp(26px,6vw,34px);padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .contact__fold::after{animation:none;transform:scaleX(1)}
+  *{transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- couture : la section précédente est blanche ; le contact clôt la page en crème -->
+<div class="prev"><span>… fin de la section précédente (fond blanc)</span></div>
+
+<!-- ============ CONTACT (direction Hermès : la clôture en pleine lumière) ============ -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+
+    <!-- L'INVITATION -->
+    <div class="contact__head">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Adressez-nous votre <i>demande.</i></h2>
+      <p class="contact__lead">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
+    </div>
+
+    <!-- LE FIL D'OR (geste signature) -->
+    <div class="contact__fold" aria-hidden="true"></div>
+
+    <div class="contact__body">
+
+      <!-- LA VOIX : assurance en haut, écrit en bas -->
+      <aside class="voice">
+        <p class="voice__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+        <div class="voice__direct">
+          <span class="lab">Par écrit</span>
+          <a class="val" href="#">[email]</a>
+        </div>
+      </aside>
+
+      <!-- LA FEUILLE RÉGLÉE : le formulaire comme un bel objet -->
+      <form class="ledger" id="form" novalidate>
+        <div class="wline">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="wline">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="wline">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="ledger__submit">
+          <button type="submit" class="btn-gold">Adresser une demande</button>
+          <span class="ledger__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- assise de clôture -->
+<footer class="close">
+  <div class="wrap">
+    <span class="mark"><b>Périclès</b> <i>Gestion</i></span>
+    <p>© 2026 Périclès Gestion. Tous droits réservés.</p>
+  </div>
+</footer>
+
+</body>
+</html>
