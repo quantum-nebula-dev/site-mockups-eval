@@ -631,6 +631,93 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .scrollcue .line::after{animation:none;transform:translateY(0)}
   *{transition-duration:.001ms!important;animation-duration:.001ms!important}
 }
+
+/* ==== CONTACT WENDEL (test en contexte) ==== */
+
+.Pw *, .Pw *::before, .Pw *::after{box-sizing:border-box;margin:0;padding:0}
+.Pw{scroll-behavior:smooth}
+.Pw{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.Pw a{color:inherit;text-decoration:none}
+.Pw button{font-family:inherit;cursor:pointer;border:none;background:none}
+.Pw .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Pw h2{font-family:var(--serif);color:var(--ink);font-weight:300;line-height:1.12;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.Pw .eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
+.Pw .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Pw a:focus-visible, .Pw button:focus-visible, .Pw input:focus-visible, .Pw textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.Pw .lead-in{background:#fff;padding-block:clamp(60px,10vw,120px)}
+.Pw .lead-in .rule{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Pw .lead-in .rule::after{content:"";display:block;height:1px;background:var(--line)}
+.Pw .contact{
+  background:var(--ink);
+  color:rgba(255,255,255,.72);
+  padding-block:clamp(80px,10vw,150px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.Pw .contact h2{color:#fff}
+.Pw .contact__grid{
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:clamp(40px,6vw,96px);
+  align-items:start;
+}
+.Pw .contact__lede h2{margin-top:22px;max-width:12ch}
+.Pw .contact__lede .lead{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.45;
+  color:rgba(255,255,255,.9);margin-top:26px;max-width:34ch;
+}
+.Pw .assurance{margin-top:clamp(34px,4.4vw,56px);padding-top:clamp(26px,3vw,36px);border-top:1px solid var(--line-d);max-width:38ch}
+.Pw .assurance p{font-family:var(--serif);font-weight:300;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.78)}
+.Pw .assurance .byline{
+  font-family:var(--grot);font-size:.82rem;font-weight:500;letter-spacing:.02em;
+  color:rgba(255,255,255,.6);margin-top:20px;
+}
+.Pw .assurance .byline .email{color:var(--gold);font-weight:600;letter-spacing:.01em}
+.Pw .form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:6px}
+.Pw .field{display:grid;gap:10px}
+.Pw .field label{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.Pw .field input, .Pw .field textarea{
+  font-family:var(--grot);font-size:1.02rem;color:#fff;
+  background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);
+  border-radius:0;padding:10px 2px;width:100%;
+  transition:border-color .35s ease;
+}
+.Pw .field textarea{min-height:118px;resize:vertical;line-height:1.6}
+.Pw .field input::placeholder, .Pw .field textarea::placeholder{color:rgba(255,255,255,.36)}
+.Pw .field input:focus, .Pw .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+.Pw .form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+.Pw .btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 40px;border-radius:1000px;
+  font-family:var(--grot);font-weight:600;font-size:.95rem;letter-spacing:.01em;
+  background:var(--gold);color:var(--ink);
+  transition:background .3s,color .3s,transform .3s;
+}
+.Pw .btn:hover{background:var(--cream);transform:translateY(-1px)}
+.Pw .form__note{font-size:.85rem;color:rgba(255,255,255,.55)}
+.Pw .form__ok{
+  display:none;align-items:flex-start;gap:14px;
+  margin-top:6px;padding:18px 22px;
+  border-left:2px solid var(--gold);background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.86);font-size:.95rem;line-height:1.5;
+}
+.Pw .form__ok.show{display:flex}
+.Pw .form__ok .mk{color:var(--gold);font-family:var(--serif);font-size:1.15rem;line-height:1}
+.Pw .form__ok b{color:#fff;font-weight:600}
+@media (max-width:900px){.Pw .contact__grid{grid-template-columns:1fr;gap:clamp(44px,7vw,64px)}
+.Pw .contact__lede h2{max-width:18ch}
+.Pw .contact__lede .lead{max-width:46ch}
+.Pw .assurance{max-width:52ch}
+
+}
+@media (prefers-reduced-motion:reduce){.Pw *{transition-duration:.001ms!important;animation-duration:.001ms!important}
+
+}
+
+
 </style>
 </head>
 <body>
@@ -715,7 +802,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <!-- ============ MANIFESTE PLEIN CADRE (salle de lecture noble : le grand silence de la page) ============ -->
 <section class="quote-block" aria-label="Citation">
   <div class="qimg" aria-hidden="true">
-    <img src="assets/bibliotheque-bustes.jpg" alt="">
+    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=3840&q=85" alt="">
   </div>
   <blockquote>
     Répondre de l'exécution, c'est tenir l'ensemble.
@@ -800,56 +887,46 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============ -->
-<section id="contact" class="bg-ink">
+<div class="Pw" id="contact"><section class="contact" aria-labelledby="contact-titre">
   <div class="wrap">
-    <!-- L'INVITATION : en-tête pleine largeur (la voix de la clôture, subordonnée au hero) -->
-    <div class="contact__head reveal">
-      <p class="eyebrow on-dark">Contact</p>
-      <h2 class="contact__invite">Adressez-nous votre demande.</h2>
-      <p class="contact__lead">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
-    </div>
+    <div class="contact__grid">
 
-    <!-- LE PLI : filet or qui se dessine, sur toute la largeur (geste signature du site) -->
-    <div class="contact__fold reveal d1" aria-hidden="true"></div>
-
-    <div class="contact__body">
-      <!-- LE COLOPHON : la confiance dite, puis le canal écrit (placeholder, aucune adresse inventée) -->
-      <aside class="contact__colophon reveal d1">
-        <p class="contact__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
-        <div class="contact__direct">
-          <span class="lab">Par écrit</span>
-          <span class="val">[email]</span>
+      <div class="contact__lede">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-titre">Adressez-nous votre demande.</h2>
+        <p class="lead">Décrivez le périmètre que vous envisagez de confier&nbsp;; nous vous en proposons une première lecture.</p>
+        <div class="assurance">
+          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+          <p class="byline">Par écrit&nbsp;: <span class="email">[email]</span></p>
         </div>
-      </aside>
-
-      <!-- LA FEUILLE RÉGLÉE : le formulaire en lignes d'écriture. IDs JS conservés (form / email / msg / ok). -->
-      <div class="contact__sheet reveal d2">
-        <form class="ledger" id="form" novalidate>
-          <div class="wline">
-            <label for="org">Organisation</label>
-            <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
-          </div>
-          <div class="wline">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
-          </div>
-          <div class="wline wline--msg">
-            <label for="msg">Périmètre à confier</label>
-            <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
-          </div>
-          <div class="ledger__submit">
-            <button type="submit" class="btn btn-gold btn-lg">Adresser une demande</button>
-            <span class="ledger__note">Réponse sous quelques jours ouvrés.</span>
-          </div>
-          <div class="form__ok" id="ok" role="status" aria-live="polite" tabindex="-1">
-            <span aria-hidden="true">✓</span>
-            <span><b>Demande reçue.</b> Un interlocuteur revient vers vous avec une première lecture du périmètre décrit.</span>
-          </div>
-        </form>
       </div>
+
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="form__foot">
+          <button type="submit" class="btn">Adresser une demande</button>
+          <span class="form__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+        <div class="form__ok" id="ok" role="status" aria-live="polite">
+          <span class="mk" aria-hidden="true">✓</span>
+          <span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span>
+        </div>
+      </form>
+
     </div>
   </div>
-</section>
+</section></div>
 </main>
 
 <!-- ============ FOOTER (structure Kering, tokens Wendel) ============ -->
