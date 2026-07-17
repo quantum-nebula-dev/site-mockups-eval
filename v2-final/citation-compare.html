@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Citation : 4 versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.tag{background:var(--ink);color:#fff;font-family:var(--grot);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px var(--gut)}
+.tag b{color:#e7dcc6;font-weight:600}
+
+/* ===== V1 : L'EXISTANTE (plein cadre + citation centrée + filet vertical) ===== */
+.vA{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;isolation:isolate;padding:clamp(90px,12vw,150px) var(--gut)}
+.vA .qimg{position:absolute;inset:0;z-index:0}
+.vA .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.03) brightness(.72)}
+.vA::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(120% 62% at 50% 52%,rgba(0,25,49,.34) 0%,rgba(0,25,49,.60) 62%,rgba(0,25,49,.70) 100%),linear-gradient(180deg,rgba(0,25,49,.30) 0%,rgba(0,25,49,.72) 42%,rgba(0,25,49,.78) 66%,rgba(0,25,49,.74) 100%)}
+.vA figure{position:relative;z-index:2;margin:0;display:flex;flex-direction:column;align-items:center}
+.vA blockquote{margin:0;max-width:16ch;font-family:var(--serif);font-weight:400;color:var(--cream);font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.2;letter-spacing:-.018em;text-wrap:balance}
+.vA .rule{width:1px;height:clamp(40px,6vw,64px);margin:clamp(26px,3.4vw,40px) 0;background:var(--gold)}
+.vA figcaption{font-family:var(--grot);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+/* ===== V2 : LE CARTEL DE MUSÉE (fiche manifesto-gallery, EdR) ===== */
+.vB{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;padding:clamp(90px,12vw,150px) var(--gut) clamp(56px,7vw,84px)}
+.vB .qimg{position:absolute;inset:0;z-index:0}
+.vB .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.03) brightness(.78)}
+.vB::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,25,49,.18) 0%,rgba(0,25,49,.42) 55%,rgba(0,25,49,.86) 100%)}
+.vB .inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(30px,5vw,80px);flex-wrap:wrap}
+.vB blockquote{margin:0;max-width:19ch;font-family:var(--serif);font-weight:400;color:var(--cream);font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.16;letter-spacing:-.018em;text-wrap:balance}
+.vB .chapo{margin-top:clamp(16px,2vw,24px);max-width:44ch;color:rgba(247,243,235,.76);font-size:clamp(.98rem,1.05vw,1.08rem)}
+.vB .cartel{flex:none;text-align:right;border-right:1px solid var(--gold);padding-right:16px;color:rgba(247,243,235,.62);font-size:.78rem;letter-spacing:.06em;line-height:1.75}
+.vB .cartel b{display:block;color:rgba(247,243,235,.85);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+
+/* ===== V3 : MAXIME + BANDE CINÉMATIQUE (fiche mood-titre-display, Hebbia) ===== */
+.vC{background:var(--ink);padding:clamp(90px,11vw,140px) 0 clamp(70px,9vw,110px);text-align:center}
+.vC blockquote{margin:0 auto;max-width:18ch;font-family:var(--serif);font-weight:400;color:var(--cream);font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.18;letter-spacing:-.018em;text-wrap:balance;padding-inline:var(--gut)}
+.vC blockquote i{font-style:italic;color:#C9AE7C}
+.vC .band{margin-top:clamp(48px,6vw,80px);height:clamp(300px,44vh,460px);overflow:hidden}
+.vC .band img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05) brightness(.85)}
+.vC .legends{display:flex;justify-content:space-between;max-width:var(--maxw);margin:18px auto 0;padding-inline:var(--gut);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,243,235,.4);font-weight:600}
+.vC .sign{margin-top:clamp(48px,6vw,72px);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+/* ===== V4 : L'ANTITHÈSE EN DEUX TEMPS (fiche mood-enonce-antithese) ===== */
+.vD{background:var(--ink);min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(90px,12vw,150px) var(--gut)}
+.vD .inner{max-width:none}
+.vD .t1{max-width:26ch;margin-inline:auto;font-family:var(--serif);font-weight:300;color:rgba(247,243,235,.38);font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;letter-spacing:-.012em}
+.vD .t2{max-width:17ch;margin-inline:auto;margin-top:clamp(14px,1.8vw,22px);font-family:var(--serif);font-weight:400;color:var(--cream);font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+.vD .rule{width:1px;height:clamp(36px,5vw,56px);margin:clamp(26px,3.4vw,40px) auto;background:var(--gold)}
+.vD .sign{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="tag">Version <b>1</b> &middot; L'EXISTANTE : plein cadre, citation centr&eacute;e, filet or vertical</div>
+<section class="vA">
+  <div class="qimg"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2400&q=85" alt=""></div>
+  <figure>
+    <blockquote>R&eacute;pondre de l'ex&eacute;cution, c'est tenir l'ensemble.</blockquote>
+    <span class="rule"></span>
+    <figcaption>P&eacute;ricl&egrave;s Gestion.</figcaption>
+  </figure>
+</section>
+
+<div class="tag">Version <b>2</b> &middot; FROM SCRATCH : le cartel de mus&eacute;e (l'image trait&eacute;e comme une &oelig;uvre expos&eacute;e)</div>
+<section class="vB">
+  <div class="qimg"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2400&q=85" alt=""></div>
+  <div class="inner">
+    <div>
+      <blockquote>R&eacute;pondre de l'ex&eacute;cution, c'est tenir l'ensemble.</blockquote>
+      <p class="chapo">Une responsabilit&eacute; qui ne se partage pas se tient dans la dur&eacute;e, pi&egrave;ce par pi&egrave;ce, sans bruit.</p>
+    </div>
+    <div class="cartel"><b>P&eacute;ricl&egrave;s Gestion</b>Photographie&thinsp;: [auteur &agrave; cr&eacute;diter]<br>Biblioth&egrave;que, [lieu], [ann&eacute;e]</div>
+  </div>
+</section>
+
+<div class="tag">Version <b>3</b> &middot; FROM SCRATCH : maxime + bande cin&eacute;matique (temps fort sombre)</div>
+<section class="vC">
+  <blockquote>R&eacute;pondre de l'ex&eacute;cution, c'est <i>tenir</i> l'ensemble.</blockquote>
+  <div class="band"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=2000&q=80" alt=""></div>
+  <div class="legends"><span>Finances</span><span>Social</span><span>Syst&egrave;mes</span></div>
+  <p class="sign">P&eacute;ricl&egrave;s Gestion.</p>
+</section>
+
+<div class="tag">Version <b>4</b> &middot; FROM SCRATCH : l'antith&egrave;se en deux temps (typographique pur)</div>
+<section class="vD">
+  <div class="inner">
+    <p class="t1">Promettre est facile.</p>
+    <p class="t2">R&eacute;pondre de l'ex&eacute;cution, c'est tenir l'ensemble.</p>
+    <div class="rule"></div>
+    <p class="sign">P&eacute;ricl&egrave;s Gestion.</p>
+  </div>
+</section>
+
+</body>
+</html>
