@@ -541,18 +541,28 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .foot{padding-block:clamp(56px,7vw,90px)}
 .foot__top{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,5vw,80px);padding-bottom:48px}
 /* separateur intra-footer : meme filet or signature, PLEINE LARGEUR (part du bord ecran, comme celui du haut) */
+/* separateur intra-footer : point or central (echo des puces du hero) flanque de deux
+   lignes qui fondent vers l exterieur — pattern luxe classique, deploye depuis le centre */
 .foot__rule{
-  height:1px;pointer-events:none;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);
-  position:relative;
+  pointer-events:none;display:flex;align-items:center;justify-content:center;gap:16px;
 }
-.foot__rule::before{
-  content:"";display:block;width:min(460px,55%);height:1px;margin:0 auto;
-  background:linear-gradient(90deg,rgba(158,131,90,0) 0%,var(--gold) 50%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:center;
-  transition:transform 1s cubic-bezier(.35,.02,.2,1) .45s;
+.foot__rule i{
+  width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none;
+  opacity:0;transition:opacity .7s ease .45s;
 }
-.foot.is-visible .foot__rule::before{transform:scaleX(1)}
-@media (prefers-reduced-motion:reduce){.foot__rule::before{transform:scaleX(1)}}
+.foot__rule::before,.foot__rule::after{
+  content:"";height:1px;width:min(190px,24vw);
+  transform:scaleX(0);
+  transition:transform 1s cubic-bezier(.35,.02,.2,1) .6s;
+}
+.foot__rule::before{background:linear-gradient(90deg,rgba(158,131,90,0) 0%,var(--gold) 100%);transform-origin:right center}
+.foot__rule::after{background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,0) 100%);transform-origin:left center}
+.foot.is-visible .foot__rule i{opacity:1}
+.foot.is-visible .foot__rule::before,.foot.is-visible .foot__rule::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+  .foot__rule i{opacity:1}
+  .foot__rule::before,.foot__rule::after{transform:scaleX(1)}
+}
 .foot__logo{font-family:var(--serif);font-size:1.7rem;color:#fff;margin-bottom:22px}
 .foot__logo i{font-style:italic;color:var(--gold)}
 .foot__desc{max-width:54ch;color:rgba(255,255,255,.74);font-size:1rem;line-height:1.65}
@@ -853,7 +863,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       </div>
     </div>
   </div>
-  <div class="foot__rule" aria-hidden="true"></div>
+  <div class="foot__rule" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <div class="foot__bottom">
       <p>© 2026 Périclès Gestion. Tous droits réservés.</p>
