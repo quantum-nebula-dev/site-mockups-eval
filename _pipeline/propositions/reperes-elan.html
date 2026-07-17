@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Repères — élan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.tag{background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px var(--gut)}
+.tag b{color:#e7dcc6}
+section{padding-block:clamp(70px,9vw,120px)}
+.bg-taupe{background:var(--taupe)}
+
+/* ===== E1 : LA PORTÉE OR — les 4 chiffres posés sur un même filet continu ===== */
+.e1 .head{max-width:56ch;margin-bottom:clamp(44px,5.6vw,72px)}
+.e1 h2{margin-top:20px}
+.e1 .note{margin-top:14px;max-width:48ch;font-size:.95rem}
+.e1 .portee{position:relative;display:grid;grid-template-columns:repeat(4,1fr);column-gap:clamp(24px,3.5vw,56px)}
+.e1 .portee::before{content:"";position:absolute;left:0;right:0;top:clamp(74px,8.5vw,118px);height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.4) 70%,rgba(158,131,90,.12) 100%)}
+.e1 .r .n{display:block;font-family:var(--serif);font-weight:300;color:var(--ink);font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1;letter-spacing:-.02em;height:clamp(74px,8.5vw,118px);display:flex;align-items:flex-end;padding-bottom:10px}
+.e1 .r .n.small{font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.15;align-items:flex-end}
+.e1 .r .l{margin-top:16px;font-size:.92rem;max-width:24ch;line-height:1.55}
+@media (max-width:820px){.e1 .portee{grid-template-columns:1fr 1fr;row-gap:40px}.e1 .portee::before{display:none}.e1 .r .n{height:auto;border-bottom:1px solid var(--gold);align-items:flex-end}}
+
+/* ===== E2 : LE RELEVÉ DE REGISTRE — marge à gauche, lignes empilées à droite ===== */
+.e2 .spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);column-gap:clamp(44px,7vw,110px);align-items:start}
+.e2 h2{margin-top:20px;max-width:14ch}
+.e2 .note{margin-top:16px;max-width:30ch;font-size:.93rem}
+.e2 .registre{display:grid}
+.e2 .ligne{display:grid;grid-template-columns:minmax(112px,auto) 1fr;column-gap:clamp(22px,3vw,44px);align-items:baseline;padding-block:clamp(20px,2.6vw,30px);border-top:1px solid rgba(0,25,49,.16)}
+.e2 .ligne:first-child{border-top:none;padding-top:0}
+.e2 .ligne .n{font-family:var(--serif);font-weight:300;color:var(--ink);font-size:clamp(2rem,3.8vw,3.2rem);line-height:1;letter-spacing:-.018em;text-align:right}
+.e2 .ligne .n.small{font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.2}
+.e2 .ligne .l{font-size:.95rem;max-width:44ch;line-height:1.6}
+.e2 .ligne .n em{font-style:normal;color:var(--gold-d)}
+@media (max-width:820px){.e2 .spread{grid-template-columns:1fr;row-gap:36px}.e2 .ligne .n{text-align:left}}
+</style>
+</head>
+<body>
+
+<div class="tag">Version <b>E1</b> &middot; &Eacute;LAN : la port&eacute;e or (4 chiffres pos&eacute;s sur un m&ecirc;me filet continu)</div>
+<section class="bg-taupe e1">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Rep&egrave;res</p>
+      <h2>Quelques rep&egrave;res,<br>tenus dans la dur&eacute;e.</h2>
+      <p class="note">Peu de chiffres&nbsp;: l'&eacute;tendue des fonctions, la port&eacute;e, la continuit&eacute;. Aucun n'est un compte de clients.</p>
+    </div>
+    <div class="portee">
+      <div class="r"><span class="n">5</span><p class="l">Domaines de gestion tenus, chacun avec obligation de r&eacute;sultat.</p></div>
+      <div class="r"><span class="n small">France&nbsp;+ International</span><p class="l">Op&eacute;r&eacute;s en France comme &agrave; l'&eacute;tranger, sous un m&ecirc;me pilotage.</p></div>
+      <div class="r"><span class="n">[N]</span><p class="l">Ann&eacute;es d'activit&eacute; continue.</p></div>
+      <div class="r"><span class="n">1</span><p class="l">Un seul point de responsabilit&eacute;, sur tout le p&eacute;rim&egrave;tre.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="tag">Version <b>E2</b> &middot; &Eacute;LAN : le relev&eacute; de registre (marge &agrave; gauche, lignes empil&eacute;es)</div>
+<section class="bg-taupe e2">
+  <div class="wrap">
+    <div class="spread">
+      <div>
+        <p class="eyebrow">Rep&egrave;res</p>
+        <h2>Quelques rep&egrave;res, tenus dans la dur&eacute;e.</h2>
+        <p class="note">Peu de chiffres&nbsp;: l'&eacute;tendue, la port&eacute;e, la continuit&eacute;. Aucun n'est un compte de clients.</p>
+      </div>
+      <div class="registre">
+        <div class="ligne"><span class="n">5</span><p class="l">Domaines de gestion tenus, chacun avec obligation de r&eacute;sultat.</p></div>
+        <div class="ligne"><span class="n small">France&nbsp;+ Int.</span><p class="l">Op&eacute;r&eacute;s en France comme &agrave; l'&eacute;tranger, sous un m&ecirc;me pilotage.</p></div>
+        <div class="ligne"><span class="n">[N]</span><p class="l">Ann&eacute;es d'activit&eacute; continue.</p></div>
+        <div class="ligne"><span class="n">1</span><p class="l">Un seul point de responsabilit&eacute;, sur tout le p&eacute;rim&egrave;tre.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
