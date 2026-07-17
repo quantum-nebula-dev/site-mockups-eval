@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Contact : 6 versions (mini-concours)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--taupe-2:#D6CAB4;--line:rgba(0,25,49,.12);--line-2:rgba(255,255,255,.16);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.eyebrow.on-dark{color:var(--gold)}
+.eyebrow.on-dark::before{background:var(--gold)}
+.bg-ink{background:var(--ink)}
+section{padding-block:clamp(70px,9vw,120px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--grot);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.8rem;padding:14px 26px;border-radius:3px;cursor:pointer;border:1px solid transparent;text-decoration:none}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-lg{padding:16px 34px}
+.reveal{opacity:1 !important;transform:none !important}
+.EXIST .contact__fold{transform:scaleX(1) !important}
+
+.lot{background:#0b0e11;color:#c8a465;font-family:var(--grot);font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:16px var(--gut);border-top:3px solid #c8a465}
+</style>
+<style>.EXIST .contact__head{max-width:62ch}
+.EXIST .contact__head h2{margin-top:20px;max-width:20ch}
+.EXIST .contact__invite{letter-spacing:-.012em}
+.EXIST .contact__lead{
+  margin-top:1.05em;max-width:46ch;
+  font-family:var(--serif);font-weight:300;color:var(--cream);
+  font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.4;letter-spacing:-.005em;
+}
+.EXIST .contact__fold{position:relative;height:1px;margin-block:clamp(40px,5.2vw,68px)}
+.EXIST .contact__fold::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.EXIST .contact__fold.is-visible::after{transform:scaleX(1)}
+.EXIST .contact__body{
+  display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6.6fr);
+  column-gap:clamp(40px,6vw,104px);align-items:stretch;
+}
+.EXIST .contact__colophon{display:flex;flex-direction:column}
+.EXIST .contact__assur{
+  font-family:var(--serif);font-weight:300;color:var(--cream);
+  font-size:clamp(1.12rem,1.5vw,1.34rem);line-height:1.46;letter-spacing:-.006em;
+  max-width:30ch;
+}
+.EXIST .contact__direct{margin-top:auto;padding-top:clamp(30px,4vw,52px);display:grid;gap:10px}
+.EXIST .contact__direct .lab{
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+}
+.EXIST .contact__direct .val{
+  width:max-content;max-width:100%;
+  font-family:var(--serif);font-size:1.15rem;color:#fff;padding-bottom:3px;
+  border-bottom:1px solid rgba(255,255,255,.22);
+}
+.EXIST .ledger{display:grid;gap:0}
+.EXIST .wline{
+  display:block;padding-block:clamp(16px,1.9vw,22px);
+  border-bottom:1px solid var(--line-2);
+  transition:border-color .35s, box-shadow .35s;
+}
+.EXIST .wline:first-child{padding-top:0}
+.EXIST .wline > label{
+  display:block;margin-bottom:11px;
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+}
+.EXIST .wline input, .EXIST .wline textarea{
+  width:100%;font-family:var(--grot);font-size:1.02rem;line-height:1.55;color:#fff;
+  background:transparent;border:none;border-radius:0;padding:2px 0;
+}
+.EXIST .wline textarea{display:block;min-height:120px;resize:vertical}
+.EXIST .wline input::placeholder, .EXIST .wline textarea::placeholder{color:rgba(255,255,255,.55)}
+.EXIST .wline input:focus, .EXIST .wline textarea:focus{outline:none}
+.EXIST .wline:focus-within{border-color:var(--gold);box-shadow:0 1px 0 0 var(--gold)}
+.EXIST .ledger__submit{
+  display:flex;align-items:center;gap:clamp(18px,2.4vw,26px);flex-wrap:wrap;
+  margin-top:clamp(26px,3.2vw,38px);
+}
+.EXIST #contact .btn-gold:hover{background:var(--white);color:var(--ink)}
+.EXIST .ledger__note{font-size:.86rem;color:rgba(255,255,255,.6)}
+.EXIST .form__ok{
+  display:none;align-items:flex-start;gap:14px;margin-top:clamp(20px,2.4vw,28px);
+  padding:16px 20px;
+  background:rgba(255,255,255,.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;
+  font-size:.95rem;color:#fff;
+}
+.EXIST .form__ok.show{display:flex}
+.EXIST .form__ok b{font-weight:600}
+.EXIST .form__ok span[aria-hidden]{color:var(--gold)}
+@media (max-width:900px){.EXIST .contact__body{grid-template-columns:1fr;row-gap:clamp(30px,7vw,46px)}
+.EXIST .contact__head h2{max-width:24ch}
+.EXIST .contact__direct{margin-top:clamp(24px,5vw,32px);padding-top:0}
+
+}
+
+
+</style>
+<style>:root{
+  --ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;
+  --body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--line:rgba(0,25,49,.12);
+  --line-d:rgba(255,255,255,.16);
+  --maxw:1180px;--gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --grot:"Hanken Grotesk",Helvetica,Arial,sans-serif;
+}
+.Pwendel *, .Pwendel *::before, .Pwendel *::after{box-sizing:border-box;margin:0;padding:0}
+.Pwendel{scroll-behavior:smooth}
+.Pwendel{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.Pwendel a{color:inherit;text-decoration:none}
+.Pwendel button{font-family:inherit;cursor:pointer;border:none;background:none}
+.Pwendel .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Pwendel h2{font-family:var(--serif);color:var(--ink);font-weight:300;line-height:1.12;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.Pwendel .eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
+.Pwendel .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Pwendel a:focus-visible, .Pwendel button:focus-visible, .Pwendel input:focus-visible, .Pwendel textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.Pwendel .lead-in{background:#fff;padding-block:clamp(60px,10vw,120px)}
+.Pwendel .lead-in .rule{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Pwendel .lead-in .rule::after{content:"";display:block;height:1px;background:var(--line)}
+.Pwendel .contact{
+  background:var(--ink);
+  color:rgba(255,255,255,.72);
+  padding-block:clamp(80px,10vw,150px);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.Pwendel .contact h2{color:#fff}
+.Pwendel .contact__grid{
+  display:grid;
+  grid-template-columns:0.92fr 1.08fr;
+  gap:clamp(40px,6vw,96px);
+  align-items:start;
+}
+.Pwendel .contact__lede h2{margin-top:22px;max-width:12ch}
+.Pwendel .contact__lede .lead{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.45;
+  color:rgba(255,255,255,.9);margin-top:26px;max-width:34ch;
+}
+.Pwendel .assurance{margin-top:clamp(34px,4.4vw,56px);padding-top:clamp(26px,3vw,36px);border-top:1px solid var(--line-d);max-width:38ch}
+.Pwendel .assurance p{font-family:var(--serif);font-weight:300;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.78)}
+.Pwendel .assurance .byline{
+  font-family:var(--grot);font-size:.82rem;font-weight:500;letter-spacing:.02em;
+  color:rgba(255,255,255,.6);margin-top:20px;
+}
+.Pwendel .assurance .byline .email{color:var(--gold);font-weight:600;letter-spacing:.01em}
+.Pwendel .form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:6px}
+.Pwendel .field{display:grid;gap:10px}
+.Pwendel .field label{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);
+}
+.Pwendel .field input, .Pwendel .field textarea{
+  font-family:var(--grot);font-size:1.02rem;color:#fff;
+  background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);
+  border-radius:0;padding:10px 2px;width:100%;
+  transition:border-color .35s ease;
+}
+.Pwendel .field textarea{min-height:118px;resize:vertical;line-height:1.6}
+.Pwendel .field input::placeholder, .Pwendel .field textarea::placeholder{color:rgba(255,255,255,.36)}
+.Pwendel .field input:focus, .Pwendel .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+.Pwendel .form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+.Pwendel .btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 40px;border-radius:1000px;
+  font-family:var(--grot);font-weight:600;font-size:.95rem;letter-spacing:.01em;
+  background:var(--gold);color:var(--ink);
+  transition:background .3s,color .3s,transform .3s;
+}
+.Pwendel .btn:hover{background:var(--cream);transform:translateY(-1px)}
+.Pwendel .form__note{font-size:.85rem;color:rgba(255,255,255,.55)}
+.Pwendel .form__ok{
+  display:none;align-items:flex-start;gap:14px;
+  margin-top:6px;padding:18px 22px;
+  border-left:2px solid var(--gold);background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.86);font-size:.95rem;line-height:1.5;
+}
+.Pwendel .form__ok.show{display:flex}
+.Pwendel .form__ok .mk{color:var(--gold);font-family:var(--serif);font-size:1.15rem;line-height:1}
+.Pwendel .form__ok b{color:#fff;font-weight:600}
+@media (max-width:900px){.Pwendel .contact__grid{grid-template-columns:1fr;gap:clamp(44px,7vw,64px)}
+.Pwendel .contact__lede h2{max-width:18ch}
+.Pwendel .contact__lede .lead{max-width:46ch}
+.Pwendel .assurance{max-width:52ch}
+
+}
+@media (prefers-reduced-motion:reduce){.Pwendel *{transition-duration:.001ms!important;animation-duration:.001ms!important}
+
+}
+
+
+.Pwendel .reveal{opacity:1 !important;transform:none !important}</style>
+<style>:root{
+  --ink:#001931;          
+  --ink-2:#15324d;        
+  --gold:#9E835A;         
+  --gold-d:#7f6740;       
+  --body:#4F5E6B;         
+  --white:#FFFFFF;
+  --cream:#F7F3EB;        
+  --taupe:#E7DFD2;        
+  --line:rgba(0,25,49,.12);
+  --maxw:1180px;
+  --gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+}
+.Ppictet *, .Ppictet *::before, .Ppictet *::after{box-sizing:border-box;margin:0;padding:0}
+.Ppictet{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){.Ppictet{scroll-behavior:auto}}
+.Ppictet{
+  font-family:var(--grot);color:var(--body);background:var(--white);
+  line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+.Ppictet a{color:inherit;text-decoration:none}
+.Ppictet button, .Ppictet input, .Ppictet textarea{font-family:inherit}
+.Ppictet h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;
+   letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.Ppictet a:focus-visible, .Ppictet button:focus-visible, .Ppictet input:focus-visible, .Ppictet textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;
+}
+.Ppictet .contact{background:var(--cream);padding-block:clamp(84px,11vw,152px)}
+.Ppictet .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+.Ppictet .eyebrow{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-d);
+  display:inline-flex;align-items:center;gap:.7rem;
+}
+.Ppictet .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Ppictet .c-head{max-width:62ch}
+.Ppictet .c-head h2{margin-top:20px;max-width:21ch}
+.Ppictet .c-lede{
+  margin-top:1.05em;max-width:48ch;
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.28rem,2vw,1.66rem);line-height:1.42;letter-spacing:-.006em;
+}
+.Ppictet .c-rule{position:relative;height:1px;margin-block:clamp(46px,6.2vw,74px);background:var(--line)}
+.Ppictet .c-rule::before{content:"";position:absolute;left:0;top:-2px;width:5px;height:5px;
+  border-radius:50%;background:var(--gold)}
+.Ppictet .c-rule::after{content:"";position:absolute;left:0;top:0;height:1px;width:40%;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.2s cubic-bezier(.35,.02,.2,1) .1s}
+.Ppictet .c-rule.is-visible::after{transform:scaleX(1)}
+.Ppictet .c-body{
+  display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6.2fr);
+  column-gap:clamp(44px,7vw,112px);align-items:start;
+}
+.Ppictet .c-assur{
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.14rem,1.5vw,1.4rem);line-height:1.5;letter-spacing:-.006em;
+  max-width:33ch;
+}
+.Ppictet .c-channel{margin-top:clamp(30px,4vw,50px);display:grid;gap:9px}
+.Ppictet .c-channel .lab{
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-d);
+}
+.Ppictet .c-channel .val{
+  width:max-content;max-width:100%;
+  font-family:var(--serif);font-size:1.22rem;color:var(--ink);
+  padding-bottom:3px;border-bottom:1px solid var(--line);
+  transition:color .3s,border-color .3s;
+}
+.Ppictet a.c-channel .val, .Ppictet .c-channel a.val:hover{color:var(--gold-d);border-color:var(--gold)}
+.Ppictet .c-channel a:hover .val{color:var(--gold-d);border-color:var(--gold)}
+.Ppictet .c-form{display:grid;gap:0}
+.Ppictet .field{
+  display:grid;grid-template-columns:auto 1fr;column-gap:clamp(16px,2vw,30px);
+  align-items:baseline;padding-block:clamp(18px,2.3vw,26px);
+  border-bottom:1px solid var(--line);transition:border-color .35s;
+}
+.Ppictet .field:first-child{padding-top:0}
+.Ppictet .field__idx{
+  font-family:var(--serif);font-size:1rem;color:var(--gold-d);
+  font-variant-numeric:tabular-nums;padding-top:.15em;letter-spacing:.02em;
+}
+.Ppictet .field label{
+  display:block;margin-bottom:10px;
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);
+}
+.Ppictet .field input, .Ppictet .field textarea{
+  width:100%;font-family:var(--grot);font-size:1.05rem;line-height:1.55;
+  color:var(--ink);background:transparent;border:none;padding:2px 0;
+}
+.Ppictet .field textarea{display:block;min-height:118px;resize:vertical}
+.Ppictet .field input::placeholder, .Ppictet .field textarea::placeholder{color:#9AA4AC}
+.Ppictet .field input:focus, .Ppictet .field textarea:focus{outline:none}
+.Ppictet .field:focus-within{border-color:var(--gold)}
+.Ppictet .c-submit{
+  display:flex;align-items:center;gap:clamp(18px,2.4vw,28px);flex-wrap:wrap;
+  margin-top:clamp(28px,3.4vw,42px);
+}
+.Ppictet .btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 30px;border-radius:6px;
+  font-family:var(--grot);font-weight:600;font-size:.98rem;letter-spacing:.01em;
+  background:var(--ink);color:#fff;
+  transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+}
+.Ppictet .btn:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);
+  box-shadow:0 14px 30px -18px rgba(0,25,49,.5)}
+.Ppictet .c-note{font-size:.86rem;color:var(--body)}
+.Ppictet .c-ok{
+  display:none;align-items:flex-start;gap:14px;margin-top:clamp(20px,2.4vw,28px);
+  padding:16px 20px;background:rgba(158,131,90,.09);
+  border-left:2px solid var(--gold);border-radius:0 6px 6px 0;
+  font-size:.95rem;color:var(--ink);
+}
+.Ppictet .c-ok.show{display:flex}
+.Ppictet .c-ok b{font-weight:600}
+.Ppictet .c-ok span[aria-hidden]{color:var(--gold-d)}
+.Ppictet .c-err{color:var(--gold-d);font-weight:600}
+.Ppictet .js .reveal{opacity:0;transform:translateY(24px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.Ppictet .js .reveal.is-visible{opacity:1;transform:none}
+.Ppictet .js .reveal.d1{transition-delay:.1s}
+.Ppictet .js .reveal.d2{transition-delay:.2s}
+@media (prefers-reduced-motion:reduce){.Ppictet .js .reveal{opacity:1;transform:none;transition:none}
+.Ppictet .c-rule::after{transition:none;transform:scaleX(1)}
+
+}
+@media (max-width:900px){.Ppictet .c-body{grid-template-columns:1fr;row-gap:clamp(34px,7vw,48px)}
+.Ppictet .c-head h2{max-width:24ch}
+.Ppictet .c-channel{margin-top:clamp(24px,5vw,32px)}
+
+}
+@media (max-width:560px){.Ppictet .field{grid-template-columns:1fr;row-gap:0}
+.Ppictet .field__idx{padding-top:0;margin-bottom:2px}
+
+}
+
+
+.Ppictet .reveal{opacity:1 !important;transform:none !important}</style>
+<style>:root{
+    --ink:#001931;
+    --ink-2:#15324d;
+    --gold:#9E835A;
+    --gold-d:#7f6740;
+    --body:#4F5E6B;
+    --cream:#F7F3EB;
+    --taupe:#E7DFD2;
+    --line:rgba(0,25,49,.12);
+
+    --serif:"Newsreader", Georgia, "Times New Roman", serif;
+    --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+    --wrap:1200px;
+  }
+.Pbrunello *, .Pbrunello *::before, .Pbrunello *::after{box-sizing:border-box}
+.Pbrunello{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){.Pbrunello{scroll-behavior:auto}}
+.Pbrunello{
+    margin:0;
+    background:#ffffff;
+    color:var(--body);
+    font-family:var(--grot);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+.Pbrunello .before{height:14vh;min-height:90px}
+.Pbrunello h1, .Pbrunello h2, .Pbrunello h3{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin:0}
+.Pbrunello a{color:inherit}
+.Pbrunello ::selection{background:var(--gold);color:#fff}
+.Pbrunello :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.Pbrunello .letter{
+    background:var(--cream);
+    border-top:1px solid var(--line);
+    padding-block:clamp(74px,12vh,134px);
+  }
+.Pbrunello .wrap{max-width:var(--wrap);margin:0 auto;padding:0 6vw}
+.Pbrunello .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--grot);font-size:.74rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+    margin:0;
+  }
+.Pbrunello .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Pbrunello .letter__head{max-width:62ch}
+.Pbrunello .letter__invite{
+    margin-top:.6em;max-width:20ch;
+    font-weight:400;letter-spacing:-.012em;
+    font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.1;
+  }
+.Pbrunello .letter__lead{
+    margin-top:1em;max-width:44ch;
+    font-family:var(--serif);font-weight:300;color:var(--ink-2);
+    font-size:clamp(1.24rem,2vw,1.6rem);line-height:1.44;letter-spacing:-.005em;
+  }
+.Pbrunello .letter__rule{position:relative;height:1px;background:var(--line);margin-block:clamp(46px,6.2vw,74px)}
+.Pbrunello .letter__rule span{
+    position:absolute;inset:0;transform-origin:left center;transform:scaleX(0);
+    background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.30) 58%,rgba(158,131,90,0) 100%);
+    animation:draw 1.25s cubic-bezier(.35,.02,.2,1) .2s forwards;
+  }
+@keyframes draw{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.Pbrunello .letter__rule span{animation:none;transform:scaleX(1)}}
+.Pbrunello .letter__body{
+    display:grid;grid-template-columns:minmax(0,4.6fr) minmax(0,6fr);
+    column-gap:clamp(40px,6vw,96px);align-items:start;
+  }
+.Pbrunello .letter__voice{display:flex;flex-direction:column}
+.Pbrunello .letter__assur{
+    margin:0;max-width:26ch;
+    font-family:var(--serif);font-weight:300;color:var(--ink-2);
+    font-size:clamp(1.3rem,1.9vw,1.72rem);line-height:1.5;letter-spacing:-.006em;
+  }
+.Pbrunello .letter__sign{margin-top:clamp(30px,4.4vw,50px);display:flex;flex-direction:column;gap:9px}
+.Pbrunello .letter__sign .lab{
+    font-family:var(--grot);font-size:.74rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+  }
+.Pbrunello .letter__sign .val{
+    width:max-content;max-width:100%;
+    font-family:var(--serif);font-size:1.18rem;color:var(--ink);
+    padding-bottom:3px;border-bottom:1px solid var(--line);
+    text-decoration:none;transition:border-color .3s ease;
+  }
+.Pbrunello a.letter__sign .val:hover{border-color:var(--gold)}
+.Pbrunello .sheet{display:grid;gap:0}
+.Pbrunello .sheet__line{
+    padding-block:clamp(15px,1.8vw,21px);
+    border-bottom:1px solid var(--line);
+    transition:border-color .35s ease, box-shadow .35s ease;
+  }
+.Pbrunello .sheet__line:first-child{padding-top:0}
+.Pbrunello .sheet__line > label{
+    display:block;margin-bottom:10px;
+    font-family:var(--grot);font-size:.74rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--body);
+  }
+.Pbrunello .sheet__line input, .Pbrunello .sheet__line textarea{
+    width:100%;font-family:var(--grot);font-size:1.02rem;line-height:1.55;color:var(--ink);
+    background:transparent;border:none;border-radius:0;padding:2px 0;
+  }
+.Pbrunello .sheet__line textarea{display:block;min-height:122px;resize:vertical}
+.Pbrunello .sheet__line input::placeholder, .Pbrunello .sheet__line textarea::placeholder{color:rgba(79,94,107,.55)}
+.Pbrunello .sheet__line input:focus, .Pbrunello .sheet__line textarea:focus{outline:none}
+.Pbrunello .sheet__line:focus-within{border-color:var(--gold);box-shadow:0 1px 0 0 var(--gold)}
+.Pbrunello .sheet__foot{
+    display:flex;align-items:center;gap:clamp(18px,2.4vw,26px);flex-wrap:wrap;
+    margin-top:clamp(26px,3.2vw,38px);
+  }
+.Pbrunello .btn-gold{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--grot);font-size:.82rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+    background:var(--gold);border:1px solid var(--gold);
+    padding:1rem 2rem;border-radius:6px;cursor:pointer;
+    transition:background .35s ease, color .35s ease, transform .35s ease, box-shadow .35s ease;
+  }
+.Pbrunello .btn-gold:hover{
+    background:var(--ink);color:#fff;border-color:var(--ink);
+    transform:translateY(-1px);box-shadow:0 12px 26px -18px rgba(0,25,49,.55);
+  }
+.Pbrunello .sheet__note{font-family:var(--grot);font-size:.86rem;color:var(--body)}
+.Pbrunello .sheet__ok{
+    display:none;align-items:flex-start;gap:12px;margin-top:clamp(20px,2.4vw,28px);
+    padding:15px 18px;background:rgba(158,131,90,.10);
+    border-left:2px solid var(--gold);border-radius:0 6px 6px 0;
+    font-family:var(--grot);font-size:.95rem;color:var(--ink-2);
+  }
+.Pbrunello .sheet__ok.show{display:flex}
+.Pbrunello .sheet__ok b{font-weight:600;color:var(--ink)}
+.Pbrunello .sheet__ok span[aria-hidden]{color:var(--gold-d)}
+@media (max-width:900px){.Pbrunello .letter__body{grid-template-columns:1fr;row-gap:clamp(32px,7vw,46px)}
+.Pbrunello .letter__assur{max-width:36ch}
+.Pbrunello .letter__invite{max-width:24ch}
+
+  }
+
+
+.Pbrunello .reveal{opacity:1 !important;transform:none !important}</style>
+<style>:root{
+  --ink:#001931;
+  --ink-2:#15324d;
+  --gold:#9E835A;
+  --gold-d:#7f6740;
+  --body:#4F5E6B;
+  --white:#FFFFFF;
+  --cream:#F7F3EB;
+  --taupe:#E7DFD2;
+  --line:rgba(0,25,49,.12);
+  --maxw:1180px;
+  --gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+}
+.Phermes *, .Phermes *::before, .Phermes *::after{box-sizing:border-box;margin:0;padding:0}
+.Phermes{scroll-behavior:smooth}
+.Phermes{
+  font-family:var(--grot);color:var(--body);background:var(--white);
+  line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+.Phermes a{color:inherit;text-decoration:none}
+.Phermes button{font-family:inherit;cursor:pointer;border:none;background:none}
+.Phermes h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.Phermes .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Phermes .prev{background:var(--white);min-height:34vh;display:flex;align-items:center;justify-content:center}
+.Phermes .prev span{font-family:var(--grot);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,25,49,.22)}
+.Phermes .eyebrow{
+  font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem;
+}
+.Phermes .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Phermes a:focus-visible, .Phermes button:focus-visible, .Phermes input:focus-visible, .Phermes textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;
+}
+.Phermes .contact{
+  background:var(--cream);
+  padding-block:clamp(96px,13vw,180px);
+}
+.Phermes .contact__head{max-width:60ch}
+.Phermes .contact__head h2{margin-top:20px;max-width:18ch}
+.Phermes .contact__head h2 i{font-style:italic;color:var(--gold-d)}
+.Phermes .contact__lead{
+  margin-top:1.1em;max-width:46ch;
+  font-family:var(--serif);font-weight:300;color:var(--ink-2);
+  font-size:clamp(1.28rem,2vw,1.65rem);line-height:1.42;letter-spacing:-.005em;
+}
+.Phermes .contact__fold{position:relative;height:1px;margin-block:clamp(46px,6vw,78px);background:var(--line)}
+.Phermes .contact__fold::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.30) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  animation:fil 1.4s cubic-bezier(.35,.02,.2,1) .25s forwards;
+}
+@keyframes fil{to{transform:scaleX(1)}}
+.Phermes .contact__body{
+  display:grid;grid-template-columns:minmax(0,4.1fr) minmax(0,6.4fr);
+  column-gap:clamp(48px,7vw,116px);align-items:stretch;
+}
+.Phermes .voice{display:flex;flex-direction:column}
+.Phermes .voice__assur{
+  font-family:var(--serif);font-weight:300;color:var(--ink);
+  font-size:clamp(1.16rem,1.6vw,1.42rem);line-height:1.46;letter-spacing:-.006em;
+  max-width:28ch;
+}
+.Phermes .voice__direct{margin-top:auto;padding-top:clamp(34px,5vw,60px);display:grid;gap:11px}
+.Phermes .voice__direct .lab{
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.Phermes .voice__direct .val{
+  width:max-content;max-width:100%;font-family:var(--serif);font-size:1.18rem;color:var(--ink);
+  padding-bottom:3px;border-bottom:1px solid var(--line);transition:border-color .35s,color .35s;
+}
+.Phermes .voice__direct .val:hover{color:var(--gold-d);border-color:var(--gold)}
+.Phermes .ledger{display:grid;gap:0}
+.Phermes .wline{
+  display:block;padding-block:clamp(17px,2vw,24px);
+  border-bottom:1px solid var(--line);transition:border-color .35s,box-shadow .35s;
+}
+.Phermes .wline:first-child{padding-top:0}
+.Phermes .wline > label{
+  display:block;margin-bottom:11px;
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.Phermes .wline input, .Phermes .wline textarea{
+  width:100%;font-family:var(--grot);font-size:1.04rem;line-height:1.55;color:var(--ink);
+  background:transparent;border:none;border-radius:0;padding:2px 0;
+}
+.Phermes .wline textarea{display:block;min-height:118px;resize:vertical}
+.Phermes .wline input::placeholder, .Phermes .wline textarea::placeholder{color:rgba(0,25,49,.42)}
+.Phermes .wline input:focus, .Phermes .wline textarea:focus{outline:none}
+.Phermes .wline:focus-within{border-color:var(--gold);box-shadow:0 1px 0 0 var(--gold)}
+.Phermes .ledger__submit{
+  display:flex;align-items:center;gap:clamp(20px,2.6vw,30px);flex-wrap:wrap;
+  margin-top:clamp(30px,3.6vw,44px);
+}
+.Phermes .btn-gold{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:56px;padding:0 38px;border-radius:1000px;
+  font-weight:600;font-size:1rem;letter-spacing:.01em;
+  background:var(--gold);color:var(--ink);
+  transition:background .3s,color .3s,transform .3s,box-shadow .3s;
+}
+.Phermes .btn-gold:hover{background:var(--ink);color:#fff;transform:translateY(-1px);box-shadow:0 14px 30px -20px rgba(0,25,49,.55)}
+.Phermes .ledger__note{font-size:.88rem;color:var(--body)}
+.Phermes .close{background:var(--ink);padding-block:26px}
+.Phermes .close .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.Phermes .close p{font-size:.82rem;color:rgba(255,255,255,.56)}
+.Phermes .close .mark{font-family:var(--serif);font-size:1.15rem;color:#fff}
+.Phermes .close .mark i{font-style:italic;color:var(--gold)}
+@media (max-width:900px){.Phermes .contact__body{grid-template-columns:1fr;row-gap:clamp(32px,7vw,48px)}
+.Phermes .contact__head h2{max-width:24ch}
+.Phermes .voice__direct{margin-top:clamp(26px,6vw,34px);padding-top:0}
+
+}
+@media (prefers-reduced-motion:reduce){.Phermes{scroll-behavior:auto}
+.Phermes .contact__fold::after{animation:none;transform:scaleX(1)}
+.Phermes *{transition-duration:.001ms!important}
+
+}
+
+
+.Phermes .reveal{opacity:1 !important;transform:none !important}</style>
+<style>:root{
+  --ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;
+  --gold-l:#b89a6d;              
+  --body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;
+  --line:rgba(0,25,49,.12);
+  --line-cream:rgba(247,243,235,.16);
+  --maxw:1180px;--gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader",Georgia,serif;
+  --grot:"Hanken Grotesk",Helvetica,Arial,sans-serif;
+}
+.Pkering *, .Pkering *::before, .Pkering *::after{box-sizing:border-box;margin:0;padding:0}
+.Pkering{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.Pkering a{color:inherit;text-decoration:none}
+.Pkering button{font-family:inherit;cursor:pointer;border:none;background:none}
+.Pkering .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.Pkering section{padding-block:clamp(74px,9.5vw,138px)}
+.Pkering h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.Pkering .eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.Pkering .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.Pkering .prev{background:#fff;padding-block:clamp(40px,6vw,72px)}
+.Pkering .prev__inner{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut);border-top:1px solid var(--line);padding-top:22px}
+.Pkering .prev__inner span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#b9bec4}
+.Pkering .contact{background:var(--ink);color:rgba(247,243,235,.74)}
+.Pkering .contact .eyebrow{color:var(--gold-l)}
+.Pkering .contact .eyebrow::before{background:var(--gold-l)}
+.Pkering .c-top{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-bottom:22px;border-bottom:1px solid var(--line-cream);margin-bottom:clamp(46px,6vw,78px)}
+.Pkering .c-top .idx{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,235,.44)}
+.Pkering .c-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(40px,6vw,96px);align-items:start}
+.Pkering .c-lede h2{color:var(--cream);max-width:13ch}
+.Pkering .c-lede .lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.85rem);
+  line-height:1.42;color:rgba(247,243,235,.9);max-width:30ch;margin-top:26px}
+.Pkering .c-assure{margin-top:clamp(40px,5vw,64px);padding-top:30px;border-top:1px solid var(--line-cream);max-width:38ch}
+.Pkering .c-assure p{font-size:.98rem;line-height:1.62;color:rgba(247,243,235,.72)}
+.Pkering .c-assure .write{margin-top:20px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,235,.62)}
+.Pkering .c-assure .write .mail{color:var(--gold-l);letter-spacing:.04em;text-transform:none;font-size:.98rem;font-weight:500;margin-left:.4em}
+.Pkering .c-card{background:var(--cream);color:var(--body);padding:clamp(28px,3.4vw,44px);position:relative}
+.Pkering .c-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--gold)}
+.Pkering .form{display:grid;gap:22px}
+.Pkering .field{display:grid;gap:9px}
+.Pkering .field label{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.Pkering .field input, .Pkering .field textarea{
+  font-family:var(--grot);font-size:1rem;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:0;
+  padding:15px 16px;width:100%;transition:border-color .3s,box-shadow .3s;
+}
+.Pkering .field textarea{min-height:132px;resize:vertical;line-height:1.55}
+.Pkering .field input::placeholder, .Pkering .field textarea::placeholder{color:#9aa2a9}
+.Pkering .field input:focus, .Pkering .field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(158,131,90,.18)}
+.Pkering .c-submit{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:4px}
+.Pkering .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 32px;
+  background:var(--ink);color:var(--cream);border-radius:0;
+  font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  transition:background .35s,color .35s,transform .35s}
+.Pkering .btn:hover{background:var(--gold-d);color:#fff;transform:translateY(-1px)}
+.Pkering .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.Pkering .c-note{font-size:.85rem;color:var(--body)}
+@media (max-width:900px){.Pkering .c-grid{grid-template-columns:1fr;gap:44px}
+.Pkering .c-lede h2, .Pkering .c-lede .lead{max-width:26ch}
+
+}
+
+
+.Pkering .reveal{opacity:1 !important;transform:none !important}</style>
+</head>
+<body>
+<div class="lot">EXISTANTE · la section actuelle du site</div>
+<div class="EXIST"><section id="contact" class="bg-ink">
+  <div class="wrap">
+    <!-- L'INVITATION : en-tête pleine largeur (la voix de la clôture, subordonnée au hero) -->
+    <div class="contact__head reveal">
+      <p class="eyebrow on-dark">Contact</p>
+      <h2 class="contact__invite">Adressez-nous votre demande.</h2>
+      <p class="contact__lead">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
+    </div>
+
+    <!-- LE PLI : filet or qui se dessine, sur toute la largeur (geste signature du site) -->
+    <div class="contact__fold reveal d1" aria-hidden="true"></div>
+
+    <div class="contact__body">
+      <!-- LE COLOPHON : la confiance dite, puis le canal écrit (placeholder, aucune adresse inventée) -->
+      <aside class="contact__colophon reveal d1">
+        <p class="contact__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+        <div class="contact__direct">
+          <span class="lab">Par écrit</span>
+          <span class="val">[email]</span>
+        </div>
+      </aside>
+
+      <!-- LA FEUILLE RÉGLÉE : le formulaire en lignes d'écriture. IDs JS conservés (form / email / msg / ok). -->
+      <div class="contact__sheet reveal d2">
+        <form class="ledger" id="form-ex" novalidate>
+          <div class="wline">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+          </div>
+          <div class="wline">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+          </div>
+          <div class="wline wline--msg">
+            <label for="msg">Périmètre à confier</label>
+            <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+          </div>
+          <div class="ledger__submit">
+            <button type="submit" class="btn btn-gold btn-lg">Adresser une demande</button>
+            <span class="ledger__note">Réponse sous quelques jours ouvrés.</span>
+          </div>
+          <div class="form__ok" id="ok-ex" role="status" aria-live="polite" tabindex="-1">
+            <span aria-hidden="true">✓</span>
+            <span><b>Demande reçue.</b> Un interlocuteur revient vers vous avec une première lecture du périmètre décrit.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section></div>
+<div class="lot">DIRECTION WENDEL · mini-concours</div>
+<div class="Pwendel">
+
+<!-- ===== La section blanche qui précède (contexte : le contact clôt la page) ===== -->
+<section class="lead-in" aria-hidden="true">
+  <div class="rule"></div>
+</section>
+
+<!-- ===== CONTACT : clôture nuit, en écho au hero bleu nuit ===== -->
+<section class="contact" id="contact" aria-labelledby="contact-titre">
+  <div class="wrap">
+    <div class="contact__grid">
+
+      <div class="contact__lede">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-titre">Adressez-nous votre demande.</h2>
+        <p class="lead">Décrivez le périmètre que vous envisagez de confier&nbsp;; nous vous en proposons une première lecture.</p>
+        <div class="assurance">
+          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+          <p class="byline">Par écrit&nbsp;: <span class="email">[email]</span></p>
+        </div>
+      </div>
+
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="form__foot">
+          <button type="submit" class="btn">Adresser une demande</button>
+          <span class="form__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+        <div class="form__ok" id="ok" role="status" aria-live="polite">
+          <span class="mk" aria-hidden="true">✓</span>
+          <span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form = document.getElementById("form");
+  var ok = document.getElementById("ok");
+  if(!form) return;
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email");
+    var msg = document.getElementById("msg");
+    if(!email.value.trim() || !msg.value.trim()){
+      (email.value.trim() ? msg : email).focus();
+      return;
+    }
+    ok.classList.add("show");
+    form.querySelector("button[type=submit]").textContent = "Demande adressée";
+  });
+})();
+</script>
+</div>
+<div class="lot">DIRECTION PICTET · mini-concours</div>
+<div class="Ppictet">
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+
+    <div class="c-head reveal">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Adressez-nous votre demande.</h2>
+      <p class="c-lede">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
+    </div>
+
+    <div class="c-rule reveal d1" aria-hidden="true"></div>
+
+    <div class="c-body">
+
+      <aside class="c-aside reveal d1">
+        <p class="c-assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+        <div class="c-channel">
+          <span class="lab">Par écrit</span>
+          <a href="mailto:[email]"><span class="val">[email]</span></a>
+        </div>
+      </aside>
+
+      <form class="c-form reveal d2" id="form" novalidate>
+        <div class="field">
+          <span class="field__idx" aria-hidden="true">01</span>
+          <span class="field__main">
+            <label for="f-org">Organisation</label>
+            <input type="text" id="f-org" name="organisation" autocomplete="organization"
+                   required placeholder="Nom du groupe ou de l'établissement">
+          </span>
+        </div>
+        <div class="field">
+          <span class="field__idx" aria-hidden="true">02</span>
+          <span class="field__main">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email"
+                   required placeholder="vous@organisation.com">
+          </span>
+        </div>
+        <div class="field">
+          <span class="field__idx" aria-hidden="true">03</span>
+          <span class="field__main">
+            <label for="f-msg">Périmètre à confier</label>
+            <textarea id="f-msg" name="message" required
+                      placeholder="Le périmètre que vous envisagez de confier, en quelques lignes."></textarea>
+          </span>
+        </div>
+
+        <div class="c-submit">
+          <button type="submit" class="btn">Adresser une demande</button>
+          <span class="c-note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+
+        <p class="c-ok" id="ok" role="status" aria-live="polite" tabindex="-1">
+          <span aria-hidden="true">✓</span>
+          <span><b>Votre demande est prête à être adressée.</b> Un seul interlocuteur vous répond, par écrit, sous quelques jours ouvrés.</span>
+        </p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal, .c-rule'));
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.14});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  var form = document.getElementById('form');
+  var ok = document.getElementById('ok');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var org = form.organisation.value.trim();
+    var email = form.email.value.trim();
+    var msg = form.message.value.trim();
+    if(!org || !email || email.indexOf('@') === -1 || !msg){
+      ok.classList.add('show');
+      ok.innerHTML = '<span class="c-err">Merci de renseigner votre organisation, une adresse valide et le périmètre concerné.</span>';
+      ok.focus();
+      return;
+    }
+    ok.classList.add('show');
+    ok.innerHTML = '<span aria-hidden="true" style="color:var(--gold-d)">✓</span>'
+      + '<span><b>Votre demande est prête à être adressée.</b> '
+      + 'Un seul interlocuteur vous répond, par écrit, sous quelques jours ouvrés.</span>';
+    ok.focus();
+    form.reset();
+  });
+})();
+</script>
+</div>
+<div class="lot">DIRECTION BRUNELLO · mini-concours</div>
+<div class="Pbrunello">
+
+<div class="before" aria-hidden="true"></div>
+
+<!-- ============ CONTACT — direction Brunello : la clôture comme une lettre, sur crème chaude ============ -->
+<section class="letter" id="contact" aria-label="Contact">
+  <div class="wrap">
+
+    <!-- LA SALUTATION -->
+    <header class="letter__head">
+      <p class="eyebrow">Contact</p>
+      <h2 class="letter__invite">Adressez-nous votre demande.</h2>
+      <p class="letter__lead">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
+    </header>
+
+    <!-- LE GESTE SIGNATURE : le trait or qui s'écrit -->
+    <div class="letter__rule" aria-hidden="true"><span></span></div>
+
+    <div class="letter__body">
+
+      <!-- LA VOIX : la promesse humaine + le canal écrit -->
+      <aside class="letter__voice">
+        <p class="letter__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+        <p class="letter__sign">
+          <span class="lab">Par écrit</span>
+          <span class="val">[email]</span>
+        </p>
+      </aside>
+
+      <!-- LA FEUILLE : le formulaire en lignes d'écriture -->
+      <form class="sheet" id="form" novalidate>
+        <div class="sheet__line">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="sheet__line">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="sheet__line sheet__line--msg">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="sheet__foot">
+          <button type="submit" class="btn-gold">Adresser une demande</button>
+          <span class="sheet__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+        <div class="sheet__ok" id="ok" role="status" aria-live="polite" tabindex="-1">
+          <span aria-hidden="true">✓</span>
+          <span><b>Demande reçue.</b> Un interlocuteur revient vers vous avec une première lecture du périmètre décrit.</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  /* Progressive enhancement : la démo ne recharge pas la page. Rien d'essentiel ici — sans JS,
+     la section reste entière et lisible. */
+  (function(){
+    var form = document.getElementById("form");
+    var ok = document.getElementById("ok");
+    if(!form) return;
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if(!form.checkValidity()) return;
+      ok.classList.add("show");
+      ok.focus();
+      form.querySelector("button").disabled = true;
+    });
+  })();
+</script>
+</div>
+<div class="lot">DIRECTION HERMES · mini-concours</div>
+<div class="Phermes">
+
+<!-- couture : la section précédente est blanche ; le contact clôt la page en crème -->
+<div class="prev"><span>… fin de la section précédente (fond blanc)</span></div>
+
+<!-- ============ CONTACT (direction Hermès : la clôture en pleine lumière) ============ -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+
+    <!-- L'INVITATION -->
+    <div class="contact__head">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Adressez-nous votre <i>demande.</i></h2>
+      <p class="contact__lead">Décrivez le périmètre que vous envisagez de confier&#8239;; nous vous en proposons une première lecture.</p>
+    </div>
+
+    <!-- LE FIL D'OR (geste signature) -->
+    <div class="contact__fold" aria-hidden="true"></div>
+
+    <div class="contact__body">
+
+      <!-- LA VOIX : assurance en haut, écrit en bas -->
+      <aside class="voice">
+        <p class="voice__assur">Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+        <div class="voice__direct">
+          <span class="lab">Par écrit</span>
+          <a class="val" href="#">[email]</a>
+        </div>
+      </aside>
+
+      <!-- LA FEUILLE RÉGLÉE : le formulaire comme un bel objet -->
+      <form class="ledger" id="form" novalidate>
+        <div class="wline">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" name="org" placeholder="Nom du groupe ou de l'établissement" autocomplete="organization">
+        </div>
+        <div class="wline">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required>
+        </div>
+        <div class="wline">
+          <label for="msg">Périmètre à confier</label>
+          <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+        </div>
+        <div class="ledger__submit">
+          <button type="submit" class="btn-gold">Adresser une demande</button>
+          <span class="ledger__note">Réponse sous quelques jours ouvrés.</span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- assise de clôture -->
+<footer class="close">
+  <div class="wrap">
+    <span class="mark"><b>Périclès</b> <i>Gestion</i></span>
+    <p>© 2026 Périclès Gestion. Tous droits réservés.</p>
+  </div>
+</footer>
+
+</div>
+<div class="lot">DIRECTION KERING · mini-concours</div>
+<div class="Pkering">
+
+<!-- section blanche précédente (rappel de contexte : je referme la page juste après) -->
+<div class="prev">
+  <div class="prev__inner"><span>Fin de la section précédente &middot; fond blanc</span></div>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="c-top">
+      <span class="eyebrow">Contact</span>
+      <span class="idx">Périclès Gestion</span>
+    </div>
+
+    <div class="c-grid">
+      <div class="c-lede">
+        <h2 id="contact-title">Adressez-nous votre demande.</h2>
+        <p class="lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
+        <div class="c-assure">
+          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
+          <p class="write">Par écrit : <span class="mail">[email]</span></p>
+        </div>
+      </div>
+
+      <div class="c-card">
+        <form class="form" id="form" novalidate>
+          <div class="field">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="org" autocomplete="organization" placeholder="Nom du groupe ou de l'établissement" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="vous@organisation.com" required>
+          </div>
+          <div class="field">
+            <label for="msg">Périmètre à confier</label>
+            <textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea>
+          </div>
+          <div class="c-submit">
+            <button type="submit" class="btn">Adresser une demande</button>
+            <p class="c-note">Réponse sous quelques jours ouvrés.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form = document.getElementById('form');
+  if(!form) return;
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    form.checkValidity() || form.reportValidity();
+  });
+})();
+</script>
+</div>
+</body>
+</html>
