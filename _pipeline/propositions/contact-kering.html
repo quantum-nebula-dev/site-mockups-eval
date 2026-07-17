@@ -85,8 +85,6 @@ h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012
 .btn:hover{background:var(--gold-d);color:#fff;transform:translateY(-1px)}
 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .c-note{font-size:.85rem;color:var(--body)}
-.c-ok{display:none;margin-top:2px;padding:14px 18px;background:#fff;border-left:2px solid var(--gold);font-size:.92rem;color:var(--ink)}
-.c-ok.show{display:block}
 
 @media (max-width:900px){
   .c-grid{grid-template-columns:1fr;gap:44px}
@@ -115,7 +113,7 @@ h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012
         <p class="lead">Décrivez le périmètre que vous envisagez de confier ; nous vous en proposons une première lecture.</p>
         <div class="c-assure">
           <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
-          <p class="write">Par écrit <span class="mail">[email]</span></p>
+          <p class="write">Par écrit : <span class="mail">[email]</span></p>
         </div>
       </div>
 
@@ -137,7 +135,6 @@ h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012
             <button type="submit" class="btn">Adresser une demande</button>
             <p class="c-note">Réponse sous quelques jours ouvrés.</p>
           </div>
-          <p class="c-ok" id="formOk" role="status">Demande prête. Écrivez à [email] pour la transmettre.</p>
         </form>
       </div>
     </div>
@@ -148,12 +145,10 @@ h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.012
 (function(){
   "use strict";
   var form = document.getElementById('form');
-  var ok = document.getElementById('formOk');
   if(!form) return;
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
-    if(!form.checkValidity()){ form.reportValidity(); return; }
-    ok.classList.add('show');
+    form.checkValidity() || form.reportValidity();
   });
 })();
 </script>
