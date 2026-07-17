@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Périclès Gestion — Repères (mode répertoire)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,400..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#001931; --ink-2:#15324d; --gold:#9E835A; --gold-d:#7f6740;
+  --body:#4F5E6B; --cream:#F7F3EB; --taupe:#E7DFD2; --line:rgba(0,25,49,.12);
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.5}
+
+/* ---- Bandeau d'identification de version ---- */
+.tag{
+  background:var(--ink);color:var(--cream);
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 6vw;border-bottom:1px solid rgba(158,131,90,.35);
+}
+.tag b{color:var(--gold);font-weight:600}
+
+/* ---- Éléments partagés ---- */
+.eyebrow{
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 6vw}
+.h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;
+  letter-spacing:-.005em;color:var(--ink);text-wrap:balance;
+}
+.note{font-family:var(--sans);font-size:.98rem;color:var(--body);line-height:1.6}
+
+/* ============================================================
+   R1 — cle-chiffres-sobre (Hermès Finance)
+   Bande sombre cinématique, chiffres serif dans le vide.
+   ============================================================ */
+.rep-r1{
+  background:
+    radial-gradient(130% 90% at 50% -12%, rgba(158,131,90,.12), transparent 58%),
+    linear-gradient(180deg,#001931 0%,#07213d 54%,#001931 100%);
+  color:var(--cream);
+  padding:clamp(70px,9vw,120px) 0;
+  border-top:1px solid rgba(158,131,90,.20);
+  border-bottom:1px solid rgba(158,131,90,.20);
+  text-align:center;
+}
+.rep-r1 .eyebrow{color:var(--gold)}
+.rep-r1 .r1-head{max-width:720px;margin:0 auto}
+.rep-r1 .h2{color:var(--cream);margin-top:14px}
+.rep-r1 .r1-note{
+  color:rgba(247,243,235,.62);font-size:.95rem;line-height:1.6;
+  max-width:52ch;margin:18px auto 0;
+}
+.rep-r1 .r1-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(28px,4vw,56px);
+  margin-top:clamp(52px,6vw,78px);
+}
+.rep-r1 .rep{display:flex;flex-direction:column;align-items:center;gap:14px}
+.rep-r1 .rep-val{
+  font-family:var(--serif);font-weight:400;color:var(--cream);
+  min-height:5.4rem;display:flex;align-items:flex-end;justify-content:center;
+}
+.rep-r1 .v-num{font-size:clamp(2.6rem,5vw,4rem);line-height:.95;letter-spacing:.01em}
+.rep-r1 .v-text{font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.1}
+.rep-r1 .rep-gloss{
+  color:rgba(247,243,235,.66);font-size:.9rem;line-height:1.55;
+  max-width:24ch;
+}
+.rep-r1 .r1-link{
+  display:inline-block;margin-top:clamp(46px,5vw,66px);
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
+  text-decoration:none;padding-bottom:9px;position:relative;
+}
+.rep-r1 .r1-link::after{
+  content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:44px;height:1px;background:var(--gold);
+}
+
+/* ============================================================
+   R2 — mood-bandeau-luxe-specifications (Secret Garden Stresa)
+   Énoncé serif + prose, puis bande de spécifications à filets.
+   ============================================================ */
+.rep-r2{background:var(--taupe);padding:clamp(64px,8vw,104px) 0}
+.rep-r2 .r2-head{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:clamp(32px,5vw,72px);align-items:start;
+}
+.rep-r2 .h2{margin-top:14px}
+.rep-r2 .r2-note{max-width:44ch;padding-top:6px}
+.rep-r2 .spec{
+  margin-top:clamp(40px,5vw,64px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.rep-r2 .cell{
+  padding:clamp(24px,2.6vw,34px) clamp(20px,2vw,30px);
+  border-left:1px solid var(--line);
+}
+.rep-r2 .cell:first-child{border-left:0;padding-left:0}
+.rep-r2 .cell-val{
+  font-family:var(--serif);font-weight:400;color:var(--ink);
+  font-size:clamp(1.7rem,2.6vw,2.35rem);line-height:1.05;letter-spacing:.005em;
+}
+.rep-r2 .cell-val.v-text{font-size:clamp(1.3rem,1.9vw,1.65rem);line-height:1.12}
+.rep-r2 .cell-gloss{
+  margin-top:14px;color:var(--body);font-size:.9rem;line-height:1.55;
+  max-width:26ch;
+}
+
+/* ============================================================
+   R3 — preuve-statistiques-sourcees (Honestly)
+   Thèse centrée + rangée de cartes-chiffres à filet.
+   ============================================================ */
+.rep-r3{background:var(--cream);padding:clamp(64px,8vw,104px) 0}
+.rep-r3 .r3-head{text-align:center;max-width:640px;margin:0 auto}
+.rep-r3 .h2{margin-top:14px}
+.rep-r3 .r3-note{margin:18px auto 0;max-width:56ch}
+.rep-r3 .r3-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(18px,1.8vw,26px);
+  margin-top:clamp(46px,5vw,68px);
+}
+.rep-r3 .card{
+  background:#fffdf9;border:1px solid var(--line);
+  padding:clamp(26px,2.4vw,34px) clamp(22px,2vw,28px);
+  position:relative;
+}
+.rep-r3 .card::before{
+  content:"";position:absolute;top:0;left:clamp(22px,2vw,28px);
+  width:34px;height:2px;background:var(--gold);
+}
+.rep-r3 .card-val{
+  font-family:var(--serif);font-weight:400;color:var(--ink);
+  font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;letter-spacing:.005em;
+  margin-top:20px;min-height:3.2rem;display:flex;align-items:flex-end;
+}
+.rep-r3 .card-val.v-text{font-size:clamp(1.4rem,2.1vw,1.85rem);line-height:1.1}
+.rep-r3 .card-gloss{
+  margin-top:16px;color:var(--body);font-size:.92rem;line-height:1.55;
+}
+
+/* ---- Responsive ---- */
+@media (max-width:860px){
+  .rep-r1 .r1-grid,.rep-r2 .spec,.rep-r3 .r3-grid{grid-template-columns:repeat(2,1fr)}
+  .rep-r2 .r2-head{grid-template-columns:1fr;gap:20px}
+  .rep-r2 .cell:nth-child(2){border-left:0;padding-left:0}
+  .rep-r2 .cell:nth-child(3),.rep-r2 .cell:nth-child(4){border-top:1px solid var(--line)}
+  .rep-r1 .rep-val{min-height:4.4rem}
+}
+@media (max-width:520px){
+  .rep-r1 .r1-grid,.rep-r3 .r3-grid{grid-template-columns:1fr}
+  .rep-r2 .spec{grid-template-columns:1fr}
+  .rep-r2 .cell{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .rep-r2 .cell:first-child{border-top:0}
+  .rep-r1 .rep-val{min-height:0}
+  .rep-r1 .rep{gap:8px}
+  .rep-r3 .card-val{min-height:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== VERSION R1 ===================== -->
+<div class="tag">Version R1 · <b>cle-chiffres-sobre</b> (Hermès Finance) · bande sombre, le vide fait le luxe</div>
+<section class="rep-r1">
+  <div class="wrap">
+    <div class="r1-head">
+      <p class="eyebrow">Repères</p>
+      <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      <p class="r1-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="r1-grid">
+      <div class="rep">
+        <div class="rep-val v-num">5</div>
+        <p class="rep-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-text">France&nbsp;+ International</div>
+        <p class="rep-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-num">[N]</div>
+        <p class="rep-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-num">1</div>
+        <p class="rep-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+
+    <a class="r1-link" href="#">En savoir plus</a>
+  </div>
+</section>
+
+<!-- ===================== VERSION R2 ===================== -->
+<div class="tag">Version R2 · <b>mood-bandeau-luxe-specifications</b> (Secret Garden Stresa) · énoncé + bande de specs</div>
+<section class="rep-r2">
+  <div class="wrap">
+    <div class="r2-head">
+      <div>
+        <p class="eyebrow">Repères</p>
+        <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      </div>
+      <p class="note r2-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="spec">
+      <div class="cell">
+        <div class="cell-val">5</div>
+        <p class="cell-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val v-text">France&nbsp;+ International</div>
+        <p class="cell-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val">[N]</div>
+        <p class="cell-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val">1</div>
+        <p class="cell-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VERSION R3 ===================== -->
+<div class="tag">Version R3 · <b>preuve-statistiques-sourcees</b> (Honestly) · thèse centrée + cartes-chiffres</div>
+<section class="rep-r3">
+  <div class="wrap">
+    <div class="r3-head">
+      <p class="eyebrow">Repères</p>
+      <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      <p class="note r3-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="r3-grid">
+      <div class="card">
+        <div class="card-val v-num">5</div>
+        <p class="card-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-text">France&nbsp;+ International</div>
+        <p class="card-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-num">[N]</div>
+        <p class="card-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-num">1</div>
+        <p class="card-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

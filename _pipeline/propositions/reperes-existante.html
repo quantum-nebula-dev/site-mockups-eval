@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Repères — existante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--taupe-2:#D6CAB4;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+p{font-size:clamp(1rem,1.05vw,1.1rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+section{padding-block:clamp(70px,9vw,120px)}
+.bg-taupe{background:var(--taupe)}
+.reveal{opacity:1 !important;transform:none !important}
+.releve::before{transform:scaleX(1) !important}
+.reperes__head{max-width:60ch;margin-bottom:clamp(44px,6vw,84px)}
+/* eyebrow : sur taupe le libellé passe en ink pour l'AA ; le filet reste or (décoratif) */
+.reperes .eyebrow{color:var(--ink)}
+.reperes__head h2{margin-top:22px}
+.reperes__note{margin-top:1.05em;max-width:52ch;color:var(--body)}
+
+/* LE RELEVÉ : bande de repères à l'horizontale, tenue sous la ligne signature. Grille
+   VOLONTAIREMENT asymétrique (la portée « France + International » prend la colonne large) :
+   un relevé, pas une grille régulière. --rg = la gouttière courante, réutilisée pour caler
+   les filets verticaux au milieu de l'entre-colonne. */
+.releve{
+  --rg:clamp(24px,3vw,52px);
+  position:relative;
+  display:grid;grid-template-columns:.9fr 1.35fr .9fr .95fr;
+  gap:var(--rg);
+  padding-top:clamp(30px,3.4vw,46px);
+}
+/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée (même « ligne
+   active » que le sommaire des domaines, le schéma du modèle, l'approche et le contact).
+   Décoratif : aucune exigence de contraste. */
+.releve::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.releve.is-visible::before{transform:scaleX(1)}
+
+/* filets verticaux entre les repères : règles de colonne, calées au milieu de la gouttière
+   (statiques, pas des cartes) ; la grille étirée leur donne la même hauteur sur une rangée. */
+.repere{position:relative}
+.repere::before{
+  content:"";position:absolute;top:0;bottom:0;left:calc(var(--rg) / -2);
+  width:1px;background:var(--line);
+}
+.repere:first-child::before{display:none}
+
+/* le repère chiffré : display serif, poids 300 « carved ». Plafonné SOUS le H1 du hero
+   (taille comme poids ; vérifié à 390px comme au-delà : le hero reste le plus grand). */
+.repere__n{
+  display:block;
+  font-family:var(--serif);font-weight:300;color:var(--ink);line-height:1;
+  font-size:clamp(2rem,3.6vw,3.4rem);letter-spacing:-.012em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+/* crochets de l'emplacement de copy : or assombri, toujours ≥ 32px => AA graphique tenu */
+.repere__n .ph{color:var(--gold-d);font-weight:400}
+/* la portée n'est pas un nombre : un binôme serif, plus discret que les chiffres */
+.repere__n--reach{font-size:clamp(1.35rem,2.1vw,2rem);letter-spacing:-.008em}
+.repere__l{
+  margin-top:clamp(14px,1.5vw,20px);max-width:24ch;
+  font-size:.92rem;line-height:1.5;color:var(--body);
+}
+
+@media (max-width:900px){
+  /* le relevé repasse en deux temps ; le filet ne tient qu'entre les colonnes d'une rangée */
+  .releve{--rg:clamp(24px,4vw,40px);grid-template-columns:1fr 1fr}
+  .repere:nth-child(odd)::before{display:none}
+}
+@media (max-width:500px){
+  /* en pile : chaque repère tenu par un filet horizontal (le relevé garde ses lignes) */
+  .releve{--rg:0;grid-template-columns:1fr}
+  .repere::before{display:none}
+  .repere{padding-top:clamp(22px,6vw,30px);border-top:1px solid var(--line)}
+  .repere:first-child{padding-top:0;border-top:0}
+  .repere__l{max-width:46ch}
+}
+
+/* ============ MANIFESTE PLEIN CADRE (le grand silence : salle de lecture noble) ============
+   Le SEUL temps sombre depuis le hero (deux sections crème le précèdent) : le noir
+   cinématique où la marque dit sa posture d'une phrase. Composition VOULUE distincte du
+   hero (lui ancré bas-gauche, avec eyebrow + deck + support) : ici une phrase SEULE,
+   centrée dans l'air, sans eyebrow ni sous-titre. Serif ROMAN 400 « carved » (jamais plus
+   grand ni plus lourd que le H1 du hero, à 390px comme au-delà), texte crème pour l'AA.
+   UN geste : le filet or VERTICAL qui se dessine du haut vers le bas au reveal (la même
+   « ligne de responsabilité » qu'à l'intro) et descend de la phrase vers la signature.
+   Voile ink façonné : clair en haut (la salle de lecture respire) -> dense au centre
+   (adosse la phrase, AA) -> soutenu en bas (fond dans le noir des Repères qui suivent).
+   Aucune couleur hors token ; rgba(0,25,49) = --ink porté en voile. */
+.quote-block{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
+  padding:clamp(80px,10vw,120px) var(--gut);
+}
+.quote-block .qimg{position:absolute;inset:0;z-index:0}
+.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02) brightness(.7)}
+.quote-block::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,25,49,.55),rgba(0,25,49,.62));
+}
+.quote-block blockquote{
+  margin:0;max-width:22ch;position:relative;z-index:2;
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:#fff;
+  letter-spacing:-.012em;
+}
+.quote-block cite{
+  display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
+  font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+}
+
+
+</style>
+</head>
+<body>
+<section class="bg-taupe reperes" id="reperes">
+  <div class="wrap">
+    <div class="reperes__head reveal">
+      <p class="eyebrow">Repères</p>
+      <h2>Quelques repères,<br>tenus dans la durée.</h2>
+      <p class="reperes__note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <!-- Le relevé : attributs de Périclès, chacun en tête d'une ligne. Valeurs à figer en
+         passe copy ; [N] = emplacement. Aucun chiffre inventé, aucun client. -->
+    <div class="releve reveal">
+      <div class="repere">
+        <span class="repere__n">5</span>
+        <p class="repere__l">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n repere__n--reach">France + International</span>
+        <p class="repere__l">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n"><span class="ph" aria-hidden="true">[</span>N<span class="ph" aria-hidden="true">]</span></span>
+        <p class="repere__l">Années d'activité continue.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n">1</span>
+        <p class="repere__l">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Repères : 6 versions (élan vs répertoire)</title>
+<style>
+body{margin:0;background:#101418;font-family:"Segoe UI",system-ui,sans-serif}
+.tag{background:#0b0e11;color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px 4vw}
+.tag b{color:#c8a465}
+iframe{display:block;width:100%;border:0}
+</style>
+</head>
+<body>
+<div class="tag"><b>Existante</b> &middot; la bande actuelle du site (relev&eacute; 4 colonnes, filet or anim&eacute;)</div>
+<iframe src="reperes-existante.html" scrolling="no"></iframe>
+<div class="tag"><b>&Eacute;lan</b> &middot; 2 versions con&ccedil;ues en session, sans le r&eacute;pertoire (E1 port&eacute;e or &middot; E2 relev&eacute; de registre)</div>
+<iframe src="reperes-elan.html" scrolling="no"></iframe>
+<div class="tag"><b>R&eacute;pertoire</b> &middot; 3 versions d'un agent depuis la biblio (R1 Herm&egrave;s sombre &middot; R2 bande de specs &middot; R3 cartes-chiffres)</div>
+<iframe src="reperes-repertoire.html" scrolling="no"></iframe>
+<script>
+function fit(){
+  document.querySelectorAll("iframe").forEach(f=>{
+    try{ f.style.height = f.contentDocument.documentElement.scrollHeight + "px"; }catch(e){}
+  });
+}
+document.querySelectorAll("iframe").forEach(f=>f.addEventListener("load",()=>{fit();setTimeout(fit,800);setTimeout(fit,2500);}));
+window.addEventListener("resize",fit);
+</script>
+</body>
+</html>
