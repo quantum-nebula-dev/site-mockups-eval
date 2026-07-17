@@ -29,7 +29,7 @@
 - **Hero + nav** : VALIDÉS, **on n'y touche pas** (gate direction faite). Réglés au pixel — voir `tokens.md` (serif 400 « carved » -.022em, deck muted 72%, labels .14em). Ils sont la référence DNA.
 - **Intro (`#perimetre`)** : refondue sobre (bloc aligné, hiérarchie typo), validée.
 - **Domaines (`#domaines`)** : refondue (rail éditorial sticky à gauche + liste numérotée à droite, index or compacts), validée.
-- **Citation (`.quote-block`)** : validée, gardée (image N&B bibliothèque + citation serif).
+- **Citation (`.quote-block`)** : VALIDÉE 17/07 — retour à la V0 ORIGINALE (buste + bibliothèque, citation serif italique 300, cite or) choisie face à 4 alternatives (actuelle, cartel musée, maxime+bande, antithèse). Installée.
 - **Treemap (`#viz`)** : PROBLÈME — répète les 5 mêmes domaines que `#domaines` (redondance). À trancher par l'architecture : transformer en section non-redondante (preuve / « comment ça marche » / chiffres) ou couper.
 - Restent à traiter : `#reperes` (stats), `#approche`, `#contact`, footer (dont **copyright / mentions légales**).
 
