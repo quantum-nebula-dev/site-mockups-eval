@@ -351,7 +351,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    Numéros en serif ITALIQUE or (la voix italique-or du hero et du logo « Gestion »), noms serif
    carved, angles nets (0). Section resserrée (~1 écran), AUCUNE info ajoutée. UN geste : la
    jointure d'or. */
-#viz{padding-block:clamp(60px,7vw,100px)}
+#domaines{padding-block:clamp(60px,7vw,100px)}
 .viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
 .viz__head h2{margin-top:22px}
 .viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
@@ -396,8 +396,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .tile .t-num,.tile .t-name{position:relative;z-index:1}
 .tile.d1::before{background:rgba(0,25,49,.62)}
 .tile.d1::after{background:linear-gradient(180deg,rgba(0,25,49,.72) 0%,rgba(0,25,49,.12) 30%,rgba(0,25,49,.16) 55%,rgba(0,25,49,.82) 100%)}
-.tile.d2::before{background:rgba(158,131,90,.6)}
-.tile.d2::after{background:linear-gradient(180deg,rgba(120,95,58,.5) 0%,rgba(158,131,90,.1) 30%,rgba(120,95,58,.2) 55%,rgba(96,75,44,.82) 100%)}
+.tile.d2::before{background:rgba(109,90,62,.62)}
+.tile.d2::after{background:linear-gradient(180deg,rgba(84,68,45,.55) 0%,rgba(109,90,62,.12) 30%,rgba(84,68,45,.22) 55%,rgba(66,53,34,.85) 100%)}
 .tile.d3::before{background:rgba(214,202,180,.55)}
 .tile.d3::after{background:linear-gradient(180deg,rgba(247,243,235,.72) 0%,rgba(247,243,235,.18) 32%,rgba(247,243,235,.3) 55%,rgba(247,243,235,.9) 100%)}
 .tile.d4::before{background:rgba(21,50,77,.62)}
@@ -559,70 +559,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .quote-block__sign{opacity:1;transform:none}
 }
 
-/* ============ APPROCHE (la charte : préambule tenu + clauses de conduite) ============
-   Parti-pris « la charte » : ni grille de principes, ni re-liste des domaines, mais le
-   PRÉAMBULE d'un code de conduite. À gauche un préambule tenu (eyebrow + titre + la ligne
-   qui gouverne) ; à droite les clauses en PROSE éditoriale, chacune ouverte par le nom du
-   principe en serif d'encre, la tenue énoncée à la suite, sans carte, sans numéro (déjà
-   porté par les domaines), sans filet par ligne. C'est la proportion la plus asymétrique
-   de la page (rail étroit + corps large) : distincte du spread équilibré de l'intro et de
-   l'invite+formulaire du contact ; distincte aussi du sommaire des domaines (rangées) et
-   du relevé des repères (bande). UN geste signature : le filet or qui se dessine (la
-   « ligne active » du site), ici UNE seule fois, en tête de la charte. Fond crème : le
-   gold-d de l'eyebrow y tient l'AA (4.84:1) là où la taupe qui précède le ferait échouer. */
-.approche__spread{
-  display:grid;
-  grid-template-columns:minmax(0,3.8fr) minmax(0,7fr);
-  column-gap:clamp(40px,6vw,96px);
-  align-items:start;
-}
-.approche .eyebrow{margin-bottom:clamp(18px,2.2vw,26px)}
-/* titre = niveau h2 du site ; dans le rail étroit il se compose en pavé haut (registre
-   masthead de revue), jamais plus grand ni plus fort que le H1 du hero */
-.approche__title{max-width:15ch;letter-spacing:-.012em}
-/* la ligne qui gouverne : serif « carved » 300, même registre que le constat de l'intro */
-.approche__gov{
-  margin-top:clamp(20px,2.6vw,30px);max-width:32ch;
-  font-family:var(--serif);font-weight:300;color:var(--ink);
-  font-size:clamp(1.12rem,1.5vw,1.38rem);line-height:1.4;letter-spacing:-.006em;
-}
-
-/* la charte : les clauses tenues sous une seule ligne signature. */
-.charte{list-style:none;position:relative;padding-top:clamp(30px,3.4vw,48px)}
-/* GESTE SIGNATURE (unique) : le filet or se dessine de gauche à droite en tête de la
-   charte (même « ligne active » que le sommaire, le modèle, les repères et le contact).
-   Décoratif : aucune exigence de contraste. */
-.charte::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
-}
-.charte.is-visible::before{transform:scaleX(1)}
-
-/* une clause = le nom du principe en serif d'encre, ouvrant la phrase de tenue en corps.
-   Pas de carte, pas de filet, pas de numéro ; l'air entre les clauses tient le rythme. */
-.clause{
-  max-width:52ch;color:var(--body);
-  font-size:clamp(1.02rem,1.04vw,1.12rem);line-height:1.62;
-  padding-block:clamp(20px,2.7vw,32px);
-}
-.clause:first-child{padding-top:clamp(22px,3vw,34px)}
-.clause:last-child{padding-bottom:0}
-.clause__name{
-  font-family:var(--serif);font-weight:400;color:var(--ink);
-  font-size:1.1em;letter-spacing:-.006em;
-}
-
-@media (max-width:980px){
-  .approche__spread{grid-template-columns:1fr;column-gap:0}
-  .approche__title{max-width:20ch}
-  .approche__gov{max-width:52ch}
-  .charte{margin-top:clamp(30px,6vw,44px);padding-top:clamp(26px,5vw,34px)}
-  .clause{max-width:60ch}
-}
-@media (max-width:680px){
-  .clause{padding-block:clamp(18px,5.5vw,26px)}
+/* ============ APPROCHE ============
+   Décision user 17/07/2026 : l'approche reprend le design « rail sticky + liste indexée »
+   (composition validée, ex-section domaines — fiche rail-sticky-liste-indexee du répertoire).
+   Elle réutilise telles quelles les classes .dom* ci-dessus. */
 }
 
 /* ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============
@@ -865,66 +805,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
      Geste signature unique : « la ligne de responsabilité » — un filet or continu qui se dessine du
      haut vers le bas et tient les cinq cotes 01–05 en station. « Cinq domaines, une seule responsabilité »
      rendu structurel. Colonne éditoriale sticky à gauche (la promesse), rail indexé à droite (l'étendue). -->
-<section id="domaines" class="bg-cream">
-  <div class="wrap">
-    <div class="dom">
-      <div class="dom__rail">
-        <p class="eyebrow reveal">Domaines</p>
-        <h2 class="reveal d1">Cinq domaines,<br>une seule responsabilité.</h2>
-        <p class="dom__intro reveal d2">Chaque domaine est tenu avec une obligation de résultat sur son exécution. Vous conservez l'arbitrage, Périclès répond de la tenue.</p>
-      </div>
-
-      <div class="dom__list">
-        <article class="dom__item reveal">
-          <div class="dom__num">01</div>
-          <div class="dom__body">
-            <h3>Pilotage financier et administratif</h3>
-            <p>Les budgets, la trésorerie, le reporting et le suivi administratif du groupe, tenus et garantis dans leur régularité.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">02</div>
-          <div class="dom__body">
-            <h3>Paie, social et conformité</h3>
-            <p>Pris en charge à chaque échéance, avec une obligation de résultat sur leur tenue.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">03</div>
-          <div class="dom__body">
-            <h3>Prestations et programmes</h3>
-            <p>Périclès prend en charge ce dont vos établissements ont besoin et vous le délivre, en France comme à l'étranger, depuis un interlocuteur unique.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">04</div>
-          <div class="dom__body">
-            <h3>Systèmes, outils et présence en ligne</h3>
-            <p>Opérés de façon cohérente sur tout le périmètre, via les prestataires que Périclès mobilise et pilote.</p>
-          </div>
-        </article>
-
-        <article class="dom__item reveal">
-          <div class="dom__num">05</div>
-          <div class="dom__body">
-            <h3>Appui au pilotage et au développement</h3>
-            <p>L'information dont la direction a besoin pour décider, et l'accompagnement de vos projets et partenariats.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MODÈLE (#viz) — « Un seul tenant » : la treemap de domaines (baseline aimée),
-     élevée en exécution — un seul panneau-matière subdivisé en cinq champs pondérés ============ -->
-<section id="viz">
+<!-- ============ DOMAINES (mosaïque photos duotone) — décision user 17/07 : la mosaïque EST la
+     section domaines (l'ancien rail sticky est réaffecté à #approche) ; titres à ajuster en passe copy ============ -->
+<section id="domaines">
   <div class="wrap">
     <div class="viz__head reveal">
-      <p class="eyebrow">Le modèle</p>
+      <p class="eyebrow">Domaines</p>
       <h2>Un seul point de responsabilité.</h2>
       <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
     </div>
@@ -986,24 +872,48 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- ============ APPROCHE (la charte : préambule tenu + clauses de conduite) ============ -->
-<section id="approche" class="bg-cream approche">
+<section id="approche" class="bg-cream">
   <div class="wrap">
-    <div class="approche__spread">
-      <div class="approche__preamble">
+    <div class="dom">
+      <div class="dom__rail">
         <p class="eyebrow reveal">L'approche</p>
-        <h2 class="approche__title reveal d1">Quatre principes, une même exigence.</h2>
-        <p class="approche__gov reveal d2">Ces principes gouvernent la façon dont le périmètre est opéré, du premier échange au dernier livrable.</p>
+        <h2 class="reveal d1">Quatre principes,<br>une même exigence.</h2>
+        <p class="dom__intro reveal d2">Ces principes gouvernent la façon dont le périmètre est opéré, du premier échange au dernier livrable.</p>
       </div>
 
-      <!-- La charte : clauses en prose éditoriale, tenues sous une seule ligne signature.
-           Le nom du principe en serif d'encre ouvre chaque clause ; aucun fait, aucun nom
-           (placeholders de posture, à figer en passe copy). -->
-      <ul class="charte reveal">
-        <li class="clause"><strong class="clause__name">Responsabilité unique.</strong> Un seul point de responsabilité pour l'ensemble du périmètre. Vous savez, à tout moment, qui en répond.</li>
-        <li class="clause"><strong class="clause__name">Interlocuteur intégré.</strong> Un interlocuteur qui porte le dossier de bout en bout et mobilise ce qu'il faut, sans vous renvoyer d'un prestataire à l'autre.</li>
-        <li class="clause"><strong class="clause__name">Confidentialité.</strong> La discrétion tenue comme une condition de la mission, à chaque échelon et sur toute la durée.</li>
-        <li class="clause"><strong class="clause__name">Proximité du dirigeant.</strong> Un accès direct, à la mesure de décisions qui se prennent au niveau de la direction.</li>
-      </ul>
+      <div class="dom__list">
+        <article class="dom__item reveal">
+          <div class="dom__num">01</div>
+          <div class="dom__body">
+            <h3>Responsabilité unique</h3>
+            <p>Un seul point de responsabilité pour l'ensemble du périmètre. Vous savez, à tout moment, qui en répond.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">02</div>
+          <div class="dom__body">
+            <h3>Interlocuteur intégré</h3>
+            <p>Un interlocuteur qui porte le dossier de bout en bout et mobilise ce qu'il faut, sans vous renvoyer d'un prestataire à l'autre.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">03</div>
+          <div class="dom__body">
+            <h3>Confidentialité</h3>
+            <p>La discrétion tenue comme une condition de la mission, à chaque échelon et sur toute la durée.</p>
+          </div>
+        </article>
+
+        <article class="dom__item reveal">
+          <div class="dom__num">04</div>
+          <div class="dom__body">
+            <h3>Proximité du dirigeant</h3>
+            <p>Un accès direct, à la mesure de décisions qui se prennent au niveau de la direction.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
