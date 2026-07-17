@@ -5,28 +5,542 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>Repères : 6 versions (élan vs répertoire)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#101418;font-family:"Segoe UI",system-ui,sans-serif}
-.tag{background:#0b0e11;color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px 4vw}
-.tag b{color:#c8a465}
-iframe{display:block;width:100%;border:0}
+
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--taupe-2:#D6CAB4;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+p{font-size:clamp(1rem,1.05vw,1.1rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+section{padding-block:clamp(70px,9vw,120px)}
+.bg-taupe{background:var(--taupe)}
+.reveal{opacity:1 !important;transform:none !important}
+.releve::before{transform:scaleX(1) !important}
+.reperes__head{max-width:60ch;margin-bottom:clamp(44px,6vw,84px)}
+/* eyebrow : sur taupe le libellé passe en ink pour l'AA ; le filet reste or (décoratif) */
+.reperes .eyebrow{color:var(--ink)}
+.reperes__head h2{margin-top:22px}
+.reperes__note{margin-top:1.05em;max-width:52ch;color:var(--body)}
+
+/* LE RELEVÉ : bande de repères à l'horizontale, tenue sous la ligne signature. Grille
+   VOLONTAIREMENT asymétrique (la portée « France + International » prend la colonne large) :
+   un relevé, pas une grille régulière. --rg = la gouttière courante, réutilisée pour caler
+   les filets verticaux au milieu de l'entre-colonne. */
+.releve{
+  --rg:clamp(24px,3vw,52px);
+  position:relative;
+  display:grid;grid-template-columns:.9fr 1.35fr .9fr .95fr;
+  gap:var(--rg);
+  padding-top:clamp(30px,3.4vw,46px);
+}
+/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée (même « ligne
+   active » que le sommaire des domaines, le schéma du modèle, l'approche et le contact).
+   Décoratif : aucune exigence de contraste. */
+.releve::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
+}
+.releve.is-visible::before{transform:scaleX(1)}
+
+/* filets verticaux entre les repères : règles de colonne, calées au milieu de la gouttière
+   (statiques, pas des cartes) ; la grille étirée leur donne la même hauteur sur une rangée. */
+.repere{position:relative}
+.repere::before{
+  content:"";position:absolute;top:0;bottom:0;left:calc(var(--rg) / -2);
+  width:1px;background:var(--line);
+}
+.repere:first-child::before{display:none}
+
+/* le repère chiffré : display serif, poids 300 « carved ». Plafonné SOUS le H1 du hero
+   (taille comme poids ; vérifié à 390px comme au-delà : le hero reste le plus grand). */
+.repere__n{
+  display:block;
+  font-family:var(--serif);font-weight:300;color:var(--ink);line-height:1;
+  font-size:clamp(2rem,3.6vw,3.4rem);letter-spacing:-.012em;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+/* crochets de l'emplacement de copy : or assombri, toujours ≥ 32px => AA graphique tenu */
+.repere__n .ph{color:var(--gold-d);font-weight:400}
+/* la portée n'est pas un nombre : un binôme serif, plus discret que les chiffres */
+.repere__n--reach{font-size:clamp(1.35rem,2.1vw,2rem);letter-spacing:-.008em}
+.repere__l{
+  margin-top:clamp(14px,1.5vw,20px);max-width:24ch;
+  font-size:.92rem;line-height:1.5;color:var(--body);
+}
+
+@media (max-width:900px){
+  /* le relevé repasse en deux temps ; le filet ne tient qu'entre les colonnes d'une rangée */
+  .releve{--rg:clamp(24px,4vw,40px);grid-template-columns:1fr 1fr}
+  .repere:nth-child(odd)::before{display:none}
+}
+@media (max-width:500px){
+  /* en pile : chaque repère tenu par un filet horizontal (le relevé garde ses lignes) */
+  .releve{--rg:0;grid-template-columns:1fr}
+  .repere::before{display:none}
+  .repere{padding-top:clamp(22px,6vw,30px);border-top:1px solid var(--line)}
+  .repere:first-child{padding-top:0;border-top:0}
+  .repere__l{max-width:46ch}
+}
+
+/* ============ MANIFESTE PLEIN CADRE (le grand silence : salle de lecture noble) ============
+   Le SEUL temps sombre depuis le hero (deux sections crème le précèdent) : le noir
+   cinématique où la marque dit sa posture d'une phrase. Composition VOULUE distincte du
+   hero (lui ancré bas-gauche, avec eyebrow + deck + support) : ici une phrase SEULE,
+   centrée dans l'air, sans eyebrow ni sous-titre. Serif ROMAN 400 « carved » (jamais plus
+   grand ni plus lourd que le H1 du hero, à 390px comme au-delà), texte crème pour l'AA.
+   UN geste : le filet or VERTICAL qui se dessine du haut vers le bas au reveal (la même
+   « ligne de responsabilité » qu'à l'intro) et descend de la phrase vers la signature.
+   Voile ink façonné : clair en haut (la salle de lecture respire) -> dense au centre
+   (adosse la phrase, AA) -> soutenu en bas (fond dans le noir des Repères qui suivent).
+   Aucune couleur hors token ; rgba(0,25,49) = --ink porté en voile. */
+.quote-block{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
+  padding:clamp(80px,10vw,120px) var(--gut);
+}
+.quote-block .qimg{position:absolute;inset:0;z-index:0}
+.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02) brightness(.7)}
+.quote-block::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,25,49,.55),rgba(0,25,49,.62));
+}
+.quote-block blockquote{
+  margin:0;max-width:22ch;position:relative;z-index:2;
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:#fff;
+  letter-spacing:-.012em;
+}
+.quote-block cite{
+  display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
+  font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+}
+
+
+
+</style>
+<style>
+
+:root{--ink:#001931;--ink-2:#15324d;--gold:#9E835A;--gold-d:#7f6740;--body:#4F5E6B;--cream:#F7F3EB;--taupe:#E7DFD2;--line:rgba(0,25,49,.12);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Hanken Grotesk",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.tag{background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:14px var(--gut)}
+.tag b{color:#e7dcc6}
+section{padding-block:clamp(70px,9vw,120px)}
+.bg-taupe{background:var(--taupe)}
+
+/* ===== E1 : LA PORTÉE OR — les 4 chiffres posés sur un même filet continu ===== */
+.e1 .head{max-width:56ch;margin-bottom:clamp(44px,5.6vw,72px)}
+.e1 h2{margin-top:20px}
+.e1 .note{margin-top:14px;max-width:48ch;font-size:.95rem}
+.e1 .portee{position:relative;display:grid;grid-template-columns:repeat(4,1fr);column-gap:clamp(24px,3.5vw,56px)}
+.e1 .portee::before{content:"";position:absolute;left:0;right:0;top:clamp(74px,8.5vw,118px);height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.4) 70%,rgba(158,131,90,.12) 100%)}
+.e1 .r .n{display:block;font-family:var(--serif);font-weight:300;color:var(--ink);font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:1;letter-spacing:-.02em;height:clamp(74px,8.5vw,118px);display:flex;align-items:flex-end;padding-bottom:10px}
+.e1 .r .n.small{font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.15;align-items:flex-end}
+.e1 .r .l{margin-top:16px;font-size:.92rem;max-width:24ch;line-height:1.55}
+@media (max-width:820px){.e1 .portee{grid-template-columns:1fr 1fr;row-gap:40px}.e1 .portee::before{display:none}.e1 .r .n{height:auto;border-bottom:1px solid var(--gold);align-items:flex-end}}
+
+/* ===== E2 : LE RELEVÉ DE REGISTRE — marge à gauche, lignes empilées à droite ===== */
+.e2 .spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);column-gap:clamp(44px,7vw,110px);align-items:start}
+.e2 h2{margin-top:20px;max-width:14ch}
+.e2 .note{margin-top:16px;max-width:30ch;font-size:.93rem}
+.e2 .registre{display:grid}
+.e2 .ligne{display:grid;grid-template-columns:minmax(112px,auto) 1fr;column-gap:clamp(22px,3vw,44px);align-items:baseline;padding-block:clamp(20px,2.6vw,30px);border-top:1px solid rgba(0,25,49,.16)}
+.e2 .ligne:first-child{border-top:none;padding-top:0}
+.e2 .ligne .n{font-family:var(--serif);font-weight:300;color:var(--ink);font-size:clamp(2rem,3.8vw,3.2rem);line-height:1;letter-spacing:-.018em;text-align:right}
+.e2 .ligne .n.small{font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.2}
+.e2 .ligne .l{font-size:.95rem;max-width:44ch;line-height:1.6}
+.e2 .ligne .n em{font-style:normal;color:var(--gold-d)}
+@media (max-width:820px){.e2 .spread{grid-template-columns:1fr;row-gap:36px}.e2 .ligne .n{text-align:left}}
+
+</style>
+<style>
+
+:root{
+  --ink:#001931; --ink-2:#15324d; --gold:#9E835A; --gold-d:#7f6740;
+  --body:#4F5E6B; --cream:#F7F3EB; --taupe:#E7DFD2; --line:rgba(0,25,49,.12);
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.5}
+
+/* ---- Bandeau d'identification de version ---- */
+.tag{
+  background:var(--ink);color:var(--cream);
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 6vw;border-bottom:1px solid rgba(158,131,90,.35);
+}
+.tag b{color:var(--gold);font-weight:600}
+
+/* ---- Éléments partagés ---- */
+.eyebrow{
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 6vw}
+.h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;
+  letter-spacing:-.005em;color:var(--ink);text-wrap:balance;
+}
+.note{font-family:var(--sans);font-size:.98rem;color:var(--body);line-height:1.6}
+
+/* ============================================================
+   R1 — cle-chiffres-sobre (Hermès Finance)
+   Bande sombre cinématique, chiffres serif dans le vide.
+   ============================================================ */
+.rep-r1{
+  background:
+    radial-gradient(130% 90% at 50% -12%, rgba(158,131,90,.12), transparent 58%),
+    linear-gradient(180deg,#001931 0%,#07213d 54%,#001931 100%);
+  color:var(--cream);
+  padding:clamp(70px,9vw,120px) 0;
+  border-top:1px solid rgba(158,131,90,.20);
+  border-bottom:1px solid rgba(158,131,90,.20);
+  text-align:center;
+}
+.rep-r1 .eyebrow{color:var(--gold)}
+.rep-r1 .r1-head{max-width:720px;margin:0 auto}
+.rep-r1 .h2{color:var(--cream);margin-top:14px}
+.rep-r1 .r1-note{
+  color:rgba(247,243,235,.62);font-size:.95rem;line-height:1.6;
+  max-width:52ch;margin:18px auto 0;
+}
+.rep-r1 .r1-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(28px,4vw,56px);
+  margin-top:clamp(52px,6vw,78px);
+}
+.rep-r1 .rep{display:flex;flex-direction:column;align-items:center;gap:14px}
+.rep-r1 .rep-val{
+  font-family:var(--serif);font-weight:400;color:var(--cream);
+  min-height:5.4rem;display:flex;align-items:flex-end;justify-content:center;
+}
+.rep-r1 .v-num{font-size:clamp(2.6rem,5vw,4rem);line-height:.95;letter-spacing:.01em}
+.rep-r1 .v-text{font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.1}
+.rep-r1 .rep-gloss{
+  color:rgba(247,243,235,.66);font-size:.9rem;line-height:1.55;
+  max-width:24ch;
+}
+.rep-r1 .r1-link{
+  display:inline-block;margin-top:clamp(46px,5vw,66px);
+  font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
+  text-decoration:none;padding-bottom:9px;position:relative;
+}
+.rep-r1 .r1-link::after{
+  content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:44px;height:1px;background:var(--gold);
+}
+
+/* ============================================================
+   R2 — mood-bandeau-luxe-specifications (Secret Garden Stresa)
+   Énoncé serif + prose, puis bande de spécifications à filets.
+   ============================================================ */
+.rep-r2{background:var(--taupe);padding:clamp(64px,8vw,104px) 0}
+.rep-r2 .r2-head{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:clamp(32px,5vw,72px);align-items:start;
+}
+.rep-r2 .h2{margin-top:14px}
+.rep-r2 .r2-note{max-width:44ch;padding-top:6px}
+.rep-r2 .spec{
+  margin-top:clamp(40px,5vw,64px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.rep-r2 .cell{
+  padding:clamp(24px,2.6vw,34px) clamp(20px,2vw,30px);
+  border-left:1px solid var(--line);
+}
+.rep-r2 .cell:first-child{border-left:0;padding-left:0}
+.rep-r2 .cell-val{
+  font-family:var(--serif);font-weight:400;color:var(--ink);
+  font-size:clamp(1.7rem,2.6vw,2.35rem);line-height:1.05;letter-spacing:.005em;
+}
+.rep-r2 .cell-val.v-text{font-size:clamp(1.3rem,1.9vw,1.65rem);line-height:1.12}
+.rep-r2 .cell-gloss{
+  margin-top:14px;color:var(--body);font-size:.9rem;line-height:1.55;
+  max-width:26ch;
+}
+
+/* ============================================================
+   R3 — preuve-statistiques-sourcees (Honestly)
+   Thèse centrée + rangée de cartes-chiffres à filet.
+   ============================================================ */
+.rep-r3{background:var(--cream);padding:clamp(64px,8vw,104px) 0}
+.rep-r3 .r3-head{text-align:center;max-width:640px;margin:0 auto}
+.rep-r3 .h2{margin-top:14px}
+.rep-r3 .r3-note{margin:18px auto 0;max-width:56ch}
+.rep-r3 .r3-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(18px,1.8vw,26px);
+  margin-top:clamp(46px,5vw,68px);
+}
+.rep-r3 .card{
+  background:#fffdf9;border:1px solid var(--line);
+  padding:clamp(26px,2.4vw,34px) clamp(22px,2vw,28px);
+  position:relative;
+}
+.rep-r3 .card::before{
+  content:"";position:absolute;top:0;left:clamp(22px,2vw,28px);
+  width:34px;height:2px;background:var(--gold);
+}
+.rep-r3 .card-val{
+  font-family:var(--serif);font-weight:400;color:var(--ink);
+  font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;letter-spacing:.005em;
+  margin-top:20px;min-height:3.2rem;display:flex;align-items:flex-end;
+}
+.rep-r3 .card-val.v-text{font-size:clamp(1.4rem,2.1vw,1.85rem);line-height:1.1}
+.rep-r3 .card-gloss{
+  margin-top:16px;color:var(--body);font-size:.92rem;line-height:1.55;
+}
+
+/* ---- Responsive ---- */
+@media (max-width:860px){
+  .rep-r1 .r1-grid,.rep-r2 .spec,.rep-r3 .r3-grid{grid-template-columns:repeat(2,1fr)}
+  .rep-r2 .r2-head{grid-template-columns:1fr;gap:20px}
+  .rep-r2 .cell:nth-child(2){border-left:0;padding-left:0}
+  .rep-r2 .cell:nth-child(3),.rep-r2 .cell:nth-child(4){border-top:1px solid var(--line)}
+  .rep-r1 .rep-val{min-height:4.4rem}
+}
+@media (max-width:520px){
+  .rep-r1 .r1-grid,.rep-r3 .r3-grid{grid-template-columns:1fr}
+  .rep-r2 .spec{grid-template-columns:1fr}
+  .rep-r2 .cell{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .rep-r2 .cell:first-child{border-top:0}
+  .rep-r1 .rep-val{min-height:0}
+  .rep-r1 .rep{gap:8px}
+  .rep-r3 .card-val{min-height:0}
+}
+
+</style>
+<style>
+.lot{background:#0b0e11;color:#c8a465;font-family:var(--grot);font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:16px var(--gut);border-top:3px solid #c8a465}
+.lot span{color:#fff;font-weight:600}
+
+/* ===== V0 premier jet : bande sombre a compteurs (01/07) ===== */
+.pj{background:var(--ink);padding-block:clamp(70px,9vw,120px)}
+.pj .eyebrow{color:#C9AE7C}
+.pj .eyebrow::before{background:#C9AE7C}
+.pj h2{color:#fff}
+.pj .stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
+.pj .stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
+.pj .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
+.pj .stat{border-top:1px solid rgba(255,255,255,.18);padding-top:26px}
+.pj .stat__n{font-family:var(--serif);font-size:clamp(2.8rem,5.4vw,4.6rem);color:#fff;line-height:1;font-weight:300}
+.pj .stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
+.pj .stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
+@media (max-width:820px){.pj .stats{grid-template-columns:1fr 1fr;row-gap:34px}}
 </style>
 </head>
 <body>
-<div class="tag"><b>Existante</b> &middot; la bande actuelle du site (relev&eacute; 4 colonnes, filet or anim&eacute;)</div>
-<iframe src="reperes-existante.html" scrolling="no"></iframe>
-<div class="tag"><b>&Eacute;lan</b> &middot; 2 versions con&ccedil;ues en session, sans le r&eacute;pertoire (E1 port&eacute;e or &middot; E2 relev&eacute; de registre)</div>
-<iframe src="reperes-elan.html" scrolling="no"></iframe>
-<div class="tag"><b>R&eacute;pertoire</b> &middot; 3 versions d'un agent depuis la biblio (R1 Herm&egrave;s sombre &middot; R2 bande de specs &middot; R3 cartes-chiffres)</div>
-<iframe src="reperes-repertoire.html" scrolling="no"></iframe>
-<script>
-function fit(){
-  document.querySelectorAll("iframe").forEach(f=>{
-    try{ f.style.height = f.contentDocument.documentElement.scrollHeight + "px"; }catch(e){}
-  });
-}
-document.querySelectorAll("iframe").forEach(f=>f.addEventListener("load",()=>{fit();setTimeout(fit,800);setTimeout(fit,2500);}));
-window.addEventListener("resize",fit);
-</script>
+<div class="lot">Premier jet <span>&middot; la version du 01/07 (bande sombre &agrave; compteurs)</span></div>
+<section class="pj">
+  <div class="wrap">
+    <div class="stats__intro">
+      <p class="eyebrow">Rep&egrave;res</p>
+      <h2 style="margin-top:22px">Une responsabilit&eacute;,<br>nettement d&eacute;limit&eacute;e.</h2>
+      <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat__n">1</div><div class="stat__l">Point de responsabilit&eacute; unique pour l'ensemble du p&eacute;rim&egrave;tre.</div></div>
+      <div class="stat"><div class="stat__n">5</div><div class="stat__l">Domaines de gestion pris en charge et tenus.</div></div>
+      <div class="stat"><div class="stat__n">FR<span class="u"> &middot; INT</span></div><div class="stat__l">En France comme &agrave; l'&eacute;tranger, sous un m&ecirc;me pilotage.</div></div>
+      <div class="stat"><div class="stat__n">100<span class="u">%</span></div><div class="stat__l">Des fonctions confi&eacute;es, op&eacute;r&eacute;es ou pilot&eacute;es par P&eacute;ricl&egrave;s.</div></div>
+    </div>
+  </div>
+</section>
+<div class="lot">Existante <span>&middot; la bande actuelle du site</span></div>
+
+<section class="bg-taupe reperes" id="reperes">
+  <div class="wrap">
+    <div class="reperes__head reveal">
+      <p class="eyebrow">Repères</p>
+      <h2>Quelques repères,<br>tenus dans la durée.</h2>
+      <p class="reperes__note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <!-- Le relevé : attributs de Périclès, chacun en tête d'une ligne. Valeurs à figer en
+         passe copy ; [N] = emplacement. Aucun chiffre inventé, aucun client. -->
+    <div class="releve reveal">
+      <div class="repere">
+        <span class="repere__n">5</span>
+        <p class="repere__l">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n repere__n--reach">France + International</span>
+        <p class="repere__l">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n"><span class="ph" aria-hidden="true">[</span>N<span class="ph" aria-hidden="true">]</span></span>
+        <p class="repere__l">Années d'activité continue.</p>
+      </div>
+      <div class="repere">
+        <span class="repere__n">1</span>
+        <p class="repere__l">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lot">&Eacute;lan <span>&middot; 2 versions con&ccedil;ues en session, sans le r&eacute;pertoire</span></div>
+
+
+<div class="tag">Version <b>E1</b> &middot; &Eacute;LAN : la port&eacute;e or (4 chiffres pos&eacute;s sur un m&ecirc;me filet continu)</div>
+<section class="bg-taupe e1">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Rep&egrave;res</p>
+      <h2>Quelques rep&egrave;res,<br>tenus dans la dur&eacute;e.</h2>
+      <p class="note">Peu de chiffres&nbsp;: l'&eacute;tendue des fonctions, la port&eacute;e, la continuit&eacute;. Aucun n'est un compte de clients.</p>
+    </div>
+    <div class="portee">
+      <div class="r"><span class="n">5</span><p class="l">Domaines de gestion tenus, chacun avec obligation de r&eacute;sultat.</p></div>
+      <div class="r"><span class="n small">France&nbsp;+ International</span><p class="l">Op&eacute;r&eacute;s en France comme &agrave; l'&eacute;tranger, sous un m&ecirc;me pilotage.</p></div>
+      <div class="r"><span class="n">[N]</span><p class="l">Ann&eacute;es d'activit&eacute; continue.</p></div>
+      <div class="r"><span class="n">1</span><p class="l">Un seul point de responsabilit&eacute;, sur tout le p&eacute;rim&egrave;tre.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="tag">Version <b>E2</b> &middot; &Eacute;LAN : le relev&eacute; de registre (marge &agrave; gauche, lignes empil&eacute;es)</div>
+<section class="bg-taupe e2">
+  <div class="wrap">
+    <div class="spread">
+      <div>
+        <p class="eyebrow">Rep&egrave;res</p>
+        <h2>Quelques rep&egrave;res, tenus dans la dur&eacute;e.</h2>
+        <p class="note">Peu de chiffres&nbsp;: l'&eacute;tendue, la port&eacute;e, la continuit&eacute;. Aucun n'est un compte de clients.</p>
+      </div>
+      <div class="registre">
+        <div class="ligne"><span class="n">5</span><p class="l">Domaines de gestion tenus, chacun avec obligation de r&eacute;sultat.</p></div>
+        <div class="ligne"><span class="n small">France&nbsp;+ Int.</span><p class="l">Op&eacute;r&eacute;s en France comme &agrave; l'&eacute;tranger, sous un m&ecirc;me pilotage.</p></div>
+        <div class="ligne"><span class="n">[N]</span><p class="l">Ann&eacute;es d'activit&eacute; continue.</p></div>
+        <div class="ligne"><span class="n">1</span><p class="l">Un seul point de responsabilit&eacute;, sur tout le p&eacute;rim&egrave;tre.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="lot">R&eacute;pertoire <span>&middot; 3 versions d'un agent depuis la biblio</span></div>
+
+
+<!-- ===================== VERSION R1 ===================== -->
+<div class="tag">Version R1 · <b>cle-chiffres-sobre</b> (Hermès Finance) · bande sombre, le vide fait le luxe</div>
+<section class="rep-r1">
+  <div class="wrap">
+    <div class="r1-head">
+      <p class="eyebrow">Repères</p>
+      <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      <p class="r1-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="r1-grid">
+      <div class="rep">
+        <div class="rep-val v-num">5</div>
+        <p class="rep-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-text">France&nbsp;+ International</div>
+        <p class="rep-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-num">[N]</div>
+        <p class="rep-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="rep">
+        <div class="rep-val v-num">1</div>
+        <p class="rep-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+
+    <a class="r1-link" href="#">En savoir plus</a>
+  </div>
+</section>
+
+<!-- ===================== VERSION R2 ===================== -->
+<div class="tag">Version R2 · <b>mood-bandeau-luxe-specifications</b> (Secret Garden Stresa) · énoncé + bande de specs</div>
+<section class="rep-r2">
+  <div class="wrap">
+    <div class="r2-head">
+      <div>
+        <p class="eyebrow">Repères</p>
+        <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      </div>
+      <p class="note r2-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="spec">
+      <div class="cell">
+        <div class="cell-val">5</div>
+        <p class="cell-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val v-text">France&nbsp;+ International</div>
+        <p class="cell-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val">[N]</div>
+        <p class="cell-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="cell">
+        <div class="cell-val">1</div>
+        <p class="cell-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VERSION R3 ===================== -->
+<div class="tag">Version R3 · <b>preuve-statistiques-sourcees</b> (Honestly) · thèse centrée + cartes-chiffres</div>
+<section class="rep-r3">
+  <div class="wrap">
+    <div class="r3-head">
+      <p class="eyebrow">Repères</p>
+      <h2 class="h2">Quelques repères, tenus dans la durée.</h2>
+      <p class="note r3-note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    </div>
+
+    <div class="r3-grid">
+      <div class="card">
+        <div class="card-val v-num">5</div>
+        <p class="card-gloss">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-text">France&nbsp;+ International</div>
+        <p class="card-gloss">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-num">[N]</div>
+        <p class="card-gloss">Années d'activité continue.</p>
+      </div>
+      <div class="card">
+        <div class="card-val v-num">1</div>
+        <p class="card-gloss">Un seul point de responsabilité, sur tout le périmètre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 </body>
 </html>
