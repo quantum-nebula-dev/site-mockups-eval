@@ -407,6 +407,31 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .tile.d2 .t-name,.tile.d2 .t-num{color:#fff}
 .tile.d2 .t-num{opacity:.95}
 
+/* ============ CITATION FULL-BLEED (V0 originale : buste + bibliotheque) ============ */
+.quote-block{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
+  padding:clamp(80px,10vw,120px) var(--gut);
+}
+.quote-block .qimg{position:absolute;inset:0;z-index:0}
+.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02) brightness(.7)}
+.quote-block::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(0,25,49,.55),rgba(0,25,49,.62));
+}
+.quote-block blockquote{
+  margin:0;max-width:22ch;position:relative;z-index:2;
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:#fff;
+  letter-spacing:-.012em;
+}
+.quote-block cite{
+  display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
+  font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;
+}
+
 /* ============ REPERES (V0 premier jet 01/07 : bande sombre a compteurs) ============ */
 .stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
 .stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
@@ -423,7 +448,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    Décision user 17/07/2026 : l'approche reprend le design « rail sticky + liste indexée »
    (composition validée, ex-section domaines — fiche rail-sticky-liste-indexee du répertoire).
    Elle réutilise telles quelles les classes .dom* ci-dessus. */
-}
+
 
 /* ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============
    Parti-pris « le papier à en-tête ». La page a plaidé « un seul point de responsabilité » ; la
