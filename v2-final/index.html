@@ -450,94 +450,37 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
    Elle réutilise telles quelles les classes .dom* ci-dessus. */
 
 
-/* ============ CONTACT (direction WENDEL, mini-concours 17/07 — scope .Pw) ============ */
-
-.Pw *, .Pw *::before, .Pw *::after{box-sizing:border-box;margin:0;padding:0}
-.Pw{scroll-behavior:smooth}
-.Pw{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-.Pw a{color:inherit;text-decoration:none}
-.Pw button{font-family:inherit;cursor:pointer;border:none;background:none}
-.Pw .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
-.Pw h2{font-family:var(--serif);color:var(--ink);font-weight:300;line-height:1.12;letter-spacing:-.012em;font-size:clamp(1.9rem,3.6vw,3rem)}
-.Pw .eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
-.Pw .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
-.Pw a:focus-visible, .Pw button:focus-visible, .Pw input:focus-visible, .Pw textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.Pw .lead-in{background:#fff;padding-block:clamp(60px,10vw,120px)}
-.Pw .lead-in .rule{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
-.Pw .lead-in .rule::after{content:"";display:block;height:1px;background:var(--line)}
-.Pw .contact{
-  background:var(--ink);
-  color:rgba(255,255,255,.72);
-  padding-block:clamp(80px,10vw,150px) clamp(64px,7.5vw,110px);
-  border-top:1px solid rgba(255,255,255,.06);
-}
-.Pw .contact h2{color:#fff}
-.Pw .contact__grid{
-  display:grid;
-  grid-template-columns:0.92fr 1.08fr;
-  gap:clamp(40px,6vw,96px);
-  align-items:start;
-}
-.Pw .contact__lede{display:flex;flex-direction:column;align-self:stretch}
-.Pw .contact__lede h2{margin-top:22px;max-width:12ch}
-.Pw .contact__lede .lead{
-  font-family:var(--serif);font-weight:300;
-  font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.45;
-  color:rgba(255,255,255,.9);margin-top:26px;max-width:34ch;
-}
-.Pw .assurance{margin-top:auto;padding-top:clamp(26px,3vw,36px);border-top:1px solid rgba(255,255,255,.16);max-width:38ch}
-.Pw .contact__lede .lead{margin-bottom:clamp(34px,4.4vw,56px)}
-.Pw .assurance p{font-family:var(--serif);font-weight:300;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.78)}
-.Pw .assurance .byline{
-  font-family:var(--grot);font-size:.82rem;font-weight:500;letter-spacing:.02em;
-  color:rgba(255,255,255,.6);margin-top:20px;
-}
-.Pw .assurance .byline .email{color:var(--gold);font-weight:600;letter-spacing:.01em}
-.Pw .form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:9px}
+/* ============ CONTACT (P3 « colonne matière » — recherche premium 18/07, scope .Pw) ============ */
+.Pw .contact{background:var(--ink);color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.06);padding:0}
+.Pw .contact h2{color:#fff;font-weight:400}
+.Pw .cgrid{display:grid;grid-template-columns:1fr 1.15fr;min-height:78vh}
+.Pw .cmedia{position:relative;overflow:hidden}
+.Pw .cmedia img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.02) brightness(.85) saturate(.85)}
+.Pw .cmedia::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,25,49,.30),rgba(0,25,49,.58))}
+.Pw .cmedia .cap{position:absolute;left:clamp(24px,3vw,44px);bottom:clamp(24px,3vw,40px);z-index:2;max-width:30ch}
+.Pw .cmedia .cap p{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.45;color:rgba(255,255,255,.92)}
+.Pw .cform{display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,7vw,110px) clamp(32px,5vw,88px)}
+.Pw .cform h2{margin-top:22px;max-width:14ch}
+.Pw .clead{margin-top:18px;max-width:44ch;color:rgba(255,255,255,.72);font-size:1.02rem}
+.Pw .form{display:grid;gap:clamp(24px,2.6vw,32px);margin-top:clamp(36px,4vw,52px)}
 .Pw .field{display:grid;gap:10px}
-.Pw .field label{
-  font-family:var(--grot);font-size:.74rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);
-}
-.Pw .field input, .Pw .field textarea{
-  font-family:var(--grot);font-size:1.02rem;color:#fff;
-  background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);
-  border-radius:0;padding:10px 2px;width:100%;
-  transition:border-color .35s ease;
-}
-.Pw .field textarea{min-height:170px;resize:vertical;line-height:1.6}
-.Pw .field input::placeholder, .Pw .field textarea::placeholder{color:rgba(255,255,255,.36)}
-.Pw .field input:focus, .Pw .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
-.Pw .form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
-.Pw .btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:56px;padding:0 40px;border-radius:1000px;
-  font-family:var(--grot);font-weight:600;font-size:.95rem;letter-spacing:.01em;
-  background:var(--gold);color:var(--ink);
-  transition:background .3s,color .3s,transform .3s;
-}
+.Pw .field label{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.Pw .field input,.Pw .field textarea{font-family:var(--grot);font-size:1.02rem;color:#fff;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);border-radius:0;padding:10px 2px;width:100%;transition:border-color .35s ease}
+.Pw .field textarea{min-height:130px;resize:vertical;line-height:1.6}
+.Pw .field input::placeholder,.Pw .field textarea::placeholder{color:rgba(255,255,255,.34)}
+.Pw .field input:focus,.Pw .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
+.Pw .form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:6px}
+.Pw .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 40px;border-radius:1000px;font-family:var(--grot);font-weight:600;font-size:.95rem;letter-spacing:.01em;background:var(--gold);color:var(--ink);border:none;cursor:pointer;transition:background .3s,color .3s,transform .3s}
 .Pw .btn:hover{background:var(--cream);transform:translateY(-1px)}
 .Pw .form__note{font-size:.85rem;color:rgba(255,255,255,.55)}
-.Pw .form__ok{
-  display:none;align-items:flex-start;gap:14px;
-  margin-top:6px;padding:18px 22px;
-  border-left:2px solid var(--gold);background:rgba(255,255,255,.04);
-  color:rgba(255,255,255,.86);font-size:.95rem;line-height:1.5;
-}
+.Pw .form__ok{display:none;align-items:flex-start;gap:14px;margin-top:6px;padding:18px 22px;border-left:2px solid var(--gold);background:rgba(255,255,255,.04);color:rgba(255,255,255,.86);font-size:.95rem;line-height:1.5}
 .Pw .form__ok.show{display:flex}
 .Pw .form__ok .mk{color:var(--gold);font-family:var(--serif);font-size:1.15rem;line-height:1}
 .Pw .form__ok b{color:#fff;font-weight:600}
-@media (max-width:900px){.Pw .contact__grid{grid-template-columns:1fr;gap:clamp(44px,7vw,64px)}
-.Pw .contact__lede h2{max-width:18ch}
-.Pw .contact__lede .lead{max-width:46ch}
-.Pw .assurance{max-width:52ch}
-
+@media (max-width:900px){
+  .Pw .cgrid{grid-template-columns:1fr}
+  .Pw .cmedia{min-height:320px}
 }
-@media (prefers-reduced-motion:reduce){.Pw *{transition-duration:.001ms!important;animation-duration:.001ms!important}
-
-}
-
-
 
 /* ============ FOOTER (structure Kering, tokens Wendel) ============ */
 .foot{padding-block:clamp(56px,7vw,90px)}
@@ -792,19 +735,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============ -->
 <div class="Pw" id="contact"><section class="contact" aria-labelledby="contact-titre">
-  <div class="wrap">
-    <div class="contact__grid">
-
-      <div class="contact__lede">
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-titre">Adressez-nous votre demande.</h2>
-        <p class="lead">Décrivez le périmètre que vous envisagez de confier&nbsp;; nous vous en proposons une première lecture.</p>
-        <div class="assurance">
-          <p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p>
-          
-        </div>
-      </div>
-
+  <div class="cgrid">
+    <div class="cmedia" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?auto=format&fit=crop&w=1800&q=80" alt="">
+      <div class="cap"><p>Un seul interlocuteur vous répond, par écrit. Vos échanges restent confidentiels, à chaque étape.</p></div>
+    </div>
+    <div class="cform">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-titre">Adressez-nous votre demande.</h2>
+      <p class="clead">Décrivez le périmètre que vous envisagez de confier&nbsp;; nous vous en proposons une première lecture.</p>
       <form class="form" id="form" novalidate>
         <div class="field">
           <label for="org">Organisation</label>
@@ -827,7 +766,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           <span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span>
         </div>
       </form>
-
     </div>
   </div>
 </section></div>
