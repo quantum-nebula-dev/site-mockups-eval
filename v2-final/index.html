@@ -407,125 +407,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .tile.d2 .t-name,.tile.d2 .t-num{color:#fff}
 .tile.d2 .t-num{opacity:.95}
 
-/* ============ REPÈRES (relevé éditorial sur pierre claire : la preuve non-nominative) ============
-   Parti-pris : « le relevé ». Non pas un tableau de bord, mais l'« en un regard » d'une revue
-   institutionnelle (réfs Rothschild & Co Revue Annuelle, Amundi « L'essentiel », Barrière « en
-   un regard ») : quelques repères posés en display serif, chacun en tête d'une ligne. Ce qu'on
-   compte = des ATTRIBUTS de Périclès (étendue, portée, durée, unité), jamais des clients
-   (critère « preuve non-nominative »).
-   Fond TAUPE (token du DNA, jusqu'ici inutilisé) : après le seul temps sombre de la page (le
-   manifeste plein cadre), la preuve retombe dans une lumière chaude et TENUE, une « pierre »
-   de relevé. Rupture de valeur franche avec le noir qui précède, ton distinct de la crème de
-   l'approche qui suit (jamais deux sombres d'affilée, jamais deux clairs qui se confondent).
-   Macrostructure unique sur la page : une bande de repères à l'horizontale, tenue sous une
-   seule ligne et divisée de filets verticaux (les règles de colonne d'un relevé imprimé).
-   UN geste signature : le filet or qui se dessine (la « ligne active » du site), ici à
-   l'horizontale en tête du relevé.
-   AA : sur taupe l'or vire faible ; il reste réservé à la ligne signature (décor) et aux
-   accents display (crochets, grande taille). Tout texte est en ink / body (≥ 4.5:1). */
-.reperes__head{max-width:60ch;margin-bottom:clamp(44px,6vw,84px)}
-/* eyebrow : sur taupe le libellé passe en ink pour l'AA ; le filet reste or (décoratif) */
-.reperes .eyebrow{color:var(--ink)}
-.reperes__head h2{margin-top:22px}
-.reperes__note{margin-top:1.05em;max-width:52ch;color:var(--body)}
-
-/* LE RELEVÉ : bande de repères à l'horizontale, tenue sous la ligne signature. Grille
-   VOLONTAIREMENT asymétrique (la portée « France + International » prend la colonne large) :
-   un relevé, pas une grille régulière. --rg = la gouttière courante, réutilisée pour caler
-   les filets verticaux au milieu de l'entre-colonne. */
-.releve{
-  --rg:clamp(24px,3vw,52px);
-  position:relative;
-  display:grid;grid-template-columns:.9fr 1.35fr .9fr .95fr;
-  gap:var(--rg);
-  padding-top:clamp(30px,3.4vw,46px);
-}
-/* GESTE SIGNATURE : le filet or se dessine de gauche à droite à l'entrée (même « ligne
-   active » que le sommaire des domaines, le schéma du modèle, l'approche et le contact).
-   Décoratif : aucune exigence de contraste. */
-.releve::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
-}
-.releve.is-visible::before{transform:scaleX(1)}
-
-/* filets verticaux entre les repères : règles de colonne, calées au milieu de la gouttière
-   (statiques, pas des cartes) ; la grille étirée leur donne la même hauteur sur une rangée. */
-.repere{position:relative}
-.repere::before{
-  content:"";position:absolute;top:0;bottom:0;left:calc(var(--rg) / -2);
-  width:1px;background:var(--line);
-}
-.repere:first-child::before{display:none}
-
-/* le repère chiffré : display serif, poids 300 « carved ». Plafonné SOUS le H1 du hero
-   (taille comme poids ; vérifié à 390px comme au-delà : le hero reste le plus grand). */
-.repere__n{
-  display:block;
-  font-family:var(--serif);font-weight:300;color:var(--ink);line-height:1;
-  font-size:clamp(2rem,3.6vw,3.4rem);letter-spacing:-.012em;
-  font-variant-numeric:lining-nums tabular-nums;
-}
-/* crochets de l'emplacement de copy : or assombri, toujours ≥ 32px => AA graphique tenu */
-.repere__n .ph{color:var(--gold-d);font-weight:400}
-/* la portée n'est pas un nombre : un binôme serif, plus discret que les chiffres */
-.repere__n--reach{font-size:clamp(1.35rem,2.1vw,2rem);letter-spacing:-.008em}
-.repere__l{
-  margin-top:clamp(14px,1.5vw,20px);max-width:24ch;
-  font-size:.92rem;line-height:1.5;color:var(--body);
-}
-
-@media (max-width:900px){
-  /* le relevé repasse en deux temps ; le filet ne tient qu'entre les colonnes d'une rangée */
-  .releve{--rg:clamp(24px,4vw,40px);grid-template-columns:1fr 1fr}
-  .repere:nth-child(odd)::before{display:none}
-}
-@media (max-width:500px){
-  /* en pile : chaque repère tenu par un filet horizontal (le relevé garde ses lignes) */
-  .releve{--rg:0;grid-template-columns:1fr}
-  .repere::before{display:none}
-  .repere{padding-top:clamp(22px,6vw,30px);border-top:1px solid var(--line)}
-  .repere:first-child{padding-top:0;border-top:0}
-  .repere__l{max-width:46ch}
-}
-
-/* ============ MANIFESTE PLEIN CADRE (le grand silence : salle de lecture noble) ============
-   Le SEUL temps sombre depuis le hero (deux sections crème le précèdent) : le noir
-   cinématique où la marque dit sa posture d'une phrase. Composition VOULUE distincte du
-   hero (lui ancré bas-gauche, avec eyebrow + deck + support) : ici une phrase SEULE,
-   centrée dans l'air, sans eyebrow ni sous-titre. Serif ROMAN 400 « carved » (jamais plus
-   grand ni plus lourd que le H1 du hero, à 390px comme au-delà), texte crème pour l'AA.
-   UN geste : le filet or VERTICAL qui se dessine du haut vers le bas au reveal (la même
-   « ligne de responsabilité » qu'à l'intro) et descend de la phrase vers la signature.
-   Voile ink façonné : clair en haut (la salle de lecture respire) -> dense au centre
-   (adosse la phrase, AA) -> soutenu en bas (fond dans le noir des Repères qui suivent).
-   Aucune couleur hors token ; rgba(0,25,49) = --ink porté en voile. */
-.quote-block{
-  position:relative;min-height:78vh;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
-  padding:clamp(80px,10vw,120px) var(--gut);
-}
-.quote-block .qimg{position:absolute;inset:0;z-index:0}
-.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.02) brightness(.7)}
-.quote-block::after{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(0,25,49,.55),rgba(0,25,49,.62));
-}
-.quote-block blockquote{
-  margin:0;max-width:22ch;position:relative;z-index:2;
-  font-family:var(--serif);font-weight:300;font-style:italic;
-  font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:#fff;
-  letter-spacing:-.012em;
-}
-.quote-block cite{
-  display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
-  font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--gold);font-weight:600;
-}
-}
+/* ============ REPERES (V0 premier jet 01/07 : bande sombre a compteurs) ============ */
+.stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
+.stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
+.reperes h2{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
+.stat{border-top:1px solid var(--line-2);padding-top:26px}
+.stat__n{font-family:var(--serif);font-size:clamp(2.8rem,5.4vw,4.6rem);color:#fff;line-height:1;font-weight:300}
+.stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
+.stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
+@media (max-width:820px){.stats{grid-template-columns:1fr 1fr;row-gap:34px}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
 
 /* ============ APPROCHE ============
    Décision user 17/07/2026 : l'approche reprend le design « rail sticky + liste indexée »
@@ -807,32 +699,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- ============ REPÈRES (relevé éditorial sur pierre claire : preuve non-nominative) ============ -->
-<section class="bg-taupe reperes" id="reperes">
+<section class="bg-ink reperes" id="reperes">
   <div class="wrap">
-    <div class="reperes__head reveal">
-      <p class="eyebrow">Repères</p>
-      <h2>Quelques repères,<br>tenus dans la durée.</h2>
-      <p class="reperes__note">Peu de chiffres : l'étendue des fonctions, la portée, la continuité. Aucun n'est un compte de clients.</p>
+    <div class="stats__intro reveal">
+      <p class="eyebrow on-dark">Repères</p>
+      <h2 style="margin-top:22px">Une responsabilité,<br>nettement délimitée.</h2>
+      <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
     </div>
-
-    <!-- Le relevé : attributs de Périclès, chacun en tête d'une ligne. Valeurs à figer en
-         passe copy ; [N] = emplacement. Aucun chiffre inventé, aucun client. -->
-    <div class="releve reveal">
-      <div class="repere">
-        <span class="repere__n">5</span>
-        <p class="repere__l">Domaines de gestion tenus, chacun avec obligation de résultat.</p>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat__n" data-count="1">0</div>
+        <div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div>
       </div>
-      <div class="repere">
-        <span class="repere__n repere__n--reach">France + International</span>
-        <p class="repere__l">Opérés en France comme à l'étranger, sous un même pilotage.</p>
+      <div class="stat">
+        <div class="stat__n" data-count="5">0</div>
+        <div class="stat__l">Domaines de gestion pris en charge et tenus.</div>
       </div>
-      <div class="repere">
-        <span class="repere__n"><span class="ph" aria-hidden="true">[</span>N<span class="ph" aria-hidden="true">]</span></span>
-        <p class="repere__l">Années d'activité continue.</p>
+      <div class="stat">
+        <div class="stat__n">FR<span class="u"> · INT</span></div>
+        <div class="stat__l">En France comme à l'étranger, sous un même pilotage.</div>
       </div>
-      <div class="repere">
-        <span class="repere__n">1</span>
-        <p class="repere__l">Un seul point de responsabilité, sur tout le périmètre.</p>
+      <div class="stat">
+        <div class="stat__n">100<span class="u">%</span></div>
+        <div class="stat__l">Des fonctions confiées, opérées ou pilotées par Périclès.</div>
       </div>
     </div>
   </div>
