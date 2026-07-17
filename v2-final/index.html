@@ -468,7 +468,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .Pw .contact{
   background:var(--ink);
   color:rgba(255,255,255,.72);
-  padding-block:clamp(80px,10vw,150px);
+  padding-block:clamp(80px,10vw,150px) clamp(64px,7.5vw,110px);
   border-top:1px solid rgba(255,255,255,.06);
 }
 .Pw .contact h2{color:#fff}
@@ -478,20 +478,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   gap:clamp(40px,6vw,96px);
   align-items:start;
 }
+.Pw .contact__lede{display:flex;flex-direction:column;align-self:stretch}
 .Pw .contact__lede h2{margin-top:22px;max-width:12ch}
 .Pw .contact__lede .lead{
   font-family:var(--serif);font-weight:300;
   font-size:clamp(1.2rem,1.9vw,1.6rem);line-height:1.45;
   color:rgba(255,255,255,.9);margin-top:26px;max-width:34ch;
 }
-.Pw .assurance{margin-top:clamp(34px,4.4vw,56px);padding-top:clamp(26px,3vw,36px);border-top:1px solid var(--line-d);max-width:38ch}
+.Pw .assurance{margin-top:auto;padding-top:clamp(26px,3vw,36px);border-top:1px solid rgba(255,255,255,.16);max-width:38ch}
+.Pw .contact__lede .lead{margin-bottom:clamp(34px,4.4vw,56px)}
 .Pw .assurance p{font-family:var(--serif);font-weight:300;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.78)}
 .Pw .assurance .byline{
   font-family:var(--grot);font-size:.82rem;font-weight:500;letter-spacing:.02em;
   color:rgba(255,255,255,.6);margin-top:20px;
 }
 .Pw .assurance .byline .email{color:var(--gold);font-weight:600;letter-spacing:.01em}
-.Pw .form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:6px}
+.Pw .form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:9px}
 .Pw .field{display:grid;gap:10px}
 .Pw .field label{
   font-family:var(--grot);font-size:.74rem;font-weight:600;
@@ -503,7 +505,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   border-radius:0;padding:10px 2px;width:100%;
   transition:border-color .35s ease;
 }
-.Pw .field textarea{min-height:118px;resize:vertical;line-height:1.6}
+.Pw .field textarea{min-height:170px;resize:vertical;line-height:1.6}
 .Pw .field input::placeholder, .Pw .field textarea::placeholder{color:rgba(255,255,255,.36)}
 .Pw .field input:focus, .Pw .field textarea:focus{outline:none;border-bottom-color:var(--gold)}
 .Pw .form__foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
