@@ -29,7 +29,10 @@
 - **Hero + nav** : VALIDÉS, **on n'y touche pas** (gate direction faite). Réglés au pixel — voir `tokens.md` (serif 400 « carved » -.022em, deck muted 72%, labels .14em). Ils sont la référence DNA.
 - **Intro (`#perimetre`)** : refondue sobre (bloc aligné, hiérarchie typo), validée.
 - **Domaines (`#domaines`)** : refondue (rail éditorial sticky à gauche + liste numérotée à droite, index or compacts), validée.
-- **Citation (`.quote-block`)** : VALIDÉE 17/07 — retour à la V0 ORIGINALE (buste + bibliothèque, citation serif italique 300, cite or) choisie face à 4 alternatives (actuelle, cartel musée, maxime+bande, antithèse). Installée.
+- **Citation (`.quote-block`)** : VALIDÉE 17/07 — retour à la V0 ORIGINALE (buste + bibliothèque, citation serif italique 300, cite or), puis passage de la photo EN COULEUR (grayscale retiré, saturate .85, voile ink allégé .38-.5) à la demande du user.
+- **Repères (`#reperes`)** : VALIDÉS 17/07 — retour à la V0 PREMIER JET (bande sombre bg-ink « Une responsabilité, nettement délimitée. », 4 compteurs 1/5/FR·INT/100%) choisie face à 6 alternatives (existante taupe, 2 élan, 3 répertoire). Enseignement : le user privilégie systématiquement les sections du premier jet (concours mockups-v3).
+- **Fonds réglés 17/07 (surcharge corrigée)** : intro CRÈME · domaines(mosaïque) BLANC · citation couleur · repères INK · approche BLANC (rail sticky) · contact INK.
+- **Protocole 17/07 — MINI-CONCOURS par section** (préféré par le user après échec du mode répertoire, retiré des skills) : 5 designers, un par réf du concours d'origine (chacun lit SA direction `mockups-v3/<ref>/index.html` comme ADN), contenu source-locked verbatim, tokens v2-final imposés, l'œil du user tranche. En cours sur `#contact`.
 - **Treemap (`#viz`)** : PROBLÈME — répète les 5 mêmes domaines que `#domaines` (redondance). À trancher par l'architecture : transformer en section non-redondante (preuve / « comment ça marche » / chiffres) ou couper.
 - Restent à traiter : `#reperes` (stats), `#approche`, `#contact`, footer (dont **copyright / mentions légales**).
 
