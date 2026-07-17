@@ -536,10 +536,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 
-.Pw .sepcue{display:flex;justify-content:center;margin-bottom:clamp(44px,5.5vw,72px)}
-.Pw .sepcue .line{width:1px;height:54px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
-.Pw .sepcue .line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(-100%);animation:cue 2.6s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.Pw .sepcue .line::after{animation:none;transform:translateY(0)}}
 
 /* ============ FOOTER (structure Kering, tokens Wendel) ============ */
 .foot{padding-block:clamp(56px,7vw,90px)}
@@ -607,6 +603,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .scrollcue .line::after{animation:none;transform:translateY(0)}
   *{transition-duration:.001ms!important;animation-duration:.001ms!important}
 }
+/* filet or signature entre contact et footer (meme trait que la nav, dessine au scroll) */
+.foot{position:relative}
+.foot::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.32) 60%,rgba(158,131,90,0) 100%);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 1.1s cubic-bezier(.35,.02,.2,1) .05s;
+}
+.foot.is-visible::before{transform:scaleX(1)}
+.foot.reveal{opacity:1 !important;transform:none !important}
+@media (prefers-reduced-motion:reduce){.foot::before{transform:scaleX(1)}}
 </style>
 </head>
 <body>
@@ -777,7 +784,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- ============ CONTACT (clôture plein cadre sur bleu nuit : la feuille de correspondance) ============ -->
 <div class="Pw" id="contact"><section class="contact" aria-labelledby="contact-titre">
-  <div class="sepcue" aria-hidden="true"><span class="line"></span></div>
   <div class="wrap">
     <div class="contact__grid">
 
@@ -820,7 +826,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </main>
 
 <!-- ============ FOOTER (structure Kering, tokens Wendel) ============ -->
-<footer class="bg-ink foot">
+<footer class="bg-ink foot reveal">
   <div class="wrap">
     <div class="foot__top">
       <div>
