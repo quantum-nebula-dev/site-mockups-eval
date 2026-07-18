@@ -76,7 +76,6 @@ p{font-size:clamp(1rem,1.05vw,1.1rem)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 section{padding-block:clamp(5rem, 4rem + 4vw, 7.5rem)}
 .bg-cream{background:var(--cream)}
-.bg-taupe{background:var(--taupe)}
 .bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}
 .bg-ink h1,.bg-ink h2,.bg-ink h3{color:var(--white)}
 
@@ -200,12 +199,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   margin-top:24px;max-width:52ch;color:rgba(245,240,235,.72);
   font-size:18px;line-height:1.55;
 }
-.hero__meta{
-  margin-top:40px;display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;
-  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:500;
-}
-.hero__meta span{display:inline-flex;align-items:center;gap:14px}
-.hero__meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .scrollcue{
   position:absolute;right:6vw;bottom:0;z-index:1;
   display:flex;flex-direction:column;align-items:center;gap:10px;
@@ -446,7 +439,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
-  .contact__grid,.foot__top{grid-template-columns:1fr}
+  .foot__top{grid-template-columns:1fr}
   /* MODÈLE (#viz) : la mosaïque repasse en 2 colonnes, d1 en bandeau plein ; angles et matière
      conservés. Rangées libres (auto) pour laisser les noms respirer. */
   .treemap{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"d1 d1" "d2 d3" "d4 d5"}
@@ -473,7 +466,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .nav.open a.btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 }
 @media (max-width:480px){
-  .form__row{grid-template-columns:1fr}
   /* MODÈLE : la mosaïque en pile ; chaque champ garde sa matière et son angle net */
   .treemap{grid-template-columns:1fr;grid-template-areas:"d1" "d2" "d3" "d4" "d5"}
   .tile.d1{min-height:170px}
@@ -482,7 +474,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
   .tile{opacity:1!important;transform:none!important}
-  .treemap::before{transform:scaleX(1)!important}
   .scrollcue .line::after{animation:none;transform:translateY(0)}
   *{transition-duration:.001ms!important;animation-duration:.001ms!important}
 }
@@ -679,7 +670,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <div class="cf"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="vous@organisation.com" autocomplete="email" required></div>
       <div class="cf"><label for="msg">Périmètre à confier</label><textarea id="msg" name="msg" placeholder="Le périmètre que vous envisagez de confier, en quelques lignes." required></textarea></div>
       <div class="cfoot"><button type="submit" class="btn btn-gold btn-lg">Adresser une demande</button><span class="cnote">Réponse sous quelques jours ouvrés.</span></div>
-      <div class="form__ok" id="ok" role="status" aria-live="polite"><span class="mk" aria-hidden="true">✓</span><span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span></div>
+      <div class="form__ok" id="ok" role="status" aria-live="polite" tabindex="-1"><span class="mk" aria-hidden="true">✓</span><span><b>Demande reçue.</b> Un seul interlocuteur revient vers vous, par écrit, avec une première lecture du périmètre décrit.</span></div>
     </form>
   </div>
 </section>
