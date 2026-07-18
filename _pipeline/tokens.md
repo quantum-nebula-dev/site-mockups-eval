@@ -15,7 +15,7 @@ Registre : **magazine de luxe institutionnel sobre** (réfs validées : Wendel, 
 | `--cream` | `#F7F3EB` | crème chaude — fonds clairs |
 | `--taupe` / `--taupe-2` | `#E7DFD2` / `#D6CAB4` | taupe |
 | `--white` | `#FFFFFF` | |
-| `--line` / `--line-2` | `rgba(0,25,49,.12)` / `rgba(255,255,255,.16)` | filets sur clair / sur sombre |
+| `--line` / `--line-2` | `rgba(0,25,49,.12)` / `rgba(255,255,255,.12)` | filets sur clair / sur sombre |
 
 Accent unique = **l'or**. Interdits : couleur criarde, gradient violet, décoration arc-en-ciel. **WCAG AA** (≥ 4.5:1) sur tout texte.
 
@@ -76,3 +76,16 @@ Classes : `.bg-cream{background:var(--cream)}` · `.bg-taupe{background:var(--ta
 | 7 | contact | Clôture / action | CLAIR (avant footer) |
 | 8 | footer | Fin ferme | SOMBRE (ink) |
 Sombres = 1·4·6·8 (jamais adjacents) ; accent chaud = 3 seul ; clôture 7 claire avant footer sombre. C'est ce que le réordre approche↑ + contact clair a produit.
+
+## Couleur (doctrine groundée — convergence Exa 18/07/2026, ~28 sources)
+Position stable après 5 vagues (les vagues 4-5 confirment sans renverser). Règles à ≥2 sources.
+1. **Palette = 3-4 couleurs** : 1 ancre sombre + 1 accent métallique + 1-2 neutres chauds. Moins de couleurs = valeur perçue plus haute. Notre système (ink / or / crème-taupe / body) est déjà à ce standard.
+2. **L'accent métallique ne se pose JAMAIS en aplat.** Point le plus solidement sourcé (Franco Maria Ricci, The Economist, ColorArchive, zoviz, Pa'lais) : l'or en grand aplat lit « jaune/ambre », pas luxe. Or = **trait / texte / filet uniquement**, ~5-10 % de la surface. **Seul aplat d'or légitime = le CTA** (`.btn-gold`, or + texte ink = 4.94:1). La quasi-tuile d'or `d2` de la mosaïque est la seule dérive → à retinter vers un neutre quand le treemap sera refait.
+3. **Répéter l'or est LÉGITIME s'il reste trait/texte** (tranche l'ancien doute « accent une seule fois »). Nos numéros dorés répétés (som/dom/repères) sont un signe éditorial, pas une faute. La seule faute, c'est l'aplat.
+4. **Crème chaude > blanc pur** (le blanc pur est clinique) ; tout neutre porte une trace de la teinte de marque (filets/ombres teintés navy). Notre crème #F7F3EB + filets navy = juste.
+5. **Navy + crème + or MAT = canonique ET actuel**, pas daté — à deux conditions : or **sourd** (le nôtre #9E835A, brun-tawny, est bon — ne PAS l'éclaircir vers le champagne) et **ancre sombre FROIDE** (ne jamais réchauffer l'ink ; sa froideur est ce qui fait « lire » l'or riche).
+6. **Or comme texte** : réservé aux **grandes tailles** (AA grand texte = 3:1, ≥24px) ou aux **fonds sombres / très clairs**. Sur clair pour du petit texte → utiliser `--gold-d` #7f6740 (eyebrow). Attention latente : gold-d sur taupe = 4.06:1 (échoue) → assombrir si une section taupe reçoit un eyebrow.
+7. **Texte sur sombre = échelle d'opacités**, jamais blanc pur : lecture primaire `.85-.87` · secondaire/labels `.70-.72` · notes `.5`. Filets sur sombre **8-12 %** (d'où `--line-2` ramené à `.12`).
+8. **Texte sur image** : scrim sombre **40-60 %**, mesuré au pixel le plus clair sous le texte ; dégradé plutôt qu'aplat. Duotone navy→crème = traitement cohérent recommandé (navy en ombres, crème en hautes lumières). Notre blockquote tient (~5-6:1) ; la petite cite dorée a reçu un `text-shadow` pour tenir sur les tranches claires.
+
+**Arbitrage réservé à l'œil du user** : la **densité totale d'or** (filet header + eyebrows + filets de section + numéros + hover + cite + CTA). La recherche tranche que tout ça est OK tant que ça reste trait/texte — mais « trop d'or » est un jugement visuel, pas une règle.
