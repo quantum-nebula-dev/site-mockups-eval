@@ -63,3 +63,16 @@ hero(ink) · intro(BLANC) · domaines(CRÈME) · citation(image sombre) · viz(B
 hero(ink) · intro(blanc) · domaines-mosaïque(crème) · citation-buste(image sombre) · **approche(BLANC)** · repères(INK) · contact(à trancher, viser CLAIR) · footer(INK).
 Note : l'approche a été remontée avant les repères (18/07) pour éviter citation-sombre + repères-sombre collés → donne après le buste : clair · sombre · [contact clair] · footer.
 Classes : `.bg-cream{background:var(--cream)}` · `.bg-taupe{background:var(--taupe)}` · `.bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}` · pas de classe = blanc.
+
+## Map RÔLE → FOND de la home (méthode groundée, 18/07/2026)
+| # | Section | Rôle | Fond |
+|---|---|---|---|
+| 1 | hero | Accroche | SOMBRE (ink) |
+| 2 | intro / périmètre | Lecture (le constat) | CLAIR (blanc) |
+| 3 | domaines (mosaïque) | Preuve chaude (l'étendue) | CLAIR CHAUD (crème) — l'unique accent chaud |
+| 4 | citation (buste) | Temps fort / respiration | SOMBRE (image) |
+| 5 | approche | Lecture (les principes) | CLAIR (blanc) |
+| 6 | repères | Emphase chiffrée (le pouls) | SOMBRE (ink) |
+| 7 | contact | Clôture / action | CLAIR (avant footer) |
+| 8 | footer | Fin ferme | SOMBRE (ink) |
+Sombres = 1·4·6·8 (jamais adjacents) ; accent chaud = 3 seul ; clôture 7 claire avant footer sombre. C'est ce que le réordre approche↑ + contact clair a produit.
