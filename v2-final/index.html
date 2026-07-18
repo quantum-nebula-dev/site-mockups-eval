@@ -21,7 +21,7 @@
   --taupe:#E7DFD2;        /* taupe              */
   --taupe-2:#D6CAB4;
   --line:rgba(0,25,49,.12);
-  --line-2:rgba(255,255,255,.16);
+  --line-2:rgba(255,255,255,.12);
   --maxw:1180px;
   --gut:clamp(20px,5vw,72px);
   --shadow:0 24px 60px -34px rgba(0,25,49,.45);
@@ -413,15 +413,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   display:block;margin-top:clamp(22px,3vw,34px);font-style:normal;
   font-family:var(--grot);font-size:.78rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--gold);font-weight:600;
+  text-shadow:0 1px 10px rgba(0,12,26,.6);
 }
 
 /* ============ REPERES (V0 premier jet 01/07 : bande sombre a compteurs) ============ */
 .stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
-.stats__intro p{color:rgba(255,255,255,.78);margin-top:1em}
+.stats__intro p{color:rgba(255,255,255,.85);margin-top:1em}
 .reperes h2{color:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
 .stat{border-top:1px solid var(--line-2);padding-top:26px}
-.stat__n{font-family:var(--serif);font-size:clamp(2.8rem,5.4vw,4.6rem);color:#fff;line-height:1;font-weight:300}
+.stat__n{font-family:var(--serif);font-size:clamp(2.4rem,4.2vw,3.9rem);color:#fff;line-height:1;font-weight:300}
 .stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
 .stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
 @media (max-width:820px){.stats{grid-template-columns:1fr 1fr;row-gap:34px}}
@@ -443,7 +444,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 #contact .cf label{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d)}
 #contact .cf input,#contact .cf textarea{font-family:var(--grot);font-size:1.02rem;color:var(--ink);background:transparent;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:10px 2px;width:100%;transition:border-color .35s}
 #contact .cf textarea{min-height:150px;resize:vertical;line-height:1.6}
-#contact .cf input::placeholder,#contact .cf textarea::placeholder{color:rgba(0,25,49,.36)}
+#contact .cf input::placeholder,#contact .cf textarea::placeholder{color:rgba(0,25,49,.60)}
 #contact .cf input:focus,#contact .cf textarea:focus{outline:none;border-bottom-color:var(--gold)}
 #contact .cfoot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:6px}
 #contact .cnote{font-size:.85rem;color:var(--body)}
@@ -695,11 +696,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     </div>
     <div class="stats reveal">
       <div class="stat">
-        <div class="stat__n" data-count="1">0</div>
+        <div class="stat__n" data-count="1">1</div>
         <div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div>
       </div>
       <div class="stat">
-        <div class="stat__n" data-count="5">0</div>
+        <div class="stat__n" data-count="5">5</div>
         <div class="stat__l">Domaines de gestion pris en charge et tenus.</div>
       </div>
       <div class="stat">
