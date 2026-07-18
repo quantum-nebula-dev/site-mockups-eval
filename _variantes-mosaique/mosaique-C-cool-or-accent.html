@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mosaïque C — famille froide, une seule tuile or · Périclès Gestion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#001931; --ink-2:#15324d; --gold:#9E835A; --gold-d:#7f6740;
+  --body:#4F5E6B; --white:#FFFFFF; --cream:#F7F3EB; --taupe:#E7DFD2; --taupe-2:#D6CAB4;
+  --line:rgba(0,25,49,.12); --line-2:rgba(255,255,255,.12);
+  --maxw:1180px; --gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Hanken Grotesk", Helvetica, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:var(--white);line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+section{padding-block:clamp(5rem, 4rem + 4vw, 7.5rem)}
+.bg-cream{background:var(--cream)}
+.viz__head{max-width:58ch;margin-bottom:clamp(24px,2.8vw,40px)}
+.viz__head h2{margin-top:22px}
+.viz__lead{margin-top:1.05em;max-width:56ch;color:var(--body)}
+
+/* ---- Grille mosaïque (structure verrouillée du site) ---- */
+.treemap{display:grid;grid-template-columns:1.7fr 1fr 1fr;grid-template-rows:repeat(2, minmax(150px, 22vw));grid-template-areas:"d1 d2 d3" "d1 d4 d5";gap:12px}
+.tile{position:relative;overflow:hidden;border-radius:8px;padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;justify-content:space-between;opacity:0;transform:translateY(20px) scale(.98);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.treemap.is-visible .tile{opacity:1;transform:none}
+.treemap.is-visible .tile:nth-child(2){transition-delay:.08s}
+.treemap.is-visible .tile:nth-child(3){transition-delay:.16s}
+.treemap.is-visible .tile:nth-child(4){transition-delay:.24s}
+.treemap.is-visible .tile:nth-child(5){transition-delay:.32s}
+.tile .t-num{font-family:var(--serif);font-size:1.1rem;letter-spacing:.04em}
+.tile .t-name{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.5rem);line-height:1.15;max-width:18ch}
+.tile.d1{grid-area:d1}
+.tile.d1 .t-name{font-size:clamp(1.4rem,2.4vw,2.1rem)}
+.tile.d2{grid-area:d2}.tile.d3{grid-area:d3}.tile.d4{grid-area:d4}.tile.d5{grid-area:d5}
+.tile .t-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05)}
+.tile::before{content:"";position:absolute;inset:0;mix-blend-mode:multiply}
+.tile::after{content:"";position:absolute;inset:0}
+.tile .t-num,.tile .t-name{position:relative;z-index:1}
+
+/* ============ VARIANTE C — FAMILLE FROIDE + UNE SEULE TUILE OR ============
+   Les 5 tuiles en bleu nuit (alternance ink / ink-2 pour le rythme), SAUF d2 en or duotone.
+   Choix de d2 comme tuile d'accent : c'est la tuile qui est déjà l'or dans le design canonique,
+   de taille moyenne et placée en haut-centre — le point de chute naturel du regard. L'or y devient
+   une respiration chaude unique, une ponctuation, pas une masse (doctrine : l'or reste minoritaire). */
+.tile{color:#fff}
+.tile .t-name{color:#fff}
+.tile .t-num{color:var(--gold);opacity:1}
+
+/* tuiles froides */
+.tile.d1{background:var(--ink)}
+.tile.d1::before{background:rgba(0,25,49,.60)}
+.tile.d1::after{background:linear-gradient(180deg,rgba(0,25,49,.74) 0%,rgba(0,25,49,.12) 30%,rgba(0,25,49,.18) 55%,rgba(0,25,49,.86) 100%)}
+.tile.d3{background:var(--ink-2)}
+.tile.d3::before{background:rgba(21,50,77,.58)}
+.tile.d3::after{background:linear-gradient(180deg,rgba(21,50,77,.72) 0%,rgba(21,50,77,.12) 30%,rgba(21,50,77,.16) 55%,rgba(21,50,77,.85) 100%)}
+.tile.d4{background:var(--ink-2)}
+.tile.d4::before{background:rgba(21,50,77,.60)}
+.tile.d4::after{background:linear-gradient(180deg,rgba(21,50,77,.72) 0%,rgba(21,50,77,.12) 30%,rgba(21,50,77,.16) 55%,rgba(21,50,77,.85) 100%)}
+.tile.d5{background:var(--ink)}
+.tile.d5::before{background:rgba(0,25,49,.58)}
+.tile.d5::after{background:linear-gradient(180deg,rgba(0,25,49,.72) 0%,rgba(0,25,49,.12) 30%,rgba(0,25,49,.16) 55%,rgba(0,25,49,.86) 100%)}
+
+/* la seule respiration chaude : d2 en or duotone */
+.tile.d2{background:var(--gold)}
+.tile.d2::before{background:rgba(158,131,90,.60)}
+.tile.d2::after{background:linear-gradient(180deg,rgba(126,103,64,.50) 0%,rgba(158,131,90,.10) 30%,rgba(126,103,64,.22) 55%,rgba(58,45,22,.88) 100%)}
+.tile.d2 .t-num{color:#fff;opacity:.95}
+
+/* ---- Responsive ---- */
+@media (max-width:980px){
+  .treemap{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"d1 d1" "d2 d3" "d4 d5"}
+  .treemap .tile{min-height:150px}
+  .tile.d1{min-height:190px}
+}
+@media (max-width:700px){
+  .treemap{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"d1" "d2" "d3" "d4" "d5"}
+  .tile{min-height:150px}
+  .tile.d1{min-height:170px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tile{opacity:1!important;transform:none!important}
+  *{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+</style>
+</head>
+<body class="bg-cream">
+<main>
+<section id="domaines" class="bg-cream">
+  <div class="wrap">
+    <div class="viz__head">
+      <p class="eyebrow">Domaines</p>
+      <h2>Un seul point de responsabilité.</h2>
+      <p class="viz__lead">Quel que soit le périmètre, le même mécanisme : ce qui est dispersé est réuni en un point, puis rendu au groupe, en France comme à l'étranger.</p>
+    </div>
+    <div class="treemap" aria-label="Le périmètre de gestion rendu en une seule mosaïque de cinq domaines, tenus d'un seul tenant.">
+      <div class="tile d1"><img class="t-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy"><span class="t-num">01</span><span class="t-name">Pilotage financier et administratif</span></div>
+      <div class="tile d2"><img class="t-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">02</span><span class="t-name">Paie, social et conformité</span></div>
+      <div class="tile d3"><img class="t-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">03</span><span class="t-name">Prestations et programmes</span></div>
+      <div class="tile d4"><img class="t-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">04</span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
+      <div class="tile d5"><img class="t-img" src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">05</span><span class="t-name">Appui au pilotage et au développement</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tm = document.querySelector(".treemap");
+  if(!tm) return;
+  if(reduce || !("IntersectionObserver" in window)){ tm.classList.add("is-visible"); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("is-visible"); io.unobserve(en.target); } });
+  }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
+  io.observe(tm);
+})();
+</script>
+</body>
+</html>
