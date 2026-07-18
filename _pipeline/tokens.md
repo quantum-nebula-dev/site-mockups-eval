@@ -49,3 +49,17 @@ Bannir : hero centré, 3-card row, cards génériques, grilles uniformes sans ry
 - Aucun nom de staff en public (signatures email uniquement).
 - **Right speech** : pas de faux « comité / partenariat / rentrée / engagement » ; on ne promet que le vrai.
 - Accents FR corrects partout. Textes = **placeholders** jusqu'à la passe copy (source-locked).
+
+## Alternance des fonds (doctrine gravée 18/07/2026, reconstituée de la V0)
+Trois règles (détail : skill `/design-page`, étape 0) :
+1. **Sombres = ponctuation** (hero, citation/image plein cadre, bande de chiffres ink, footer) : espacés, JAMAIS deux adjacents. Page ouvre et ferme sombre.
+2. **Clairs alternent blanc pur ↔ chaud** (crème/taupe) : jamais deux chauds collés, jamais file de blancs.
+3. **Section avant le footer = CLAIRE** (contact) : clôture claire → sombre nette.
+
+Séquence de référence (mockups-v3, 9 temps) :
+hero(ink) · intro(BLANC) · domaines(CRÈME) · citation(image sombre) · viz(BLANC) · repères(INK) · approche(TAUPE) · contact(BLANC) · footer(INK).
+
+État v2-final 18/07 (8 temps après fusion viz→domaines + réordre) :
+hero(ink) · intro(blanc) · domaines-mosaïque(crème) · citation-buste(image sombre) · **approche(BLANC)** · repères(INK) · contact(à trancher, viser CLAIR) · footer(INK).
+Note : l'approche a été remontée avant les repères (18/07) pour éviter citation-sombre + repères-sombre collés → donne après le buste : clair · sombre · [contact clair] · footer.
+Classes : `.bg-cream{background:var(--cream)}` · `.bg-taupe{background:var(--taupe)}` · `.bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}` · pas de classe = blanc.
