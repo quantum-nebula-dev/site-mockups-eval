@@ -215,37 +215,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .scrollcue .line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(-100%);animation:cue 2.6s ease-in-out infinite}
 @keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
 
-/* ============ INTRO / LE PÉRIMÈTRE (deux temps : standfirst ample, filet or médian qui se dessine, réponse | pivot en vis-à-vis) ============ */
+/* ============ INTRO / LE PÉRIMÈTRE (version d'origine mockups-v3 : split titre | corps + pivot) ============ */
 .intro{padding-block:clamp(84px,11vw,150px)}
-.intro .eyebrow{margin-bottom:clamp(18px,2.2vw,26px)}
-.intro h2{margin-top:0;max-width:none}
-.intro__standfirst{
-  margin-top:clamp(26px,3.4vw,44px);
+.intro__grid{display:grid;grid-template-columns:0.8fr 1.4fr;gap:clamp(32px,5vw,80px);align-items:start}
+.intro__grid h2{max-width:14ch}
+.intro__body p+p{margin-top:1.3em}
+.intro__body .lead{
   font-family:var(--serif);font-weight:300;color:var(--ink);
-  font-size:clamp(1.7rem,3.2vw,2.7rem);line-height:1.28;letter-spacing:-.012em;
-  max-width:36ch;text-wrap:balance;
+  font-size:clamp(1.35rem,2.2vw,1.85rem);line-height:1.4;letter-spacing:-.008em;
 }
-.intro__standfirst i{font-style:italic;color:var(--gold-d)}
-.intro__rule{position:relative;height:1px;margin-top:clamp(38px,5vw,64px)}
-.intro__rule::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--gold) 0%,rgba(158,131,90,.28) 55%,rgba(158,131,90,0) 100%);
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 1.25s cubic-bezier(.35,.02,.2,1) .12s;
-}
-.intro__rule.is-visible::after{transform:scaleX(1)}
-.intro__duo{margin-top:clamp(38px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(48px,7vw,110px);align-items:start}
-.intro__para{max-width:50ch}
 .intro__pivot{
-  font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink);
-  font-size:clamp(1.18rem,1.7vw,1.5rem);line-height:1.45;
-  padding-left:22px;border-left:2px solid var(--gold);
-  max-width:38ch;justify-self:end;
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,2vw,1.7rem);
+  color:var(--ink);line-height:1.4;margin-top:1.4em;padding-left:26px;border-left:2px solid var(--gold);
 }
-@media (max-width:980px){
-  .intro__duo{grid-template-columns:1fr;row-gap:clamp(24px,5vw,34px)}
-  .intro__pivot{justify-self:start}
-}
+@media (max-width:900px){.intro__grid{grid-template-columns:1fr}}
 
 /* ============ DOMAINES (sommaire éditorial : registre énuméré, cotes en regard) ============
    Parti-pris : la page « sommaire » d'une revue institutionnelle. Les cinq domaines forment un
@@ -607,15 +590,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- ============ INTRO / PÉRIMÈTRE (spread éditorial : propos à gauche, réponse à droite, tenus par la ligne de responsabilité verticale) ============ -->
-<section id="perimetre" class="intro bg-cream">
+<section id="perimetre" class="intro">
   <div class="wrap">
-    <p class="eyebrow reveal">Le périmètre</p>
-    <h2 class="reveal d1">Ce que Périclès prend en charge.</h2>
-    <p class="intro__standfirst reveal d1">Un groupe qui grandit accumule des fonctions de gestion et des prestations <i>plus vite qu'il ne peut les tenir.</i></p>
-    <div class="intro__rule reveal d2" aria-hidden="true"></div>
-    <div class="intro__duo reveal d2">
-      <p class="intro__para">Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
-      <p class="intro__pivot">Vous gardez vos décisions, nous répondons de leur exécution.</p>
+    <div class="intro__grid">
+      <div class="reveal">
+        <p class="eyebrow">Le périmètre</p>
+        <h2 style="margin-top:22px">Ce que Périclès prend en charge.</h2>
+      </div>
+      <div class="intro__body reveal d1">
+        <p class="lead">Un groupe qui grandit accumule des fonctions de gestion et des prestations plus vite qu'il ne peut les tenir.</p>
+        <p style="margin-top:1.4em">Périclès prend en charge cet ensemble d'un seul tenant : elle opère ce qui doit l'être, mobilise et pilote les prestataires nécessaires où qu'ils soient, et délivre le tout comme un service intégré.</p>
+        <p class="intro__pivot">Vous gardez vos décisions, nous répondons de leur exécution.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -626,7 +612,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
      rendu structurel. Colonne éditoriale sticky à gauche (la promesse), rail indexé à droite (l'étendue). -->
 <!-- ============ DOMAINES (mosaïque photos duotone) — décision user 17/07 : la mosaïque EST la
      section domaines (l'ancien rail sticky est réaffecté à #approche) ; titres à ajuster en passe copy ============ -->
-<section id="domaines">
+<section id="domaines" class="bg-cream">
   <div class="wrap">
     <div class="viz__head reveal">
       <p class="eyebrow">Domaines</p>
@@ -687,7 +673,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- ============ APPROCHE (la charte : préambule tenu + clauses de conduite) ============ -->
-<section id="approche">
+<section id="approche" class="bg-taupe">
   <div class="wrap">
     <div class="dom">
       <div class="dom__rail">
