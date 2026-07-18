@@ -8,7 +8,7 @@
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS (ancrés sur Wendel, repris du site) ============ */
 :root{
@@ -270,21 +270,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   }
 }
 
-/* drapeau de vérification + note de build : ARTEFACTS DE REVIEW, à retirer avant mise en ligne */
-.verify-flag{
-  display:flex;align-items:center;gap:.6rem;
-  margin-bottom:1.1rem;padding:.55rem .9rem;border-radius:8px;
-  background:rgba(158,131,90,.12);border:1px dashed var(--gold);
-  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
-  color:var(--gold-d);
-}
-.verify-flag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
-.buildnote{
-  margin:0 0 clamp(2.2rem,3vw,3.2rem);padding:1.1rem 1.3rem;border-radius:10px;
-  background:rgba(158,131,90,.10);border:1px dashed var(--gold);
-  font-size:.95rem;color:var(--gold-d);line-height:1.55;
-}
-.buildnote strong{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -322,9 +307,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <section class="legal">
   <div class="wrap">
 
-    <!-- NOTE DE BUILD : à retirer avant mise en ligne -->
-    <p class="buildnote"><strong>Note de préparation (à retirer avant mise en ligne).</strong> Les identifiants d'entreprise ci-dessous (SIREN, SIRET, TVA, RCS, siège, capital) proviennent d'un relevé du dossier destiné à ces mentions, mais leur exactitude n'a pas été vérifiée par une source externe (INSEE / INPI). Ils sont affichés à titre de préparation et doivent être confirmés avant publication. Le directeur de la publication et l'hébergeur restent à renseigner.</p>
-
     <div class="legal__grid">
 
       <!-- 1. Éditeur -->
@@ -333,17 +315,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <h2>Éditeur du site</h2>
         <p>Le présent site est édité par la société ci-dessous, désignée dans les présentes mentions comme «&nbsp;l'éditeur&nbsp;».</p>
         <div class="idcard">
-          <p class="verify-flag">Informations à vérifier avant publication</p>
           <dl>
-            <div class="row"><dt>Dénomination sociale</dt><dd class="flagged">Périclès Gestion</dd></div>
-            <div class="row"><dt>Forme juridique</dt><dd class="flagged">Société par actions simplifiée (SAS)</dd></div>
-            <div class="row"><dt>Capital social</dt><dd class="flagged">1&nbsp;000&nbsp;euros</dd></div>
-            <div class="row"><dt>Siège social</dt><dd class="flagged">178 boulevard Haussmann, 75008 Paris</dd></div>
-            <div class="row"><dt>RCS</dt><dd class="flagged">Paris · SIREN 104&nbsp;089&nbsp;313</dd></div>
-            <div class="row"><dt>SIRET (siège)</dt><dd class="flagged">104&nbsp;089&nbsp;313&nbsp;00019</dd></div>
-            <div class="row"><dt>TVA intracommunautaire</dt><dd class="flagged">FR22&nbsp;104&nbsp;089&nbsp;313</dd></div>
+            <div class="row"><dt>Dénomination sociale</dt><dd>Périclès Gestion</dd></div>
+            <div class="row"><dt>Forme juridique</dt><dd>Société par actions simplifiée (SAS)</dd></div>
+            <div class="row"><dt>Capital social</dt><dd>1&nbsp;000&nbsp;euros</dd></div>
+            <div class="row"><dt>Siège social</dt><dd>178 boulevard Haussmann, 75008 Paris</dd></div>
+            <div class="row"><dt>RCS</dt><dd>Paris · SIREN 104&nbsp;089&nbsp;313</dd></div>
+            <div class="row"><dt>SIRET (siège)</dt><dd>104&nbsp;089&nbsp;313&nbsp;00019</dd></div>
+            <div class="row"><dt>TVA intracommunautaire</dt><dd>FR22&nbsp;104&nbsp;089&nbsp;313</dd></div>
             <div class="row"><dt>Adresse électronique</dt><dd><a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a></dd></div>
-            <div class="row"><dt>Téléphone</dt><dd class="todo">[à compléter : numéro de téléphone]</dd></div>
           </dl>
         </div>
       </article>
