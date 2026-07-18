@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier — sections en carrousel · Périclès Gestion</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#efeae0;font-family:'Hanken Grotesk',system-ui,sans-serif;color:#001931}
+  .head{padding:26px clamp(18px,4vw,54px) 6px}
+  .head h1{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:1.5rem;letter-spacing:-.01em}
+  .head p{color:#4F5E6B;font-size:.9rem;margin-top:4px}
+  .wrap{padding:14px clamp(12px,3vw,40px) 60px;display:flex;flex-direction:column;gap:34px}
+
+  .caro{position:relative;border-radius:12px;overflow:hidden;background:#001931;
+        box-shadow:0 18px 50px rgba(0,20,40,.16);border:1px solid rgba(0,25,49,.10)}
+  .caro__title{position:absolute;top:14px;left:14px;z-index:5;
+        background:rgba(8,16,26,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.02em;
+        padding:7px 14px;border-radius:1000px;border:1px solid rgba(255,255,255,.14);
+        display:flex;align-items:center;gap:9px;pointer-events:none}
+  .caro__title .sec{color:rgba(255,255,255,.55);font-weight:500}
+  .caro__title .idx{color:#9E835A;font-weight:400}
+  .caro iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+  .caro__stage{width:100%}
+
+  /* flèches sur le CÔTÉ de la section */
+  .arw{position:absolute;top:50%;transform:translateY(-50%);z-index:6;
+       width:44px;height:44px;border-radius:50%;cursor:pointer;
+       display:grid;place-items:center;font-size:1.3rem;line-height:1;color:#fff;
+       background:rgba(8,16,26,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+       border:1px solid rgba(255,255,255,.20);transition:background .2s,border-color .2s,opacity .2s}
+  .arw:hover{background:rgba(158,131,90,.85);border-color:#9E835A}
+  .arw.prev{left:12px}
+  .arw.next{right:12px}
+
+  .dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:6;
+        display:flex;gap:7px;background:rgba(8,16,26,.6);padding:8px 12px;border-radius:1000px;
+        border:1px solid rgba(255,255,255,.14)}
+  .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:background .2s,transform .2s}
+  .dots i.on{background:#9E835A;transform:scale(1.25)}
+</style>
+</head>
+<body>
+  <div class="head">
+    <h1>Atelier des sections</h1>
+    <p>Chaque section a ses propres flèches (‹ ›). Survole une section et clique les flèches sur ses côtés, ou les pastilles. Le clavier ← → agit sur la dernière section survolée.</p>
+  </div>
+  <div class="wrap">
+    <div class="caro" data-sec="Mosaïque" data-height="820" data-variants='[
+      {"file":"../_pipeline/propositions/mosaique-A-multiteinte.html","label":"A · Multi-teinte (actuelle, d2 or)"},
+      {"file":"../_pipeline/propositions/mosaique-B-duotone-navy.html","label":"B · Duotone bleu-nuit unique"},
+      {"file":"../_pipeline/propositions/mosaique-C-cool-or-accent.html","label":"C · Froide + 1 accent or"},
+      {"file":"../_pipeline/propositions/mosaique-D-sepia-chaud.html","label":"D · Sépia chaud unifié"}
+    ]'></div>
+
+    <div class="caro" data-sec="Footer" data-height="900" data-variants='[
+      {"file":"../_pipeline/propositions/footer-frais.html","label":"Frais (main levée)"},
+      {"file":"../_pipeline/propositions/footer-wendel.html","label":"Wendel"},
+      {"file":"../_pipeline/propositions/footer-pictet.html","label":"Pictet"},
+      {"file":"../_pipeline/propositions/footer-brunello.html","label":"Brunello"},
+      {"file":"../_pipeline/propositions/footer-hermes.html","label":"Hermès"},
+      {"file":"../_pipeline/propositions/footer-kering.html","label":"Kering"}
+    ]'></div>
+  </div>
+<script>
+  var lastHover = null;
+  document.querySelectorAll(".caro").forEach(function(caro){
+    var V = JSON.parse(caro.getAttribute("data-variants"));
+    var sec = caro.getAttribute("data-sec");
+    var h = parseInt(caro.getAttribute("data-height"),10) || 820;
+    caro.style.height = h + "px";
+    var i = 0;
+
+    var stage = document.createElement("div"); stage.className = "caro__stage"; stage.style.height = "100%";
+    var frame = document.createElement("iframe"); frame.title = sec; stage.appendChild(frame);
+    var title = document.createElement("div"); title.className = "caro__title";
+    var prev = document.createElement("div"); prev.className = "arw prev"; prev.textContent = "‹";
+    var next = document.createElement("div"); next.className = "arw next"; next.textContent = "›";
+    var dots = document.createElement("div"); dots.className = "dots";
+    V.forEach(function(v,k){ var d=document.createElement("i"); if(k===0)d.className="on"; d.addEventListener("click",function(){go(k);}); dots.appendChild(d); });
+    caro.appendChild(stage); caro.appendChild(title); caro.appendChild(prev); caro.appendChild(next); caro.appendChild(dots);
+
+    function go(n){
+      i = (n + V.length) % V.length;
+      frame.src = V[i].file;
+      title.innerHTML = '<span class="sec">'+sec+'</span> <span class="idx">'+(i+1)+'/'+V.length+'</span> '+V[i].label;
+      Array.prototype.forEach.call(dots.children, function(d,k){ d.className = (k===i)?"on":""; });
+    }
+    var ctrl = { prev:function(){go(i-1);}, next:function(){go(i+1);} };
+    prev.addEventListener("click", ctrl.prev);
+    next.addEventListener("click", ctrl.next);
+    caro.addEventListener("mouseenter", function(){ lastHover = ctrl; });
+    go(0);
+  });
+  window.addEventListener("keydown", function(e){
+    if(!lastHover) return;
+    if(e.key==="ArrowLeft"){ lastHover.prev(); }
+    else if(e.key==="ArrowRight"){ lastHover.next(); }
+  });
+</script>
+</body>
+</html>
