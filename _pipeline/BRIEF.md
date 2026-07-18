@@ -36,6 +36,9 @@
 - **Treemap (`#viz`)** : PROBLÈME — répète les 5 mêmes domaines que `#domaines` (redondance). À trancher par l'architecture : transformer en section non-redondante (preuve / « comment ça marche » / chiffres) ou couper.
 - Restent à traiter : `#reperes` (stats), `#approche`, `#contact`, footer (dont **copyright / mentions légales**).
 
+
+- **2026-07-18 — bas de home FINALISÉ** : (1) contact = ÉPURÉ CLAIR (blanc, split assurance | formulaire filets, bouton pilule or) — choix user au carrousel des versions claires ; rôle « clôture » clair avant footer sombre. (2) Approche remontée AVANT repères → alternance après la photo = clair(approche) · sombre(repères) · clair(contact) · sombre(footer). (3) Padding de section UNIFIÉ clamp(80px,9vw,120px) sur toutes les sections de contenu (fourchette premium 96-128 groundée Exa : Apple/Stripe/Aesop ; supprime les valeurs off-scale 60/70/84/100/140/150) ; citation garde min-height, footer clamp(64,7vw,96). (4) Adresse « 178 bd Haussmann » INVENTÉE purgée du footer (source-locked) ; email réel contact@periclesgestion.com conservé. Map rôle→fond dans tokens.md.
+
 ## Grounding : concurrents réels (IA commune)
 Recherche 2026-07-01 (subagent recentré sur le BON métier = gestion opérationnelle / services support à des groupes ; Exa + captures dans `refs/`).
 - **Jumeau structurel** (pôle de gestion mutualisé d'UN groupe = modèle exact de Périclès) : **RT Office** (RT Global Solution, FR).
