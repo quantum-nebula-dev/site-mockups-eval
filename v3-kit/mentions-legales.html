@@ -110,9 +110,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .logo b{font-weight:500}
 .logo i{font-style:italic;color:var(--gold)}
 .logo{display:inline-flex;align-items:center;gap:12px}
-.logo__mark{width:25px;height:25px;flex:none;display:block}
-.logo__mark .lm-frame{stroke:currentColor;transition:stroke .4s}
+.logo__mark{width:27px;height:27px;flex:none;display:block}
+.logo__mark .lm-frame{fill:currentColor;transition:fill .4s}
 .logo__mark .lm-flutes{stroke:var(--gold)}
+/* Lockup charte : PÉRICLÈS serif capitales + GESTION en repère espacé bronze */
+.logo__text{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.logo__name{font-family:var(--serif);font-weight:500;font-size:1.14rem;letter-spacing:.085em;text-transform:uppercase}
+.logo__desc{font-family:var(--grot);font-weight:600;font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:4px}
 .nav{display:flex;align-items:center;gap:32px}
 .nav a:not(.btn){
   font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
@@ -229,7 +233,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .bg-ink h1,.bg-ink h2,.bg-ink h3{color:var(--white)}
 .foot__top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:clamp(28px,4vw,56px);padding-block:clamp(3.4rem,3rem + 3vw,5rem)}
 .foot__logo{font-family:var(--serif);font-size:1.7rem;color:#fff;margin-bottom:22px;display:inline-flex;align-items:center;gap:13px}
-.foot__logo .logo__mark{width:28px;height:28px}
+.foot__logo .logo__mark{width:30px;height:30px}
+.foot__logo .logo__name{font-size:1.34rem;color:#fff}
+.foot__logo .logo__desc{font-size:.56rem}
 .foot__logo b{font-weight:500}
 .foot__logo i{font-style:italic;color:var(--gold)}
 .foot__desc{max-width:54ch;color:rgba(255,255,255,.74);font-size:1rem;line-height:1.65}
@@ -284,7 +290,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <!-- ============ HEADER ============ -->
 <header class="hdr" id="hdr">
   <div class="hdr-inner">
-    <a class="logo" href="index.html" aria-label="Périclès Gestion, accueil"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></a>
+    <a class="logo" href="index.html" aria-label="Périclès Gestion, accueil"><svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><g class="lm-frame" fill="currentColor"><rect x="9.5" y="5" width="29" height="2.8" rx="1.4"/><rect x="12.5" y="9.8" width="23" height="2.6" rx="1.3"/><rect x="12.5" y="35.6" width="23" height="2.6" rx="1.3"/><rect x="9.5" y="40.4" width="29" height="2.8" rx="1.4"/><rect x="6.5" y="45.2" width="35" height="2.8" rx="1.4"/></g><g class="lm-flutes" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 15.4v17.4"/><path d="M19.5 15.4v17.4"/><path d="M24 15.4v17.4"/><path d="M28.5 15.4v17.4"/><path d="M33 15.4v17.4"/></g></svg><span class="logo__text"><span class="logo__name">Périclès</span><span class="logo__desc">Gestion</span></span></a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="index.html#domaines">Domaines</a>
       <a href="index.html#approche">Approche</a>
@@ -396,7 +402,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="wrap">
     <div class="foot__top">
       <div class="foot__brand">
-        <div class="foot__logo"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></div>
+        <div class="foot__logo"><svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><g class="lm-frame" fill="currentColor"><rect x="9.5" y="5" width="29" height="2.8" rx="1.4"/><rect x="12.5" y="9.8" width="23" height="2.6" rx="1.3"/><rect x="12.5" y="35.6" width="23" height="2.6" rx="1.3"/><rect x="9.5" y="40.4" width="29" height="2.8" rx="1.4"/><rect x="6.5" y="45.2" width="35" height="2.8" rx="1.4"/></g><g class="lm-flutes" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 15.4v17.4"/><path d="M19.5 15.4v17.4"/><path d="M24 15.4v17.4"/><path d="M28.5 15.4v17.4"/><path d="M33 15.4v17.4"/></g></svg><span class="logo__text"><span class="logo__name">Périclès</span><span class="logo__desc">Gestion</span></span></div>
         <p class="foot__desc">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
       </div>
       <nav class="foot__nav" aria-label="Pied de page">

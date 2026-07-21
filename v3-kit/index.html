@@ -125,9 +125,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .logo b{font-weight:500}
 .logo i{font-style:italic;color:var(--gold)}
 /* Symbole : colonne grecque monoline, 5 cannelures = les 5 domaines (kit Nect'Art, redessiné) */
-.logo__mark{width:25px;height:25px;flex:none;display:block}
-.logo__mark .lm-frame{stroke:currentColor;transition:stroke .4s}
+.logo__mark{width:27px;height:27px;flex:none;display:block}
+.logo__mark .lm-frame{fill:currentColor;transition:fill .4s}
 .logo__mark .lm-flutes{stroke:var(--gold)}
+/* Lockup charte : PÉRICLÈS serif capitales + GESTION en repère espacé bronze */
+.logo__text{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.logo__name{font-family:var(--serif);font-weight:500;font-size:1.14rem;letter-spacing:.085em;text-transform:uppercase}
+.logo__desc{font-family:var(--grot);font-weight:600;font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:4px}
 .nav{display:flex;align-items:center;gap:32px}
 /* liens en registre « label » du DNA : uppercase, tracking .14em, taille label */
 .nav a:not(.btn){
@@ -318,9 +322,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .tile .t-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05)}
 .tile::before{content:"";position:absolute;inset:0;mix-blend-mode:multiply;background:rgba(30,51,43,.60)}
 .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,51,43,.74) 0%,rgba(30,51,43,.14) 30%,rgba(30,51,43,.20) 55%,rgba(30,51,43,.86) 100%)}
+.tile .t-head{display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1}
+.tile .t-ico{width:23px;height:23px;color:#fff;opacity:.75;flex:none}
+.tile.d1 .t-ico{width:27px;height:27px}
 .tile .t-num,.tile .t-name{position:relative;z-index:1}
 .tile .t-name{color:#fff}
 .tile .t-num{color:var(--gold);opacity:1}
+
+
+/* ============ MOTIF DES CINQ TRACÉS (charte Nect'Art p.8 : fonds & transitions, animation lente, continue, sans effet élastique) ============ */
+.reperes{position:relative;overflow:hidden}
+.reperes .traces{position:absolute;inset:0;width:100%;height:100%;color:#fff;opacity:.06;pointer-events:none}
+.reperes .wrap{position:relative;z-index:1}
+.traces path{stroke-dasharray:2600;stroke-dashoffset:2600}
+.traces.is-visible path{animation:trace-draw 3.2s linear forwards}
+.traces.is-visible path:nth-child(2){animation-delay:.18s}
+.traces.is-visible path:nth-child(3){animation-delay:.36s}
+.traces.is-visible path:nth-child(4){animation-delay:.54s}
+.traces.is-visible path:nth-child(5){animation-delay:.72s}
+@keyframes trace-draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.traces path{stroke-dashoffset:0;animation:none}}
 
 /* ============ CITATION FULL-BLEED (V0 originale : buste + bibliotheque) ============ */
 .quote-block{
@@ -399,7 +420,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .foot__assur{margin-top:18px;max-width:34ch;color:rgba(255,255,255,.5);font-size:.95rem;line-height:1.55}
 .foot__ident{display:grid;gap:clamp(22px,2.6vw,30px)}
 .foot__logo{font-family:var(--serif);font-size:1.55rem;color:#fff;letter-spacing:-.005em;display:inline-flex;align-items:center;gap:13px}
-.foot__logo .logo__mark{width:27px;height:27px}
+.foot__logo .logo__mark{width:30px;height:30px}
+.foot__logo .logo__name{font-size:1.3rem;color:#fff}
+.foot__logo .logo__desc{font-size:.56rem}
 .foot__logo b{font-weight:500}
 .foot__logo i{font-style:italic;color:var(--gold)}
 .foot__desc{max-width:40ch;color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.6}
@@ -483,7 +506,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <!-- ============ HEADER ============ -->
 <header class="hdr" id="hdr">
   <div class="hdr-inner">
-    <a class="logo" href="#top" aria-label="Périclès Gestion, accueil"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></a>
+    <a class="logo" href="#top" aria-label="Périclès Gestion, accueil"><svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><g class="lm-frame" fill="currentColor"><rect x="9.5" y="5" width="29" height="2.8" rx="1.4"/><rect x="12.5" y="9.8" width="23" height="2.6" rx="1.3"/><rect x="12.5" y="35.6" width="23" height="2.6" rx="1.3"/><rect x="9.5" y="40.4" width="29" height="2.8" rx="1.4"/><rect x="6.5" y="45.2" width="35" height="2.8" rx="1.4"/></g><g class="lm-flutes" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 15.4v17.4"/><path d="M19.5 15.4v17.4"/><path d="M24 15.4v17.4"/><path d="M28.5 15.4v17.4"/><path d="M33 15.4v17.4"/></g></svg><span class="logo__text"><span class="logo__name">Périclès</span><span class="logo__desc">Gestion</span></span></a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="#domaines">Domaines</a>
       <a href="#approche">Approche</a>
@@ -550,11 +573,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     <!-- La mosaïque : les cinq domaines rendus en surfaces pondérées (aplats de tokens), tenus
          comme un seul ensemble. Le filet or signature se dessine en tête du panneau (::before). -->
     <div class="treemap reveal" aria-label="Le périmètre de gestion rendu en une seule mosaïque de cinq domaines, tenus d'un seul tenant.">
-      <div class="tile d1"><img class="t-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy"><span class="t-num">01</span><span class="t-name">Pilotage financier et administratif</span></div>
-      <div class="tile d2"><img class="t-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">02</span><span class="t-name">Paie, social et conformité</span></div>
-      <div class="tile d3"><img class="t-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">03</span><span class="t-name">Prestations et programmes</span></div>
-      <div class="tile d4"><img class="t-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">04</span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
-      <div class="tile d5"><img class="t-img" src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-num">05</span><span class="t-name">Appui au pilotage et au développement</span></div>
+      <div class="tile d1"><img class="t-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy"><span class="t-head"><span class="t-num">01</span><svg class="t-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 53h44"/><path d="M16 44V31"/><path d="M27 44V23"/><path d="M38 44V16"/><path d="M49 44V10"/></g></svg></span><span class="t-name">Pilotage financier et administratif</span></div>
+      <div class="tile d2"><img class="t-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-head"><span class="t-num">02</span><svg class="t-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="24" r="9"/><path d="M8 51c2-10 8-15 15-15s13 5 15 15"/><path d="m40 31 6 6 11-14"/></g></svg></span><span class="t-name">Paie, social et conformité</span></div>
+      <div class="tile d3"><img class="t-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-head"><span class="t-num">03</span><svg class="t-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m32 9 23 12-23 12L9 21 32 9Z"/><path d="m12 31 20 11 20-11"/><path d="m12 41 20 11 20-11"/></g></svg></span><span class="t-name">Prestations et programmes</span></div>
+      <div class="tile d4"><img class="t-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-head"><span class="t-num">04</span><svg class="t-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="18" r="6"/><circle cx="49" cy="14" r="6"/><circle cx="50" cy="48" r="6"/><circle cx="18" cy="48" r="6"/><path d="m20 17 23-2M47 20l2 22M44 48H24M17 42l-2-18"/></g></svg></span><span class="t-name">Systèmes, outils et présence en ligne</span></div>
+      <div class="tile d5"><img class="t-img" src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><span class="t-head"><span class="t-num">05</span><svg class="t-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 50c9-2 14-7 19-16 6-11 13-17 27-20"/><path d="m44 10 11 4-5 11"/><circle cx="11" cy="50" r="4"/></g></svg></span><span class="t-name">Appui au pilotage et au développement</span></div>
     </div>
   </div>
 </section>
@@ -619,6 +642,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- ============ REPÈRES (relevé éditorial sur pierre claire : preuve non-nominative) ============ -->
 <section class="bg-ink reperes" id="reperes">
+  <svg class="traces reveal" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M-80 70H430C590 70 610 270 790 270H1280"/><path d="M-80 175H330C520 175 525 375 735 375H1280"/><path d="M-80 280H515C660 280 675 95 835 95H1280"/><path d="M-80 385H390C540 385 560 525 720 525H1280"/><path d="M-80 490H250C440 490 485 225 670 225H1280"/></g></svg>
   <div class="wrap">
     <div class="stats__intro reveal">
       <p class="eyebrow on-dark">Repères</p>
@@ -680,7 +704,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <p class="foot__assur">Un seul interlocuteur vous répond, par écrit.</p>
       </div>
       <div class="foot__ident">
-        <div class="foot__logo"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></div>
+        <div class="foot__logo"><svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true"><g class="lm-frame" fill="currentColor"><rect x="9.5" y="5" width="29" height="2.8" rx="1.4"/><rect x="12.5" y="9.8" width="23" height="2.6" rx="1.3"/><rect x="12.5" y="35.6" width="23" height="2.6" rx="1.3"/><rect x="9.5" y="40.4" width="29" height="2.8" rx="1.4"/><rect x="6.5" y="45.2" width="35" height="2.8" rx="1.4"/></g><g class="lm-flutes" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 15.4v17.4"/><path d="M19.5 15.4v17.4"/><path d="M24 15.4v17.4"/><path d="M28.5 15.4v17.4"/><path d="M33 15.4v17.4"/></g></svg><span class="logo__text"><span class="logo__name">Périclès</span><span class="logo__desc">Gestion</span></span></div>
         <p class="foot__desc">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
         <nav class="foot__nav" aria-label="Plan du site">
           <span class="lab">Le site</span>
