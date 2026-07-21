@@ -33,7 +33,7 @@
 
 /* ============ RESET ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:auto}
+html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   font-family:var(--grot);
@@ -499,7 +499,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .foot__rule--top{margin-bottom:clamp(44px,5.5vw,72px)}
 .foot__rule--top::before{width:min(840px,64vw);transition-delay:.15s}
 </style>
-</head>
+<style>
+/* AUDIT ONLY : tout visible sans JS/scroll */
+html{scroll-behavior:auto!important}
+.hero{height:1000px!important;min-height:0!important}
+.reveal,.tile,.stats__intro,.stat{opacity:1!important;transform:none!important}
+.is-visible .tile{opacity:1!important}
+.traces path{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+*{transition:none!important;animation-duration:0s!important}
+</style></head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
 
