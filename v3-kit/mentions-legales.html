@@ -6,6 +6,7 @@
 <title>Mentions légales · Périclès Gestion</title>
 <meta name="description" content="Mentions légales du site de Périclès Gestion : éditeur, directeur de la publication, hébergeur, propriété intellectuelle, données personnelles et cookies.">
 <meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -108,6 +109,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 }
 .logo b{font-weight:500}
 .logo i{font-style:italic;color:var(--gold)}
+.logo{display:inline-flex;align-items:center;gap:12px}
+.logo__mark{width:25px;height:25px;flex:none;display:block}
+.logo__mark .lm-frame{stroke:currentColor;transition:stroke .4s}
+.logo__mark .lm-flutes{stroke:var(--gold)}
 .nav{display:flex;align-items:center;gap:32px}
 .nav a:not(.btn){
   font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
@@ -223,7 +228,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}
 .bg-ink h1,.bg-ink h2,.bg-ink h3{color:var(--white)}
 .foot__top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:clamp(28px,4vw,56px);padding-block:clamp(3.4rem,3rem + 3vw,5rem)}
-.foot__logo{font-family:var(--serif);font-size:1.7rem;color:#fff;margin-bottom:22px}
+.foot__logo{font-family:var(--serif);font-size:1.7rem;color:#fff;margin-bottom:22px;display:inline-flex;align-items:center;gap:13px}
+.foot__logo .logo__mark{width:28px;height:28px}
 .foot__logo b{font-weight:500}
 .foot__logo i{font-style:italic;color:var(--gold)}
 .foot__desc{max-width:54ch;color:rgba(255,255,255,.74);font-size:1rem;line-height:1.65}
@@ -278,7 +284,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <!-- ============ HEADER ============ -->
 <header class="hdr" id="hdr">
   <div class="hdr-inner">
-    <a class="logo" href="index.html" aria-label="Périclès Gestion, accueil"><b>Périclès</b> <i>Gestion</i></a>
+    <a class="logo" href="index.html" aria-label="Périclès Gestion, accueil"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="index.html#domaines">Domaines</a>
       <a href="index.html#approche">Approche</a>
@@ -390,7 +396,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="wrap">
     <div class="foot__top">
       <div class="foot__brand">
-        <div class="foot__logo"><b>Périclès</b> <i>Gestion</i></div>
+        <div class="foot__logo"><svg class="logo__mark" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><g class="lm-frame"><path d="M9 7.5h30"/><path d="M13 13h22"/><path d="M13 39h22"/><path d="M9 44.5h30"/></g><g class="lm-flutes"><path d="M14.5 18.5v15"/><path d="M19.25 18.5v15"/><path d="M24 18.5v15"/><path d="M28.75 18.5v15"/><path d="M33.5 18.5v15"/></g></svg><b>Périclès</b> <i>Gestion</i></div>
         <p class="foot__desc">Prise en charge et pilotage des fonctions de gestion des groupes d'établissements et de leurs partenaires internationaux, en France et à l'international.</p>
       </div>
       <nav class="foot__nav" aria-label="Pied de page">
