@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Contact premium : 3 pistes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1E332B;--ink-2:#2E4A3F;--gold:#A48252;--gold-d:#7E6136;--body:#505B54;--cream:#F3F0E8;--taupe:#E6E2D4;--line:rgba(30,51,43,.12);--line-2:rgba(255,255,255,.16);--maxw:1180px;--gut:clamp(20px,5vw,72px);--serif:"Newsreader",Georgia,serif;--grot:"Instrument Sans",Helvetica,Arial,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.tag{background:#0D1210;color:#BFA05F;font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:15px var(--gut)}
+.tag span{color:#fff;font-weight:600}
+h2{font-family:var(--serif);color:#fff;font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+section{background:var(--ink);padding-block:clamp(80px,10vw,140px)}
+label{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+input,textarea{font-family:var(--grot);font-size:1.02rem;color:#fff;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.22);border-radius:0;padding:10px 2px;width:100%;transition:border-color .35s}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.34)}
+input:focus,textarea:focus{outline:none;border-bottom-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 40px;border-radius:1000px;font-family:var(--grot);font-weight:600;font-size:.95rem;background:var(--gold);color:var(--ink);border:none;cursor:pointer}
+.note{font-size:.85rem;color:rgba(255,255,255,.55)}
+.lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.45;color:rgba(255,255,255,.9)}
+
+/* ===== P1 : LA LIGNE DIRECTE (split, email geant ancre bas) ===== */
+.p1 .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,110px);align-items:stretch}
+.p1 .colg{display:flex;flex-direction:column}
+.p1 h2{margin-top:22px;max-width:12ch}
+.p1 .lead{margin-top:24px;max-width:32ch}
+.p1 .direct{margin-top:auto;padding-top:48px}
+.p1 .direct .lab{display:block;margin-bottom:14px;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.p1 .direct a{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(1.9rem,3.4vw,3rem);color:#fff;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:6px;letter-spacing:-.012em;transition:color .3s}
+.p1 .direct a:hover{color:var(--gold)}
+.p1 .direct .sub{margin-top:16px;font-family:var(--serif);font-weight:300;font-size:1.05rem;color:rgba(255,255,255,.62)}
+.p1 form{display:grid;gap:clamp(24px,2.8vw,34px);padding-top:9px}
+.p1 .field{display:grid;gap:10px}
+.p1 textarea{min-height:170px;resize:vertical;line-height:1.6}
+.p1 .foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+
+/* ===== P2 : LA BANDE EDITORIALE (titre | email geant, champs en grille dessous) ===== */
+.p2 .band{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:clamp(40px,5vw,64px);border-bottom:1px solid rgba(255,255,255,.14)}
+.p2 h2{margin-top:22px;max-width:14ch}
+.p2 .band a{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(2rem,4vw,3.4rem);color:#fff;text-decoration:none;letter-spacing:-.014em;border-bottom:1px solid var(--gold);padding-bottom:8px;transition:color .3s}
+.p2 .band a:hover{color:var(--gold)}
+.p2 form{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,44px);margin-top:clamp(40px,5vw,64px)}
+.p2 .field{display:grid;gap:10px}
+.p2 .field--full{grid-column:1/-1}
+.p2 textarea{min-height:140px;resize:vertical;line-height:1.6}
+.p2 .foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:6px}
+.p2 .assur{font-family:var(--serif);font-weight:300;font-size:1.02rem;color:rgba(255,255,255,.62);max-width:44ch}
+
+/* ===== P3 : LA COLONNE MATIERE (photo pleine hauteur + formulaire) ===== */
+.p3{padding-block:0}
+.p3 .grid{display:grid;grid-template-columns:1fr 1.15fr;min-height:78vh}
+.p3 .media{position:relative;overflow:hidden}
+.p3 .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.02) brightness(.8) saturate(.85)}
+.p3 .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,51,43,.42),rgba(30,51,43,.62))}
+.p3 .media .cap{position:absolute;left:clamp(24px,3vw,44px);bottom:clamp(24px,3vw,40px);z-index:2;max-width:30ch}
+.p3 .media .cap p{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.45;color:rgba(255,255,255,.92)}
+.p3 .formside{display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,7vw,110px) clamp(32px,5vw,88px)}
+.p3 h2{margin-top:22px;max-width:14ch}
+.p3 .lead2{margin-top:18px;max-width:44ch;color:rgba(255,255,255,.72);font-size:1.02rem}
+.p3 form{display:grid;gap:clamp(24px,2.6vw,32px);margin-top:clamp(36px,4vw,52px)}
+.p3 .field{display:grid;gap:10px}
+.p3 textarea{min-height:130px;resize:vertical;line-height:1.6}
+.p3 .foot{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:6px}
+@media (max-width:900px){
+  .p1 .grid,.p2 form,.p3 .grid{grid-template-columns:1fr}
+  .p3 .media{min-height:340px}
+}
+</style>
+</head>
+<body>
+
+<div class="tag">P1 <span>&middot; LA LIGNE DIRECTE &mdash; l'email en grand geste serif, ancr&eacute; bas (pattern &laquo; direct line &raquo; des sites prim&eacute;s)</span></div>
+<section class="p1">
+  <div class="wrap">
+    <div class="grid">
+      <div class="colg">
+        <p class="eyebrow">Contact</p>
+        <h2>Adressez-nous votre demande.</h2>
+        <p class="lead">D&eacute;crivez le p&eacute;rim&egrave;tre que vous envisagez de confier&nbsp;; nous vous en proposons une premi&egrave;re lecture.</p>
+        <div class="direct">
+          <span class="lab">Par &eacute;crit, directement</span>
+          <a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a>
+          <p class="sub">Un seul interlocuteur vous r&eacute;pond. Vos &eacute;changes restent confidentiels.</p>
+        </div>
+      </div>
+      <form novalidate>
+        <div class="field"><label>Organisation</label><input type="text" placeholder="Nom du groupe ou de l'&eacute;tablissement"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="vous@organisation.com"></div>
+        <div class="field"><label>P&eacute;rim&egrave;tre &agrave; confier</label><textarea placeholder="Le p&eacute;rim&egrave;tre que vous envisagez de confier, en quelques lignes."></textarea></div>
+        <div class="foot"><button type="button" class="btn">Adresser une demande</button><span class="note">R&eacute;ponse sous quelques jours ouvr&eacute;s.</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="tag">P2 <span>&middot; LA BANDE &Eacute;DITORIALE &mdash; titre et email g&eacute;ant face &agrave; face, champs en grille dessous</span></div>
+<section class="p2">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Adressez-nous votre demande.</h2>
+      </div>
+      <a href="mailto:contact@periclesgestion.com">contact@periclesgestion.com</a>
+    </div>
+    <form novalidate>
+      <div class="field"><label>Organisation</label><input type="text" placeholder="Nom du groupe ou de l'&eacute;tablissement"></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="vous@organisation.com"></div>
+      <div class="field field--full"><label>P&eacute;rim&egrave;tre &agrave; confier</label><textarea placeholder="Le p&eacute;rim&egrave;tre que vous envisagez de confier, en quelques lignes."></textarea></div>
+      <div class="foot">
+        <button type="button" class="btn">Adresser une demande</button>
+        <p class="assur">Un seul interlocuteur vous r&eacute;pond, par &eacute;crit. Vos &eacute;changes restent confidentiels, &agrave; chaque &eacute;tape.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="tag">P3 <span>&middot; LA COLONNE MATI&Egrave;RE &mdash; photo pleine hauteur (la mati&egrave;re du site) + formulaire concierge</span></div>
+<section class="p3">
+  <div class="grid">
+    <div class="media">
+      <img src="assets/bibliotheque-bustes.jpg" alt="">
+      <div class="cap"><p>Un seul interlocuteur vous r&eacute;pond, par &eacute;crit. Vos &eacute;changes restent confidentiels, &agrave; chaque &eacute;tape.</p></div>
+    </div>
+    <div class="formside">
+      <p class="eyebrow">Contact</p>
+      <h2>Adressez-nous votre demande.</h2>
+      <p class="lead2">D&eacute;crivez le p&eacute;rim&egrave;tre que vous envisagez de confier&nbsp;; nous vous en proposons une premi&egrave;re lecture.</p>
+      <form novalidate>
+        <div class="field"><label>Organisation</label><input type="text" placeholder="Nom du groupe ou de l'&eacute;tablissement"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="vous@organisation.com"></div>
+        <div class="field"><label>P&eacute;rim&egrave;tre &agrave; confier</label><textarea placeholder="Le p&eacute;rim&egrave;tre que vous envisagez de confier, en quelques lignes."></textarea></div>
+        <div class="foot"><button type="button" class="btn">Adresser une demande</button><span class="note">R&eacute;ponse sous quelques jours ouvr&eacute;s.</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
