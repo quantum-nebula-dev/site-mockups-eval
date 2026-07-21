@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base — section Repères (Périclès v4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+/* ====== TOKENS (identiques au site v4) ====== */
+:root{
+  --ink:#1E332B; --ink-2:#2E4A3F; --gold:#A48252; --gold-d:#7E6136;
+  --body:#505B54; --white:#FFFFFF; --cream:#F3F0E8; --taupe:#E6E2D4;
+  --sauge:#AAB9B0;
+  --line:rgba(30,51,43,.12); --line-2:rgba(255,255,255,.12);
+  --maxw:1180px; --gut:clamp(20px,5vw,72px);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --grot:"Instrument Sans", Helvetica, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--grot);color:var(--body);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.01em;font-size:clamp(1.9rem,3.6vw,3rem)}
+p{font-size:clamp(1rem,1.05vw,1.1rem)}
+.eyebrow{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
+.eyebrow.on-dark{color:var(--gold)}
+.eyebrow.on-dark::before{background:var(--gold)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+section{padding-block:clamp(5rem, 4rem + 4vw, 7.5rem)}
+.bg-ink{background:var(--ink);color:rgba(255,255,255,.78)}
+.bg-ink h2{color:var(--white)}
+.stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
+.stats__intro p{color:rgba(255,255,255,.85);margin-top:1em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,56px)}
+.stat{border-top:1px solid var(--line-2);padding-top:26px}
+.stat__n{font-family:var(--serif);font-size:clamp(2.4rem,4.2vw,3.9rem);color:#fff;line-height:1;font-weight:300}
+.stat__n .u{color:var(--gold);font-size:.5em;vertical-align:top;margin-left:.1em}
+.stat__l{margin-top:16px;font-size:.92rem;color:rgba(255,255,255,.72);max-width:24ch;letter-spacing:.01em}
+@media (max-width:820px){.stats{grid-template-columns:1fr 1fr;row-gap:34px}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+
+.varlabel{font-family:var(--grot);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-d);background:var(--cream);padding:18px var(--gut);border-top:1px solid var(--line)}
+.intro-row{display:grid;grid-template-columns:minmax(0,52ch) 1fr;gap:clamp(48px,6vw,110px);align-items:center;margin-bottom:clamp(44px,5vw,74px)}
+.intro-row .stats__intro{margin-bottom:0}
+.temple{justify-self:center;align-self:center;width:min(520px,100%);height:auto;color:#F3F0E8;opacity:.5}
+@media (max-width:880px){.intro-row{grid-template-columns:1fr}.temple{display:none}}
+</style>
+</head>
+<body>
+<div class="varlabel">T1 — L'élévation pure : la façade au trait, fronton, triglyphes, cinq colonnes</div>
+<section class="bg-ink reperes t1">
+  <div class="wrap">
+    <div class="intro-row">
+      <div class="stats__intro">
+        <p class="eyebrow on-dark">Repères</p>
+        <h2 style="margin-top:22px">Une responsabilité,<br>nettement délimitée.</h2>
+        <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
+      </div>
+      <svg class="temple" viewBox="0 0 560 400" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M280 16 40 122h480Z"/><path d="M280 34 74 114h412Z"/><path d="M32 128h496"/><path d="M32 136h496"/><path d="M66 142v16"/><path d="M71 142v16"/><path d="M76 142v16"/><path d="M120 142v16"/><path d="M125 142v16"/><path d="M130 142v16"/><path d="M174 142v16"/><path d="M179 142v16"/><path d="M184 142v16"/><path d="M228 142v16"/><path d="M233 142v16"/><path d="M238 142v16"/><path d="M282 142v16"/><path d="M287 142v16"/><path d="M292 142v16"/><path d="M336 142v16"/><path d="M341 142v16"/><path d="M346 142v16"/><path d="M390 142v16"/><path d="M395 142v16"/><path d="M400 142v16"/><path d="M444 142v16"/><path d="M449 142v16"/><path d="M454 142v16"/><path d="M40 164h480"/><path d="M40 172h480"/><path d="M73.0 182h54.0"/><path d="M77.0 191C81.0 184 119.0 184 123.0 191"/><path d="M79.0 195C79.0 267 75.0 312 75.0 352"/><path d="M89.5 195C89.5 267 87.5 312 87.5 352"/><path d="M100.0 195C100.0 267 100.0 312 100.0 352"/><path d="M110.5 195C110.5 267 112.5 312 112.5 352"/><path d="M121.0 195C121.0 267 125.0 312 125.0 352"/><path d="M73 358h54"/><path d="M163.0 182h54.0"/><path d="M167.0 191C171.0 184 209.0 184 213.0 191"/><path d="M169.0 195C169.0 267 165.0 312 165.0 352"/><path d="M179.5 195C179.5 267 177.5 312 177.5 352"/><path d="M190.0 195C190.0 267 190.0 312 190.0 352"/><path d="M200.5 195C200.5 267 202.5 312 202.5 352"/><path d="M211.0 195C211.0 267 215.0 312 215.0 352"/><path d="M163 358h54"/><path d="M253.0 182h54.0"/><path d="M257.0 191C261.0 184 299.0 184 303.0 191"/><path d="M259.0 195C259.0 267 255.0 312 255.0 352"/><path d="M269.5 195C269.5 267 267.5 312 267.5 352"/><path d="M280.0 195C280.0 267 280.0 312 280.0 352"/><path d="M290.5 195C290.5 267 292.5 312 292.5 352"/><path d="M301.0 195C301.0 267 305.0 312 305.0 352"/><path d="M253 358h54"/><path d="M343.0 182h54.0"/><path d="M347.0 191C351.0 184 389.0 184 393.0 191"/><path d="M349.0 195C349.0 267 345.0 312 345.0 352"/><path d="M359.5 195C359.5 267 357.5 312 357.5 352"/><path d="M370.0 195C370.0 267 370.0 312 370.0 352"/><path d="M380.5 195C380.5 267 382.5 312 382.5 352"/><path d="M391.0 195C391.0 267 395.0 312 395.0 352"/><path d="M343 358h54"/><path d="M433.0 182h54.0"/><path d="M437.0 191C441.0 184 479.0 184 483.0 191"/><path d="M439.0 195C439.0 267 435.0 312 435.0 352"/><path d="M449.5 195C449.5 267 447.5 312 447.5 352"/><path d="M460.0 195C460.0 267 460.0 312 460.0 352"/><path d="M470.5 195C470.5 267 472.5 312 472.5 352"/><path d="M481.0 195C481.0 267 485.0 312 485.0 352"/><path d="M433 358h54"/><path d="M56 366h448"/><path d="M40 378h480"/><path d="M24 390h512"/></g></svg>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat__n">1</div><div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div></div>
+      <div class="stat"><div class="stat__n">5</div><div class="stat__l">Domaines de gestion pris en charge et tenus.</div></div>
+      <div class="stat"><div class="stat__n">FR<span class="u"> · INT</span></div><div class="stat__l">En France comme à l'étranger, sous un même pilotage.</div></div>
+      <div class="stat"><div class="stat__n">100<span class="u">%</span></div><div class="stat__l">Des fonctions confiées, opérées ou pilotées par Périclès.</div></div>
+    </div>
+  </div>
+</section>
+<div class="varlabel">T2 — Le fragment : deux colonnes monumentales coupées par le cadre, crop éditorial</div>
+<section class="bg-ink reperes t2">
+  <div class="wrap">
+    <div class="intro-row">
+      <div class="stats__intro">
+        <p class="eyebrow on-dark">Repères</p>
+        <h2 style="margin-top:22px">Une responsabilité,<br>nettement délimitée.</h2>
+        <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
+      </div>
+      <svg class="temple" viewBox="0 0 560 400" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M0 20h560"/><path d="M0 30h560"/><path d="M20 40v28"/><path d="M25 40v28"/><path d="M30 40v28"/><path d="M112 40v28"/><path d="M117 40v28"/><path d="M122 40v28"/><path d="M204 40v28"/><path d="M209 40v28"/><path d="M214 40v28"/><path d="M296 40v28"/><path d="M301 40v28"/><path d="M306 40v28"/><path d="M388 40v28"/><path d="M393 40v28"/><path d="M398 40v28"/><path d="M480 40v28"/><path d="M485 40v28"/><path d="M490 40v28"/><path d="M0 76h560"/><path d="M0 88h560"/><path d="M88 100h124"/><path d="M94 116C102 104 198 104 206 116"/><path d="M98.0 122C98.0 250 92.0 330 92.0 400"/><path d="M111.0 122C111.0 250 106.5 330 106.5 400"/><path d="M124.0 122C124.0 250 121.0 330 121.0 400"/><path d="M137.0 122C137.0 250 135.5 330 135.5 400"/><path d="M150.0 122C150.0 250 150.0 330 150.0 400"/><path d="M163.0 122C163.0 250 164.5 330 164.5 400"/><path d="M176.0 122C176.0 250 179.0 330 179.0 400"/><path d="M189.0 122C189.0 250 193.5 330 193.5 400"/><path d="M202.0 122C202.0 250 208.0 330 208.0 400"/><path d="M348 100h124"/><path d="M354 116C362 104 458 104 466 116"/><path d="M358.0 122C358.0 250 352.0 330 352.0 400"/><path d="M371.0 122C371.0 250 366.5 330 366.5 400"/><path d="M384.0 122C384.0 250 381.0 330 381.0 400"/><path d="M397.0 122C397.0 250 395.5 330 395.5 400"/><path d="M410.0 122C410.0 250 410.0 330 410.0 400"/><path d="M423.0 122C423.0 250 424.5 330 424.5 400"/><path d="M436.0 122C436.0 250 439.0 330 439.0 400"/><path d="M449.0 122C449.0 250 453.5 330 453.5 400"/><path d="M462.0 122C462.0 250 468.0 330 468.0 400"/><path d="M536 122V400"/><path d="M546 122V400"/><path d="M556 122V400"/><path d="M526 100h34"/></g></svg>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat__n">1</div><div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div></div>
+      <div class="stat"><div class="stat__n">5</div><div class="stat__l">Domaines de gestion pris en charge et tenus.</div></div>
+      <div class="stat"><div class="stat__n">FR<span class="u"> · INT</span></div><div class="stat__l">En France comme à l'étranger, sous un même pilotage.</div></div>
+      <div class="stat"><div class="stat__n">100<span class="u">%</span></div><div class="stat__l">Des fonctions confiées, opérées ou pilotées par Périclès.</div></div>
+    </div>
+  </div>
+</section>
+<div class="varlabel">T3 — La gravure ombrée : la même façade, tympan hachuré et ombres portées, planche ancienne</div>
+<section class="bg-ink reperes t3">
+  <div class="wrap">
+    <div class="intro-row">
+      <div class="stats__intro">
+        <p class="eyebrow on-dark">Repères</p>
+        <h2 style="margin-top:22px">Une responsabilité,<br>nettement délimitée.</h2>
+        <p>Peu de chiffres, parce que la valeur tient dans la tenue, pas dans la promesse.</p>
+      </div>
+      <svg class="temple" viewBox="0 0 560 404" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M280 16 40 122h480Z"/><path d="M280 34 74 114h412Z"/><clipPath id="tympan"><path d="M280 34 74 114h412Z"/></clipPath><g clip-path="url(#tympan)" opacity=".55"><path d="M120 30 32 118"/><path d="M136 30 48 118"/><path d="M152 30 64 118"/><path d="M168 30 80 118"/><path d="M184 30 96 118"/><path d="M200 30 112 118"/><path d="M216 30 128 118"/><path d="M232 30 144 118"/><path d="M248 30 160 118"/><path d="M264 30 176 118"/><path d="M280 30 192 118"/><path d="M296 30 208 118"/><path d="M312 30 224 118"/><path d="M328 30 240 118"/><path d="M344 30 256 118"/><path d="M360 30 272 118"/><path d="M376 30 288 118"/><path d="M392 30 304 118"/><path d="M408 30 320 118"/><path d="M424 30 336 118"/><path d="M440 30 352 118"/><path d="M456 30 368 118"/><path d="M472 30 384 118"/><path d="M488 30 400 118"/><path d="M504 30 416 118"/><path d="M520 30 432 118"/><path d="M536 30 448 118"/><path d="M552 30 464 118"/></g><path d="M32 128h496"/><path d="M32 136h496"/><g opacity=".5"><path d="M40 138v5"/><path d="M47 138v5"/><path d="M54 138v5"/><path d="M61 138v5"/><path d="M68 138v5"/><path d="M75 138v5"/><path d="M82 138v5"/><path d="M89 138v5"/><path d="M96 138v5"/><path d="M103 138v5"/><path d="M110 138v5"/><path d="M117 138v5"/><path d="M124 138v5"/><path d="M131 138v5"/><path d="M138 138v5"/><path d="M145 138v5"/><path d="M152 138v5"/><path d="M159 138v5"/><path d="M166 138v5"/><path d="M173 138v5"/><path d="M180 138v5"/><path d="M187 138v5"/><path d="M194 138v5"/><path d="M201 138v5"/><path d="M208 138v5"/><path d="M215 138v5"/><path d="M222 138v5"/><path d="M229 138v5"/><path d="M236 138v5"/><path d="M243 138v5"/><path d="M250 138v5"/><path d="M257 138v5"/><path d="M264 138v5"/><path d="M271 138v5"/><path d="M278 138v5"/><path d="M285 138v5"/><path d="M292 138v5"/><path d="M299 138v5"/><path d="M306 138v5"/><path d="M313 138v5"/><path d="M320 138v5"/><path d="M327 138v5"/><path d="M334 138v5"/><path d="M341 138v5"/><path d="M348 138v5"/><path d="M355 138v5"/><path d="M362 138v5"/><path d="M369 138v5"/><path d="M376 138v5"/><path d="M383 138v5"/><path d="M390 138v5"/><path d="M397 138v5"/><path d="M404 138v5"/><path d="M411 138v5"/><path d="M418 138v5"/><path d="M425 138v5"/><path d="M432 138v5"/><path d="M439 138v5"/><path d="M446 138v5"/><path d="M453 138v5"/><path d="M460 138v5"/><path d="M467 138v5"/><path d="M474 138v5"/><path d="M481 138v5"/><path d="M488 138v5"/><path d="M495 138v5"/><path d="M502 138v5"/><path d="M509 138v5"/><path d="M516 138v5"/></g><path d="M66 146v14"/><path d="M71 146v14"/><path d="M76 146v14"/><path d="M120 146v14"/><path d="M125 146v14"/><path d="M130 146v14"/><path d="M174 146v14"/><path d="M179 146v14"/><path d="M184 146v14"/><path d="M228 146v14"/><path d="M233 146v14"/><path d="M238 146v14"/><path d="M282 146v14"/><path d="M287 146v14"/><path d="M292 146v14"/><path d="M336 146v14"/><path d="M341 146v14"/><path d="M346 146v14"/><path d="M390 146v14"/><path d="M395 146v14"/><path d="M400 146v14"/><path d="M444 146v14"/><path d="M449 146v14"/><path d="M454 146v14"/><path d="M40 166h480"/><path d="M40 174h480"/><path d="M73.0 184h54.0"/><path d="M77.0 193C81.0 186 119.0 186 123.0 193"/><path d="M79.0 197C79.0 268 75.0 312 75.0 352"/><path d="M89.5 197C89.5 268 87.5 312 87.5 352"/><path d="M100.0 197C100.0 268 100.0 312 100.0 352"/><path d="M110.5 197C110.5 268 112.5 312 112.5 352"/><path d="M121.0 197C121.0 268 125.0 312 125.0 352"/><g opacity=".5"><path d="M112 200C112 260 116 310 116 348"/><path d="M117 202C117 262 121 312 121 348"/></g><path d="M73 358h54"/><path d="M163.0 184h54.0"/><path d="M167.0 193C171.0 186 209.0 186 213.0 193"/><path d="M169.0 197C169.0 268 165.0 312 165.0 352"/><path d="M179.5 197C179.5 268 177.5 312 177.5 352"/><path d="M190.0 197C190.0 268 190.0 312 190.0 352"/><path d="M200.5 197C200.5 268 202.5 312 202.5 352"/><path d="M211.0 197C211.0 268 215.0 312 215.0 352"/><g opacity=".5"><path d="M202 200C202 260 206 310 206 348"/><path d="M207 202C207 262 211 312 211 348"/></g><path d="M163 358h54"/><path d="M253.0 184h54.0"/><path d="M257.0 193C261.0 186 299.0 186 303.0 193"/><path d="M259.0 197C259.0 268 255.0 312 255.0 352"/><path d="M269.5 197C269.5 268 267.5 312 267.5 352"/><path d="M280.0 197C280.0 268 280.0 312 280.0 352"/><path d="M290.5 197C290.5 268 292.5 312 292.5 352"/><path d="M301.0 197C301.0 268 305.0 312 305.0 352"/><g opacity=".5"><path d="M292 200C292 260 296 310 296 348"/><path d="M297 202C297 262 301 312 301 348"/></g><path d="M253 358h54"/><path d="M343.0 184h54.0"/><path d="M347.0 193C351.0 186 389.0 186 393.0 193"/><path d="M349.0 197C349.0 268 345.0 312 345.0 352"/><path d="M359.5 197C359.5 268 357.5 312 357.5 352"/><path d="M370.0 197C370.0 268 370.0 312 370.0 352"/><path d="M380.5 197C380.5 268 382.5 312 382.5 352"/><path d="M391.0 197C391.0 268 395.0 312 395.0 352"/><g opacity=".5"><path d="M382 200C382 260 386 310 386 348"/><path d="M387 202C387 262 391 312 391 348"/></g><path d="M343 358h54"/><path d="M433.0 184h54.0"/><path d="M437.0 193C441.0 186 479.0 186 483.0 193"/><path d="M439.0 197C439.0 268 435.0 312 435.0 352"/><path d="M449.5 197C449.5 268 447.5 312 447.5 352"/><path d="M460.0 197C460.0 268 460.0 312 460.0 352"/><path d="M470.5 197C470.5 268 472.5 312 472.5 352"/><path d="M481.0 197C481.0 268 485.0 312 485.0 352"/><g opacity=".5"><path d="M472 200C472 260 476 310 476 348"/><path d="M477 202C477 262 481 312 481 348"/></g><path d="M433 358h54"/><path d="M56 366h448"/><path d="M40 378h480"/><path d="M24 390h512"/><g opacity=".4"><path d="M30 398h14"/><path d="M70 398h14"/><path d="M120 398h14"/><path d="M420 398h14"/><path d="M470 398h14"/><path d="M510 398h14"/></g></g></svg>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat__n">1</div><div class="stat__l">Point de responsabilité unique pour l'ensemble du périmètre.</div></div>
+      <div class="stat"><div class="stat__n">5</div><div class="stat__l">Domaines de gestion pris en charge et tenus.</div></div>
+      <div class="stat"><div class="stat__n">FR<span class="u"> · INT</span></div><div class="stat__l">En France comme à l'étranger, sous un même pilotage.</div></div>
+      <div class="stat"><div class="stat__n">100<span class="u">%</span></div><div class="stat__l">Des fonctions confiées, opérées ou pilotées par Périclès.</div></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
