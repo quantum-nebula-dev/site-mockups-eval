@@ -13,21 +13,21 @@
 <style>
 /* ============ TOKENS (ancrés sur Wendel, repris du site) ============ */
 :root{
-  --ink:#1E332B;          /* bleu nuit profond  */
-  --ink-2:#2E4A3F;        /* bleu nuit clair    */
+  --ink:#26262B;          /* bleu nuit profond  */
+  --ink-2:#3B3B42;        /* bleu nuit clair    */
   --gold:#A48252;         /* or / bronze sourd  */
   --gold-d:#7E6136;       /* or assombri (texte petit sur clair) */
-  --body:#505B54;         /* gris-bleu corps    */
+  --body:#54545A;         /* gris-bleu corps    */
   --white:#FFFFFF;
   --cream:#F3F0E8;        /* crème chaude       */
   --taupe:#E6E2D4;        /* taupe              */
   --taupe-2:#D2CDBB;
-  --line:rgba(30,51,43,.12);
+  --line:rgba(38,38,43,.12);
   --line-2:rgba(255,255,255,.12);
   --maxw:1180px;
   --gut:clamp(20px,5vw,72px);
-  --shadow:0 24px 60px -34px rgba(30,51,43,.45);
-  --shadow-soft:0 18px 44px -30px rgba(30,51,43,.30);
+  --shadow:0 24px 60px -34px rgba(38,38,43,.45);
+  --shadow-soft:0 18px 44px -30px rgba(38,38,43,.30);
   --serif:"Newsreader", Georgia, "Times New Roman", serif;
   --grot:"Instrument Sans", Helvetica, Arial, sans-serif;
 }
@@ -110,7 +110,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .logo b{font-weight:500}
 .logo i{font-style:italic;color:var(--gold)}
 .logo{display:inline-flex;align-items:center;gap:12px}
-.logo__mark{width:31px;height:31px;flex:none;display:block;transform:translateY(-2.5px)}
+.logo__mark{width:31px;height:31px;flex:none;display:block;transform:translateY(-1.5px)}
 .logo__mark .lm-frame{fill:currentColor;transition:fill .4s}
 .logo__mark .lm-flutes{stroke:var(--gold)}
 /* Lockup charte : PÉRICLÈS serif capitales + GESTION en repère espacé bronze */
@@ -143,19 +143,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
   background:rgba(255,255,255,.04);
 }
-.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 10px 24px -16px rgba(30,51,43,.5)}
+.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 10px 24px -16px rgba(38,38,43,.5)}
 .hdr.is-solid{
   background:rgba(243,240,232,.72);
   -webkit-backdrop-filter:saturate(180%) blur(24px);
   backdrop-filter:saturate(180%) blur(24px);
-  border-bottom:1px solid rgba(30,51,43,.08);
-  box-shadow:0 8px 22px -18px rgba(30,51,43,.4);
+  border-bottom:1px solid rgba(38,38,43,.08);
+  box-shadow:0 8px 22px -18px rgba(38,38,43,.4);
 }
 .hdr.is-solid .logo{color:var(--ink)}
 .hdr.is-solid .nav a{color:var(--ink)}
 .hdr.is-solid .nav__sep{background:var(--line)}
 .hdr.is-solid .btn-ghost{
-  border-color:rgba(30,51,43,.32);color:var(--ink);
+  border-color:rgba(38,38,43,.32);color:var(--ink);
   background:rgba(255,255,255,.35);
 }
 .hdr.is-solid .btn-ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -277,7 +277,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .nav.open .nav__sep{display:none}
   .nav.open a.btn-ghost{
     display:inline-flex;width:auto;margin-top:16px;padding:0 26px;min-height:46px;
-    font-size:.78rem;border:1.5px solid rgba(30,51,43,.32);border-radius:1000px;
+    font-size:.78rem;border:1.5px solid rgba(38,38,43,.32);border-radius:1000px;
     color:var(--ink);background:rgba(255,255,255,.4);
   }
 }
