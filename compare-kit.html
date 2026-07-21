@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Périclès — comparaison v2 (marine/or) vs v3 (kit Nect'Art)</title>
+<link rel="icon" type="image/svg+xml" href="v3-kit/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Instrument Sans",Helvetica,Arial,sans-serif;background:#111614;color:#eee;height:100vh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:#0d1210;border-bottom:1px solid rgba(255,255,255,.08);flex:none}
+header h1{font-size:.95rem;font-weight:600;letter-spacing:.02em}
+header nav{display:flex;gap:10px}
+header a{color:#ccc;text-decoration:none;font-size:.8rem;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px}
+header a:hover{color:#fff;border-color:#fff}
+.panes{flex:1;display:flex;min-height:0}
+.pane{flex:1;display:flex;flex-direction:column;min-width:0}
+.pane+.pane{border-left:1px solid rgba(255,255,255,.15)}
+.pane .label{flex:none;padding:7px 14px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#bbb}
+.pane .label b{color:#fff}
+.pane iframe{flex:1;width:100%;border:0;background:#fff}
+@media (max-width:900px){.panes{flex-direction:column}.pane+.pane{border-left:0;border-top:1px solid rgba(255,255,255,.15)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Périclès Gestion — deux versions côte à côte</h1>
+  <nav>
+    <a href="v2-final/index.html" target="_blank">Ouvrir v2 seule</a>
+    <a href="v3-kit/index.html" target="_blank">Ouvrir v3 seule</a>
+  </nav>
+</header>
+<div class="panes">
+  <div class="pane">
+    <div class="label"><b>v2 — actuelle</b> · marine / or · Hanken Grotesk</div>
+    <iframe src="v2-final/index.html" title="Version v2 actuelle" loading="lazy"></iframe>
+  </div>
+  <div class="pane">
+    <div class="label"><b>v3 — kit identité</b> · forêt / bronze / calcaire · Instrument Sans · logo colonne</div>
+    <iframe src="v3-kit/index.html" title="Version v3 kit identité" loading="lazy"></iframe>
+  </div>
+</div>
+</body>
+</html>
