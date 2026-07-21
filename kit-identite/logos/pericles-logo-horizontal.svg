@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 124" role="img" aria-labelledby="title desc">
+  <title id="title">Logo horizontal Périclès Gestion</title>
+  <desc id="desc">Le symbole de la colonne de pilotage accompagne le nom Périclès Gestion.</desc>
+  <defs>
+    <style>
+      @font-face{font-family:Newsreader;src:url('../fonts/Newsreader-SemiBold.ttf') format('truetype');font-weight:600}
+      @font-face{font-family:Instrument Sans;src:url('../fonts/InstrumentSans-Medium.ttf') format('truetype');font-weight:500}
+    </style>
+  </defs>
+  <g fill="#1E332B" transform="translate(4 4)">
+    <rect x="12" y="10" width="14" height="100" rx="7"/>
+    <rect x="22" y="10" width="61" height="14" rx="7"/>
+    <rect x="22" y="31" width="79" height="14" rx="7"/>
+    <rect x="22" y="52" width="72" height="14" rx="7"/>
+    <rect x="22" y="73" width="56" height="14" rx="7"/>
+    <rect x="22" y="94" width="39" height="14" rx="7"/>
+  </g>
+  <text x="137" y="59" fill="#1E332B" font-family="Newsreader, Georgia, serif" font-size="49" font-weight="600" letter-spacing="-1.4">PÉRICLÈS</text>
+  <text x="140" y="88" fill="#1E332B" font-family="Instrument Sans, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="7">GESTION</text>
+</svg>

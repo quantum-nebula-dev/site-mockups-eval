@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Motif des cinq tracés Périclès">
+  <rect width="1200" height="600" fill="#F3F0E8"/>
+  <g fill="none" stroke="#1E332B" stroke-width="10" stroke-linecap="round" opacity=".18">
+    <path d="M-80 70H430C590 70 610 270 790 270H1280"/>
+    <path d="M-80 175H330C520 175 525 375 735 375H1280"/>
+    <path d="M-80 280H515C660 280 675 95 835 95H1280"/>
+    <path d="M-80 385H390C540 385 560 525 720 525H1280"/>
+    <path d="M-80 490H250C440 490 485 225 670 225H1280"/>
+  </g>
+</svg>

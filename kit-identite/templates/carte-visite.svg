@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1050">
+  <defs><style>@font-face{font-family:Newsreader;src:url('../fonts/Newsreader-SemiBold.ttf')}@font-face{font-family:Instrument Sans;src:url('../fonts/InstrumentSans-Regular.ttf')}</style></defs>
+  <rect width="1800" height="1050" fill="#1E332B"/>
+  <g fill="#F3F0E8" transform="translate(120 125) scale(2.15)"><rect x="12" y="10" width="14" height="100" rx="7"/><rect x="22" y="10" width="61" height="14" rx="7"/><rect x="22" y="31" width="79" height="14" rx="7"/><rect x="22" y="52" width="72" height="14" rx="7"/><rect x="22" y="73" width="56" height="14" rx="7"/><rect x="22" y="94" width="39" height="14" rx="7"/></g>
+  <text x="120" y="510" fill="#F3F0E8" font-family="Newsreader,Georgia,serif" font-size="150" font-weight="600">PÉRICLÈS</text>
+  <text x="128" y="590" fill="#F3F0E8" font-family="Instrument Sans,Arial,sans-serif" font-size="42" letter-spacing="18">GESTION</text>
+  <text x="1210" y="710" fill="#F3F0E8" font-family="Instrument Sans,Arial,sans-serif" font-size="42">Nom Prénom</text>
+  <text x="1210" y="770" fill="#AAB9B0" font-family="Instrument Sans,Arial,sans-serif" font-size="30">Fonction</text>
+  <text x="1210" y="865" fill="#F3F0E8" font-family="Instrument Sans,Arial,sans-serif" font-size="28">contact@periclesgestion.com</text>
+</svg>

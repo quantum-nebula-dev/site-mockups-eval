@@ -1,0 +1,11 @@
+import { chromium } from "/Users/clementinelotode/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+const dir = path.dirname(fileURLToPath(import.meta.url));
+const browser = await chromium.launch({headless:true,executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"});
+const page = await browser.newPage({viewport:{width:1403,height:992},deviceScaleFactor:1});
+await page.goto(pathToFileURL(path.join(dir,"charte-pericles.html")).href,{waitUntil:"networkidle"});
+await page.emulateMedia({media:"print"});
+await page.pdf({path:path.join(dir,"../Charte-identite-visuelle-Pericles-Gestion.pdf"),printBackground:true,preferCSSPageSize:true,margin:{top:"0",right:"0",bottom:"0",left:"0"},tagged:true,outline:true});
+await browser.close();

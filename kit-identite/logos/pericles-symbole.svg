@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Symbole Périclès Gestion</title>
+  <desc id="desc">Une colonne verticale tient cinq tracés horizontaux de longueurs différentes.</desc>
+  <g fill="#1E332B">
+    <rect x="12" y="10" width="14" height="100" rx="7"/>
+    <rect x="22" y="10" width="61" height="14" rx="7"/>
+    <rect x="22" y="31" width="79" height="14" rx="7"/>
+    <rect x="22" y="52" width="72" height="14" rx="7"/>
+    <rect x="22" y="73" width="56" height="14" rx="7"/>
+    <rect x="22" y="94" width="39" height="14" rx="7"/>
+  </g>
+</svg>

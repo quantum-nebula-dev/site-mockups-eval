@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Périclès Gestion — Système d'identité visuelle</title>
+<style>
+@font-face{font-family:Newsreader;src:url('../fonts/Newsreader-Regular.ttf')}@font-face{font-family:Newsreader;src:url('../fonts/Newsreader-SemiBold.ttf');font-weight:600}@font-face{font-family:Newsreader;src:url('../fonts/Newsreader-LightItalic.ttf');font-style:italic;font-weight:300}@font-face{font-family:Instrument Sans;src:url('../fonts/InstrumentSans-Regular.ttf')}@font-face{font-family:Instrument Sans;src:url('../fonts/InstrumentSans-SemiBold.ttf');font-weight:600}
+:root{--ink:#1E332B;--stone:#F3F0E8;--bronze:#A48252;--slate:#716D64;--sage:#AAB9B0;--white:#fff;--black:#0D0D0D}
+*{box-sizing:border-box}@page{size:A4 landscape;margin:0}html,body{margin:0;background:#ccc;color:var(--ink);font-family:"Instrument Sans",Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{width:297mm;height:210mm;background:var(--stone);position:relative;overflow:hidden;padding:16mm 18mm;page-break-after:always}.page:last-child{page-break-after:auto}.page.dark{background:var(--ink);color:var(--stone)}.page.white{background:#fff}.footer{position:absolute;left:18mm;right:18mm;bottom:8mm;display:flex;justify-content:space-between;font-size:6.7pt;letter-spacing:.1em;text-transform:uppercase}.footer b{font-weight:600}.index{position:absolute;right:18mm;top:13mm;font:600 35pt/1 Newsreader;color:rgba(6,28,45,.1)}.dark .index{color:rgba(243,240,232,.12)}h1,h2,h3,p{margin:0}h1{font:600 48pt/.9 Newsreader;letter-spacing:-.045em}h2{font:600 29pt/.96 Newsreader;letter-spacing:-.035em}h3{font:600 10pt/1.1 "Instrument Sans";letter-spacing:.08em;text-transform:uppercase}p,li{font-size:9pt;line-height:1.42}.eyebrow{font-size:7pt;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:4mm}.lead{font:400 16pt/1.25 Newsreader}.quote{font:300 29pt/1.04 Newsreader;font-style:italic;letter-spacing:-.03em}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9mm}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm}.rule{height:1px;background:currentColor;opacity:.25;margin:5mm 0}.card{border:1px solid rgba(6,28,45,.22);padding:5mm}.dark .card{border-color:rgba(243,240,232,.25)}.label{font-size:6.4pt;letter-spacing:.14em;text-transform:uppercase;font-weight:600}.tag{border:1px solid currentColor;border-radius:99px;padding:1.5mm 3mm;display:inline-flex;font-size:6.5pt;text-transform:uppercase;letter-spacing:.1em}.big-number{font:600 50pt/.85 Newsreader}.bronze{color:var(--bronze)}.sage{color:var(--sage)}.muted{color:var(--slate)}.logo-panel{height:68mm;display:flex;align-items:center;justify-content:center;padding:13mm}.logo-panel img{max-width:88%;max-height:100%}.swatch{height:96mm;padding:6mm;display:flex;flex-direction:column;justify-content:space-between}.swatch strong{font:600 20pt/1 Newsreader}.swatch span{font-size:7pt;letter-spacing:.08em}.do{border-top:4px solid var(--sage)}.dont{border-top:4px solid var(--bronze)}.mockup{box-shadow:0 8px 28px rgba(6,28,45,.18);background:white}.business-card{aspect-ratio:1.714;background:var(--ink);color:var(--stone);padding:7mm;position:relative}.business-card .mini-mark{width:20mm}.business-card .person{position:absolute;right:7mm;bottom:7mm;font-size:7pt;line-height:1.5}.report{aspect-ratio:.707;background:var(--stone);padding:8mm;border-left:10mm solid var(--ink);position:relative}.report .report-title{position:absolute;left:16mm;bottom:24mm;font:600 21pt/1 Newsreader}.web{aspect-ratio:16/10;background:var(--ink);color:var(--stone);padding:7mm;position:relative;overflow:hidden}.web .web-title{position:absolute;left:8mm;bottom:10mm;font:600 24pt/1 Newsreader;max-width:75%}.web .web-lines{position:absolute;inset:0;opacity:.18}.social{aspect-ratio:1;background:var(--ink);padding:8mm;color:var(--stone);position:relative}.social .social-title{position:absolute;left:8mm;bottom:15mm;font:600 21pt/1 Newsreader}.xspace{position:relative;width:80mm;height:70mm;margin:auto;display:grid;place-items:center;border:1px dashed var(--bronze)}.xspace img{width:52mm}.xspace:after{content:"X";position:absolute;left:1mm;top:1mm;color:var(--bronze);font-size:8pt}.minrow{display:flex;align-items:flex-end;gap:8mm}.minrow img{width:auto}.iconbox{background:white;padding:5mm;text-align:left}.iconbox img{width:18mm;height:18mm}.iconbox strong{display:block;margin-top:4mm;font-size:8pt}.trace-demo{position:absolute;inset:0;width:100%;height:100%}.trace-block{height:90mm;background:var(--ink);position:relative;overflow:hidden}.trace-block .copy{position:absolute;left:10mm;bottom:9mm;color:var(--stone);font:600 24pt/1 Newsreader;z-index:2}.asset-list{columns:2;column-gap:10mm;margin:0;padding-left:5mm}.asset-list li{break-inside:avoid;margin-bottom:2mm}.specimen-serif{font:600 37pt/1 Newsreader;letter-spacing:-.035em}.specimen-italic{font:300 23pt/1.1 Newsreader;font-style:italic}.specimen-sans{font:600 25pt/1 "Instrument Sans";letter-spacing:-.02em}.alphabet{font-size:10pt;line-height:1.65;letter-spacing:.04em}.construction{position:relative;width:92mm;height:92mm;margin:auto;background-image:linear-gradient(rgba(164,130,82,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(164,130,82,.22) 1px,transparent 1px);background-size:8mm 8mm;display:grid;place-items:center}.construction img{width:72mm}.construction:before,.construction:after{content:"";position:absolute;background:var(--bronze)}.construction:before{width:1px;height:100%;left:50%}.construction:after{height:1px;width:100%;top:50%}
+</style>
+</head>
+<body>
+
+<section class="page dark">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="eyebrow">Identité visuelle · Version 1.0</div><div class="tag">Confidentiel</div></div>
+  <img src="../logos/pericles-logo-horizontal-inverse.svg" alt="Périclès Gestion" style="width:126mm;margin-top:34mm">
+  <p class="quote" style="position:absolute;left:18mm;bottom:35mm;max-width:155mm">Tenir l'ensemble,<br>depuis un seul point.</p>
+  <div style="position:absolute;right:18mm;bottom:35mm;text-align:right"><div class="label sage">Concept</div><p style="margin-top:2mm">La colonne de pilotage<br>et les cinq tracés</p></div>
+  <div class="footer"><b>NECT’ART</b><span>Brand Systems Studio</span><span>01</span></div>
+</section>
+
+<section class="page">
+  <div class="index">02</div><div class="eyebrow">Concept de marque</div><h2>UNE STRUCTURE<br>QUI <span class="bronze">TIENT.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div>
+      <p class="lead">Une colonne verticale porte la responsabilité unique. Cinq tracés autonomes incarnent les cinq domaines de gestion.</p>
+      <div style="height:8mm"></div><p>Les lignes restent distinctes : Périclès ne gomme pas les spécificités. Elles partagent cependant le même point de départ, la même structure et la même continuité.</p>
+      <div style="height:8mm"></div><div class="card"><h3>Idée centrale</h3><p class="lead" style="margin-top:3mm">Plusieurs fonctions.<br>Une responsabilité.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:90mm 1fr;gap:8mm;align-items:center">
+      <div class="construction"><img src="../logos/pericles-symbole.svg" alt="Symbole Périclès"></div>
+      <div><div class="grid5" style="display:block">
+        <p style="margin-bottom:4mm"><b>01</b> Responsabilité</p><p style="margin-bottom:4mm"><b>02</b> Exécution</p><p style="margin-bottom:4mm"><b>03</b> Ensemble</p><p style="margin-bottom:4mm"><b>04</b> Pilotage</p><p><b>05</b> Continuité</p>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><b>NECT’ART</b><span>Périclès Gestion · Concept</span><span>02</span></div>
+</section>
+
+<section class="page white">
+  <div class="index">03</div><div class="eyebrow">Logo principal</div><h2>LE SIGNE ET<br>LA <span class="bronze">PAROLE.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div class="logo-panel" style="background:var(--stone)"><img src="../logos/pericles-logo-horizontal.svg" alt="Logo horizontal"></div>
+    <div style="padding:8mm 4mm">
+      <h3>Symbole</h3><p style="margin-top:2mm">La colonne et les cinq tracés forment un signe stable, reconnaissable et volontairement non littéral.</p>
+      <div style="height:7mm"></div><h3>Mot-symbole</h3><p style="margin-top:2mm">La serif exprime le discernement et la stature. Le descripteur sans-serif apporte précision et fonctionnalité.</p>
+      <div style="height:7mm"></div><h3>Lecture</h3><p style="margin-top:2mm">Le symbole peut être perçu comme un P, une structure de dossiers, un faisceau organisé ou une colonne de pilotage.</p>
+    </div>
+  </div>
+  <div style="margin-top:8mm" class="grid3"><div class="card"><span class="big-number">1</span><p>colonne de responsabilité</p></div><div class="card"><span class="big-number">5</span><p>tracés pour cinq domaines</p></div><div class="card"><span class="big-number">∞</span><p>combinaisons dans le système</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Construction du logo</span><span>03</span></div>
+</section>
+
+<section class="page">
+  <div class="index">04</div><div class="eyebrow">Suite de logos</div><h2>UNE SIGNATURE<br><span class="bronze">ADAPTABLE.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div class="logo-panel" style="background:#fff"><img src="../logos/pericles-logo-horizontal.svg"></div>
+    <div class="logo-panel" style="background:var(--ink)"><img src="../logos/pericles-logo-horizontal-inverse.svg"></div>
+    <div class="logo-panel" style="background:var(--sage)"><img src="../logos/pericles-logo-compact.svg" style="max-height:90%"></div>
+    <div class="logo-panel" style="background:var(--bronze)"><img src="../logos/pericles-symbole-inverse.svg" style="width:38mm"></div>
+  </div>
+  <div style="margin-top:5mm;display:flex;justify-content:space-between" class="label"><span>Principal</span><span>Inversé</span><span>Compact</span><span>Symbole</span></div>
+  <div class="footer"><b>NECT’ART</b><span>Versions officielles</span><span>04</span></div>
+</section>
+
+<section class="page white">
+  <div class="index">05</div><div class="eyebrow">Protection & lisibilité</div><h2>LAISSER LE SIGNE<br><span class="bronze">RESPIRER.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div><div class="xspace"><img src="../logos/pericles-logo-horizontal.svg"></div><p style="margin-top:5mm">La zone de protection minimale correspond à la largeur de la colonne du symbole, notée <b>X</b>. Aucun texte ou bord ne doit pénétrer cet espace.</p></div>
+    <div><h3>Tailles minimales</h3><div class="minrow" style="margin-top:9mm"><div><img src="../logos/pericles-logo-horizontal.svg" style="width:55mm"><div class="label" style="margin-top:2mm">Print · 35 mm min.</div></div><div><img src="../logos/pericles-symbole.svg" style="width:9mm"><div class="label" style="margin-top:2mm">Digital · 24 px min.</div></div></div>
+      <div style="height:11mm"></div><h3>Priorité</h3><p style="margin-top:3mm">Utiliser la version horizontale par défaut. Réserver le symbole aux espaces contraints, favicons, avatars et repères de navigation.</p></div>
+  </div>
+  <div style="margin-top:10mm" class="grid3"><div class="card do"><h3>À faire</h3><p style="margin-top:3mm">Conserver les proportions et les contrastes officiels.</p></div><div class="card dont"><h3>À éviter</h3><p style="margin-top:3mm">Ne pas condenser, incliner ou réorganiser les tracés.</p></div><div class="card dont"><h3>À éviter</h3><p style="margin-top:3mm">Ne pas utiliser de dégradé, d’ombre ou de contour décoratif.</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Règles du logo</span><span>05</span></div>
+</section>
+
+<section class="page">
+  <div class="index">06</div><div class="eyebrow">Couleurs</div><h2>UNE PALETTE<br><span class="bronze">MINÉRALE.</span></h2><div class="rule"></div>
+  <div class="grid5">
+    <div class="swatch" style="background:var(--ink);color:var(--stone)"><strong>Forêt</strong><span>#1E332B<br>RGB 30 51 43</span></div>
+    <div class="swatch" style="background:var(--stone)"><strong>Calcaire</strong><span>#F3F0E8<br>RGB 243 240 232</span></div>
+    <div class="swatch" style="background:var(--bronze);color:white"><strong>Bronze</strong><span>#A48252<br>RGB 164 130 82</span></div>
+    <div class="swatch" style="background:var(--slate);color:white"><strong>Pierre</strong><span>#716D64<br>RGB 113 109 100</span></div>
+    <div class="swatch" style="background:var(--sage)"><strong>Sauge</strong><span>#AAB9B0<br>RGB 170 185 176</span></div>
+  </div>
+  <div style="margin-top:8mm" class="grid3"><div><h3>60 %</h3><p style="margin-top:2mm">Calcaire et blanc pour l’espace, la clarté et les documents.</p></div><div><h3>30 %</h3><p style="margin-top:2mm">Forêt pour l’autorité, les titres et les grands aplats.</p></div><div><h3>10 %</h3><p style="margin-top:2mm">Bronze, pierre et sauge pour les repères et distinctions.</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Palette officielle</span><span>06</span></div>
+</section>
+
+<section class="page white">
+  <div class="index">07</div><div class="eyebrow">Typographies</div><h2>DISCERNEMENT<br>& <span class="bronze">PRÉCISION.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div><div class="label">Newsreader · Titres & parole de marque</div><div class="specimen-serif" style="margin-top:6mm">Tenir l’ensemble.</div><div class="specimen-italic bronze" style="margin-top:5mm">Depuis un seul point.</div><p class="alphabet" style="margin-top:7mm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 · ÀÉÈÇŒ</p></div>
+    <div><div class="label">Instrument Sans · Information & interfaces</div><div class="specimen-sans" style="margin-top:6mm">PILOTAGE INTÉGRÉ</div><p class="lead" style="font-family:'Instrument Sans';margin-top:5mm">Une information claire, structurée et directement exploitable.</p><p class="alphabet" style="margin-top:7mm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 · ÀÉÈÇŒ</p></div>
+  </div>
+  <div class="grid3" style="margin-top:9mm"><div class="card"><h3>Titre</h3><p style="margin-top:2mm">Newsreader SemiBold<br>Interligne 90–100 %</p></div><div class="card"><h3>Texte</h3><p style="margin-top:2mm">Instrument Sans Regular<br>Interligne 135–150 %</p></div><div class="card"><h3>Repère</h3><p style="margin-top:2mm">Instrument Sans SemiBold<br>Capitales espacées</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Système typographique</span><span>07</span></div>
+</section>
+
+<section class="page dark">
+  <div class="index">08</div><div class="eyebrow sage">Langage graphique</div><h2>LES CINQ<br><span class="bronze">TRACÉS.</span></h2><div class="rule"></div>
+  <div class="trace-block"><img src="../patterns/pericles-traces.svg" class="trace-demo" style="object-fit:cover;filter:invert(1);opacity:.8"><div class="copy">Relier sans confondre.<br>Piloter sans disperser.</div></div>
+  <div class="grid3" style="margin-top:8mm"><div><h3 class="sage">Principe</h3><p style="margin-top:2mm">Toujours cinq lignes, reliées par leur rythme ou leur origine.</p></div><div><h3 class="sage">Variation</h3><p style="margin-top:2mm">Le parcours peut changer selon le support, jamais le nombre de tracés.</p></div><div><h3 class="sage">Usage</h3><p style="margin-top:2mm">Fonds, transitions, schémas, couvertures et animation.</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Motif & mouvement</span><span>08</span></div>
+</section>
+
+<section class="page">
+  <div class="index">09</div><div class="eyebrow">Architecture des domaines</div><h2>CINQ EXPERTISES.<br><span class="bronze">UNE FAMILLE.</span></h2><div class="rule"></div>
+  <div class="grid5">
+    <div class="iconbox"><img src="../icons/domaine-01-finance.svg"><strong>01</strong><p>Finance & administration</p></div>
+    <div class="iconbox"><img src="../icons/domaine-02-social.svg"><strong>02</strong><p>Paie, social & conformité</p></div>
+    <div class="iconbox"><img src="../icons/domaine-03-programmes.svg"><strong>03</strong><p>Prestations & programmes</p></div>
+    <div class="iconbox"><img src="../icons/domaine-04-systemes.svg"><strong>04</strong><p>Systèmes & outils</p></div>
+    <div class="iconbox"><img src="../icons/domaine-05-developpement.svg"><strong>05</strong><p>Pilotage & développement</p></div>
+  </div>
+  <div style="margin-top:10mm" class="grid2"><div><h3>Style</h3><p style="margin-top:3mm">Tracé monoline, extrémités arrondies, géométrie simple et même épaisseur de trait.</p></div><div><h3>Règle</h3><p style="margin-top:3mm">Les pictogrammes servent à orienter. Ils ne remplacent jamais un intitulé de domaine.</p></div></div>
+  <div class="footer"><b>NECT’ART</b><span>Iconographie fonctionnelle</span><span>09</span></div>
+</section>
+
+<section class="page white">
+  <div class="index">10</div><div class="eyebrow">Applications institutionnelles</div><h2>UNE IDENTITÉ<br>QUI <span class="bronze">OPÈRE.</span></h2><div class="rule"></div>
+  <div class="grid3" style="align-items:center">
+    <div><div class="business-card mockup"><img src="../logos/pericles-symbole-inverse.svg" class="mini-mark"><div class="person">Nom Prénom<br><span class="sage">Fonction</span><br><br>contact@periclesgestion.com</div></div><div class="label" style="margin-top:3mm">Carte de visite</div></div>
+    <div><div class="report mockup"><div class="label">PÉRICLÈS GESTION</div><div class="report-title">Rapport de<br>pilotage</div></div><div class="label" style="margin-top:3mm">Rapport confidentiel</div></div>
+    <div><div class="web mockup"><img src="../patterns/pericles-traces.svg" class="web-lines" style="object-fit:cover;filter:invert(1)"><div class="label">PÉRICLÈS GESTION</div><div class="web-title">Vos fonctions de gestion,<br>tenues depuis un seul point.</div></div><div class="label" style="margin-top:3mm">Interface web</div></div>
+  </div>
+  <div style="margin-top:7mm" class="card"><h3>Principe d’usage</h3><p style="margin-top:2mm">Les supports alternent entre une expression institutionnelle très sobre et des moments où les cinq tracés rendent visible la coordination. L’identité ne doit jamais devenir décorative au détriment de l’information.</p></div>
+  <div class="footer"><b>NECT’ART</b><span>Applications prioritaires</span><span>10</span></div>
+</section>
+
+<section class="page">
+  <div class="index">11</div><div class="eyebrow">Expression digitale</div><h2>PARLER PEU.<br><span class="bronze">MONTRER JUSTE.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div class="social mockup"><div class="label sage">PÉRICLÈS GESTION</div><div class="social-title">Tenir l’ensemble.<br><span class="sage" style="font-family:'Instrument Sans';font-size:10pt">Un seul point de responsabilité.</span></div></div>
+    <div><h3>Réseaux professionnels</h3><p style="margin-top:3mm">Privilégier des prises de parole courtes : principe, constat, méthode ou repère. Une idée par publication.</p><div style="height:7mm"></div><h3>Mouvement</h3><p style="margin-top:3mm">Les lignes se déploient depuis la colonne, se croisent ou se consolident. Animation lente, continue et sans effet élastique.</p><div style="height:7mm"></div><h3>Photographie</h3><p style="margin-top:3mm">Architecture de systèmes, gestes de travail, documents, lieux réels et lumière naturelle. Éviter les buildings financiers et les équipes posées.</p></div>
+  </div>
+  <div class="footer"><b>NECT’ART</b><span>Digital & contenu</span><span>11</span></div>
+</section>
+
+<section class="page dark">
+  <div class="index">12</div><div class="eyebrow sage">Livraison</div><h2>LE SYSTÈME<br><span class="bronze">COMPLET.</span></h2><div class="rule"></div>
+  <div class="grid2">
+    <div><h3 class="sage">Fichiers inclus</h3><ul class="asset-list" style="margin-top:5mm"><li>Logo horizontal</li><li>Logo horizontal inversé</li><li>Logo compact</li><li>Symbole</li><li>Symbole inversé</li><li>Motif des cinq tracés</li><li>Cinq pictogrammes</li><li>Couverture de rapport</li><li>Carte de visite</li><li>Modèle LinkedIn</li><li>Palette CSS</li><li>Typographies</li></ul></div>
+    <div><h3 class="sage">Formats & usages</h3><p style="margin-top:5mm">Les logos et modèles sont livrés en SVG, adaptés au web et à l’impression. Les exports PNG servent aux usages bureautiques et aux réseaux sociaux.</p><div style="height:8mm"></div><h3 class="sage">Signature</h3><p class="lead" style="margin-top:4mm">Périclès Gestion<br><span class="bronze">Tenir l’ensemble.</span></p><div style="height:8mm"></div><p>Concept et système d’identité par Nect’Art — Brand Systems Studio.</p></div>
+  </div>
+  <img src="../logos/pericles-logo-horizontal-inverse.svg" style="position:absolute;left:18mm;bottom:26mm;width:92mm">
+  <div class="footer"><b>NECT’ART</b><span>Fin de la charte</span><span>12</span></div>
+</section>
+
+</body></html>
