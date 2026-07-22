@@ -359,9 +359,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 @media (max-width:760px){
-  .quote-block{align-items:flex-end;justify-content:center;padding-bottom:64px}
+  /* MOBILE : art direction — crop portrait dédié (buste en haut, bois sombre en bas), citation ancrée bas */
+  .quote-block{align-items:flex-end;justify-content:center;padding-bottom:56px;min-height:88svh}
   .quote-block blockquote{margin:0 auto}
-  .quote-block::after{background:linear-gradient(180deg,rgba(38,38,43,.12) 0%,rgba(38,38,43,.40) 55%,rgba(38,38,43,.80) 100%)}
+  .quote-block::after{background:linear-gradient(180deg,rgba(38,38,43,.06) 0%,rgba(38,38,43,.22) 55%,rgba(38,38,43,.66) 100%)}
 }
 /* ============ REPERES (V0 premier jet 01/07 : bande sombre a compteurs) ============ */
 .stats__intro{max-width:46ch;margin-bottom:clamp(40px,5vw,70px)}
@@ -583,7 +584,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <!-- ============ MANIFESTE PLEIN CADRE (salle de lecture noble : le grand silence de la page) ============ -->
 <section class="quote-block" aria-label="Citation">
   <div class="qimg" aria-hidden="true">
-    <img src="assets/bibliotheque-bustes.jpg" alt="">
+    <picture>
+      <source media="(max-width:760px)" srcset="assets/bibliotheque-bustes-mobile.jpg">
+      <img src="assets/bibliotheque-bustes.jpg" alt="">
+    </picture>
   </div>
   <blockquote>
     Répondre de l'exécution, c'est tenir l'ensemble.
