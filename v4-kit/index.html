@@ -335,18 +335,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .quote-block{
   position:relative;min-height:78vh;
   display:flex;align-items:center;justify-content:center;
-  color:#fff;text-align:left;overflow:hidden;isolation:isolate;
+  color:#fff;text-align:center;overflow:hidden;isolation:isolate;
   padding:clamp(80px,10vw,120px) var(--gut);
 }
 .quote-block .qimg{position:absolute;inset:0;z-index:0}
-.qwrap{width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr}
-.quote-block .qimg img{width:100%;height:100%;object-fit:cover;object-position:left center;filter:grayscale(100%) contrast(1.06) brightness(.8)}
+
+.quote-block .qimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.06) brightness(.8)}
 .quote-block::after{
   content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(38,38,43,.10) 0%,rgba(38,38,43,.32) 42%,rgba(38,38,43,.68) 100%);
+  background:linear-gradient(180deg,rgba(38,38,43,.40) 0%,rgba(38,38,43,.50) 46%,rgba(38,38,43,.62) 100%);
 }
 .quote-block blockquote{
-  margin:0;grid-column:2;justify-self:center;text-align:center;max-width:20ch;position:relative;z-index:2;
+  margin:0;max-width:22ch;position:relative;z-index:2;
   font-family:var(--serif);font-weight:300;font-style:italic;
   font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.22;color:var(--cream);
   letter-spacing:-.012em;text-shadow:0 2px 26px rgba(20,20,24,.5);
@@ -360,8 +360,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 @media (max-width:760px){
   .quote-block{align-items:flex-end;justify-content:center;padding-bottom:64px}
-  .qwrap{grid-template-columns:1fr}
-  .quote-block blockquote{grid-column:1 / -1;margin:0 auto}
+  .quote-block blockquote{margin:0 auto}
   .quote-block::after{background:linear-gradient(180deg,rgba(38,38,43,.12) 0%,rgba(38,38,43,.40) 55%,rgba(38,38,43,.80) 100%)}
 }
 /* ============ REPERES (V0 premier jet 01/07 : bande sombre a compteurs) ============ */
@@ -586,10 +585,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   <div class="qimg" aria-hidden="true">
     <img src="assets/bibliotheque-bustes.jpg" alt="">
   </div>
-  <div class="wrap qwrap"><blockquote>
+  <blockquote>
     Répondre de l'exécution, c'est tenir l'ensemble.
     <cite>Principe de maison.</cite>
-  </blockquote></div>
+  </blockquote>
 </section>
 
 <!-- ============ APPROCHE (la charte : préambule tenu + clauses de conduite) ============ -->
